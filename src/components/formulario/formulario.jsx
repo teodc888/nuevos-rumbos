@@ -36,6 +36,7 @@ export default function Formulario() {
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <h1>FORMULARIO</h1>
         <Grid container spacing={2} columns={16} sx={{ marginTop: "2%" }}>
           <Grid item xs={16}>
             <TextField
