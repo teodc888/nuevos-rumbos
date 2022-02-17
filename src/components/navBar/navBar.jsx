@@ -15,6 +15,10 @@ export default function NavBar() {
   const handleClickFormulario = () => {
     navigate('/formulario');
   };
+
+  const handleClickHome = () => {
+    navigate('/');
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{bgcolor:"#4a148c"}}>
@@ -28,7 +32,7 @@ export default function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, cursor:"pointer" }} onClick={handleClickHome}>
             Nuevos Rumbos
           </Typography>
           <Buscador />
