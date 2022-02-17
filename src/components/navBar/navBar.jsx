@@ -7,11 +7,17 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Buscador from '../buscador/buscador';
+import { useNavigate } from 'react-router';
 
 export default function NavBar() {
+  const navigate = useNavigate();
+
+  const handleClickFormulario = () => {
+    navigate('/formulario');
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{bgcolor:"#4a148c", textAlign:"center"}}>
+      <AppBar position="static" sx={{bgcolor:"#4a148c"}}>
         <Toolbar>
           <IconButton
             size="large"
@@ -27,7 +33,7 @@ export default function NavBar() {
           </Typography>
           <Buscador />
           <Button color="inherit">Login</Button>
-          <Button color="inherit">Formulario</Button>
+          <Button onClick={handleClickFormulario} color="inherit">Formulario</Button>
         </Toolbar>
       </AppBar>
     </Box>
