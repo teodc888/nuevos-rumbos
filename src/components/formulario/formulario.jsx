@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Grid, TextField } from "@mui/material";
 import { addDoc, collection } from "firebase/firestore";
-import db from "../../firebase/firebaseConfig";
+import {db} from "../../firebase/firebaseConfig";
 export default function Formulario() {
   const [input, setInput] = useState({
     nombre: "",

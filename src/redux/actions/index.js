@@ -4,7 +4,7 @@ import {
     BUSCAR_PRODUCTOS,
 } from './actionsTypes';
 import { collection, getDocs } from "firebase/firestore";
-import db from "../../firebase/firebaseConfig";
+import {db} from "../../firebase/firebaseConfig";
 
 export function getProductos() {
     return async function (dispatch) {
