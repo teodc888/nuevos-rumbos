@@ -3,6 +3,7 @@ import CardNR from "../card/card";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { useSelector } from "react-redux";
+
 export default function Home() {
 
   const docs = useSelector((state) => state.productos);

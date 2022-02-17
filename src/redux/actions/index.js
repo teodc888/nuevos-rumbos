@@ -1,7 +1,7 @@
 // import axios from "axios";
-
 import {
     GET_PRODUCTOS,
+    BUSCAR_PRODUCTOS,
 } from './actionsTypes';
 import { collection, getDocs } from "firebase/firestore";
 import db from "../../firebase/firebaseConfig";
@@ -20,3 +20,10 @@ export function getProductos() {
         }
     };
 }
+
+export const buscarProductos = nombre => {
+    return {
+      type: BUSCAR_PRODUCTOS,
+      payload: nombre,
+    };
+  };

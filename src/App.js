@@ -9,6 +9,7 @@ import Formulario from "./components/formulario/formulario";
 
 
 
+
 import { useDispatch } from "react-redux";
 import {getProductos} from "./redux/actions/index";
 
@@ -27,6 +28,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/formulario" element={<Formulario/>} />
       </Routes>
+
+
     </div>
   );
 }
