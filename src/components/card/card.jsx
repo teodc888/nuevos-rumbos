@@ -11,7 +11,7 @@ export default function CardNR({nombre, imagen, precio}) {
         alt="green iguana"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div" textAlign="center">
+        <Typography gutterBottom variant="h5" component="div" textAlign="center" sx={{textTransform:"lowercase"}}>
         {nombre}
         </Typography>
         <Typography gutterBottom variant="h6" component="div" >
