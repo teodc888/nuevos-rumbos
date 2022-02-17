@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import Buscador from '../buscador/buscador';
 
 export default function NavBar() {
   return (
@@ -24,7 +25,9 @@ export default function NavBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Nuevos Rumbos
           </Typography>
+          <Buscador />
           <Button color="inherit">Login</Button>
+          <Button color="inherit">Formulario</Button>
         </Toolbar>
       </AppBar>
     </Box>

@@ -1,1 +1,2 @@
 export const GET_PRODUCTOS = 'GET_PRODUCTOS';
+export const BUSCAR_PRODUCTOS = 'BUSCAR_PRODUCTOS';
