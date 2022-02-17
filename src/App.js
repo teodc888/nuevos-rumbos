@@ -7,6 +7,7 @@ import NavBar from "./components/navBar/navBar";
 import Home from "./components/home/home";
 import Formulario from "./components/formulario/formulario";
 
+
 import { collection, getDocs } from "firebase/firestore";
 import db from "./firebase/firebaseConfig";
 
@@ -23,10 +24,10 @@ function App() {
 
   console.log(docs);
   return (
-    <div className="App">
+    <div >
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home docs={docs}/>} />
         <Route path="/formulario" element={<Formulario/>} />
       </Routes>
     </div>
