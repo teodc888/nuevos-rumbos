@@ -6,7 +6,7 @@ const persistConfig = {
   key: "root",
   debug: true,
   storage,
-  whitelist: ["productos"],
+  whitelist: ["productos", "productosBuscados"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
