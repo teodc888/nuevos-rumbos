@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { Typography, Stack, Grid, Box } from "@mui/material";
 
 //Components
-
+import Carrousel from "../../carrousel/carrousel";
 import CardNR from "../../card/card";
 
 //Redux
@@ -31,9 +31,10 @@ export default function HomeMoto() {
         <Typography variant="h1" component="div">
           MOTOS
         </Typography>
+        <Carrousel />
       </Stack>
 
-      <Box sx={{ width: "100%", marginTop: "50px" }}>
+      <Box sx={{ width: "100%", marginTop: "10%" }}>
         <Grid
           container
           spacing={{ xs: 4, md: 3 }}
