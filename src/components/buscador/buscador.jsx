@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { IconButton, Input } from "@mui/material";
-import { buscarProductos } from "../../redux/actions/index";
-import SearchIcon from '@mui/icons-material/Search';
-
+// import { buscarProductos } from "../../redux/actions/index";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function Buscador() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [input, setInput] = useState({
     buscador: "",
@@ -20,23 +19,24 @@ export default function Buscador() {
   };
 
   useEffect(() => {
-    dispatch(buscarProductos(input.buscador));
-    }, [input.buscador, dispatch ]);
+    console.log(input);
+    // dispatch(buscarProductos(input.buscador));
+  }, [ input]);
 
   return (
     <>
-        <IconButton sx={{color:"white"}}>
-            <SearchIcon />
-        </IconButton>
-        <Input
-          sx={{ color: "white", border: "1px solid white" }}
-          id="buscador"
-          label="buscador"
-          name="buscador"
-          variant="filled"
-          onChange={handleChange}
-        />
-
+      <IconButton>
+        <SearchIcon sx={{ color: "white" }} />
+      </IconButton>
+      <Input
+        id="buscador"
+        label="buscador"
+        name="buscador"
+        variant="filled"
+        onChange={handleChange}
+        placeholder="Buscar producto"
+        sx={{ color: "white" }}
+      />
     </>
   );
 }

@@ -1,29 +1,74 @@
 // import axios from "axios";
 import {
-    GET_PRODUCTOS,
-    BUSCAR_PRODUCTOS,
-} from './actionsTypes';
+  GET_PRODUCTOS_AUTO,
+  GET_PRODUCTOS_MOTO,
+  GET_PRODUCTOS_REPUESTO,
+  BUSCAR_PRODUCTOS_AUTO,
+  BUSCAR_PRODUCTOS_MOTO,
+  BUSCAR_PRODUCTOS_REPUESTO,
+} from "./actionsTypes";
 import { collection, getDocs } from "firebase/firestore";
-import {db} from "../../firebase/firebaseConfig";
+import { db } from "../../firebase/firebaseConfig";
 
-export function getProductos() {
-    return async function (dispatch) {
-        try {
-            const res = await getDocs(collection(db, "productos"));
+export function getProductosAuto() {
+  return async function (dispatch) {
+    try {
+      const res = await getDocs(collection(db, "auto"));
 
-            return dispatch({
-                type: GET_PRODUCTOS,
-                payload: res.docs.map(doc => doc.data())
-            });
-        } catch (error) {
-            console.log(error);
-        }
-    };
+      return dispatch({
+        type: GET_PRODUCTOS_AUTO,
+        payload: res.docs.map((doc) => doc.data()),
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+export function getProductosMoto() {
+  return async function (dispatch) {
+    try {
+      const res = await getDocs(collection(db, "moto"));
+
+      return dispatch({
+        type: GET_PRODUCTOS_MOTO,
+        payload: res.docs.map((doc) => doc.data()),
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+export function getProductosRepuesto() {
+  return async function (dispatch) {
+    try {
+      const res = await getDocs(collection(db, "repuesto"));
+
+      return dispatch({
+        type: GET_PRODUCTOS_REPUESTO,
+        payload: res.docs.map((doc) => doc.data()),
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
-export const buscarProductos = nombre => {
-    return {
-      type: BUSCAR_PRODUCTOS,
-      payload: nombre,
-    };
+export const buscarProductosAuto = (nombre) => {
+  return {
+    type: BUSCAR_PRODUCTOS_AUTO,
+    payload: nombre,
   };
+};
+
+export const buscarProductosMotos = (nombre) => {
+  return {
+    type: BUSCAR_PRODUCTOS_MOTO,
+    payload: nombre,
+  };
+};
+export const buscarProductosRepuesto = (nombre) => {
+  return {
+    type: BUSCAR_PRODUCTOS_REPUESTO,
+    payload: nombre,
+  };
+};

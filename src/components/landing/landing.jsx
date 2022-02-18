@@ -7,15 +7,15 @@ export default function Landing() {
   const navigate = useNavigate();
 
   const navigateToAuto = () => {
-    navigate('/home');
+    navigate('/autos');
   };
 
   const navigateToMoto = () => {
-    navigate('/home');
+    navigate('/motos');
   };
 
   const navigateToRepuestos = () => {
-    navigate('/home');
+    navigate('/repuestos');
   };
 
   return (
