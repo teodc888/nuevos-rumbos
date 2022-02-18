@@ -1,7 +1,23 @@
 import React from "react";
 import { Button, Grid, Card, CardMedia, Typography } from "@mui/material";
 import Typed from "react-typed";
+import {useNavigate} from 'react-router';
+
 export default function Landing() {
+  const navigate = useNavigate();
+
+  const navigateToAuto = () => {
+    navigate('/home');
+  };
+
+  const navigateToMoto = () => {
+    navigate('/home');
+  };
+
+  const navigateToRepuestos = () => {
+    navigate('/home');
+  };
+
   return (
     <>
       <Grid
@@ -17,17 +33,23 @@ export default function Landing() {
           md={8}
           sx={{ margin: "auto" }}
         >
-          <h1>NUEVOS RUMBOS</h1>
-          <Typography variant="h5" component="div" sx={{ color: "black" }}>
-          La mejor pagina de importaciones de :
+          <Typography
+            variant="h3"
+            component="div"
+            sx={{marginBottom: "3%"}}
+          >
+            NUEVOS RUMBOS
+          </Typography>
+          <Typography
+            variant="h5"
+            component="div"
+            sx={{ color: "black", marginBottom: "5%" }}
+          >
+            La mejor pagina de importaciones de -
             <Typed
-              strings={[
-                "AUTOS",
-                "MOTOS",
-                "REPUESTOS",
-              ]}
-              typeSpeed={50}
-              backSpeed={50}
+              strings={[" AUTOS", "  MOTOS", "  REPUESTOS"]}
+              typeSpeed={65}
+              backSpeed={65}
               loop
             />
           </Typography>
@@ -38,18 +60,18 @@ export default function Landing() {
             columns={{ xs: 6, sm: 6, md: 6 }}
             sx={{ marginTop: "1%" }}
           >
-            <Grid item xs={6} sm={2} md={2}>
-              <Button variant="contained" sx={{ bgcolor: "#4a148c" }}>
+            <Grid className="App" item xs={6} sm={2} md={2}>
+              <Button variant="contained" sx={{ bgcolor: "#4a148c" }} onClick={navigateToAuto}>
                 Autos
               </Button>
             </Grid>
             <Grid item xs={6} sm={2} md={2}>
-              <Button variant="contained" sx={{ bgcolor: "#4a148c" }}>
+              <Button variant="contained" sx={{ bgcolor: "#4a148c" }} onClick={navigateToMoto}>
                 Motos
               </Button>
             </Grid>
             <Grid item xs={6} sm={2} md={2}>
-              <Button variant="contained" sx={{ bgcolor: "#4a148c" }}>
+              <Button variant="contained" sx={{ bgcolor: "#4a148c" }} onClick={navigateToRepuestos}>
                 Repuestos
               </Button>
             </Grid>
@@ -67,7 +89,7 @@ export default function Landing() {
             <CardMedia
               component="img"
               height="500"
-              image="https://kinsta.com/es/wp-content/uploads/sites/8/2019/02/plugins-de-landing-pages-para-wordpress-1024x512.png"
+              image="https://scontent.fcor2-2.fna.fbcdn.net/v/t1.6435-9/121409666_3270786793044323_821596622646100409_n.png?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=LVAoisEStmcAX8zADv0&_nc_ht=scontent.fcor2-2.fna&oh=00_AT8MGj0dVLhO4mNBvUO-eRLpWsk6cyKvV3ONqkCQ_R0WkA&oe=62342CCE"
               alt="green iguana"
             />
           </Card>
