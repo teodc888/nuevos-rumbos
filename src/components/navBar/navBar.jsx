@@ -19,6 +19,9 @@ export default function NavBar() {
   const handleClickHome = () => {
     navigate('/');
   };
+  const handleClickLogIn = () => {
+    navigate('/log-in');
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{bgcolor:"#4a148c"}}>
@@ -36,7 +39,7 @@ export default function NavBar() {
             Nuevos Rumbos
           </Typography>
           <Buscador />
-          <Button color="inherit">Login</Button>
+          <Button color="inherit" onClick={handleClickLogIn}>Login</Button>
           <Button onClick={handleClickFormulario} color="inherit">Formulario</Button>
         </Toolbar>
       </AppBar>
