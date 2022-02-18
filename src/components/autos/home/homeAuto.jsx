@@ -5,6 +5,7 @@ import { Typography, Stack, Grid, Box } from "@mui/material";
 
 //Components
 import CardNR from "../../card/card";
+import Carrousel from "../../carrousel/carrousel";
 
 //Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -31,9 +32,10 @@ export default function HomeAuto() {
         <Typography variant="h1" component="div">
           Autos
         </Typography>
+        <Carrousel />
       </Stack>
 
-      <Box sx={{ width: "100%", marginTop: "50px" }}>
+      <Box sx={{ width: "100%", marginTop: "10%" }}>
         <Grid
           container
           spacing={{ xs: 4, md: 3 }}
