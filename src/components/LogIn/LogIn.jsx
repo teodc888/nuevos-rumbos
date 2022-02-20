@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 // package's
 import { Grid, Paper, TextField, Button } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 // recursos de firebase
 import { auth } from './../../firebase/firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -12,6 +14,8 @@ const LogIn = () => {
 	// creamos estado a los inputs
 	const [correo, establecerCorreo] = useState('');
 	const [contraseña, establecerContraseña] = useState('');
+	// creamos el estado para el navigate
+	const navigate = useNavigate();
 
 	// cargamos los inputs en cada estado
 	const handleChange = (e) => {
@@ -28,10 +32,58 @@ const LogIn = () => {
 		// expresion para verificar que se ingrese un mail
 		const expresionRegular = /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/;
 		if (!expresionRegular.test(correo)) {
-			console.log('ingrese un correo valido');
+			Swal.fire({
+				title: 'Error!',
+				text: 'ingrese un correo valido',
+				icon: 'error',
+				confirmButtonText: 'Ok',
+				width: '30%',
+			});
+			return; //el return es para que deje de ejecutar codigo en caso que se cumpla la condicion
 		}
 		if (correo === '' || contraseña === '') {
-			console.log('completa todos los campos');
+			Swal.fire({
+				title: 'Error!',
+				text: 'completa todos los campos',
+				icon: 'error',
+				confirmButtonText: 'Ok',
+				width: '30%',
+			});
+			return; //el return es para que deje de ejecutar codigo en caso que se cumpla la condicion
+		}
+		try {
+			// enviamos los datos a firebase
+			await signInWithEmailAndPassword(auth, correo, contraseña);
+			Swal.fire({
+				text: 'se inicio sesion',
+				confirmButtonText: 'Ok',
+				icon: 'success',
+				width: '30%',
+				timer: 2500,
+			});
+			// redireccionamos la pagina a inicio
+			navigate('/');
+		} catch (error) {
+			let mensaje;
+			// creamos switch para cada tipo de error
+			switch (error.code) {
+				case 'auth/wrong-password':
+					mensaje = 'Contraseña incorrecta.';
+					break;
+				case 'auth/user-not-found':
+					mensaje = 'El correo que ingreso no esta registrado.';
+					break;
+				default:
+					mensaje = 'Hubo un error al intentar ingresar a la cuenta.';
+					break;
+			}
+			Swal.fire({
+				title: 'Error!',
+				text: mensaje,
+				icon: 'error',
+				confirmButtonText: 'Ok',
+				width: '30%',
+			});
 		}
 	};
 
@@ -65,13 +117,13 @@ const LogIn = () => {
 					<TextField
 						label="Correo"
 						placeholder="nombre@correo.com"
-						// type="email"
+						type="email"
 						name="email"
 						value={correo}
 						onChange={handleChange}
 						fullWidth
-						// required
-						sx={{ marginBottom: '2%' }}
+						required
+						sx={{ marginBottom: '1%' }}
 					/>
 					<TextField
 						label="Contraseña"
@@ -82,6 +134,7 @@ const LogIn = () => {
 						onChange={handleChange}
 						fullWidth
 						required
+						sx={{ marginTop: '1%' }}
 					/>
 					<Button
 						type="submit"
