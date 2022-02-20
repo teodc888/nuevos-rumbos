@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 // Mui
 import { Typography, Stack, Grid, Box } from "@mui/material";
@@ -8,15 +8,10 @@ import Carrousel from "../../carrousel/carrousel";
 import CardNR from "../../card/card";
 
 //Redux
-import { useDispatch, useSelector } from "react-redux";
-import { getProductosMoto } from "../../../redux/actions/index";
+import { useSelector } from "react-redux";
+
 
 export default function HomeMoto() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getProductosMoto());
-  }, [dispatch]);
 
   const motos = useSelector((state) => state.motos);
 

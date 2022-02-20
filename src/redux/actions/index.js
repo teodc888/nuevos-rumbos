@@ -6,6 +6,7 @@ import {
   BUSCAR_PRODUCTOS_AUTO,
   BUSCAR_PRODUCTOS_MOTO,
   BUSCAR_PRODUCTOS_REPUESTO,
+  BUSCAR_TOTAL,
 } from "./actionsTypes";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
@@ -69,6 +70,13 @@ export const buscarProductosMotos = (nombre) => {
 export const buscarProductosRepuesto = (nombre) => {
   return {
     type: BUSCAR_PRODUCTOS_REPUESTO,
+    payload: nombre,
+  };
+};
+
+export const buscarTotal = (nombre) => {
+  return {
+    type: BUSCAR_TOTAL,
     payload: nombre,
   };
 };

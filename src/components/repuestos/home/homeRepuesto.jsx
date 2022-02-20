@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 // Mui
 import { Typography, Stack, Grid, Box } from "@mui/material";
@@ -9,18 +9,14 @@ import Carrousel from "../../carrousel/carrousel";
 
 
 //Redux
-import { useDispatch, useSelector } from "react-redux";
-import { getProductosRepuesto } from "../../../redux/actions/index";
+import { useSelector } from "react-redux";
+
 
 export default function HomeRepuestos() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getProductosRepuesto());
-  }, [dispatch]);
 
   const repuestos = useSelector((state) => state.repuestos);
 
+  
   return (
     <div>
       <Stack

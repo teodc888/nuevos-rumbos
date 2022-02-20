@@ -5,9 +5,12 @@ import {
   BUSCAR_PRODUCTOS_AUTO,
   BUSCAR_PRODUCTOS_MOTO,
   BUSCAR_PRODUCTOS_REPUESTO,
+  BUSCAR_TOTAL,
 } from "../actions/actionsTypes";
 
 const inicialState = {
+  buscados: [],
+  buscadosFiltrados: [],
   autos: [],
   autosBuscados: [],
   motos: [],
@@ -23,18 +26,24 @@ export default function rootReducer(state = inicialState, action) {
         ...state,
         autos: action.payload,
         autosBuscados: action.payload,
+        buscados: action.payload,
+        buscadosFiltrados: action.payload,
       };
       case GET_PRODUCTOS_MOTO:
         return {
           ...state,
           motos: action.payload,
           motosBuscados: action.payload,
+          buscados: action.payload,
+          buscadosFiltrados: action.payload,
         };
         case GET_PRODUCTOS_REPUESTO:
           return {
             ...state,
             repuestos: action.payload,
             repuestosBuscados: action.payload,
+            buscados: action.payload,
+            buscadosFiltrados: action.payload,
           };
     case BUSCAR_PRODUCTOS_AUTO:
       return {
@@ -63,6 +72,15 @@ export default function rootReducer(state = inicialState, action) {
             .includes(action.payload.toLowerCase());
         }),
       };
+      case BUSCAR_TOTAL:
+        return {
+          ...state,
+          buscados: state.buscadosFiltrados.filter((producto) => {
+            return producto.nombre
+              .toLowerCase()
+              .includes(action.payload.toLowerCase());
+          }),
+        };
     default:
       return state;
   }
