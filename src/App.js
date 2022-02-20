@@ -10,6 +10,7 @@ import Landing from "./components/landing/landing";
 import HomeAuto from "./components/autos/home/homeAuto";
 import HomeMoto from "./components/motos/home/homeMoto";
 import HomeRepuestos from "./components/repuestos/home/homeRepuesto";
+import Detalle from "./components/detalle/detalle";
 
 // Redux
 import { useDispatch } from "react-redux";
@@ -38,6 +39,7 @@ function App() {
         <Route path="/formulario" element={<Formulario/>} />
         <Route path="/formulario" element={<Formulario/>} />
         <Route path="/log-in" element={<LogIn/>} />
+        <Route path="/detalle/:id" element={<Detalle/>} />
       </Routes>
 
 

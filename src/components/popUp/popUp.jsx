@@ -31,7 +31,6 @@ export default function PopUp() {
 
   const buscar = useSelector((state) => state.buscados);
 
-  console.log(buscar);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -92,6 +91,8 @@ export default function PopUp() {
                   nombre={buscar.nombre}
                   imagen={buscar.imagen}
                   precio={buscar.precio}
+                  id={buscar.id}
+                  descripcion={buscar.descripcion}
                 />
               </Grid>
             ))}
