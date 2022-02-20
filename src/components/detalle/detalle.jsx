@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -25,7 +25,9 @@ export default function Detalle() {
     (producto) => producto.id === Number(id)
   );
 
-  console.log(productoSeleccionado);
+    useEffect(() => {
+      document.title = productoSeleccionado.nombre;
+    }, [productoSeleccionado.nombre]);
 
   return (
     <div>
