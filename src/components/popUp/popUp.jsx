@@ -23,7 +23,7 @@ import CardNR from "../card/card";
 import { useSelector } from "react-redux";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
+  return <Slide direction="down" ref={ref} {...props} />;
 });
 
 export default function PopUp() {
@@ -31,9 +31,7 @@ export default function PopUp() {
 
   const buscar = useSelector((state) => state.buscados);
 
-
-
-
+  console.log(buscar);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -56,7 +54,7 @@ export default function PopUp() {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: "relative" }}>
+        <AppBar sx={{ position: "relative", bgcolor: "#4a148c" }} >
           <Toolbar>
             <IconButton
               edge="start"
