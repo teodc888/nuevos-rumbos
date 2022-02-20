@@ -44,6 +44,8 @@ export default function HomeRepuestos() {
                 nombre={repuesto.nombre}
                 imagen={repuesto.imagen}
                 precio={repuesto.precio}
+                id={repuesto.id}
+                descripcion={repuesto.descripcion}
               />
             </Grid>
           ))}

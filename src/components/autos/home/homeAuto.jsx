@@ -44,6 +44,8 @@ export default function HomeAuto() {
                 nombre={auto.nombre}
                 imagen={auto.imagen}
                 precio={auto.precio}
+                id={auto.id}
+                descripcion={auto.descripcion}
                 />
                 </Grid>
             ))
