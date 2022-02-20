@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 // components
 import NavBar from "./components/navBar/navBar";
 import Formulario from "./components/formulario/formulario";
-import LogIn from './components/LogIn/LogIn';
+import LogIn from './components/log-in/log-in';
 import Landing from "./components/landing/landing";
 import HomeAuto from "./components/autos/home/homeAuto";
 import HomeMoto from "./components/motos/home/homeMoto";
