@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 // Mui
 import { Typography, Stack, Grid, Box } from "@mui/material";
@@ -8,15 +8,10 @@ import CardNR from "../../card/card";
 import Carrousel from "../../carrousel/carrousel";
 
 //Redux
-import { useDispatch, useSelector } from "react-redux";
-import { getProductosAuto } from "../../../redux/actions/index";
+import { useSelector } from "react-redux";
+
 
 export default function HomeAuto() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getProductosAuto());
-  }, [dispatch]);
 
   const autos = useSelector((state) => state.autos);
 

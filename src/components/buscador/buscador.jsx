@@ -1,42 +1,48 @@
 import React, { useState, useEffect } from "react";
-// import { useDispatch } from "react-redux";
-import { IconButton, Input } from "@mui/material";
-// import { buscarProductos } from "../../redux/actions/index";
+import { useDispatch } from "react-redux";
+
+//Mui
+import { CardActions, Input } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
+//Redux
+import { buscarTotal } from "../../redux/actions/index";
+
 export default function Buscador() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  const [input, setInput] = useState({
-    buscador: "",
-  });
+  const [input, setInput] = useState("");
 
-  const handleChange = (e) => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    setInput(e.target.value);
   };
 
   useEffect(() => {
-    console.log(input);
-    // dispatch(buscarProductos(input.buscador));
-  }, [ input]);
+    dispatch(buscarTotal(input));
+  }, [input, dispatch]);
+
 
   return (
     <>
-      <IconButton>
-        <SearchIcon sx={{ color: "white" }} />
-      </IconButton>
-      <Input
-        id="buscador"
-        label="buscador"
-        name="buscador"
-        variant="filled"
-        onChange={handleChange}
-        placeholder="Buscar producto"
-        sx={{ color: "white" }}
-      />
+      <CardActions>
+        <SearchIcon />
+
+        <Input
+          type="text"
+          name="text"
+          value={input}
+          placeholder="Buscar..."
+          onChange={(e) => handleInputChange(e)}
+          sx={{
+            bgcolor: "#4a148c",
+            borderColor: "black",
+            width: "100%",
+            borderRadius: "10px",
+            color: "white",
+          }}
+        />
+      </CardActions>
     </>
   );
 }

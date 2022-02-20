@@ -1,6 +1,6 @@
 import "./App.css";
 // package's
-// import {useEffect} from 'react';
+import {useEffect} from 'react';
 import { Routes, Route } from "react-router-dom";
 // components
 import NavBar from "./components/navBar/navBar";
@@ -12,12 +12,18 @@ import HomeMoto from "./components/motos/home/homeMoto";
 import HomeRepuestos from "./components/repuestos/home/homeRepuesto";
 
 // Redux
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { getProductosAuto, getProductosMoto, getProductosRepuesto } from "./redux/actions/index";
 
 
 function App() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getProductosAuto());
+    dispatch(getProductosMoto());
+    dispatch(getProductosRepuesto());
+  }, [dispatch]);
 
 
 

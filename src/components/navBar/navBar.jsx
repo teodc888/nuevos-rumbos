@@ -20,7 +20,7 @@ import { useNavigate } from "react-router";
 
 
 // Componetes
-import Buscador from "../buscador/buscador";
+import PopUp from "../popUp/popUp";
 
 export default function PrimarySearchAppBar() {
   const navigate = useNavigate();
@@ -158,7 +158,7 @@ export default function PrimarySearchAppBar() {
             sx={{ display: { xs: "flex", sm: "block" }, marginLeft:"1%" }}
             
           >
-          <Buscador />
+          <PopUp />
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
