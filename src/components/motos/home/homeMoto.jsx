@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 // Mui
 import { Typography, Stack, Grid, Box } from "@mui/material";
@@ -14,6 +14,10 @@ import { useSelector } from "react-redux";
 export default function HomeMoto() {
 
   const motos = useSelector((state) => state.motos);
+
+  useEffect(() => {
+    document.title = "Motos";
+  }, []);
 
   return (
     <div>

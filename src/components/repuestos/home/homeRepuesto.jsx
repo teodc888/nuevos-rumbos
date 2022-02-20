@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 // Mui
 import { Typography, Stack, Grid, Box } from "@mui/material";
@@ -15,6 +15,10 @@ import { useSelector } from "react-redux";
 export default function HomeRepuestos() {
 
   const repuestos = useSelector((state) => state.repuestos);
+
+  useEffect(() => {
+    document.title = "Repuestos";
+  }, []);
 
   
   return (

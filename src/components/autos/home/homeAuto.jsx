@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 // Mui
 import { Typography, Stack, Grid, Box } from "@mui/material";
@@ -15,6 +15,9 @@ export default function HomeAuto() {
 
   const autos = useSelector((state) => state.autos);
 
+  useEffect(() => {
+    document.title = "Autos";
+  }, []);
 
   return (
     <div>

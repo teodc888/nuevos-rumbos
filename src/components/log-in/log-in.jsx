@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // package's
 import { Grid, Paper, TextField, Button } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
@@ -11,6 +11,11 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { ReactComponent as InconLogIn } from './../../images/login.svg';
 
 const LogIn = () => {
+
+	useEffect(() => {
+		document.title = 'Iniciar Sesion';
+	}, []);
+
 	// creamos estado a los inputs
 	const [correo, establecerCorreo] = useState('');
 	const [contraseña, establecerContraseña] = useState('');

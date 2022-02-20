@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Button, Grid, Card, CardMedia, Typography } from "@mui/material";
 import Typed from "react-typed";
 import {useNavigate} from 'react-router';
@@ -17,6 +17,10 @@ export default function Landing() {
   const navigateToRepuestos = () => {
     navigate('/repuestos');
   };
+
+  useEffect(() => {
+    document.title = "Nuevos Rumbos";
+  }, []);
 
   return (
     <>
