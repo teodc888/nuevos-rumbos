@@ -6,6 +6,7 @@ import { Typography, Stack, Grid, Box } from "@mui/material";
 //Components
 import CardNR from "../../card/card";
 import Carrousel from "../../carrousel/carrousel";
+import Buscador from "../../buscador/buscador";
 
 
 //Redux
@@ -29,10 +30,11 @@ export default function HomeRepuestos() {
         justifyContent="center"
         spacing={2}
       >
-        <Typography variant="h1" component="div">
+        <Typography variant="h2" component="div">
           REPUESTOS
         </Typography>
         <Carrousel />
+        <Buscador opciones="repuesto" />
       </Stack>
 
       <Box sx={{ width: "100%", marginTop: "10%" }}>

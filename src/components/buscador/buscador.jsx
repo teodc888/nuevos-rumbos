@@ -6,9 +6,14 @@ import { CardActions, Input } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 //Redux
-import { buscarTotal } from "../../redux/actions/index";
+import {
+  buscarTotal,
+  buscarProductosAuto,
+  buscarProductosMotos,
+  buscarProductosRepuesto,
+} from "../../redux/actions/index";
 
-export default function Buscador() {
+export default function Buscador({ opciones }) {
   const dispatch = useDispatch();
 
   const [input, setInput] = useState("");
@@ -19,9 +24,16 @@ export default function Buscador() {
   };
 
   useEffect(() => {
-    dispatch(buscarTotal(input));
-  }, [input, dispatch]);
-
+    if (opciones === "auto") {
+      dispatch(buscarProductosAuto(input));
+    } else if (opciones === "moto") {
+      dispatch(buscarProductosMotos(input));
+    } else if (opciones === "repuesto") {
+      dispatch(buscarProductosRepuesto(input));
+    } else {
+      dispatch(buscarTotal(input));
+    }
+  }, [input, dispatch, opciones]);
 
   return (
     <>

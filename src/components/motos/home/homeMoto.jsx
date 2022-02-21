@@ -6,6 +6,7 @@ import { Typography, Stack, Grid, Box } from "@mui/material";
 //Components
 import Carrousel from "../../carrousel/carrousel";
 import CardNR from "../../card/card";
+import Buscador from "../../buscador/buscador";
 
 //Redux
 import { useSelector } from "react-redux";
@@ -31,6 +32,7 @@ export default function HomeMoto() {
           MOTOS
         </Typography>
         <Carrousel />
+        <Buscador opciones="moto" />
       </Stack>
 
       <Box sx={{ width: "100%", marginTop: "10%" }}>
