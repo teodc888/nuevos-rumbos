@@ -10,7 +10,12 @@ import {
 
 import { Link } from "react-router-dom";
 
-export default function CardNR({ nombre, imagen, precio, id }) {
+export default function CardNR({ nombre, imagen, precio, id, setOpen }) {
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Card sx={{ maxWidth: 445, margin: "auto" }}>
       <CardMedia
@@ -35,7 +40,7 @@ export default function CardNR({ nombre, imagen, precio, id }) {
       </CardContent>
       <CardActions>
         <Link to={`/detalle/${id}`}>
-          <Button size="small">Ver</Button>
+          <Button onClick={handleClose} size="small">Ver</Button>
         </Link>
       </CardActions>
     </Card>

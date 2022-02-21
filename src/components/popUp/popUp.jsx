@@ -93,6 +93,7 @@ export default function PopUp() {
                   precio={buscar.precio}
                   id={buscar.id}
                   descripcion={buscar.descripcion}
+                  setOpen={setOpen}
                 />
               </Grid>
             ))}

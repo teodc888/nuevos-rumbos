@@ -1,4 +1,7 @@
 import "./App.css";
+
+//Bootstrap
+import "bootstrap/dist/css/bootstrap.min.css";
 // package's
 import {useEffect} from 'react';
 import { Routes, Route } from "react-router-dom";
