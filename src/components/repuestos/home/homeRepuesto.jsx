@@ -34,7 +34,7 @@ export default function HomeRepuestos() {
           REPUESTOS
         </Typography>
         <Carrousel />
-        {/* <Buscador opciones="repuesto" /> */}
+        <Buscador opciones="repuesto" />
       </Stack>
 
       <Box sx={{ width: "100%", marginTop: "10%" }}>

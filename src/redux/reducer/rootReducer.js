@@ -46,7 +46,7 @@ export default function rootReducer(state = inicialState, action) {
       return {
         ...state,
         autos: state.autosBuscados.filter((producto) => {
-          return producto.nombre
+          return producto.modelo
             .toLowerCase()
             .includes(action.payload.toLowerCase());
         }),
@@ -55,7 +55,7 @@ export default function rootReducer(state = inicialState, action) {
       return {
         ...state,
         motos: state.motosBuscados.filter((producto) => {
-          return producto.nombre
+          return producto.modelo
             .toLowerCase()
             .includes(action.payload.toLowerCase());
         }),
@@ -64,7 +64,7 @@ export default function rootReducer(state = inicialState, action) {
       return {
         ...state,
         repuestos: state.repuestosBuscados.filter((producto) => {
-          return producto.nombre
+          return producto.modelo
             .toLowerCase()
             .includes(action.payload.toLowerCase());
         }),
@@ -74,7 +74,7 @@ export default function rootReducer(state = inicialState, action) {
       return {
         ...state,
         buscados: x.filter((producto) => {
-          return producto.nombre
+          return producto.modelo
             .toLowerCase()
             .includes(action.payload.toLowerCase());
         }),

@@ -32,7 +32,7 @@ export default function HomeMoto() {
           MOTOS
         </Typography>
         <Carrousel />
-        {/* <Buscador opciones="moto" /> */}
+        <Buscador opciones="moto" />
       </Stack>
 
       <Box sx={{ width: "100%", marginTop: "10%" }}>
