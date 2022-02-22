@@ -16,38 +16,55 @@ import {
 import CardNR from "../../card/card";
 import Carrousel from "../../carrousel/carrousel";
 import Buscador from "../../buscador/buscador";
+import Paginado from "../../paginado/paginado";
 
 //Redux
 import { useSelector, useDispatch } from "react-redux";
 import { filtroRepuesto } from "../../../redux/actions/index";
 
 export default function HomeRepuestos() {
+  //Dispatch
   const dispatch = useDispatch();
 
+  //UseSelector
   const orden = useSelector((state) => state.orden);
-
-  const [filtro, setFiltro] = useState(orden);
-
   const repuestos = useSelector((state) => state.repuestos);
   const repuestosBuscados = useSelector((state) => state.repuestosBuscados);
 
+  //useState
+  const [filtro, setFiltro] = useState(orden);
+
+  // UseEffect
   useEffect(() => {
     document.title = "Repuestos";
     dispatch(filtroRepuesto(filtro));
   }, [dispatch, filtro]);
 
+  // Paginado
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productoPorPagina] = useState(3);
+  const indeceDelUltimoProducto = currentPage * productoPorPagina; // 10
+  const indiceDelPrimerProducto = indeceDelUltimoProducto - productoPorPagina; // 0
+  const currentRepuestos = repuestos.slice(
+    indiceDelPrimerProducto,
+    indeceDelUltimoProducto
+  );
+  const paginado = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   // Funcion para filtrar las motos
   function handleChange(e) {
+    setCurrentPage(1);
     setFiltro({ ...filtro, [e.target.name]: e.target.value });
   }
 
-
+  //funcion para que muestre las marcas sin repetirlas
   let uniqueArrMarca = ["todos"];
   if (repuestos.length > 0) {
     const repuestoFilterMarca = repuestosBuscados.map((auto) => auto.marca);
     uniqueArrMarca = [...new Set(repuestoFilterMarca)];
   }
-
 
   return (
     <div>
@@ -107,6 +124,11 @@ export default function HomeRepuestos() {
             </Grid>
           </Grid>
         </Box>
+        <Paginado
+          productoPorPagina={productoPorPagina}
+          productos={repuestos.length}
+          paginado={paginado}
+        />
       </Stack>
 
       <Box sx={{ width: "100%", marginTop: "10%" }}>
@@ -116,7 +138,7 @@ export default function HomeRepuestos() {
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
           {/* //mapeo de los repuestos para mostrarlos en la pantalla */}
-          {repuestos.map((repuesto) => (
+          {currentRepuestos.map((repuesto) => (
             <Grid item xs={4} sm={4} md={4} key={repuesto.id}>
               <CardNR
                 marca={repuesto.marca}

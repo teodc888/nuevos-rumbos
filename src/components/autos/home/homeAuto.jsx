@@ -16,37 +16,58 @@ import {
 import CardNR from "../../card/card";
 import Carrousel from "../../carrousel/carrousel";
 import Buscador from "../../buscador/buscador";
+import Paginado from "../../paginado/paginado";
 
 //Redux
 import { useSelector, useDispatch } from "react-redux";
 import { filtroAuto } from "../../../redux/actions/index";
 
 export default function HomeAuto() {
+  //Dispatch
   const dispatch = useDispatch();
 
+  //UseSelector
   const orden = useSelector((state) => state.orden);
-
-  const [filtro, setFiltro] = useState(orden);
-
   const autos = useSelector((state) => state.autos);
   const autosBuscados = useSelector((state) => state.autosBuscados);
 
+  //useState
+  const [filtro, setFiltro] = useState(orden);
+
+  // UseEffect
   useEffect(() => {
     document.title = "Autos";
     dispatch(filtroAuto(filtro));
   }, [dispatch, filtro]);
 
+  //Paginado
+  const[currentPage, setCurrentPage] = useState(1);
+  const [productoPorPagina] = useState(3);
+  const indeceDelUltimoProducto = currentPage * productoPorPagina; // 10
+  const indiceDelPrimerProducto = indeceDelUltimoProducto - productoPorPagina; // 0
+  const currentAutos = autos.slice(
+    indiceDelPrimerProducto,
+    indeceDelUltimoProducto
+  );
+  const paginado = (pageNumber) =>{
+    setCurrentPage(pageNumber)
+  }
+
+
+
   // Funcion para filtrar los autos por gnv
   function handleChange(e) {
+    setCurrentPage(1);
     setFiltro({ ...filtro, [e.target.name]: e.target.value });
   }
 
+
+  // funcion para mostrar las marcas sin repetir
   let uniqueArr = ["todos"];
   if (autos.length > 0) {
     const autosFilterMarca = autosBuscados.map((auto) => auto.marca);
     uniqueArr = [...new Set(autosFilterMarca)];
   }
-
 
   return (
     <div>
@@ -203,6 +224,11 @@ export default function HomeAuto() {
             </Grid>
           </Grid>
         </Box>
+        <Paginado
+          productoPorPagina= {productoPorPagina}
+          productos= {autos.length}
+          paginado={paginado}
+        /> 
       </Stack>
 
       <Box sx={{ width: "100%", marginTop: "3%" }}>
@@ -212,7 +238,7 @@ export default function HomeAuto() {
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
           {/* mapeo de los autos para mostrarlos en la pantalla */}
-          {autos.map((auto) => (
+          {currentAutos.map((auto) => (
             <Grid item xs={4} sm={4} md={4} key={auto.id}>
               <CardNR
                 marca={auto.marca}
