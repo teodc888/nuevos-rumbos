@@ -6,7 +6,8 @@ import {
   BUSCAR_PRODUCTOS_MOTO,
   BUSCAR_PRODUCTOS_REPUESTO,
   BUSCAR_TOTAL,
-  FILTRO_GNV,
+  FILTRO_AUTO,
+  FILTRO_MOTO,
 } from "../actions/actionsTypes";
 
 const inicialState = {
@@ -25,6 +26,10 @@ const inicialState = {
     precio: "todos",
     kilometros: "todos",
     carroceria: "todos",
+    kilometrosM: "todos",
+    precioM: "todos",
+    marcaM: "todos",
+    cilindrada: "todos",
   },
 };
 
@@ -88,7 +93,7 @@ export default function rootReducer(state = inicialState, action) {
             .includes(action.payload.toLowerCase());
         }),
       };
-    case FILTRO_GNV:
+    case FILTRO_AUTO:
       const { gnv, combustible, marca, precio, kilometros, carroceria } =
         action.payload;
       let autosFiltro = [...state.autosBuscados];
@@ -146,6 +151,51 @@ export default function rootReducer(state = inicialState, action) {
         ...state,
         autos: autosFiltro,
       };
+
+    case FILTRO_MOTO:
+      const { kilometrosM, precioM, marcaM, cilindrada } = action.payload;
+      let motosFiltro = [...state.motosBuscados];
+
+      motosFiltro =
+        kilometrosM === "todos"
+          ? motosFiltro
+          : kilometrosM === "menor"
+          ? motosFiltro.sort(function (a, b) {
+              return a.kilometros - b.kilometros;
+            })
+          : motosFiltro.sort(function (a, b) {
+              return b.kilometros - a.kilometros;
+            });
+
+      motosFiltro =
+        precioM === "todos"
+          ? motosFiltro
+          : precioM === "menor"
+          ? motosFiltro.sort(function (a, b) {
+              return a.precio - b.precio;
+            })
+          : motosFiltro.sort(function (a, b) {
+              return b.precio - a.precio;
+            });
+
+      motosFiltro =
+        marcaM === "todos"
+          ? motosFiltro
+          : motosFiltro.filter((producto) => {
+              return producto.marca === marcaM;
+            });
+
+      motosFiltro =
+      cilindrada === "todos"
+          ? motosFiltro
+          : motosFiltro.filter((producto) => {
+              return producto.cilindrada === cilindrada;
+            });
+      return {
+        ...state,
+        motos: motosFiltro,
+      };
+
     default:
       return state;
   }

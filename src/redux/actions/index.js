@@ -7,7 +7,8 @@ import {
   BUSCAR_PRODUCTOS_MOTO,
   BUSCAR_PRODUCTOS_REPUESTO,
   BUSCAR_TOTAL,
-  FILTRO_GNV,
+  FILTRO_AUTO,
+  FILTRO_MOTO,
 } from "./actionsTypes";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
@@ -82,9 +83,16 @@ export const buscarTotal = (nombre) => {
   };
 };
 
-export const filtroGNV = (nombre) => {
+export const filtroAuto = (nombre) => {
   return {
-    type: FILTRO_GNV,
+    type: FILTRO_AUTO,
+    payload: nombre,
+  };
+}
+
+export const filtroMoto = (nombre) => {
+  return {
+    type: FILTRO_MOTO,
     payload: nombre,
   };
 }
