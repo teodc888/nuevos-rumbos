@@ -45,7 +45,8 @@ export default function HomeMoto() {
           {motos.map((moto) => (
             <Grid item xs={4} sm={4} md={4} key={moto.id}>
               <CardNR
-                nombre={moto.nombre}
+                marca={moto.marca}
+                modelo={moto.modelo}
                 imagen={moto.imagen}
                 precio={moto.precio}
                 id={moto.id}

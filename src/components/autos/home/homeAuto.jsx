@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
 export default function HomeAuto() {
 
   const autos = useSelector((state) => state.autos);
+  console.log(autos);
 
   useEffect(() => {
     document.title = "Autos";
@@ -47,7 +48,8 @@ export default function HomeAuto() {
             autos.map((auto) => (
               <Grid item xs={4} sm={4} md={4} key={auto.id}>
                 <CardNR
-                nombre={auto.nombre}
+                marca={auto.marca}
+                modelo={auto.modelo}
                 imagen={auto.imagen}
                 precio={auto.precio}
                 id={auto.id}
