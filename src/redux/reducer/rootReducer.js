@@ -6,6 +6,7 @@ import {
   BUSCAR_PRODUCTOS_MOTO,
   BUSCAR_PRODUCTOS_REPUESTO,
   BUSCAR_TOTAL,
+  FILTRO_GNV,
 } from "../actions/actionsTypes";
 
 const inicialState = {
@@ -17,6 +18,14 @@ const inicialState = {
   motosBuscados: [],
   repuestos: [],
   repuestosBuscados: [],
+  orden: {
+    gnv: "todos",
+    combustible: "todos",
+    marca: "todos",
+    precio: "todos",
+    kilometros: "todos",
+    carroceria: "todos",
+  },
 };
 
 export default function rootReducer(state = inicialState, action) {
@@ -78,6 +87,64 @@ export default function rootReducer(state = inicialState, action) {
             .toLowerCase()
             .includes(action.payload.toLowerCase());
         }),
+      };
+    case FILTRO_GNV:
+      const { gnv, combustible, marca, precio, kilometros, carroceria } =
+        action.payload;
+      let autosFiltro = [...state.autosBuscados];
+
+      autosFiltro =
+        gnv === "todos"
+          ? autosFiltro
+          : autosFiltro.filter((producto) => {
+              return producto.gnv === gnv;
+            });
+
+      autosFiltro =
+        combustible === "todos"
+          ? autosFiltro
+          : autosFiltro.filter((producto) => {
+              return producto.combustible === combustible;
+            });
+
+      autosFiltro =
+        marca === "todos"
+          ? autosFiltro
+          : autosFiltro.filter((producto) => {
+              return producto.marca === marca;
+            });
+
+      autosFiltro =
+        precio === "todos"
+          ? autosFiltro
+          : precio === "menor"
+          ? autosFiltro.sort(function (a, b) {
+              return a.precio - b.precio;
+            })
+          : autosFiltro.sort(function (a, b) {
+              return b.precio - a.precio;
+            });
+
+      autosFiltro =
+        kilometros === "todos"
+          ? autosFiltro
+          : kilometros === "menor"
+          ? autosFiltro.sort(function (a, b) {
+              return a.kilometros - b.kilometros;
+            })
+          : autosFiltro.sort(function (a, b) {
+              return b.kilometros - a.kilometros;
+            });
+
+      autosFiltro =
+        carroceria === "todos"
+          ? autosFiltro
+          : autosFiltro.filter((producto) => {
+              return producto.carroceria === carroceria;
+            });
+      return {
+        ...state,
+        autos: autosFiltro,
       };
     default:
       return state;
