@@ -19,7 +19,7 @@ import Buscador from "../../buscador/buscador";
 
 //Redux
 import { useSelector, useDispatch } from "react-redux";
-import { filtroGNV } from "../../../redux/actions/index";
+import { filtroAuto } from "../../../redux/actions/index";
 
 export default function HomeAuto() {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ export default function HomeAuto() {
 
   useEffect(() => {
     document.title = "Autos";
-    dispatch(filtroGNV(filtro));
+    dispatch(filtroAuto(filtro));
   }, [dispatch, filtro]);
 
   // Funcion para filtrar los autos por gnv
@@ -46,7 +46,7 @@ export default function HomeAuto() {
     const autosFilterMarca = autosBuscados.map((auto) => auto.marca);
     uniqueArr = [...new Set(autosFilterMarca)];
   }
-  console.log(autos);
+
 
   return (
     <div>
