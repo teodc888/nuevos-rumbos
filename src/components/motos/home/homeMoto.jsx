@@ -16,42 +16,63 @@ import {
 import Carrousel from "../../carrousel/carrousel";
 import CardNR from "../../card/card";
 import Buscador from "../../buscador/buscador";
+import Paginado from "../../paginado/paginado";
 
 //Redux
 import { useSelector, useDispatch } from "react-redux";
 import { filtroMoto } from "../../../redux/actions/index";
 
 export default function HomeMoto() {
+  //Dispatch
   const dispatch = useDispatch();
+
+  //UseSelector
   const orden = useSelector((state) => state.orden);
-
-  const [filtro, setFiltro] = useState(orden);
-
   const motos = useSelector((state) => state.motos);
   const motosBuscados = useSelector((state) => state.motosBuscados);
 
+  //useState
+  const [filtro, setFiltro] = useState(orden);
+
+  // UseEffect
   useEffect(() => {
     document.title = "Motos";
     dispatch(filtroMoto(filtro));
   }, [dispatch, filtro]);
 
+  //Paginado
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productoPorPagina] = useState(3);
+  const indeceDelUltimoProducto = currentPage * productoPorPagina; // 10
+  const indiceDelPrimerProducto = indeceDelUltimoProducto - productoPorPagina; // 0
+  const currentMotos = motos.slice(
+    indiceDelPrimerProducto,
+    indeceDelUltimoProducto
+  );
+  const paginado = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+
   // Funcion para filtrar las motos
   function handleChange(e) {
+    setCurrentPage(1);
     setFiltro({ ...filtro, [e.target.name]: e.target.value });
   }
 
+  // funcion para mostrar las marcas sin repetir
   let uniqueArrMarca = ["todos"];
   if (motos.length > 0) {
     const motosFilterMarca = motosBuscados.map((auto) => auto.marca);
     uniqueArrMarca = [...new Set(motosFilterMarca)];
   }
 
+  // funcion para mostrar las cilindradas sin repetir
   let uniqueArrCilindrada = ["todos"];
   if (motos.length > 0) {
     const motosFilterCilindrada = motosBuscados.map((moto) => moto.cilindrada);
     uniqueArrCilindrada = [...new Set(motosFilterCilindrada)];
   }
-
 
   return (
     <div>
@@ -94,7 +115,9 @@ export default function HomeMoto() {
             </Grid>
             <Grid item xs={4} sm={4} md={3}>
               <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">CILINDRADA</InputLabel>
+                <InputLabel id="demo-simple-select-label">
+                  CILINDRADA
+                </InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -150,6 +173,11 @@ export default function HomeMoto() {
             </Grid>
           </Grid>
         </Box>
+        <Paginado
+          productoPorPagina={productoPorPagina}
+          productos={motos.length}
+          paginado={paginado}
+        />
       </Stack>
 
       <Box sx={{ width: "100%", marginTop: "10%" }}>
@@ -159,7 +187,7 @@ export default function HomeMoto() {
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
           {/* //mapeo de las motos para mostrarlos en la pantalla */}
-          {motos.map((moto) => (
+          {currentMotos.map((moto) => (
             <Grid item xs={4} sm={4} md={4} key={moto.id}>
               <CardNR
                 marca={moto.marca}
