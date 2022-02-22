@@ -1,126 +1,54 @@
 import React, { useState } from "react";
-import { Grid, TextField, Select, MenuItem, FormControl, TextareaAutosize } from "@mui/material";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../firebase/firebaseConfig";
+
+import FormularioAuto from "../autos/formularioAuto/formularioAuto";
+import FormularioMoto from "../motos/formularioMoto/formularioMoto";
+import FormularioRepuesto from "../repuestos/formularioRepuesto/formularioRepuesto";
+
+import { Button, Stack, Typography } from "@mui/material";
 export default function Formulario() {
-  const [input, setInput] = useState({
-    nombre: "",
-    imagen: "",
-    precio: "",
-    producto: "",
-  });
+  const [tipo, setTipo] = useState("");
 
-  const handleChange = (e) => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSelectChange = function (e) {
-    setInput({ ...input, producto: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
+  const handleClickAuto = (e) => {
     e.preventDefault();
-    try {
-      const docRef = await addDoc(collection(db, input.producto), {
-        nombre: input.nombre,
-        imagen: input.imagen,
-        precio: input.precio,
-        descripcion: input.descripcion,
-      });
-      setInput({
-        nombre: "",
-        imagen: "",
-        precio: "",
-        producto: "",
-      });
-      console.log("Document written with ID: ", docRef.id);
-    } catch (error) {
-      console.error("Error adding document: ", error);
-    }
+    setTipo("auto");
   };
 
-  console.log(input);
+  const handleClickMoto = (e) => {
+    e.preventDefault();
+    setTipo("moto");
+    };
 
+    const handleClickRepuesto = (e) => {
+      e.preventDefault();
+      setTipo("repuesto");
+      };
+
+  console.log(tipo);
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <h1 className="App">FORMULARIO</h1>
-        <Grid
-          container
-          spacing={2}
-          columns={16}
-          sx={{ marginTop: "2%", textAlign: "center" }}
-        >
-          <Grid item xs={16}>
-            <TextField
-              id="outlined-basic"
-              label="nombre"
-              variant="outlined"
-              name="nombre"
-              onChange={handleChange}
-              value={input.nombre}
-            />
-          </Grid>
-          <Grid item xs={16}>
-            <TextField
-              id="outlined-basic"
-              label="imagen"
-              variant="outlined"
-              name="imagen"
-              onChange={handleChange}
-              value={input.imagen}
-            />
-          </Grid>
-          <Grid item xs={16}>
-            <TextField
-              id="outlined-basic"
-              label="precio"
-              variant="outlined"
-              name="precio"
-              onChange={handleChange}
-              value={input.precio}
-            />
-          </Grid>
-          <Grid item xs={16}>
-            <TextareaAutosize
-               minRows={7}
-              aria-label="maximum height"
-              style={{ width: 200 }}
-              onChange={handleChange}
-              name="descripcion"
-              value={input.descripcion}
-            />
-          </Grid>
-          <Grid item xs={16}>
-            <FormControl>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                label="TIPO"
-                name="producto"
-                onChange={handleSelectChange}
-                value={input.producto}
-              >
-                <MenuItem name="producto" value={"auto"}>
-                  AUTO
-                </MenuItem>
-                <MenuItem name="producto" value={"moto"}>
-                  MOTO
-                </MenuItem>
-                <MenuItem name="producto" value={"repuesto"}>
-                  REPUESTO
-                </MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item xs={16}>
-            <button variant="text">Guardar</button>
-          </Grid>
-        </Grid>
-      </form>
+      {tipo === "auto" ? (
+        <FormularioAuto />
+      ) : tipo === "moto" ? (
+        <FormularioMoto setTipo={setTipo}/>
+      ) : tipo === "repuesto" ? (
+        <FormularioRepuesto setTipo={setTipo}/>
+        
+      ) : (
+        <Stack
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        spacing={2}
+      >
+        <Typography variant="h2" component="div">
+          Formulario
+        </Typography>
+        <Button onClick={handleClickAuto}>Autos</Button>
+        <Button onClick={handleClickMoto}>Motos</Button>
+        <Button onClick={handleClickRepuesto}>Repuestos</Button>
+      </Stack>
+      )}
+      
     </>
   );
 }

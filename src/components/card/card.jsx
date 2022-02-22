@@ -10,7 +10,7 @@ import {
 
 import { Link } from "react-router-dom";
 
-export default function CardNR({ nombre, imagen, precio, id, setOpen }) {
+export default function CardNR({ marca, modelo, imagen, precio, id, setOpen }) {
 
   const handleClose = () => {
     setOpen(false);
@@ -32,7 +32,7 @@ export default function CardNR({ nombre, imagen, precio, id, setOpen }) {
           textAlign="center"
           sx={{ textTransform: "lowercase" }}
         >
-          {nombre}
+          {marca} {modelo}
         </Typography>
         <Typography gutterBottom variant="h6" component="div">
           ${precio}

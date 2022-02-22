@@ -34,7 +34,7 @@ export default function HomeRepuestos() {
           REPUESTOS
         </Typography>
         <Carrousel />
-        <Buscador opciones="repuesto" />
+        {/* <Buscador opciones="repuesto" /> */}
       </Stack>
 
       <Box sx={{ width: "100%", marginTop: "10%" }}>
@@ -47,7 +47,8 @@ export default function HomeRepuestos() {
           {repuestos.map((repuesto) => (
             <Grid item xs={4} sm={4} md={4} key={repuesto.id}>
               <CardNR
-                nombre={repuesto.nombre}
+                marca={repuesto.marca}
+                modelo={repuesto.modelo}
                 imagen={repuesto.imagen}
                 precio={repuesto.precio}
                 id={repuesto.id}
