@@ -52,7 +52,7 @@ export default function HomeMoto() {
     uniqueArrCilindrada = [...new Set(motosFilterCilindrada)];
   }
 
-  console.log(motos);
+
   return (
     <div>
       <Stack

@@ -8,6 +8,7 @@ import {
   BUSCAR_TOTAL,
   FILTRO_AUTO,
   FILTRO_MOTO,
+  FILTRO_REPUESTO,
 } from "../actions/actionsTypes";
 
 const inicialState = {
@@ -30,6 +31,8 @@ const inicialState = {
     precioM: "todos",
     marcaM: "todos",
     cilindrada: "todos",
+    precioR: "todos",
+    marcaR: "todos",
   },
 };
 
@@ -186,7 +189,7 @@ export default function rootReducer(state = inicialState, action) {
             });
 
       motosFiltro =
-      cilindrada === "todos"
+        cilindrada === "todos"
           ? motosFiltro
           : motosFiltro.filter((producto) => {
               return producto.cilindrada === cilindrada;
@@ -194,6 +197,32 @@ export default function rootReducer(state = inicialState, action) {
       return {
         ...state,
         motos: motosFiltro,
+      };
+
+    case FILTRO_REPUESTO:
+      const { marcaR, precioR } = action.payload;
+      let repuestosFiltro = [...state.repuestosBuscados];
+
+      repuestosFiltro =
+        marcaR === "todos"
+          ? repuestosFiltro
+          : repuestosFiltro.filter((producto) => {
+              return producto.marca === marcaR;
+            });
+
+      repuestosFiltro =
+        precioR === "todos"
+          ? repuestosFiltro
+          : precioR === "menor"
+          ? repuestosFiltro.sort(function (a, b) {
+              return a.precio - b.precio;
+            })
+          : repuestosFiltro.sort(function (a, b) {
+              return b.precio - a.precio;
+            });
+      return {
+        ...state,
+        repuestos: repuestosFiltro,
       };
 
     default:
