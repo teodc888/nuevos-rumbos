@@ -47,7 +47,7 @@ export default function HomeRepuestos() {
     const repuestoFilterMarca = repuestosBuscados.map((auto) => auto.marca);
     uniqueArrMarca = [...new Set(repuestoFilterMarca)];
   }
-  console.log(repuestos);
+
 
   return (
     <div>
