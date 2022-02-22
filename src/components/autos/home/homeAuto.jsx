@@ -32,7 +32,7 @@ export default function HomeAuto() {
           Autos
         </Typography>
         <Carrousel />
-        <Buscador opciones="auto" />
+        {/* <Buscador opciones="auto" /> */}
 
       </Stack>
 

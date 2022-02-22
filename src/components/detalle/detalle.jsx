@@ -22,12 +22,13 @@ export default function Detalle() {
 
   // busca el producto segun el id
   const productoSeleccionado = productoFlat.find(
-    (producto) => producto.id === Number(id)
+    (producto) => producto.id === id
   );
 
+  console.log(productoSeleccionado)
     useEffect(() => {
-      document.title = productoSeleccionado.nombre;
-    }, [productoSeleccionado.nombre]);
+      document.title = productoSeleccionado.modelo;
+    }, [productoSeleccionado.modelo]);
 
   return (
     <div>
@@ -38,7 +39,7 @@ export default function Detalle() {
         spacing={2}
       >
         <Typography variant="h3" component="div">
-          {productoSeleccionado.nombre}
+        {productoSeleccionado.marca} {productoSeleccionado.modelo}
         </Typography>
         <Card sx={{ maxWidth: 645, margin: "auto" }}>
           <CardMedia

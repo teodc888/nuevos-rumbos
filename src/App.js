@@ -43,6 +43,7 @@ function App() {
         <Route path="/formulario" element={<Formulario/>} />
         <Route path="/log-in" element={<LogIn/>} />
         <Route path="/detalle/:id" element={<Detalle/>} />
+
       </Routes>
 
 
