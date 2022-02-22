@@ -138,18 +138,30 @@ export default function HomeRepuestos() {
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
           {/* //mapeo de los repuestos para mostrarlos en la pantalla */}
-          {currentRepuestos.map((repuesto) => (
-            <Grid item xs={4} sm={4} md={4} key={repuesto.id}>
-              <CardNR
-                marca={repuesto.marca}
-                modelo={repuesto.modelo}
-                imagen={repuesto.imagen}
-                precio={repuesto.precio}
-                id={repuesto.id}
-                descripcion={repuesto.descripcion}
-              />
-            </Grid>
-          ))}
+          {currentRepuestos.length === 0 ? (
+            <Stack
+            direction="column"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Typography variant="h2" component="div">
+              No hay Repuestos
+            </Typography>
+          </Stack>
+          ) : (
+            currentRepuestos.map((repuesto) => (
+              <Grid item xs={4} sm={4} md={4} key={repuesto.id}>
+                <CardNR
+                  marca={repuesto.marca}
+                  modelo={repuesto.modelo}
+                  imagen={repuesto.imagen}
+                  precio={repuesto.precio}
+                  id={repuesto.id}
+                  descripcion={repuesto.descripcion}
+                />
+              </Grid>
+            ))
+          )}
         </Grid>
       </Box>
     </div>

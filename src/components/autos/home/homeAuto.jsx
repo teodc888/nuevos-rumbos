@@ -41,7 +41,7 @@ export default function HomeAuto() {
   }, [dispatch, filtro]);
 
   //Paginado
-  const[currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const [productoPorPagina] = useState(3);
   const indeceDelUltimoProducto = currentPage * productoPorPagina; // 10
   const indiceDelPrimerProducto = indeceDelUltimoProducto - productoPorPagina; // 0
@@ -49,18 +49,15 @@ export default function HomeAuto() {
     indiceDelPrimerProducto,
     indeceDelUltimoProducto
   );
-  const paginado = (pageNumber) =>{
-    setCurrentPage(pageNumber)
-  }
-
-
+  const paginado = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   // Funcion para filtrar los autos por gnv
   function handleChange(e) {
     setCurrentPage(1);
     setFiltro({ ...filtro, [e.target.name]: e.target.value });
   }
-
 
   // funcion para mostrar las marcas sin repetir
   let uniqueArr = ["todos"];
@@ -225,10 +222,10 @@ export default function HomeAuto() {
           </Grid>
         </Box>
         <Paginado
-          productoPorPagina= {productoPorPagina}
-          productos= {autos.length}
+          productoPorPagina={productoPorPagina}
+          productos={autos.length}
           paginado={paginado}
-        /> 
+        />
       </Stack>
 
       <Box sx={{ width: "100%", marginTop: "3%" }}>
@@ -238,18 +235,31 @@ export default function HomeAuto() {
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
           {/* mapeo de los autos para mostrarlos en la pantalla */}
-          {currentAutos.map((auto) => (
-            <Grid item xs={4} sm={4} md={4} key={auto.id}>
-              <CardNR
-                marca={auto.marca}
-                modelo={auto.modelo}
-                imagen={auto.imagen}
-                precio={auto.precio}
-                id={auto.id}
-                descripcion={auto.descripcion}
-              />
-            </Grid>
-          ))}
+          {currentAutos.length === 0 ? (
+            <Stack
+              direction="column"
+              alignItems="center"
+              justifyContent="center"
+              spacing={2}
+            >
+              <Typography variant="h2" component="div">
+                No hay Autos
+              </Typography>
+            </Stack>
+          ) : (
+            currentAutos.map((auto) => (
+              <Grid item xs={4} sm={4} md={4} key={auto.id}>
+                <CardNR
+                  marca={auto.marca}
+                  modelo={auto.modelo}
+                  imagen={auto.imagen}
+                  precio={auto.precio}
+                  id={auto.id}
+                  descripcion={auto.descripcion}
+                />
+              </Grid>
+            ))
+          )}
         </Grid>
       </Box>
     </div>

@@ -53,7 +53,6 @@ export default function HomeMoto() {
     setCurrentPage(pageNumber);
   };
 
-
   // Funcion para filtrar las motos
   function handleChange(e) {
     setCurrentPage(1);
@@ -187,18 +186,31 @@ export default function HomeMoto() {
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
           {/* //mapeo de las motos para mostrarlos en la pantalla */}
-          {currentMotos.map((moto) => (
-            <Grid item xs={4} sm={4} md={4} key={moto.id}>
-              <CardNR
-                marca={moto.marca}
-                modelo={moto.modelo}
-                imagen={moto.imagen}
-                precio={moto.precio}
-                id={moto.id}
-                descripcion={moto.descripcion}
-              />
-            </Grid>
-          ))}
+          {currentMotos.length === 0 ? (
+            <Stack
+            direction="column"
+            alignItems="center"
+            justifyContent="center"
+            spacing={2}
+          >
+            <Typography variant="h2" component="div">
+              No hay Motos
+            </Typography>
+          </Stack>
+          ) : (
+            currentMotos.map((moto) => (
+              <Grid item xs={4} sm={4} md={4} key={moto.id}>
+                <CardNR
+                  marca={moto.marca}
+                  modelo={moto.modelo}
+                  imagen={moto.imagen}
+                  precio={moto.precio}
+                  id={moto.id}
+                  descripcion={moto.descripcion}
+                />
+              </Grid>
+            ))
+          )}
         </Grid>
       </Box>
     </div>
