@@ -9,6 +9,7 @@ import {
   BUSCAR_TOTAL,
   FILTRO_AUTO,
   FILTRO_MOTO,
+  FILTRO_REPUESTO,
 } from "./actionsTypes";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
@@ -93,6 +94,13 @@ export const filtroAuto = (nombre) => {
 export const filtroMoto = (nombre) => {
   return {
     type: FILTRO_MOTO,
+    payload: nombre,
+  };
+}
+
+export const filtroRepuesto = (nombre) => {
+  return {
+    type: FILTRO_REPUESTO,
     payload: nombre,
   };
 }
