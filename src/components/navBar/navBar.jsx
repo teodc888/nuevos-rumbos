@@ -53,6 +53,9 @@ export default function PrimarySearchAppBar() {
   const navigateToFavoritos = () => {
     navigate("/favoritos");
   };
+  const navigateToEditarAutos = () => {
+    navigate("/editarautos");
+  };
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -90,6 +93,7 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem onClick={navigateToLogin}>Login</MenuItem>
       <MenuItem onClick={navigateToFormulario}>Formulario</MenuItem>
+      <MenuItem onClick={navigateToEditarAutos}>EditarAutos</MenuItem>
     </Menu>
   );
 
@@ -146,6 +150,19 @@ export default function PrimarySearchAppBar() {
           <FavoriteIcon />
         </IconButton>
         <p>Favoritos</p>
+      </MenuItem>
+      <MenuItem>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+          onClick={navigateToEditarAutos}
+        >
+          <FavoriteIcon />
+        </IconButton>
+        <p>EditarAutos</p>
       </MenuItem>
     </Menu>
   );
