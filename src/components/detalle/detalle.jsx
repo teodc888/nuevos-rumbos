@@ -48,6 +48,16 @@ export default function Detalle() {
             modelo={productoSeleccionado.modelo}
             imagen={productoSeleccionado.imagen}
             descripcion={productoSeleccionado.descripcion}
+            año={productoSeleccionado.año}
+            carroceria={productoSeleccionado.carroceria}
+            motor={productoSeleccionado.motor}
+            transmision={productoSeleccionado.transmision}
+            precio={productoSeleccionado.precio}
+            combustible={productoSeleccionado.combustible}
+            kilometros={productoSeleccionado.kilometros}
+            cv={productoSeleccionado.cv}
+            puertas={productoSeleccionado.puertas}
+            gnv={productoSeleccionado.gnv}
           />
         </>
       ) : productoSeleccionado.detalle === "moto" ? (
