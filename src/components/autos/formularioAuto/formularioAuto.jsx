@@ -21,6 +21,11 @@ import InfoIcon from "@mui/icons-material/Info";
 export default function FormularioAuto() {
   const [input, setInput] = useState({
     id: uuidv4(),
+    gnv:"no",
+    carroceria:"Coupe",
+    combustible:"nafta",
+    detalle:"auto"
+
   });
 
   const handleChange = (e) => {
@@ -96,6 +101,7 @@ export default function FormularioAuto() {
 
   const open = Boolean(anchorEl);
 
+  console.log(input)
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -225,6 +231,7 @@ export default function FormularioAuto() {
                 id="demo-simple-select"
                 label="GNV"
                 name="gnv"
+                value={input.gnv}
                 onChange={handleSelectChangeGnv}
                 required
               >
@@ -249,6 +256,7 @@ export default function FormularioAuto() {
                   id="demo-simple-select"
                   label="carroceria"
                   name="carroceria"
+                  value={input.carroceria}
                   onChange={handleSelectChangeCarroceria}
                   required
                 >
@@ -343,6 +351,7 @@ export default function FormularioAuto() {
                 id="demo-simple-select"
                 label="combustible"
                 name="combustible"
+                value={input.combustible}
                 onChange={handleSelectChangeCombustible}
                 required
               >

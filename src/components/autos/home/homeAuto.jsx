@@ -258,6 +258,7 @@ export default function HomeAuto() {
                   precio={auto.precio}
                   id={auto.id}
                   descripcion={auto.descripcion}
+                  setOpen={"false"}
                   favorito={"true"}
                 />
               </Grid>

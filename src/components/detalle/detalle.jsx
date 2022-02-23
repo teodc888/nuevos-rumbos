@@ -1,9 +1,16 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 
+//Route
 import { useParams } from "react-router-dom";
+
+//Redux
 import { useSelector } from "react-redux";
 
-import { Stack, Typography, CardMedia, Card, CardContent } from "@mui/material";
+//Component
+import DetalleAuto from "../autos/detalleAuto/detalleAuto";
+import DetalleMoto from "../motos/detalleMoto/detalleMoto";
+import DetalleRepuesto from "../repuestos/detalleRepuesto/detalleRepuesto";
+
 export default function Detalle() {
   // trae el id del producto
   const { id } = useParams();
@@ -25,36 +32,47 @@ export default function Detalle() {
     (producto) => producto.id === id
   );
 
-  console.log(productoSeleccionado)
-    useEffect(() => {
-      document.title = productoSeleccionado.modelo;
-    }, [productoSeleccionado.modelo]);
+  console.log(productoSeleccionado);
+  useEffect(() => {
+    document.title = productoSeleccionado.modelo;
+  }, [productoSeleccionado.modelo]);
+
+  console.log(productoSeleccionado);
 
   return (
     <div>
-      <Stack
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-        spacing={2}
-      >
-        <Typography variant="h3" component="div">
-        {productoSeleccionado.marca} {productoSeleccionado.modelo}
-        </Typography>
-        <Card sx={{ maxWidth: 645, margin: "auto" }}>
-          <CardMedia
-            component="img"
-            height="440"
-            image={productoSeleccionado.imagen}
-            alt="green iguana"
+      {productoSeleccionado.detalle === "auto" ? (
+        <>
+          <DetalleAuto
+            marca={productoSeleccionado.marca}
+            modelo={productoSeleccionado.modelo}
+            imagen={productoSeleccionado.imagen}
+            descripcion={productoSeleccionado.descripcion}
           />
-          <CardContent>
-            <Typography variant="body1" component="div">
-              {productoSeleccionado.descripcion}
-            </Typography>
-          </CardContent>
-        </Card>
-      </Stack>
+        </>
+      ) : productoSeleccionado.detalle === "moto" ? (
+        <>
+          <DetalleMoto
+            marca={productoSeleccionado.marca}
+            modelo={productoSeleccionado.modelo}
+            imagen={productoSeleccionado.imagen}
+            descripcion={productoSeleccionado.descripcion}
+          />
+        </>
+      ) : productoSeleccionado.detalle === "repuesto" ? (
+        <>
+          <DetalleRepuesto
+            marca={productoSeleccionado.marca}
+            modelo={productoSeleccionado.modelo}
+            imagen={productoSeleccionado.imagen}
+            descripcion={productoSeleccionado.descripcion}
+          />
+        </>
+      ) : (
+        <>
+          <h1 className="App">ERROR</h1>
+        </>
+      )}
     </div>
   );
 }

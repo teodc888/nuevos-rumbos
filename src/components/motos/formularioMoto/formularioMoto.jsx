@@ -14,6 +14,7 @@ import Swal from "sweetalert2";
 export default function FormularioMoto({setTipo}) {
   const [input, setInput] = useState({
     id: uuidv4(),
+    detalle:"moto"
   });
 
   const handleChange = (e) => {

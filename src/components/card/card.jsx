@@ -132,8 +132,8 @@ export default function CardNR({
         </CardActions>
       ) : (
         <CardActions sx={{ float: "right" }}>
-          <IconButton>
-            <DeleteIcon onClick={deleteFavorito} />
+          <IconButton  onClick={deleteFavorito} >
+            <DeleteIcon />
           </IconButton>
         </CardActions>
       )}

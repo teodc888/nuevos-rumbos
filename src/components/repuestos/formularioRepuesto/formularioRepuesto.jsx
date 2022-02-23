@@ -14,6 +14,7 @@ import Swal from "sweetalert2";
 export default function FormularioRepuesto({setTipo}) {
   const [input, setInput] = useState({
     id: uuidv4(),
+    detalle:"repuesto"
   });
 
   const handleChange = (e) => {
