@@ -27,7 +27,7 @@ export default function Formulario() {
   return (
     <>
       {tipo === "auto" ? (
-        <FormularioAuto />
+        <FormularioAuto setTipo={setTipo} />
       ) : tipo === "moto" ? (
         <FormularioMoto setTipo={setTipo}/>
       ) : tipo === "repuesto" ? (

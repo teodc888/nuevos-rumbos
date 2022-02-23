@@ -18,7 +18,7 @@ import { db } from "../../../firebase/firebaseConfig";
 import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
 import InfoIcon from "@mui/icons-material/Info";
-export default function FormularioAuto() {
+export default function FormularioAuto({setTipo}) {
   const [input, setInput] = useState({
     id: uuidv4(),
     gnv:"no",
@@ -60,6 +60,7 @@ export default function FormularioAuto() {
         width: "30%",
         timer: 2500,
       });
+      setTipo("");
       console.log("Document written with ID: ", docRef.id);
     } catch (error) {
       Swal.fire({
