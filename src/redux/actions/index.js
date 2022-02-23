@@ -10,6 +10,8 @@ import {
   FILTRO_AUTO,
   FILTRO_MOTO,
   FILTRO_REPUESTO,
+  FAVORITOS,
+  ELIMINAR_FAVORITOS,
 } from "./actionsTypes";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
@@ -102,5 +104,19 @@ export const filtroRepuesto = (nombre) => {
   return {
     type: FILTRO_REPUESTO,
     payload: nombre,
+  };
+}
+
+export const favoritos = (payload) => {
+  return {
+    type: FAVORITOS,
+    payload
+  };
+}
+
+export const eliminarFavoritos = (id) => {
+  return {
+    type: ELIMINAR_FAVORITOS,
+    payload: id
   };
 }

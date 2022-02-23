@@ -13,7 +13,7 @@ export default function Paginado({ productoPorPagina, productos, paginado }) {
 
   return (
     <>
-      <Pagination>{pageNumber}</Pagination>
+      <Pagination >{pageNumber}</Pagination>
     </>
   );
 }

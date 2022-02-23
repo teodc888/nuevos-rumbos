@@ -78,7 +78,10 @@ export default function HomeRepuestos() {
           REPUESTOS
         </Typography>
         <Carrousel />
-        <Buscador opciones="repuesto" />
+        <Box sx={{ width: "80%" }}>
+          <Buscador opciones="repuesto" />
+        </Box>
+
         <Box sx={{ width: "100%", marginTop: "10%" }}>
           <Grid
             container
@@ -139,15 +142,16 @@ export default function HomeRepuestos() {
         >
           {/* //mapeo de los repuestos para mostrarlos en la pantalla */}
           {currentRepuestos.length === 0 ? (
-            <Stack
-            direction="column"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Typography variant="h2" component="div">
-              No hay Repuestos
-            </Typography>
-          </Stack>
+            <Grid item xs={12} sm={12} md={12}>
+              <Typography
+                variant="h2"
+                component="div"
+                textAlign="center"
+                sx={{ marginBottom: "22%" }}
+              >
+                No hay Repuestos
+              </Typography>
+            </Grid>
           ) : (
             currentRepuestos.map((repuesto) => (
               <Grid item xs={4} sm={4} md={4} key={repuesto.id}>
@@ -158,6 +162,7 @@ export default function HomeRepuestos() {
                   precio={repuesto.precio}
                   id={repuesto.id}
                   descripcion={repuesto.descripcion}
+                  favorito={"true"}
                 />
               </Grid>
             ))

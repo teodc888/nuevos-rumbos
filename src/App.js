@@ -2,6 +2,11 @@ import "./App.css";
 
 //Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
+
+//toastify
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+
 // package's
 import {useEffect} from 'react';
 import { Routes, Route } from "react-router-dom";
@@ -14,7 +19,7 @@ import HomeAuto from "./components/autos/home/homeAuto";
 import HomeMoto from "./components/motos/home/homeMoto";
 import HomeRepuestos from "./components/repuestos/home/homeRepuesto";
 import Detalle from "./components/detalle/detalle";
-
+import Favoritos from "./components/favoritos/favoritos";
 // Redux
 import { useDispatch } from "react-redux";
 import { getProductosAuto, getProductosMoto, getProductosRepuesto } from "./redux/actions/index";
@@ -43,10 +48,11 @@ function App() {
         <Route path="/formulario" element={<Formulario/>} />
         <Route path="/log-in" element={<LogIn/>} />
         <Route path="/detalle/:id" element={<Detalle/>} />
+        <Route path="/favoritos" element={<Favoritos/>} />
 
       </Routes>
 
-
+    <ToastContainer/>
     </div>
   );
 }
