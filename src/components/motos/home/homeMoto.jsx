@@ -85,7 +85,10 @@ export default function HomeMoto() {
           MOTOS
         </Typography>
         <Carrousel />
-        <Buscador opciones="moto" />
+        <Box sx={{ width: "80%" }}>
+          <Buscador opciones="moto" />
+        </Box>
+
         <Box sx={{ width: "100%", marginTop: "10%" }}>
           <Grid
             container
@@ -187,16 +190,16 @@ export default function HomeMoto() {
         >
           {/* //mapeo de las motos para mostrarlos en la pantalla */}
           {currentMotos.length === 0 ? (
-            <Stack
-            direction="column"
-            alignItems="center"
-            justifyContent="center"
-            spacing={2}
-          >
-            <Typography variant="h2" component="div">
-              No hay Motos
-            </Typography>
-          </Stack>
+            <Grid item xs={12} sm={12} md={12}>
+              <Typography
+                variant="h2"
+                component="div"
+                textAlign="center"
+                sx={{ marginBottom: "22%" }}
+              >
+                No hay Motos
+              </Typography>
+            </Grid>
           ) : (
             currentMotos.map((moto) => (
               <Grid item xs={4} sm={4} md={4} key={moto.id}>
@@ -207,6 +210,7 @@ export default function HomeMoto() {
                   precio={moto.precio}
                   id={moto.id}
                   descripcion={moto.descripcion}
+                  favorito={"true"}
                 />
               </Grid>
             ))

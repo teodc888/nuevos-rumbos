@@ -8,3 +8,5 @@ export const BUSCAR_TOTAL = 'BUSCAR_TOTAL';
 export const FILTRO_AUTO = 'FILTRO_AUTO';
 export const FILTRO_MOTO = 'FILTRO_MOTO';
 export const FILTRO_REPUESTO = 'FILTRO_REPUESTO';
+export const FAVORITOS = 'FAVORITOS';
+export const ELIMINAR_FAVORITOS = 'ELIMINAR_FAVORITOS'

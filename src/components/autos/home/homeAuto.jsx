@@ -78,7 +78,9 @@ export default function HomeAuto() {
           Autos
         </Typography>
         <Carrousel />
-        <Buscador opciones="auto" />
+        <Box sx={{ width: "80%" }}>
+          <Buscador opciones="auto" />
+        </Box>
 
         <Box sx={{ width: "100%", marginTop: "10%" }}>
           <Grid
@@ -236,16 +238,16 @@ export default function HomeAuto() {
         >
           {/* mapeo de los autos para mostrarlos en la pantalla */}
           {currentAutos.length === 0 ? (
-            <Stack
-              direction="column"
-              alignItems="center"
-              justifyContent="center"
-              spacing={2}
-            >
-              <Typography variant="h2" component="div">
+            <Grid item xs={12} sm={12} md={12}>
+              <Typography
+                variant="h2"
+                component="div"
+                textAlign="center"
+                sx={{ marginBottom: "22%" }}
+              >
                 No hay Autos
               </Typography>
-            </Stack>
+            </Grid>
           ) : (
             currentAutos.map((auto) => (
               <Grid item xs={4} sm={4} md={4} key={auto.id}>
@@ -256,6 +258,7 @@ export default function HomeAuto() {
                   precio={auto.precio}
                   id={auto.id}
                   descripcion={auto.descripcion}
+                  favorito={"true"}
                 />
               </Grid>
             ))
