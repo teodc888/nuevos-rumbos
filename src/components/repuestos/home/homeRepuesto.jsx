@@ -88,7 +88,7 @@ export default function HomeRepuestos() {
             spacing={{ xs: 4, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
-            <Grid item xs={6} sm={6} md={6}>
+            <Grid item xs={6} sm={8} md={6}>
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">PRECIO</InputLabel>
                 <Select
@@ -105,7 +105,7 @@ export default function HomeRepuestos() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={6} sm={6} md={6}>
+            <Grid item xs={6} sm={8} md={6}>
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">MARCA</InputLabel>
                 <Select
