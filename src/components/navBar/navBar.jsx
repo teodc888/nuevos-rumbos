@@ -11,13 +11,17 @@ import {
   MenuItem,
   Menu,
 } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
-// React Router
+//Router
 import { useNavigate } from "react-router";
 
+// React Router
+import { useSelector } from "react-redux";
 
 // Componetes
 import PopUp from "../popUp/popUp";
@@ -44,6 +48,10 @@ export default function PrimarySearchAppBar() {
 
   const navigateToLanding = () => {
     navigate("/");
+  };
+
+  const navigateToFavoritos = () => {
+    navigate("/favoritos");
   };
 
   const handleProfileMenuOpen = (event) => {
@@ -126,8 +134,32 @@ export default function PrimarySearchAppBar() {
         </IconButton>
         <p>Formulario</p>
       </MenuItem>
+      <MenuItem>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+          onClick={navigateToFavoritos}
+        >
+          <FavoriteIcon />
+        </IconButton>
+        <p>Favoritos</p>
+      </MenuItem>
     </Menu>
   );
+
+  const StyledBadge = styled(Badge)(({ theme }) => ({
+    "& .MuiBadge-badge": {
+      right: -3,
+      top: 13,
+      border: `2px solid ${theme.palette.background.paper}`,
+      padding: "0 4px",
+    },
+  }));
+
+  const fav = useSelector(state => state.favoritos)
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -139,6 +171,7 @@ export default function PrimarySearchAppBar() {
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
+            onClick={navigateToLanding}
           >
             <MenuIcon />
           </IconButton>
@@ -155,12 +188,25 @@ export default function PrimarySearchAppBar() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "flex", sm: "block" }, marginLeft:"1%" }}
-            
+            sx={{ display: { xs: "flex", sm: "block" }, marginLeft: "1%" }}
           >
-          <PopUp />
+            <PopUp />
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <IconButton
+              size="large"
+              edge="end"
+              aria-label="account of current user"
+              aria-haspopup="true"
+              color="inherit"
+              onClick={navigateToFavoritos}
+            >
+              <StyledBadge badgeContent={fav.length}>
+                <FavoriteIcon />
+              </StyledBadge>
+            </IconButton>
+          </Box>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
               size="large"

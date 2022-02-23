@@ -9,6 +9,8 @@ import {
   FILTRO_AUTO,
   FILTRO_MOTO,
   FILTRO_REPUESTO,
+  FAVORITOS,
+  ELIMINAR_FAVORITOS
 } from "../actions/actionsTypes";
 
 const inicialState = {
@@ -20,6 +22,7 @@ const inicialState = {
   motosBuscados: [],
   repuestos: [],
   repuestosBuscados: [],
+  favoritos: [],
   orden: {
     gnv: "todos",
     combustible: "todos",
@@ -224,7 +227,17 @@ export default function rootReducer(state = inicialState, action) {
         ...state,
         repuestos: repuestosFiltro,
       };
+    case FAVORITOS:
+      return {
+        ...state,
+        favoritos: [...state.favoritos, action.payload]
+    };
 
+    case ELIMINAR_FAVORITOS:
+      return{
+        ...state,
+        favoritos: state.favoritos.filter(producto => producto.id !== action.payload)
+      }
     default:
       return state;
   }
