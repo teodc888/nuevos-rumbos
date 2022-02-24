@@ -53,7 +53,7 @@ export default function PopUp() {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: "relative", bgcolor: "#4a148c" }} >
+        <AppBar sx={{ position: "relative", bgcolor: "#4a148c" }}>
           <Toolbar>
             <IconButton
               edge="start"
@@ -83,20 +83,20 @@ export default function PopUp() {
             spacing={{ xs: 4, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
-            {
-            buscar &&
-            buscar.map((buscar) => (
-              <Grid item xs={4} sm={4} md={4} key={buscar.id}>
-                <CardNR
-                  nombre={buscar.nombre}
-                  imagen={buscar.imagen}
-                  precio={buscar.precio}
-                  id={buscar.id}
-                  descripcion={buscar.descripcion}
-                  setOpen={setOpen}
-                />
-              </Grid>
-            ))}
+            {buscar &&
+              buscar.map((buscar) => (
+                <Grid item xs={4} sm={4} md={4} key={buscar.id}>
+                  <CardNR
+                    marca={buscar.marca}
+                    modelo={buscar.modelo}
+                    imagen={buscar.imagen}
+                    precio={buscar.precio}
+                    id={buscar.id}
+                    descripcion={buscar.descripcion}
+                    setOpen={setOpen}
+                  />
+                </Grid>
+              ))}
           </Grid>
         </Box>
       </Dialog>
