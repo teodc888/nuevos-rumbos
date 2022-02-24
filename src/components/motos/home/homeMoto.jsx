@@ -91,7 +91,10 @@ export default function HomeMoto() {
         <Box sx={{ display: { xs: "flex", md: "none" } }}>
           <Carrousel tamaño="100%" />
         </Box>
-        <Box sx={{ width: "40%" }}>
+        <Box sx={{ width: "50%", display: { xs: "none", md: "block" } }}>
+          <Buscador opciones="moto" />
+        </Box>
+        <Box sx={{ width: "80%", display: { xs: "block", md: "none" } }}>
           <Buscador opciones="moto" />
         </Box>
 
@@ -103,7 +106,9 @@ export default function HomeMoto() {
           >
             <Grid item xs={4} sm={4} md={3}>
               <FormControl fullWidth color="secondary">
-                <InputLabel id="demo-simple-select-label" color="secondary">MARCA</InputLabel>
+                <InputLabel id="demo-simple-select-label" color="secondary">
+                  MARCA
+                </InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -167,7 +172,9 @@ export default function HomeMoto() {
             </Grid>
             <Grid item xs={4} sm={4} md={3}>
               <FormControl fullWidth color="secondary">
-                <InputLabel id="demo-simple-select-label" color="secondary">PRECIO</InputLabel>
+                <InputLabel id="demo-simple-select-label" color="secondary">
+                  PRECIO
+                </InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"

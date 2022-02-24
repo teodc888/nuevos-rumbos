@@ -84,7 +84,10 @@ export default function HomeRepuestos() {
         <Box sx={{ display: { xs: "flex", md: "none" } }}>
           <Carrousel tamaño="100%" />
         </Box>
-        <Box sx={{ width: "40%" }}>
+        <Box sx={{ width: "50%", display: { xs: "none", md: "block" } }}>
+          <Buscador opciones="repuesto" />
+        </Box>
+        <Box sx={{ width: "80%", display: { xs: "block", md: "none" } }}>
           <Buscador opciones="repuesto" />
         </Box>
 

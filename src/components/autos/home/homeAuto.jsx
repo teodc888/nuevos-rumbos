@@ -84,7 +84,10 @@ export default function HomeAuto() {
         <Box sx={{ display: { xs: "flex", md: "none" } }}>
           <Carrousel tamaño="100%" />
         </Box>
-        <Box sx={{ width: "40%" }}>
+        <Box sx={{ width: "50%", display: { xs: "none", md: "block" } }}>
+          <Buscador opciones="auto" />
+        </Box>
+        <Box sx={{ width: "80%", display: { xs: "block", md: "none" } }}>
           <Buscador opciones="auto" />
         </Box>
 
@@ -96,7 +99,9 @@ export default function HomeAuto() {
           >
             <Grid item xs={4} sm={4} md={2}>
               <FormControl fullWidth color="secondary">
-                <InputLabel id="demo-simple-select-label" color="secondary">GNV</InputLabel>
+                <InputLabel id="demo-simple-select-label" color="secondary">
+                  GNV
+                </InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"

@@ -11,10 +11,11 @@ import {
   MenuItem,
   Menu,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+// import MenuIcon from "@mui/icons-material/Menu";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import HomeIcon from '@mui/icons-material/Home';
 
 //Router
 import { useNavigate } from "react-router";
@@ -181,14 +182,13 @@ export default function PrimarySearchAppBar() {
             sx={{ mr: 2 }}
             onClick={navigateToLanding}
           >
-            <MenuIcon />
+            <HomeIcon />
           </IconButton>
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
-            onClick={navigateToLanding}
           >
             NUEVOS RUMBOS
           </Typography>

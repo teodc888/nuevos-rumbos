@@ -37,7 +37,7 @@ export default function Buscador({ opciones }) {
 
   return (
     <>
-      <CardActions>
+      <CardActions sx={{margin:"auto"}}>
         <SearchIcon />
 
         <Input
