@@ -32,12 +32,10 @@ export default function Detalle() {
     (producto) => producto.id === id
   );
 
-  console.log(productoSeleccionado);
   useEffect(() => {
     document.title = productoSeleccionado.modelo;
   }, [productoSeleccionado.modelo]);
 
-  console.log(productoSeleccionado);
 
   return (
     <div>

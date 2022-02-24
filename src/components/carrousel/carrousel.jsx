@@ -2,10 +2,10 @@ import React from "react";
 import { Carousel } from "react-bootstrap";
 import Supra from "../../images/supra.jpg"
 
-export default function Carrousel() {
+export default function Carrousel({tamaño}) {
   return (
     <>
-      <Carousel style={{width:"100%"}}>
+      <Carousel style={{width:tamaño, margin:"auto"}}>
         <Carousel.Item>
           <img
             className="d-block w-100"

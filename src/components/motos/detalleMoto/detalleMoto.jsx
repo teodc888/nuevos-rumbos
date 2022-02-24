@@ -2,7 +2,9 @@ import React from "react";
 
 import { Stack, Typography, CardMedia, Card, CardContent } from "@mui/material";
 
-export default function DetalleMoto({marca, modelo, imagen, descripcion}) {
+import Footer from "../../footer/footer";
+
+export default function DetalleMoto({ marca, modelo, imagen, descripcion }) {
   return (
     <>
       <Stack
@@ -28,6 +30,7 @@ export default function DetalleMoto({marca, modelo, imagen, descripcion}) {
           </CardContent>
         </Card>
       </Stack>
+      <Footer />
     </>
   );
 }

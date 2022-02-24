@@ -17,6 +17,7 @@ import CardNR from "../../card/card";
 import Carrousel from "../../carrousel/carrousel";
 import Buscador from "../../buscador/buscador";
 import Paginado from "../../paginado/paginado";
+import Footer from "../../footer/footer";
 
 //Redux
 import { useSelector, useDispatch } from "react-redux";
@@ -77,8 +78,13 @@ export default function HomeRepuestos() {
         <Typography variant="h2" component="div">
           REPUESTOS
         </Typography>
-        <Carrousel />
-        <Box sx={{ width: "80%" }}>
+        <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Carrousel tamaño="70%" />
+        </Box>
+        <Box sx={{ display: { xs: "flex", md: "none" } }}>
+          <Carrousel tamaño="100%" />
+        </Box>
+        <Box sx={{ width: "40%" }}>
           <Buscador opciones="repuesto" />
         </Box>
 
@@ -89,8 +95,8 @@ export default function HomeRepuestos() {
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
             <Grid item xs={6} sm={8} md={6}>
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">PRECIO</InputLabel>
+              <FormControl fullWidth color="secondary">
+                <InputLabel id="demo-simple-select-label" color="secondary">PRECIO</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -98,6 +104,7 @@ export default function HomeRepuestos() {
                   label="PRECIO"
                   value={filtro.precioR}
                   onChange={handleChange}
+                  color="secondary"
                 >
                   <MenuItem value={"todos"}>Todos</MenuItem>
                   <MenuItem value={"mayor"}>Mayor</MenuItem>
@@ -106,8 +113,8 @@ export default function HomeRepuestos() {
               </FormControl>
             </Grid>
             <Grid item xs={6} sm={8} md={6}>
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">MARCA</InputLabel>
+              <FormControl fullWidth color="secondary">
+                <InputLabel id="demo-simple-select-label" color="secondary">MARCA</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -115,6 +122,7 @@ export default function HomeRepuestos() {
                   label="MARCA"
                   value={filtro.marcaR}
                   onChange={handleChange}
+                  color="secondary"
                 >
                   <MenuItem value={"todos"}>Todos</MenuItem>
                   {uniqueArrMarca.map((marca) => (
@@ -169,6 +177,7 @@ export default function HomeRepuestos() {
           )}
         </Grid>
       </Box>
+      <Footer />
     </div>
   );
 }

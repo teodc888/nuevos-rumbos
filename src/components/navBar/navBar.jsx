@@ -11,7 +11,6 @@ import {
   MenuItem,
   Menu,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import AccountCircle from "@mui/icons-material/AccountCircle";
@@ -167,14 +166,6 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
-  const StyledBadge = styled(Badge)(({ theme }) => ({
-    "& .MuiBadge-badge": {
-      right: -3,
-      top: 13,
-      border: `2px solid ${theme.palette.background.paper}`,
-      padding: "0 4px",
-    },
-  }));
 
   const fav = useSelector(state => state.favoritos)
 
@@ -219,9 +210,9 @@ export default function PrimarySearchAppBar() {
               color="inherit"
               onClick={navigateToFavoritos}
             >
-              <StyledBadge badgeContent={fav.length}>
+              <Badge badgeContent={fav.length} color="secondary">
                 <FavoriteIcon />
-              </StyledBadge>
+              </Badge>
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>

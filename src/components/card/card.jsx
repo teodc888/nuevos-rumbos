@@ -126,20 +126,20 @@ export default function CardNR({
           <Checkbox
             checked={checked}
             onChange={handleChange}
-            icon={<FavoriteBorder />}
-            checkedIcon={<Favorite />}
+            icon={<FavoriteBorder sx={{ color: "#4a148c" }} />}
+            checkedIcon={<Favorite sx={{ color: "#4a148c" }} />}
           />
         </CardActions>
       ) : (
         <CardActions sx={{ float: "right" }}>
-          <IconButton  onClick={deleteFavorito} >
+          <IconButton onClick={deleteFavorito}>
             <DeleteIcon />
           </IconButton>
         </CardActions>
       )}
       <CardActions sx={{ float: "left" }}>
         <Link to={`/detalle/${id}`}>
-          <Button onClick={handleClose} size="small">
+          <Button onClick={handleClose} size="small" sx={{ color: "#4a148c" }}>
             Ver
           </Button>
         </Link>

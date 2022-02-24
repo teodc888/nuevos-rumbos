@@ -21,6 +21,7 @@ import Paginado from "../../paginado/paginado";
 //Redux
 import { useSelector, useDispatch } from "react-redux";
 import { filtroAuto } from "../../../redux/actions/index";
+import Footer from "../../footer/footer";
 
 export default function HomeAuto() {
   //Dispatch
@@ -77,8 +78,13 @@ export default function HomeAuto() {
         <Typography variant="h1" component="div">
           Autos
         </Typography>
-        <Carrousel />
-        <Box sx={{ width: "80%" }}>
+        <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Carrousel tamaño="70%" />
+        </Box>
+        <Box sx={{ display: { xs: "flex", md: "none" } }}>
+          <Carrousel tamaño="100%" />
+        </Box>
+        <Box sx={{ width: "40%" }}>
           <Buscador opciones="auto" />
         </Box>
 
@@ -89,8 +95,8 @@ export default function HomeAuto() {
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
             <Grid item xs={4} sm={4} md={2}>
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">GNV</InputLabel>
+              <FormControl fullWidth color="secondary">
+                <InputLabel id="demo-simple-select-label" color="secondary">GNV</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -98,6 +104,7 @@ export default function HomeAuto() {
                   label="gnv"
                   value={filtro.gnv}
                   onChange={handleChange}
+                  color="secondary"
                 >
                   <MenuItem value={"todos"}>todos</MenuItem>
                   <MenuItem value={"si"}>Si</MenuItem>
@@ -106,8 +113,8 @@ export default function HomeAuto() {
               </FormControl>
             </Grid>
             <Grid item xs={4} sm={4} md={2}>
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">
+              <FormControl fullWidth color="secondary">
+                <InputLabel id="demo-simple-select-label" color="secondary">
                   COMBUSTIBLE
                 </InputLabel>
                 <Select
@@ -117,6 +124,7 @@ export default function HomeAuto() {
                   label="COMBUSTIBLE"
                   value={filtro.combustible}
                   onChange={handleChange}
+                  color="secondary"
                 >
                   <MenuItem value={"todos"}>todos</MenuItem>
                   <MenuItem value={"nafta"}>Nafta</MenuItem>
@@ -125,8 +133,10 @@ export default function HomeAuto() {
               </FormControl>
             </Grid>
             <Grid item xs={4} sm={4} md={2}>
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">MARCAS</InputLabel>
+              <FormControl fullWidth color="secondary">
+                <InputLabel id="demo-simple-select-label" color="secondary">
+                  MARCAS
+                </InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -134,6 +144,7 @@ export default function HomeAuto() {
                   label="MARCAS"
                   value={filtro.marca}
                   onChange={handleChange}
+                  color="secondary"
                 >
                   <MenuItem value={"todos"}>todos</MenuItem>
                   {uniqueArr.map((marca) => {
@@ -147,8 +158,10 @@ export default function HomeAuto() {
               </FormControl>
             </Grid>
             <Grid item xs={4} sm={4} md={2}>
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">PRECIO</InputLabel>
+              <FormControl fullWidth color="secondary">
+                <InputLabel id="demo-simple-select-label" color="secondary">
+                  PRECIO
+                </InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -156,6 +169,7 @@ export default function HomeAuto() {
                   label="PRECIO"
                   value={filtro.precio}
                   onChange={handleChange}
+                  color="secondary"
                 >
                   <MenuItem value={"todos"}>todos</MenuItem>
                   <MenuItem value={"mayor"}>Mayor</MenuItem>
@@ -164,8 +178,8 @@ export default function HomeAuto() {
               </FormControl>
             </Grid>
             <Grid item xs={4} sm={4} md={2}>
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">
+              <FormControl fullWidth color="secondary">
+                <InputLabel id="demo-simple-select-label" color="secondary">
                   KILOMETROS
                 </InputLabel>
                 <Select
@@ -175,6 +189,7 @@ export default function HomeAuto() {
                   label="KILOMETROS"
                   value={filtro.kilometros}
                   onChange={handleChange}
+                  color="secondary"
                 >
                   <MenuItem value={"todos"}>todos</MenuItem>
                   <MenuItem value={"mayor"}>Mayor</MenuItem>
@@ -183,8 +198,8 @@ export default function HomeAuto() {
               </FormControl>
             </Grid>
             <Grid item xs={4} sm={4} md={2}>
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">
+              <FormControl fullWidth color="secondary">
+                <InputLabel id="demo-simple-select-label" color="secondary">
                   CARROCERIA
                 </InputLabel>
                 <Select
@@ -194,6 +209,7 @@ export default function HomeAuto() {
                   label="CARROCERIA"
                   value={filtro.carroceria}
                   onChange={handleChange}
+                  color="secondary"
                   required
                 >
                   <MenuItem value={"todos"}>todos</MenuItem>
@@ -266,6 +282,7 @@ export default function HomeAuto() {
           )}
         </Grid>
       </Box>
+      <Footer />
     </div>
   );
 }

@@ -1,6 +1,11 @@
 import React from "react";
 
-import { Stack, Typography, Card, CardMedia, Box } from "@mui/material";
+//Mui
+import { Stack, Typography, Card, CardMedia, Box, Grid } from "@mui/material";
+
+//Componentes
+import CardDetalle from "../cardDetalle/cardDetalle";
+import Footer from "../../footer/footer";
 
 export default function DetalleAuto({
   marca,
@@ -28,8 +33,16 @@ export default function DetalleAuto({
       >
         <Card sx={{ maxWidth: "100%", margin: "auto" }}>
           <CardMedia
+            sx={{ display: { xs: "none", md: "flex" } }}
             component="img"
-            height="640"
+            height="540"
+            image={imagen}
+            alt="green iguana"
+          />
+          <CardMedia
+            sx={{ display: { xs: "flex", md: "none" } }}
+            component="img"
+            height="340"
             image={imagen}
             alt="green iguana"
           />
@@ -41,49 +54,47 @@ export default function DetalleAuto({
           <Typography variant="body1" component="div">
             {descripcion}
           </Typography>
-          <Typography variant="h5" component="div">
-            Año: {año}
-          </Typography>
-
-          <Typography variant="h5" component="div">
-            Carroceria: {carroceria}
-          </Typography>
-
-          <Typography variant="h5" component="div">
-            Motor: {motor}
-          </Typography>
-
-          <Typography variant="h5" component="div">
-            Transmision: {transmision}
-          </Typography>
-
-          <Typography variant="h5" component="div">
-            Precio: {precio}
-          </Typography>
-
-          <Typography variant="h5" component="div">
-            Combustible: {combustible}
-          </Typography>
-
-          <Typography variant="h5" component="div">
-            Kilometros: {kilometros}
-          </Typography>
-
-          <Typography variant="h5" component="div">
-            Cv: {cv}
-          </Typography> 
-
-          <Typography variant="h5" component="div">
-            Puertas: {puertas}
-          </Typography>
-
-          <Typography variant="h5" component="div">
-            Gnv: {gnv}
-          </Typography>
-
-          
+          <Box sx={{ width: "100%", marginTop: "3%" }}>
+            <Grid
+              container
+              spacing={{ xs: 4, md: 3 }}
+              columns={{ xs: 4, sm: 8, md: 12 }}
+            >
+              <Grid item xs={4} sm={4} md={2.4}>
+                <CardDetalle titulo="Año" descripcion={año} />
+              </Grid>
+              <Grid item xs={4} sm={4} md={2.4}>
+                <CardDetalle titulo="Carroceria" descripcion={carroceria} />
+              </Grid>
+              <Grid item xs={4} sm={4} md={2.4}>
+                <CardDetalle titulo="Motor" descripcion={motor} />
+              </Grid>
+              <Grid item xs={4} sm={4} md={2.4}>
+                <CardDetalle titulo="Transmision" descripcion={transmision} />
+              </Grid>
+              <Grid item xs={4} sm={4} md={2.4}>
+                <CardDetalle titulo="Precio" descripcion={`$${precio}`} />
+              </Grid>
+              <Grid item xs={4} sm={4} md={2.4}>
+                <CardDetalle titulo="Combustible" descripcion={combustible} />
+              </Grid>
+              <Grid item xs={4} sm={4} md={2.4}>
+                <CardDetalle titulo="Kilometros" descripcion={kilometros} />
+              </Grid>
+              <Grid item xs={4} sm={4} md={2.4}>
+                <CardDetalle titulo="Cv" descripcion={cv} />
+              </Grid>
+              <Grid item xs={4} sm={4} md={2.4}>
+                <CardDetalle titulo="Puertas" descripcion={puertas} />
+              </Grid>
+              <Grid item xs={4} sm={4} md={2.4}>
+                <CardDetalle titulo="Gnv" descripcion={gnv} />
+              </Grid>
+            </Grid>
+          </Box>
         </Box>
       </Stack>
+      <Footer />
     </>
   );
 }
