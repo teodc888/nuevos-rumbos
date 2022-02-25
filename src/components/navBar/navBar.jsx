@@ -15,7 +15,8 @@ import {
 import MoreIcon from "@mui/icons-material/MoreVert";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import HomeIcon from '@mui/icons-material/Home';
+import HomeIcon from "@mui/icons-material/Home";
+import AddIcon from "@mui/icons-material/Add";
 
 //Router
 import { useNavigate } from "react-router";
@@ -52,9 +53,13 @@ export default function PrimarySearchAppBar() {
 
   const navigateToFavoritos = () => {
     navigate("/favoritos");
+    setAnchorEl(null);
+    handleMobileMenuClose();
   };
   const navigateToEditarAutos = () => {
     navigate("/editarautos");
+    setAnchorEl(null);
+    handleMobileMenuClose();
   };
 
   const handleProfileMenuOpen = (event) => {
@@ -96,7 +101,7 @@ export default function PrimarySearchAppBar() {
       <MenuItem onClick={navigateToEditarAutos}>EditarAutos</MenuItem>
     </Menu>
   );
-
+  const fav = useSelector((state) => state.favoritos);
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
@@ -114,6 +119,20 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <MenuItem onClick={navigateToFavoritos}>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <Badge badgeContent={fav.length} color="secondary">
+            <FavoriteIcon />
+          </Badge>
+        </IconButton>
+        <p>Favoritos</p>
+      </MenuItem>
       <MenuItem onClick={navigateToLogin}>
         <IconButton
           size="large"
@@ -134,41 +153,24 @@ export default function PrimarySearchAppBar() {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <AddIcon />
         </IconButton>
         <p>Formulario</p>
       </MenuItem>
-      <MenuItem>
+      <MenuItem onClick={navigateToEditarAutos}>
         <IconButton
           size="large"
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
           color="inherit"
-          onClick={navigateToFavoritos}
         >
-          <FavoriteIcon />
-        </IconButton>
-        <p>Favoritos</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-          onClick={navigateToEditarAutos}
-        >
-          <FavoriteIcon />
+          <AddIcon />
         </IconButton>
         <p>EditarAutos</p>
       </MenuItem>
     </Menu>
   );
-
-
-  const fav = useSelector(state => state.favoritos)
 
   return (
     <Box sx={{ flexGrow: 1 }}>
