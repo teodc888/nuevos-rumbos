@@ -58,7 +58,7 @@ const LogIn = () => {
 		}
 		try {
 			// enviamos los datos a firebase
-			await signInWithEmailAndPassword(auth, correo, contraseña);
+			const logeado = await signInWithEmailAndPassword(auth, correo, contraseña);
 			Swal.fire({
 				text: 'se inicio sesion',
 				confirmButtonText: 'Ok',
@@ -68,6 +68,7 @@ const LogIn = () => {
 			});
 			// redireccionamos la pagina a inicio
 			navigate('/');
+			console.log(logeado);
 		} catch (error) {
 			let mensaje;
 			// creamos switch para cada tipo de error

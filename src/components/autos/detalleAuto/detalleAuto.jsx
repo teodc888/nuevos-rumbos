@@ -1,7 +1,17 @@
 import React from "react";
 
 //Mui
-import { Stack, Typography, Card, CardMedia, Box, Grid } from "@mui/material";
+import {
+  Stack,
+  Typography,
+  Card,
+  CardMedia,
+  Box,
+  Grid,
+  CardContent,
+  CardActions,
+  Button,
+} from "@mui/material";
 
 //Componentes
 import CardDetalle from "../cardDetalle/cardDetalle";
@@ -31,28 +41,71 @@ export default function DetalleAuto({
         justifyContent="center"
         spacing={2}
       >
-        <Card sx={{ maxWidth: "100%", margin: "auto" }}>
-          <CardMedia
-            sx={{ display: { xs: "none", md: "flex" } }}
-            component="img"
-            height="540"
-            image={imagen}
-            alt="green iguana"
-          />
-          <CardMedia
-            sx={{ display: { xs: "flex", md: "none" } }}
-            component="img"
-            height="340"
-            image={imagen}
-            alt="green iguana"
-          />
-        </Card>
+        <Box sx={{ width: "100%", marginTop: "1%" }}>
+          <Grid
+            container
+            spacing={{ xs: 4, md: 3 }}
+            columns={{ xs: 4, sm: 8, md: 12 }}
+          >
+            <Grid item xs={4} sm={6} md={8}>
+              <Card sx={{ maxWidth: "100%", margin: "auto" }}>
+                <CardMedia
+                  sx={{ display: { xs: "none", md: "flex" } }}
+                  component="img"
+                  height="540"
+                  image={imagen}
+                  alt="green iguana"
+                />
+                <CardMedia
+                  sx={{ display: { xs: "flex", md: "none" } }}
+                  component="img"
+                  height="340"
+                  image={imagen}
+                  alt="green iguana"
+                />
+              </Card>
+            </Grid>
+            <Grid item xs={4} sm={2} md={4}>
+              <Card sx={{ maxWidth: 445, height: "100%", margin: "auto" }}>
+                <CardContent>
+                  <Typography variant="body1" color="text.secondary">
+                    {año} | {kilometros} Km
+                  </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="h3"
+                    component="div"
+                    textAlign="center"
+                    sx={{ marginTop: "5%" }}
+                  >
+                    {marca} {modelo}
+                  </Typography>
+                  <Typography variant="h4" sx={{ marginTop: "10%" }}>
+                    ${precio}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    component="div"
+                    sx={{ marginTop: "10%" }}
+                  >
+                    Descripcion: {descripcion}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button variant="contained">Agregar a favoritos</Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          </Grid>
+        </Box>
         <Box textAlign="center">
-          <Typography variant="h3" component="div" textAlign="center">
-            {marca} {modelo}
-          </Typography>
-          <Typography variant="body1" component="div">
-            {descripcion}
+          <Typography
+            gutterBottom
+            variant="h3"
+            component="div"
+            textAlign="center"
+          >
+            Características principales
           </Typography>
           <Box sx={{ width: "100%", marginTop: "3%" }}>
             <Grid
@@ -60,34 +113,25 @@ export default function DetalleAuto({
               spacing={{ xs: 4, md: 3 }}
               columns={{ xs: 4, sm: 8, md: 12 }}
             >
-              <Grid item xs={4} sm={4} md={2.4}>
-                <CardDetalle titulo="Año" descripcion={año} />
-              </Grid>
-              <Grid item xs={4} sm={4} md={2.4}>
+              <Grid item xs={4} sm={4} md={4}>
                 <CardDetalle titulo="Carroceria" descripcion={carroceria} />
               </Grid>
-              <Grid item xs={4} sm={4} md={2.4}>
+              <Grid item xs={4} sm={4} md={4}>
                 <CardDetalle titulo="Motor" descripcion={motor} />
               </Grid>
-              <Grid item xs={4} sm={4} md={2.4}>
+              <Grid item xs={4} sm={4} md={4}>
                 <CardDetalle titulo="Transmision" descripcion={transmision} />
               </Grid>
-              <Grid item xs={4} sm={4} md={2.4}>
-                <CardDetalle titulo="Precio" descripcion={`$${precio}`} />
-              </Grid>
-              <Grid item xs={4} sm={4} md={2.4}>
+              <Grid item xs={4} sm={4} md={4}>
                 <CardDetalle titulo="Combustible" descripcion={combustible} />
               </Grid>
-              <Grid item xs={4} sm={4} md={2.4}>
-                <CardDetalle titulo="Kilometros" descripcion={kilometros} />
-              </Grid>
-              <Grid item xs={4} sm={4} md={2.4}>
+              <Grid item xs={4} sm={4} md={4}>
                 <CardDetalle titulo="Cv" descripcion={cv} />
               </Grid>
-              <Grid item xs={4} sm={4} md={2.4}>
+              <Grid item xs={4} sm={4} md={4}>
                 <CardDetalle titulo="Puertas" descripcion={puertas} />
               </Grid>
-              <Grid item xs={4} sm={4} md={2.4}>
+              <Grid item xs={4} sm={4} md={4}>
                 <CardDetalle titulo="Gnv" descripcion={gnv} />
               </Grid>
             </Grid>
