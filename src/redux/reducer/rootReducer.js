@@ -93,7 +93,10 @@ export default function rootReducer(state = inicialState, action) {
       let x = state.buscadosFiltrados.flat();
       return {
         ...state,
-        buscados: x.filter((producto) => {
+        buscados:
+          action.payload === " " ?
+          state.buscados = [] :
+         x.filter((producto) => {
           return producto.modelo
             .toLowerCase()
             .includes(action.payload.toLowerCase());

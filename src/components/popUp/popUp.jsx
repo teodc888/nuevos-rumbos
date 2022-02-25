@@ -31,6 +31,7 @@ export default function PopUp() {
 
   const buscar = useSelector((state) => state.buscados);
 
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -94,6 +95,8 @@ export default function PopUp() {
                     id={buscar.id}
                     descripcion={buscar.descripcion}
                     setOpen={setOpen}
+                    buscador={true}
+                    favorito="true"
                   />
                 </Grid>
               ))}

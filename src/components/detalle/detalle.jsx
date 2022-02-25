@@ -67,6 +67,11 @@ export default function Detalle() {
             imagen={productoSeleccionado.imagen}
             descripcion={productoSeleccionado.descripcion}
             id={productoSeleccionado.id}
+            año={productoSeleccionado.año}
+            precio={productoSeleccionado.precio}
+            cilindrada={productoSeleccionado.cilindrada}
+            cv={productoSeleccionado.cv}
+            kilometros={productoSeleccionado.kilometros}
           />
         </>
       ) : productoSeleccionado.detalle === "repuesto" ? (
@@ -77,6 +82,7 @@ export default function Detalle() {
             imagen={productoSeleccionado.imagen}
             descripcion={productoSeleccionado.descripcion}
             id={productoSeleccionado.id}
+            precio={productoSeleccionado.precio}
           />
         </>
       ) : (

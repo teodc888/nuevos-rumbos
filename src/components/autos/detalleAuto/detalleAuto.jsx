@@ -107,7 +107,7 @@ export default function DetalleAuto({
             spacing={{ xs: 4, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
-            <Grid item xs={4} sm={6} md={8}>
+            <Grid item xs={4} sm={8} md={8}>
               <Card sx={{ maxWidth: "100%", margin: "auto" }}>
                 <CardMedia
                   sx={{ display: { xs: "none", md: "flex" } }}
@@ -125,7 +125,7 @@ export default function DetalleAuto({
                 />
               </Card>
             </Grid>
-            <Grid item xs={4} sm={2} md={4}>
+            <Grid item xs={4} sm={8} md={4}>
               <Card sx={{ maxWidth: 445, height: "100%", margin: "auto" }}>
                 <CardContent>
                   <Typography variant="body1" color="text.secondary">

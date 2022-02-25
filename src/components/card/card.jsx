@@ -32,14 +32,12 @@ export default function CardNR({
   imagen,
   precio,
   id,
+  buscador,
   setOpen,
   favorito,
 }) {
   const dispatch = useDispatch();
 
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   //Favoritos
   const fav = useSelector((state) => state.favoritos);
@@ -139,7 +137,7 @@ export default function CardNR({
       )}
       <CardActions sx={{ float: "left" }}>
         <Link to={`/detalle/${id}`}>
-          <Button onClick={handleClose} size="small" sx={{ color: "#4a148c" }}>
+          <Button onClick={()=> buscador === true ? setOpen(false) : null} size="small" sx={{ color: "#4a148c" }}>
             Ver
           </Button>
         </Link>
