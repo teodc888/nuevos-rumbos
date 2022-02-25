@@ -114,7 +114,7 @@ export default function DetalleMoto({
                 <CardMedia
                   sx={{ display: { xs: "flex", md: "none" } }}
                   component="img"
-                  height="340"
+                  height="240"
                   image={imagen}
                   alt="green iguana"
                 />
