@@ -56,6 +56,7 @@ export default function Detalle() {
             cv={productoSeleccionado.cv}
             puertas={productoSeleccionado.puertas}
             gnv={productoSeleccionado.gnv}
+            id={productoSeleccionado.id}
           />
         </>
       ) : productoSeleccionado.detalle === "moto" ? (
@@ -65,6 +66,7 @@ export default function Detalle() {
             modelo={productoSeleccionado.modelo}
             imagen={productoSeleccionado.imagen}
             descripcion={productoSeleccionado.descripcion}
+            id={productoSeleccionado.id}
           />
         </>
       ) : productoSeleccionado.detalle === "repuesto" ? (
@@ -74,6 +76,7 @@ export default function Detalle() {
             modelo={productoSeleccionado.modelo}
             imagen={productoSeleccionado.imagen}
             descripcion={productoSeleccionado.descripcion}
+            id={productoSeleccionado.id}
           />
         </>
       ) : (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 //Mui
 import {
@@ -17,6 +17,14 @@ import {
 import CardDetalle from "../cardDetalle/cardDetalle";
 import Footer from "../../footer/footer";
 
+//Redux
+import { useDispatch, useSelector } from "react-redux";
+import { favoritos } from "../../../redux/actions/index";
+import { eliminarFavoritos } from "../../../redux/actions/index";
+
+//toastify
+import { toast } from "react-toastify";
+
 export default function DetalleAuto({
   marca,
   modelo,
@@ -32,7 +40,59 @@ export default function DetalleAuto({
   cv,
   puertas,
   gnv,
+  id,
 }) {
+  const favorite = useSelector((state) => state.favoritos);
+  let aux = [];
+  if (favorite.length > 0) {
+    aux = favorite.map((el) => el.id);
+  }
+  const [fav, setFav] = useState(aux?.includes(id) ? true : false);
+  const dispatch = useDispatch();
+
+  //toastify
+  const successSubmitFavorite = () => {
+    toast.success("Producto guardado con éxito", {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+  const errorSubmit = () => {
+    toast.error("Productos eliminados con éxito", {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  const addFavoritos = () => {
+    dispatch(
+      favoritos({
+        marca: marca,
+        modelo: modelo,
+        imagen: imagen,
+        precio: precio,
+        id: id,
+      })
+    );
+    setFav(true);
+    successSubmitFavorite();
+  };
+  const deleteFavoritos = () => {
+    dispatch(eliminarFavoritos(id));
+    setFav(false);
+    errorSubmit();
+  };
+
   return (
     <>
       <Stack
@@ -92,7 +152,15 @@ export default function DetalleAuto({
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button variant="contained">Agregar a favoritos</Button>
+                  {fav === false ? (
+                    <Button variant="contained" onClick={addFavoritos}>
+                      Agregar a favoritos
+                    </Button>
+                  ) : (
+                    <Button variant="contained" color="error" onClick={deleteFavoritos}>
+                      Eliminar de favoritos
+                    </Button>
+                  )}
                 </CardActions>
               </Card>
             </Grid>
