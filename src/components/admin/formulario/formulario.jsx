@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import FormularioAuto from "../autos/formularioAuto/formularioAuto";
-import FormularioMoto from "../motos/formularioMoto/formularioMoto";
-import FormularioRepuesto from "../repuestos/formularioRepuesto/formularioRepuesto";
+import FormularioAuto from "../../autos/formularioAuto/formularioAuto";
+import FormularioMoto from "../../motos/formularioMoto/formularioMoto";
+import FormularioRepuesto from "../../repuestos/formularioRepuesto/formularioRepuesto";
 
 import { Button, Stack, Typography } from "@mui/material";
 export default function Formulario() {
