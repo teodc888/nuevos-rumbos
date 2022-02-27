@@ -1,6 +1,6 @@
 import React from 'react';
-// 
 // material ui
+import { Avatar } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -11,8 +11,6 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import { useSelector } from 'react-redux';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -36,10 +34,16 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const EditarAutos = () => {
 	// funcion para obtener los autos
-	const autos = useSelector((state)=>state.autos);
+	const autos = useSelector((state) => state.autos);
+
+	// creamos tabla responsive
+	// const tableResponsive = () => ({
+	// 	root: { width: '100%', overflowX: 'auto' },
+	// table: { width: '95%', display: 'block', overflowX: 'none' },
+	// });
 	return (
-		<TableContainer component={Paper} sx={{marginTop:'1%'}}>
-			<Table sx={{ minWidth: 700 }} aria-label="customized table">
+		<TableContainer component={Paper} sx={{ marginTop: '1%' }} maxWidth="sm">
+			<Table sx={{ minWidth: 'auto' }} aria-label="customized table">
 				<TableHead>
 					<TableRow>
 						<StyledTableCell>IMAGEN</StyledTableCell>
@@ -51,17 +55,19 @@ const EditarAutos = () => {
 					{autos.map((auto) => (
 						<StyledTableRow key={auto.id}>
 							<StyledTableCell component="th" scope="row">
-								<ImageList sx={{ width: 250, height: 100 }}>
-									<ImageListItem>
-										<img
-											src={auto.imagen}
-											alt={auto.marca}
-										/>
-									</ImageListItem>
-								</ImageList>
+								<Avatar
+									src={auto.imagen}
+									alt={auto.marca}
+									sx={{ width: 150, height: 150 }}
+									variant="rounded"
+								/>
 							</StyledTableCell>
-							<StyledTableCell align="center">{auto.marca + ' - ' + auto.modelo}</StyledTableCell>
-							<StyledTableCell align="center"><Button variant="outlined">EDITAR</Button></StyledTableCell>
+							<StyledTableCell align="center">
+								<h6>{auto.marca + ' - ' + auto.modelo}</h6>
+							</StyledTableCell>
+							<StyledTableCell align="center">
+								<Button variant="outlined">EDITAR</Button>
+							</StyledTableCell>
 						</StyledTableRow>
 					))}
 				</TableBody>

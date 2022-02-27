@@ -42,7 +42,7 @@ const LogIn = () => {
 				text: 'ingrese un correo valido',
 				icon: 'error',
 				confirmButtonText: 'Ok',
-				width: '30%',
+				width: 'auto',
 			});
 			return; //el return es para que deje de ejecutar codigo en caso que se cumpla la condicion
 		}
@@ -52,7 +52,7 @@ const LogIn = () => {
 				text: 'completa todos los campos',
 				icon: 'error',
 				confirmButtonText: 'Ok',
-				width: '30%',
+				width: 'auto',
 			});
 			return; //el return es para que deje de ejecutar codigo en caso que se cumpla la condicion
 		}
@@ -63,7 +63,7 @@ const LogIn = () => {
 				text: 'se inicio sesion',
 				confirmButtonText: 'Ok',
 				icon: 'success',
-				width: '30%',
+				width: 'auto',
 				timer: 2500,
 			});
 			// redireccionamos la pagina a inicio
@@ -88,7 +88,7 @@ const LogIn = () => {
 				text: mensaje,
 				icon: 'error',
 				confirmButtonText: 'Ok',
-				width: '30%',
+				width: 'auto',
 			});
 		}
 	};
