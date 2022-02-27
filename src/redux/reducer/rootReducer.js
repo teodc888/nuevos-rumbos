@@ -10,7 +10,8 @@ import {
   FILTRO_MOTO,
   FILTRO_REPUESTO,
   FAVORITOS,
-  ELIMINAR_FAVORITOS
+  ELIMINAR_FAVORITOS,
+  LOGIN,
 } from "../actions/actionsTypes";
 
 const inicialState = {
@@ -37,6 +38,7 @@ const inicialState = {
     precioR: "todos",
     marcaR: "todos",
   },
+  login: "",
 };
 
 export default function rootReducer(state = inicialState, action) {
@@ -241,6 +243,11 @@ export default function rootReducer(state = inicialState, action) {
         ...state,
         favoritos: state.favoritos.filter(producto => producto.id !== action.payload)
       }
+    case LOGIN:
+      return {
+        ...state,
+        login: action.payload,
+      };
     default:
       return state;
   }

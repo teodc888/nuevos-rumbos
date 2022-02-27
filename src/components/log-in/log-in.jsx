@@ -10,7 +10,12 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 // logo svg
 import { ReactComponent as InconLogIn } from './../../images/login.svg';
 
+//Redux
+import { useDispatch } from 'react-redux';
+import { Login } from './../../redux/actions/index';
+
 const LogIn = () => {
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		document.title = 'Iniciar Sesion';
@@ -59,6 +64,7 @@ const LogIn = () => {
 		try {
 			// enviamos los datos a firebase
 			const logeado = await signInWithEmailAndPassword(auth, correo, contraseña);
+			dispatch(Login(true));
 			Swal.fire({
 				text: 'se inicio sesion',
 				confirmButtonText: 'Ok',

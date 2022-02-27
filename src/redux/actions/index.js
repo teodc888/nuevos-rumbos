@@ -12,6 +12,7 @@ import {
   FILTRO_REPUESTO,
   FAVORITOS,
   ELIMINAR_FAVORITOS,
+  LOGIN
 } from "./actionsTypes";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
@@ -118,5 +119,12 @@ export const eliminarFavoritos = (id) => {
   return {
     type: ELIMINAR_FAVORITOS,
     payload: id
+  };
+}
+
+export const Login = (payload) => {
+  return {
+    type: LOGIN,
+    payload
   };
 }

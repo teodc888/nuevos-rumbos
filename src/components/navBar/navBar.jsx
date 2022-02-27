@@ -41,12 +41,6 @@ export default function PrimarySearchAppBar() {
     handleMobileMenuClose();
   };
 
-  const navigateToFormulario = () => {
-    navigate("/formulario");
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
   const navigateToLanding = () => {
     navigate("/");
   };
@@ -97,7 +91,6 @@ export default function PrimarySearchAppBar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={navigateToLogin}>Login</MenuItem>
-      <MenuItem onClick={navigateToFormulario}>Formulario</MenuItem>
       <MenuItem onClick={navigateToEditarAutos}>EditarAutos</MenuItem>
     </Menu>
   );
@@ -144,18 +137,6 @@ export default function PrimarySearchAppBar() {
           </Badge>
         </IconButton>
         <p>Login</p>
-      </MenuItem>
-      <MenuItem onClick={navigateToFormulario}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AddIcon />
-        </IconButton>
-        <p>Formulario</p>
       </MenuItem>
       <MenuItem onClick={navigateToEditarAutos}>
         <IconButton
