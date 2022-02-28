@@ -19,6 +19,7 @@ import HomeRepuestos from "./components/repuestos/home/homeRepuesto";
 import Detalle from "./components/detalle/detalle";
 import Favoritos from "./components/favoritos/favoritos";
 import EditarAutos from "./components/editarAutos/editarAutos";
+import Error from "./components/error/error";
 
 //components Admin
 import HomeAdmin from "./components/admin/home/home";
@@ -52,6 +53,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomeAdmin />} />
             <Route path="/formulario" element={<Formulario />} />
+            <Route path="*" element={<Error />} />
           </Routes>
         </>
       ) : (
@@ -66,7 +68,7 @@ function App() {
             <Route path="/detalle/:id" element={<Detalle />} />
             <Route path="/favoritos" element={<Favoritos />} />
             <Route path="/editarAutos" element={<EditarAutos />} />
-            <Route path="*" element={<> <h1>404</h1></>} />
+            <Route path="*" element={<Error />} />
           </Routes>
         </>
       )}
