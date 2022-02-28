@@ -1,4 +1,7 @@
 import React from 'react';
+// packages
+import { useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
 // material ui
 import { Avatar } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -10,7 +13,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-import { useSelector } from 'react-redux';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -33,22 +35,25 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const EditarAutos = () => {
+	// funcion Navigate
+	const navigate = useNavigate();
 	// funcion para obtener los autos
 	const autos = useSelector((state) => state.autos);
 
-	// creamos tabla responsive
-	// const tableResponsive = () => ({
-	// 	root: { width: '100%', overflowX: 'auto' },
-	// table: { width: '95%', display: 'block', overflowX: 'none' },
-	// });
+	// funcion OnCLick
+	const editarAuto = (id) =>{
+		navigate(`/formEditarAuto/${id}`)
+	}
+
 	return (
-		<TableContainer component={Paper} sx={{ marginTop: '1%' }} maxWidth="sm">
+		<TableContainer component={Paper} sx={{ marginTop: '1%' }} >
 			<Table sx={{ minWidth: 'auto' }} aria-label="customized table">
 				<TableHead>
 					<TableRow>
 						<StyledTableCell>IMAGEN</StyledTableCell>
 						<StyledTableCell align="center">NOMBRE DEL AUTO</StyledTableCell>
 						<StyledTableCell align="center">EDITAR</StyledTableCell>
+						<StyledTableCell align="center">ELIMINAR</StyledTableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
@@ -66,7 +71,10 @@ const EditarAutos = () => {
 								<h6>{auto.marca + ' - ' + auto.modelo}</h6>
 							</StyledTableCell>
 							<StyledTableCell align="center">
-								<Button variant="outlined">EDITAR</Button>
+								<Button variant="outlined" onClick={()=>editarAuto(auto.id)}>EDITAR</Button>
+							</StyledTableCell>
+							<StyledTableCell align="center">
+								<Button variant="outlined">ELIMINAR</Button>
 							</StyledTableCell>
 						</StyledTableRow>
 					))}
