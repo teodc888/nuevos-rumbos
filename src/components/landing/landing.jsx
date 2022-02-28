@@ -47,7 +47,7 @@ export default function Landing() {
           <Typography
             variant="h5"
             component="div"
-            sx={{ color: "black", marginBottom: "5%" }}
+            sx={{ marginBottom: "5%" }}
           >
             La mejor pagina de importaciones de -
             <Typed
@@ -65,17 +65,17 @@ export default function Landing() {
             sx={{ marginTop: "1%" }}
           >
             <Grid className="App" item xs={6} sm={2} md={2}>
-              <Button variant="contained" sx={{ bgcolor: "#4a148c" }} onClick={navigateToAuto}>
+              <Button variant="contained" sx={{ bgcolor: "#4a148c", color:"white" }} onClick={navigateToAuto}>
                 Autos
               </Button>
             </Grid>
             <Grid item xs={6} sm={2} md={2}>
-              <Button variant="contained" sx={{ bgcolor: "#4a148c" }} onClick={navigateToMoto}>
+              <Button variant="contained" sx={{ bgcolor: "#4a148c", color:"white" }} onClick={navigateToMoto}>
                 Motos
               </Button>
             </Grid>
             <Grid item xs={6} sm={2} md={2}>
-              <Button variant="contained" sx={{ bgcolor: "#4a148c" }} onClick={navigateToRepuestos}>
+              <Button variant="contained" sx={{ bgcolor: "#4a148c", color:"white" }} onClick={navigateToRepuestos}>
                 Repuestos
               </Button>
             </Grid>

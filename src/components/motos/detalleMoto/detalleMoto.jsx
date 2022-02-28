@@ -90,7 +90,7 @@ export default function DetalleMoto({
 
   return (
     <>
-     <Stack
+      <Stack
         direction="column"
         alignItems="center"
         justifyContent="center"
@@ -148,11 +148,19 @@ export default function DetalleMoto({
                 </CardContent>
                 <CardActions>
                   {fav === false ? (
-                    <Button variant="contained" onClick={addFavoritos}>
+                    <Button
+                      variant="contained"
+                      onClick={addFavoritos}
+                      sx={{ bgcolor: "#4a148c", color: "white" }}
+                    >
                       Agregar a favoritos
                     </Button>
                   ) : (
-                    <Button variant="contained" color="error" onClick={deleteFavoritos}>
+                    <Button
+                      variant="contained"
+                      color="error"
+                      onClick={deleteFavoritos}
+                    >
                       Eliminar de favoritos
                     </Button>
                   )}

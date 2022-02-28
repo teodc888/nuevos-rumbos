@@ -15,12 +15,10 @@ import {
 
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../../firebase/firebaseConfig";
-import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
 import InfoIcon from "@mui/icons-material/Info";
 export default function FormularioAuto({setTipo}) {
   const [input, setInput] = useState({
-    id: uuidv4(),
     gnv:"no",
     carroceria:"Coupe",
     combustible:"nafta",

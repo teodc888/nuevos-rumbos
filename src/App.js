@@ -1,5 +1,7 @@
 import "./App.css";
 
+import * as React from "react";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //toastify
@@ -20,6 +22,7 @@ import Detalle from "./components/detalle/detalle";
 import Favoritos from "./components/favoritos/favoritos";
 import EditarAutos from "./components/admin/editarAutos/editarAutos";
 import FormEditarAuto from "./components/admin/editarAutos/formEditarAuto";
+import Error from "./components/error/error";
 
 //components Admin
 import HomeAdmin from "./components/admin/home/home";
@@ -34,6 +37,11 @@ import {
   getProductosRepuesto,
 } from "./redux/actions/index";
 
+//MUi modo dark
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
+
 function App() {
   const login = useSelector((state) => state.login);
 
@@ -45,19 +53,36 @@ function App() {
     dispatch(getProductosRepuesto());
   }, [dispatch]);
 
+  //modo dark
+  const [mode, setMode] = React.useState("light");
+
+
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode,
+        },
+      }),
+    [mode]
+  );
+
   return (
-    <div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+
       {login === true ? (
         <>
           <NavBarAdmin />
           <Routes>
             <Route path="/" element={<HomeAdmin />} />
             <Route path="/formulario" element={<Formulario />} />
+            <Route path="*" element={<Error />} />
           </Routes>
         </>
       ) : (
         <>
-          <NavBar />
+          <NavBar setMode={setMode} mode={mode} />
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/autos" element={<HomeAuto />} />
@@ -68,13 +93,13 @@ function App() {
             <Route path="/favoritos" element={<Favoritos />} />
             <Route path="/editarAutos" element={<EditarAutos />} />
             <Route path="/formEditarAuto/:id" element={<FormEditarAuto />} />
-            <Route path="*" element={<> <h1>404</h1></>} />
+            <Route path="*" element={<Error />} />
+
           </Routes>
         </>
       )}
-
       <ToastContainer />
-    </div>
+    </ThemeProvider>
   );
 }
 

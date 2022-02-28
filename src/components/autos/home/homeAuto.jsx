@@ -35,6 +35,8 @@ export default function HomeAuto() {
   //useState
   const [filtro, setFiltro] = useState(orden);
 
+  console.log(autos);
+
   // UseEffect
   useEffect(() => {
     document.title = "Autos";
@@ -110,6 +112,7 @@ export default function HomeAuto() {
                   value={filtro.gnv}
                   onChange={handleChange}
                   color="secondary"
+    
                 >
                   <MenuItem value={"todos"}>todos</MenuItem>
                   <MenuItem value={"si"}>Si</MenuItem>
