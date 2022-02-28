@@ -18,7 +18,8 @@ import HomeMoto from "./components/motos/home/homeMoto";
 import HomeRepuestos from "./components/repuestos/home/homeRepuesto";
 import Detalle from "./components/detalle/detalle";
 import Favoritos from "./components/favoritos/favoritos";
-import EditarAutos from "./components/editarAutos/editarAutos";
+import EditarAutos from "./components/admin/editarAutos/editarAutos";
+import FormEditarAuto from "./components/admin/editarAutos/formEditarAuto";
 
 //components Admin
 import HomeAdmin from "./components/admin/home/home";
@@ -66,6 +67,7 @@ function App() {
             <Route path="/detalle/:id" element={<Detalle />} />
             <Route path="/favoritos" element={<Favoritos />} />
             <Route path="/editarAutos" element={<EditarAutos />} />
+            <Route path="/formEditarAuto/:id" element={<FormEditarAuto />} />
             <Route path="*" element={<> <h1>404</h1></>} />
           </Routes>
         </>
