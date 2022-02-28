@@ -47,7 +47,7 @@ export default function Landing() {
           <Typography
             variant="h5"
             component="div"
-            sx={{ color: "black", marginBottom: "5%" }}
+            sx={{ marginBottom: "5%" }}
           >
             La mejor pagina de importaciones de -
             <Typed
