@@ -154,6 +154,7 @@ const LogIn = () => {
 						variant="contained"
 						style={btnstyle}
 						fullWidth
+						sx={{bgcolor:"#4a148c", color:"white"}}
 					>
 						Ingresar
 					</Button>

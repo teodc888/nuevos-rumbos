@@ -140,7 +140,11 @@ export default function DetalleRepuesto({
                 </CardContent>
                 <CardActions>
                   {fav === false ? (
-                    <Button variant="contained" onClick={addFavoritos}>
+                    <Button
+                      variant="contained"
+                      onClick={addFavoritos}
+                      sx={{ bgcolor: "#4a148c", color: "white" }}
+                    >
                       Agregar a favoritos
                     </Button>
                   ) : (

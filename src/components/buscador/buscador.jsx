@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 //Mui
-import { CardActions, Input } from "@mui/material";
+import { CardActions, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 //Redux
@@ -40,17 +40,16 @@ export default function Buscador({ opciones }) {
       <CardActions sx={{margin:"auto"}}>
         <SearchIcon />
 
-        <Input
+        <TextField
           type="text"
+          label="Buscar..." 
+          color="secondary"
+          focused 
           name="text"
           value={input}
-          placeholder="Buscar..."
           onChange={(e) => handleInputChange(e)}
           sx={{
-            bgcolor: "#4a148c",
-            borderColor: "black",
             width: "100%",
-            borderRadius: "10px",
             color: "white",
           }}
         />

@@ -110,6 +110,7 @@ export default function HomeAuto() {
                   value={filtro.gnv}
                   onChange={handleChange}
                   color="secondary"
+    
                 >
                   <MenuItem value={"todos"}>todos</MenuItem>
                   <MenuItem value={"si"}>Si</MenuItem>
