@@ -12,19 +12,20 @@ import {
   FILTRO_REPUESTO,
   FAVORITOS,
   ELIMINAR_FAVORITOS,
-  LOGIN
+  LOGIN,
 } from "./actionsTypes";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
 
 export function getProductosAuto() {
+
   return async function (dispatch) {
     try {
       const res = await getDocs(collection(db, "auto"));
 
       return dispatch({
         type: GET_PRODUCTOS_AUTO,
-        payload: res.docs.map((doc) => doc.data()),
+        payload: res.docs.map((doc) => { return { ...doc.data(), id: doc.id };}),
       });
     } catch (error) {
       console.log(error);
@@ -38,7 +39,7 @@ export function getProductosMoto() {
 
       return dispatch({
         type: GET_PRODUCTOS_MOTO,
-        payload: res.docs.map((doc) => doc.data()),
+        payload: res.docs.map((doc) => { return { ...doc.data(), id: doc.id };}),
       });
     } catch (error) {
       console.log(error);
@@ -52,7 +53,7 @@ export function getProductosRepuesto() {
 
       return dispatch({
         type: GET_PRODUCTOS_REPUESTO,
-        payload: res.docs.map((doc) => doc.data()),
+        payload: res.docs.map((doc) => { return { ...doc.data(), id: doc.id };}),
       });
     } catch (error) {
       console.log(error);
@@ -92,39 +93,39 @@ export const filtroAuto = (nombre) => {
     type: FILTRO_AUTO,
     payload: nombre,
   };
-}
+};
 
 export const filtroMoto = (nombre) => {
   return {
     type: FILTRO_MOTO,
     payload: nombre,
   };
-}
+};
 
 export const filtroRepuesto = (nombre) => {
   return {
     type: FILTRO_REPUESTO,
     payload: nombre,
   };
-}
+};
 
 export const favoritos = (payload) => {
   return {
     type: FAVORITOS,
-    payload
+    payload,
   };
-}
+};
 
 export const eliminarFavoritos = (id) => {
   return {
     type: ELIMINAR_FAVORITOS,
-    payload: id
+    payload: id,
   };
-}
+};
 
 export const Login = (payload) => {
   return {
     type: LOGIN,
-    payload
+    payload,
   };
-}
+};

@@ -54,7 +54,6 @@ function App() {
 
   //modo dark
   const [mode, setMode] = React.useState("light");
-  console.log(mode);
 
 
   const theme = React.useMemo(

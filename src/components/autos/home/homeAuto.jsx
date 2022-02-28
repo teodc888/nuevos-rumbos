@@ -35,6 +35,8 @@ export default function HomeAuto() {
   //useState
   const [filtro, setFiltro] = useState(orden);
 
+  console.log(autos);
+
   // UseEffect
   useEffect(() => {
     document.title = "Autos";
