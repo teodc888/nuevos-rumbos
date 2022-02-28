@@ -2,7 +2,7 @@ import React from 'react';
 // packages
 // import { useParams } from 'react-router';
 // hooks
-import useObtenerAuto from '../../../hooks/useObtenerAutos';
+// import useObtenerAuto from '../../../hooks/useObtenerAutos';
 
 const FormEditarAuto = () => {
   
