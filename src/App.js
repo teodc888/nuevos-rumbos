@@ -1,5 +1,7 @@
 import "./App.css";
 
+import * as React from "react";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //toastify
@@ -34,6 +36,11 @@ import {
   getProductosRepuesto,
 } from "./redux/actions/index";
 
+//MUi modo dark
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
+
 function App() {
   const login = useSelector((state) => state.login);
 
@@ -45,8 +52,25 @@ function App() {
     dispatch(getProductosRepuesto());
   }, [dispatch]);
 
+  //modo dark
+  const [mode, setMode] = React.useState("light");
+  console.log(mode);
+
+
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode,
+        },
+      }),
+    [mode]
+  );
+
   return (
-    <div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+
       {login === true ? (
         <>
           <NavBarAdmin />
@@ -58,7 +82,7 @@ function App() {
         </>
       ) : (
         <>
-          <NavBar />
+          <NavBar setMode={setMode} mode={mode} />
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/autos" element={<HomeAuto />} />
@@ -72,9 +96,8 @@ function App() {
           </Routes>
         </>
       )}
-
       <ToastContainer />
-    </div>
+    </ThemeProvider>
   );
 }
 

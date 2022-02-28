@@ -10,6 +10,7 @@ import {
   Badge,
   MenuItem,
   Menu,
+  Checkbox,
 } from "@mui/material";
 // import MenuIcon from "@mui/icons-material/Menu";
 import MoreIcon from "@mui/icons-material/MoreVert";
@@ -17,6 +18,8 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import HomeIcon from "@mui/icons-material/Home";
 import AddIcon from "@mui/icons-material/Add";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness4OutlinedIcon from "@mui/icons-material/Brightness4Outlined";
 
 //Router
 import { useNavigate } from "react-router";
@@ -27,7 +30,17 @@ import { useSelector } from "react-redux";
 // Componetes
 import PopUp from "../popUp/popUp";
 
-export default function PrimarySearchAppBar() {
+export default function NavBar({ setMode }) {
+  //dark mode
+  const colorMode = React.useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+      },
+    }),
+    [setMode]
+  );
+
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -185,6 +198,11 @@ export default function PrimarySearchAppBar() {
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <Checkbox
+              icon={<Brightness4Icon />}
+              checkedIcon={<Brightness4OutlinedIcon />}
+              onClick={colorMode.toggleColorMode}
+            />
             <IconButton
               size="large"
               edge="end"
@@ -212,6 +230,11 @@ export default function PrimarySearchAppBar() {
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
+            <Checkbox
+              icon={<Brightness4Icon />}
+              checkedIcon={<Brightness4OutlinedIcon />}
+              onClick={colorMode.toggleColorMode}
+            />
             <IconButton
               size="large"
               aria-label="show more"
