@@ -32,6 +32,10 @@ export default function DetalleRepuesto({
   id,
   precio,
 }) {
+
+    //color
+    const colorElegido = useSelector((state) => state.color);
+
   const favorite = useSelector((state) => state.favoritos);
   let aux = [];
   if (favorite.length > 0) {
@@ -143,7 +147,7 @@ export default function DetalleRepuesto({
                     <Button
                       variant="contained"
                       onClick={addFavoritos}
-                      sx={{ bgcolor: "#4a148c", color: "white" }}
+                      sx={{ bgcolor: colorElegido, color: "white" }}
                     >
                       Agregar a favoritos
                     </Button>

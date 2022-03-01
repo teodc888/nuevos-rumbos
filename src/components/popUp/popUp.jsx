@@ -30,7 +30,7 @@ export default function PopUp() {
   const [open, setOpen] = React.useState(false);
 
   const buscar = useSelector((state) => state.buscados);
-
+  const colorElegido = useSelector((state) => state.color);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -54,7 +54,7 @@ export default function PopUp() {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: "relative", bgcolor: "#4a148c" }}>
+        <AppBar sx={{ position: "relative", bgcolor: colorElegido }}>
           <Toolbar>
             <IconButton
               edge="start"
@@ -74,11 +74,12 @@ export default function PopUp() {
           alignItems="center"
           justifyContent="center"
           spacing={2}
+          sx={{marginTop: "2%"}}
         >
           <Buscador />
         </Stack>
 
-        <Box sx={{ width: "100%", marginTop: "10%" }}>
+        <Box sx={{ width: "100%", marginTop: "3%" }}>
           <Grid
             container
             spacing={{ xs: 4, md: 3 }}

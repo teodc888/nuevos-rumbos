@@ -101,12 +101,15 @@ export default function CardNR({
 
   return (
     <Card sx={{ maxWidth: 445, margin: "auto" }}>
-      <CardMedia
-        component="img"
-        height="240"
-        image={imagen}
-        alt="green iguana"
-      />
+      <Link to={`/detalle/${id}`}>
+        <CardMedia
+          component="img"
+          height="240"
+          image={imagen}
+          alt="green iguana"
+          onClick={() => (buscador === true ? setOpen(false) : null)}
+        />
+      </Link>
       <CardContent>
         <Typography
           gutterBottom
@@ -133,13 +136,17 @@ export default function CardNR({
       ) : (
         <CardActions sx={{ float: "right" }}>
           <IconButton onClick={deleteFavorito}>
-            <DeleteIcon  sx={{ color: colorElegido }} />
+            <DeleteIcon sx={{ color: colorElegido }} />
           </IconButton>
         </CardActions>
       )}
       <CardActions sx={{ float: "left" }}>
         <Link to={`/detalle/${id}`}>
-          <Button onClick={()=> buscador === true ? setOpen(false) : null} size="small" sx={{ color: colorElegido }}>
+          <Button
+            onClick={() => (buscador === true ? setOpen(false) : null)}
+            size="small"
+            sx={{ color: colorElegido }}
+          >
             Ver
           </Button>
         </Link>
