@@ -199,7 +199,7 @@ export default function HomeMoto() {
         />
       </Stack>
 
-      <Box sx={{ width: "100%", marginTop: "10%" }}>
+      <Box sx={{ width: "100%", marginTop: "3%" }}>
         <Grid
           container
           spacing={{ xs: 4, md: 3 }}

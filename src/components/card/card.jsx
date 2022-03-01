@@ -38,6 +38,8 @@ export default function CardNR({
 }) {
   const dispatch = useDispatch();
 
+  //color
+  const colorElegido = useSelector((state) => state.color);
 
   //Favoritos
   const fav = useSelector((state) => state.favoritos);
@@ -124,20 +126,20 @@ export default function CardNR({
           <Checkbox
             checked={checked}
             onChange={handleChange}
-            icon={<FavoriteBorder sx={{ color: "#4a148c" }} />}
-            checkedIcon={<Favorite sx={{ color: "#4a148c" }} />}
+            icon={<FavoriteBorder sx={{ color: colorElegido }} />}
+            checkedIcon={<Favorite sx={{ color: colorElegido }} />}
           />
         </CardActions>
       ) : (
         <CardActions sx={{ float: "right" }}>
           <IconButton onClick={deleteFavorito}>
-            <DeleteIcon />
+            <DeleteIcon  sx={{ color: colorElegido }} />
           </IconButton>
         </CardActions>
       )}
       <CardActions sx={{ float: "left" }}>
         <Link to={`/detalle/${id}`}>
-          <Button onClick={()=> buscador === true ? setOpen(false) : null} size="small" sx={{ color: "#4a148c" }}>
+          <Button onClick={()=> buscador === true ? setOpen(false) : null} size="small" sx={{ color: colorElegido }}>
             Ver
           </Button>
         </Link>

@@ -12,6 +12,7 @@ import {
   FAVORITOS,
   ELIMINAR_FAVORITOS,
   LOGIN,
+  COLOR,
 } from "../actions/actionsTypes";
 
 const inicialState = {
@@ -39,6 +40,7 @@ const inicialState = {
     marcaR: "todos",
   },
   login: "",
+  color: "",
 };
 
 export default function rootReducer(state = inicialState, action) {
@@ -247,6 +249,11 @@ export default function rootReducer(state = inicialState, action) {
       return {
         ...state,
         login: action.payload,
+      };
+    case COLOR:
+      return {
+        ...state,
+        color: action.payload,
       };
     default:
       return state;

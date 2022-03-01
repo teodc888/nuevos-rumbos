@@ -43,7 +43,6 @@ export default function Buscador({ opciones }) {
         <TextField
           type="text"
           label="Buscar..." 
-          color="secondary"
           focused 
           name="text"
           value={input}
