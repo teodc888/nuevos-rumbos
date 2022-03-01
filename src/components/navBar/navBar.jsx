@@ -11,6 +11,11 @@ import {
   MenuItem,
   Menu,
   Checkbox,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Slide,
+  Button,
 } from "@mui/material";
 // import MenuIcon from "@mui/icons-material/Menu";
 import MoreIcon from "@mui/icons-material/MoreVert";
@@ -20,15 +25,22 @@ import HomeIcon from "@mui/icons-material/Home";
 import AddIcon from "@mui/icons-material/Add";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness4OutlinedIcon from "@mui/icons-material/Brightness4Outlined";
+import FormatPaintIcon from "@mui/icons-material/FormatPaint";
 
 //Router
 import { useNavigate } from "react-router";
 
 // React Router
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { eleccionColor } from "../../redux/actions/index";
 
 // Componetes
 import PopUp from "../popUp/popUp";
+
+//color
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default function NavBar({ setMode }) {
   //dark mode
@@ -40,6 +52,28 @@ export default function NavBar({ setMode }) {
     }),
     [setMode]
   );
+
+  //Color
+  const dispatch = useDispatch();
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const eleccionColorr = (e) => {
+    dispatch(eleccionColor(e.target.value));
+    handleClose();
+  };
+
+  const colorElegido = useSelector((state) => state.color);
+
+  // Funciones
 
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -168,7 +202,7 @@ export default function NavBar({ setMode }) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ bgcolor: "#4a148c" }}>
+      <AppBar position="static" sx={{ bgcolor: colorElegido }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -198,8 +232,46 @@ export default function NavBar({ setMode }) {
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <IconButton onClick={handleClickOpen}>
+              <FormatPaintIcon sx={{ color: "white" }} />
+            </IconButton>
+            <Dialog
+              open={open}
+              TransitionComponent={Transition}
+              keepMounted
+              onClose={handleClose}
+              aria-describedby="alert-dialog-slide-description"
+            >
+              <DialogTitle>{"Elija un color para la pagina"}</DialogTitle>
+              <DialogContent>
+                <Button name="color" value="#d50000" onClick={eleccionColorr}>
+                  Rojo
+                </Button>
+                <Button name="color" value="#1a237e" onClick={eleccionColorr}>
+                  Azul
+                </Button>
+                <Button name="color" value="#311b92" onClick={eleccionColorr}>
+                  Violeta
+                </Button>
+                <Button name="color" value="#212121" onClick={eleccionColorr}>
+                  Negro
+                </Button>
+                <Button name="color" value="#263238" onClick={eleccionColorr}>
+                  Gris
+                </Button>
+                <Button name="color" value="#3e2723" onClick={eleccionColorr}>
+                  Marron
+                </Button>
+                <Button name="color" value="#4fc3f7" onClick={eleccionColorr}>
+                  Turquesa
+                </Button>
+                <Button name="color" value="#880e4f" onClick={eleccionColorr}>
+                  Rosa
+                </Button>
+              </DialogContent>
+            </Dialog>
             <Checkbox
-              icon={<Brightness4Icon />}
+              icon={<Brightness4Icon sx={{ color: "white" }} />}
               checkedIcon={<Brightness4OutlinedIcon />}
               onClick={colorMode.toggleColorMode}
             />
@@ -230,6 +302,9 @@ export default function NavBar({ setMode }) {
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
+            <IconButton onClick={handleClickOpen}>
+              <FormatPaintIcon sx={{ color: "white" }} />
+            </IconButton>
             <Checkbox
               icon={<Brightness4Icon />}
               checkedIcon={<Brightness4OutlinedIcon />}

@@ -67,6 +67,10 @@ function App() {
     [mode]
   );
 
+
+
+  //Color de la pagina
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -82,7 +86,7 @@ function App() {
         </>
       ) : (
         <>
-          <NavBar setMode={setMode} mode={mode} />
+          <NavBar setMode={setMode} />
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/autos" element={<HomeAuto />} />

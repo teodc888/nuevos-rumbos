@@ -2,7 +2,11 @@ import React from "react";
 
 import { Container, Grid, Box, Link } from "@mui/material";
 
+//Redux
+import { useSelector } from "react-redux";
+
 export default function Footer() {
+  const colorElegido = useSelector((state) => state.color);
   return (
     <footer>
       <Box
@@ -10,7 +14,7 @@ export default function Footer() {
         py={{ xs: 5, sm: 10 }}
         bgcolor="text.secondary"
         color="white"
-        sx={{ marginTop: "5%", bgcolor: "#4a148c" }}
+        sx={{ marginTop: "5%", bgcolor: colorElegido }}
       >
         <Container maxWidth="lg">
           <Grid container spacing={5}>

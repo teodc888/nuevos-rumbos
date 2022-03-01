@@ -13,6 +13,7 @@ import {
   FAVORITOS,
   ELIMINAR_FAVORITOS,
   LOGIN,
+  COLOR,
 } from "./actionsTypes";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
@@ -129,3 +130,10 @@ export const Login = (payload) => {
     payload,
   };
 };
+
+export const eleccionColor = (payload) => {
+  return {
+    type: COLOR,
+    payload,
+  };
+}

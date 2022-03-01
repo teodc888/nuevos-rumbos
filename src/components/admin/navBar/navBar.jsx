@@ -12,7 +12,7 @@ import {
 import HomeIcon from "@mui/icons-material/Home";
 
 //Redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Login } from "../../../redux/actions/index";
 
 //Router
@@ -24,6 +24,7 @@ import Swal from "sweetalert2";
 export default function NavBarAdmin() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const colorElegido = useSelector((state) => state.color);
 
   const handleNavigateHome = () => {
     navigate("/");
@@ -43,7 +44,7 @@ export default function NavBarAdmin() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ bgcolor: "#4a148c" }}>
+      <AppBar position="static" sx={{ bgcolor: colorElegido }}>
         <Toolbar>
           <IconButton
             size="large"

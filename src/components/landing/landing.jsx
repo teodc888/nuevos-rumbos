@@ -12,8 +12,13 @@ import Typed from "react-typed";
 //Router
 import { useNavigate } from "react-router";
 
+//Redux
+import { useSelector } from "react-redux";
+
 export default function Landing() {
   const navigate = useNavigate();
+
+  const colorElegido = useSelector((state) => state.color);
 
   const navigateToAuto = () => {
     navigate("/autos");
@@ -114,7 +119,7 @@ export default function Landing() {
               <Grid className="App" item xs={6} sm={6} md={2}>
                 <Button
                   variant="contained"
-                  sx={{ bgcolor: "#4a148c", color: "white" }}
+                  sx={{ bgcolor: colorElegido, color: "white" }}
                   onClick={navigateToAuto}
                 >
                   <DirectionsCarIcon sx={{ marginRight: "10%" }} /> Autos
@@ -123,7 +128,7 @@ export default function Landing() {
               <Grid item xs={6} sm={6} md={2}>
                 <Button
                   variant="contained"
-                  sx={{ bgcolor: "#4a148c", color: "white" }}
+                  sx={{ bgcolor: colorElegido, color: "white" }}
                   onClick={navigateToMoto}
                 >
                   <TwoWheelerIcon sx={{ marginRight: "10%" }} /> Motos
@@ -132,7 +137,7 @@ export default function Landing() {
               <Grid item xs={6} sm={6} md={2}>
                 <Button
                   variant="contained"
-                  sx={{ bgcolor: "#4a148c", color: "white" }}
+                  sx={{ bgcolor: colorElegido, color: "white" }}
                   onClick={navigateToRepuestos}
                 >
                   <BuildIcon sx={{ marginRight: "10%" }} /> Repuestos
