@@ -309,6 +309,7 @@ export default function NavBar({ setMode }) {
               icon={<Brightness4Icon />}
               checkedIcon={<Brightness4OutlinedIcon />}
               onClick={colorMode.toggleColorMode}
+              sx={{ color: "white" }}
             />
             <IconButton
               size="large"
