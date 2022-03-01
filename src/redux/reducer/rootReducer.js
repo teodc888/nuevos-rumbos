@@ -40,7 +40,7 @@ const inicialState = {
     marcaR: "todos",
   },
   login: "",
-  color: "",
+  color: "#311b92",
 };
 
 export default function rootReducer(state = inicialState, action) {
