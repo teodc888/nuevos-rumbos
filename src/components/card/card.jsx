@@ -33,9 +33,12 @@ export default function CardNR({
   imagen,
   precio,
   id,
+  año,
+  kilometros,
   buscador,
   setOpen,
   favorito,
+  tipo,
 }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -132,6 +135,23 @@ export default function CardNR({
           <Typography gutterBottom variant="h5" component="div">
             ${precio}
           </Typography>
+           {
+            tipo === "auto" ? (
+          <Typography variant="body1" color="text.secondary">
+            {año} | {kilometros} Km
+          </Typography>
+            ) : tipo === "moto" ? (
+              <Typography variant="body1" color="text.secondary">
+              {año} | {kilometros} Km
+            </Typography>
+            ) : tipo === "repuesto" ? (
+              <Typography variant="body2" color="text.secondary">
+              {año}
+            </Typography>
+            ) : (
+              null
+            )
+           }
         </CardContent>
         {favorito === "true" ? (
           <CardActions sx={{ float: "right" }}>

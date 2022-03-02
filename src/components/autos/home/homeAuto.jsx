@@ -282,6 +282,9 @@ export default function HomeAuto() {
                   precio={auto.precio}
                   id={auto.id}
                   descripcion={auto.descripcion}
+                  año={auto.año}
+                  kilometros={auto.kilometros}
+                  tipo={"auto"}
                   setOpen={"false"}
                   favorito={"true"}
                 />

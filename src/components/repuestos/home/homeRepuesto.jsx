@@ -54,7 +54,7 @@ export default function HomeRepuestos() {
     setCurrentPage(pageNumber);
   };
 
-  // Funcion para filtrar las motos
+  // Funcion para filtrar las repuestos
   function handleChange(e) {
     setCurrentPage(1);
     setFiltro({ ...filtro, [e.target.name]: e.target.value });
@@ -63,7 +63,7 @@ export default function HomeRepuestos() {
   //funcion para que muestre las marcas sin repetirlas
   let uniqueArrMarca = ["todos"];
   if (repuestos.length > 0) {
-    const repuestoFilterMarca = repuestosBuscados.map((auto) => auto.marca);
+    const repuestoFilterMarca = repuestosBuscados.map((repuesto) => repuesto.marca);
     uniqueArrMarca = [...new Set(repuestoFilterMarca)];
   }
 
@@ -172,6 +172,7 @@ export default function HomeRepuestos() {
                   imagen={repuesto.imagen}
                   precio={repuesto.precio}
                   id={repuesto.id}
+                  tipo={"repuesto"}
                   descripcion={repuesto.descripcion}
                   favorito={"true"}
                 />

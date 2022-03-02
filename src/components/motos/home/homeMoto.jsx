@@ -63,7 +63,7 @@ export default function HomeMoto() {
   // funcion para mostrar las marcas sin repetir
   let uniqueArrMarca = ["todos"];
   if (motos.length > 0) {
-    const motosFilterMarca = motosBuscados.map((auto) => auto.marca);
+    const motosFilterMarca = motosBuscados.map((moto) => moto.marca);
     uniqueArrMarca = [...new Set(motosFilterMarca)];
   }
 
@@ -226,6 +226,9 @@ export default function HomeMoto() {
                   imagen={moto.imagen}
                   precio={moto.precio}
                   id={moto.id}
+                  año={moto.año}
+                  kilometros={moto.kilometros}
+                  tipo={"moto"}
                   descripcion={moto.descripcion}
                   favorito={"true"}
                 />
