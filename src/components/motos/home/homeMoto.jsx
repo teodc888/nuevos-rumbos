@@ -10,10 +10,18 @@ import {
   MenuItem,
   FormControl,
   Select,
+  Fab,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Slide,
 } from "@mui/material";
+import FilterListIcon from "@mui/icons-material/FilterList";
 
 //Components
-import Carrousel from "../../carrousel/carrousel";
 import CardNR from "../../card/card";
 import Buscador from "../../buscador/buscador";
 import Paginado from "../../paginado/paginado";
@@ -22,6 +30,12 @@ import Footer from "../../footer/footer";
 //Redux
 import { useSelector, useDispatch } from "react-redux";
 import { filtroMoto } from "../../../redux/actions/index";
+
+//Pop Up
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default function HomeMoto() {
   //Dispatch
@@ -74,169 +88,335 @@ export default function HomeMoto() {
     uniqueArrCilindrada = [...new Set(motosFilterCilindrada)];
   }
 
+  //popUp
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div>
-      <Stack
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-        spacing={2}
-      >
-        <Typography variant="h1" component="div">
-          MOTOS
-        </Typography>
-        <Box sx={{ display: { xs: "none", md: "flex" } }}>
-          <Carrousel tamaño="70%" />
-        </Box>
-        <Box sx={{ display: { xs: "flex", md: "none" } }}>
-          <Carrousel tamaño="100%" />
-        </Box>
-        <Box sx={{ width: "50%", display: { xs: "none", md: "block" } }}>
-          <Buscador opciones="moto" />
-        </Box>
-        <Box sx={{ width: "80%", display: { xs: "block", md: "none" } }}>
-          <Buscador opciones="moto" />
-        </Box>
-
-        <Box sx={{ width: "100%", marginTop: "10%" }}>
-          <Grid
-            container
-            spacing={{ xs: 4, md: 3 }}
-            columns={{ xs: 4, sm: 8, md: 12 }}
-          >
-            <Grid item xs={4} sm={4} md={3}>
-              <FormControl fullWidth color="secondary">
-                <InputLabel id="demo-simple-select-label" color="secondary">
-                  MARCA
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  name="marcaM"
-                  label="MARCA"
-                  value={filtro.marcaM}
-                  onChange={handleChange}
-                  color="secondary"
-                >
-                  <MenuItem value={"todos"}>Todos</MenuItem>
-                  {uniqueArrMarca.map((marca) => (
-                    <MenuItem value={marca} key={marca}>
-                      {marca}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={4} sm={4} md={3}>
-              <FormControl fullWidth color="secondary">
-                <InputLabel id="demo-simple-select-label" color="secondary">
-                  CILINDRADA
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  name="cilindrada"
-                  label="CILINDRADA"
-                  value={filtro.cilindrada}
-                  onChange={handleChange}
-                  color="secondary"
-                >
-                  <MenuItem value={"todos"}>Todos</MenuItem>
-                  {uniqueArrCilindrada.map((cilindrada) => (
-                    <MenuItem value={cilindrada} key={cilindrada}>
-                      {cilindrada}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={4} sm={4} md={3}>
-              <FormControl fullWidth color="secondary">
-                <InputLabel id="demo-simple-select-label" color="secondary">
-                  KILOMETROS
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  name="kilometrosM"
-                  label="KILOMETROS"
-                  value={filtro.kilometrosM}
-                  onChange={handleChange}
-                  color="secondary"
-                >
-                  <MenuItem value={"todos"}>Todos</MenuItem>
-                  <MenuItem value={"mayor"}>Mayor</MenuItem>
-                  <MenuItem value={"menor"}>Menor</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={4} sm={4} md={3}>
-              <FormControl fullWidth color="secondary">
-                <InputLabel id="demo-simple-select-label" color="secondary">
-                  PRECIO
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  name="precioM"
-                  label="PRECIO"
-                  value={filtro.precioM}
-                  onChange={handleChange}
-                  color="secondary"
-                >
-                  <MenuItem value={"todos"}>Todos</MenuItem>
-                  <MenuItem value={"mayor"}>Mayor</MenuItem>
-                  <MenuItem value={"menor"}>Menor</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-          </Grid>
-        </Box>
-        <Paginado
-          productoPorPagina={productoPorPagina}
-          productos={motos.length}
-          paginado={paginado}
-        />
-      </Stack>
-
-      <Box sx={{ width: "100%", marginTop: "3%" }}>
+      <Grid container spacing={10} columns={16}>
         <Grid
-          container
-          spacing={{ xs: 4, md: 3 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
+          item
+          xs={4}
+          sx={{ display: { xs: "none", md: "none", sm: "none", lg: "block" } }}
         >
-          {/* //mapeo de las motos para mostrarlos en la pantalla */}
-          {currentMotos.length === 0 ? (
-            <Grid item xs={12} sm={12} md={12}>
-              <Typography
-                variant="h2"
-                component="div"
-                textAlign="center"
-                sx={{ marginBottom: "22%" }}
-              >
-                No hay Motos
-              </Typography>
-            </Grid>
-          ) : (
-            currentMotos.map((moto) => (
-              <Grid item xs={4} sm={4} md={4} key={moto.id}>
-                <CardNR
-                  marca={moto.marca}
-                  modelo={moto.modelo}
-                  imagen={moto.imagen}
-                  precio={moto.precio}
-                  id={moto.id}
-                  año={moto.año}
-                  kilometros={moto.kilometros}
-                  tipo={"moto"}
-                  descripcion={moto.descripcion}
-                  favorito={"true"}
-                />
+          <Stack
+            direction="column"
+            alignItems="center"
+            justifyContent="center"
+            spacing={2}
+          >
+            <Typography variant="h1" component="div" textAlign="center">
+              Motos
+            </Typography>
+            <Box sx={{ width: "100%" }}>
+              <Buscador opciones="moto" />
+            </Box>
+          </Stack>
+          <Box sx={{ width: "100%", marginTop: "10%" }}>
+            <Grid container spacing={{ md: 6 }} columns={{ md: 12 }}>
+              <Grid item xs={4} sm={4} md={12}>
+                <FormControl fullWidth color="secondary">
+                  <InputLabel id="demo-simple-select-label" color="secondary">
+                    MARCA
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    name="marcaM"
+                    label="MARCA"
+                    value={filtro.marcaM}
+                    onChange={handleChange}
+                    color="secondary"
+                  >
+                    <MenuItem value={"todos"}>Todos</MenuItem>
+                    {uniqueArrMarca.map((marca) => (
+                      <MenuItem value={marca} key={marca}>
+                        {marca}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               </Grid>
-            ))
-          )}
+              <Grid item xs={4} sm={4} md={12}>
+                <FormControl fullWidth color="secondary">
+                  <InputLabel id="demo-simple-select-label" color="secondary">
+                    CILINDRADA
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    name="cilindrada"
+                    label="CILINDRADA"
+                    value={filtro.cilindrada}
+                    onChange={handleChange}
+                    color="secondary"
+                  >
+                    <MenuItem value={"todos"}>Todos</MenuItem>
+                    {uniqueArrCilindrada.map((cilindrada) => (
+                      <MenuItem value={cilindrada} key={cilindrada}>
+                        {cilindrada}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={4} sm={4} md={12}>
+                <FormControl fullWidth color="secondary">
+                  <InputLabel id="demo-simple-select-label" color="secondary">
+                    KILOMETROS
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    name="kilometrosM"
+                    label="KILOMETROS"
+                    value={filtro.kilometrosM}
+                    onChange={handleChange}
+                    color="secondary"
+                  >
+                    <MenuItem value={"todos"}>Todos</MenuItem>
+                    <MenuItem value={"mayor"}>Mayor</MenuItem>
+                    <MenuItem value={"menor"}>Menor</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={4} sm={4} md={12}>
+                <FormControl fullWidth color="secondary">
+                  <InputLabel id="demo-simple-select-label" color="secondary">
+                    PRECIO
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    name="precioM"
+                    label="PRECIO"
+                    value={filtro.precioM}
+                    onChange={handleChange}
+                    color="secondary"
+                  >
+                    <MenuItem value={"todos"}>Todos</MenuItem>
+                    <MenuItem value={"mayor"}>Mayor</MenuItem>
+                    <MenuItem value={"menor"}>Menor</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+          </Box>
         </Grid>
-      </Box>
+
+        <Grid item xs={16} md={16} sm={16} lg={12}>
+          <Stack
+            direction="column"
+            alignItems="center"
+            justifyContent="center"
+            spacing={2}
+          >
+            <Box
+              sx={{
+                display: { xs: "block", md: "block", sm: "block", lg: "none" },
+              }}
+            >
+              <Typography variant="h1" component="div">
+                Motos
+              </Typography>
+              <Box sx={{ width: "100%" }}>
+                <Buscador opciones="moto" />
+              </Box>
+            </Box>
+            <Box sx={{ width: "100%", marginTop: "3%" }}>
+              <Grid
+                container
+                spacing={{ xs: 4, md: 3 }}
+                columns={{ xs: 4, sm: 8, md: 12 }}
+              >
+                {/* //mapeo de las motos para mostrarlos en la pantalla */}
+                {currentMotos.length === 0 ? (
+                  <Grid item xs={12} sm={12} md={12}>
+                    <Typography
+                      variant="h2"
+                      component="div"
+                      textAlign="center"
+                      sx={{ marginBottom: "22%" }}
+                    >
+                      No hay Motos
+                    </Typography>
+                  </Grid>
+                ) : (
+                  currentMotos.map((moto) => (
+                    <Grid item xs={4} sm={4} md={4} key={moto.id}>
+                      <CardNR
+                        marca={moto.marca}
+                        modelo={moto.modelo}
+                        imagen={moto.imagen}
+                        precio={moto.precio}
+                        id={moto.id}
+                        año={moto.año}
+                        kilometros={moto.kilometros}
+                        tipo={"moto"}
+                        descripcion={moto.descripcion}
+                        favorito={"true"}
+                      />
+                    </Grid>
+                  ))
+                )}
+              </Grid>
+            </Box>
+            <Paginado
+              productoPorPagina={productoPorPagina}
+              productos={motos.length}
+              paginado={paginado}
+            />
+            <Box
+              sx={{
+                display: { xs: "block", md: "block", sm: "block", lg: "none" },
+                position: "fixed",
+                bottom: "5%",
+                right: "5%",
+              }}
+            >
+              <Fab
+                color="secondary"
+                aria-label="edit"
+                onClick={handleClickOpen}
+                sx={{ bgcolor: "green" }}
+              >
+                <FilterListIcon />
+              </Fab>
+              <Dialog
+                open={open}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={handleClose}
+                aria-describedby="alert-dialog-slide-description"
+              >
+                <DialogTitle>{"FILTROS"}</DialogTitle>
+                <DialogContent>
+                  <DialogContentText id="alert-dialog-slide-description">
+                    <Box sx={{ width: "100%", marginTop: "10%" }}>
+                      <Grid
+                        container
+                        spacing={{ xs: 4, md: 3 }}
+                        columns={{ xs: 4, sm: 8, md: 12 }}
+                      >
+                        <Grid item xs={4} sm={4} md={3}>
+                          <FormControl fullWidth color="secondary">
+                            <InputLabel
+                              id="demo-simple-select-label"
+                              color="secondary"
+                            >
+                              MARCA
+                            </InputLabel>
+                            <Select
+                              labelId="demo-simple-select-label"
+                              id="demo-simple-select"
+                              name="marcaM"
+                              label="MARCA"
+                              value={filtro.marcaM}
+                              onChange={handleChange}
+                              color="secondary"
+                            >
+                              <MenuItem value={"todos"}>Todos</MenuItem>
+                              {uniqueArrMarca.map((marca) => (
+                                <MenuItem value={marca} key={marca}>
+                                  {marca}
+                                </MenuItem>
+                              ))}
+                            </Select>
+                          </FormControl>
+                        </Grid>
+                        <Grid item xs={4} sm={4} md={3}>
+                          <FormControl fullWidth color="secondary">
+                            <InputLabel
+                              id="demo-simple-select-label"
+                              color="secondary"
+                            >
+                              CILINDRADA
+                            </InputLabel>
+                            <Select
+                              labelId="demo-simple-select-label"
+                              id="demo-simple-select"
+                              name="cilindrada"
+                              label="CILINDRADA"
+                              value={filtro.cilindrada}
+                              onChange={handleChange}
+                              color="secondary"
+                            >
+                              <MenuItem value={"todos"}>Todos</MenuItem>
+                              {uniqueArrCilindrada.map((cilindrada) => (
+                                <MenuItem value={cilindrada} key={cilindrada}>
+                                  {cilindrada}
+                                </MenuItem>
+                              ))}
+                            </Select>
+                          </FormControl>
+                        </Grid>
+                        <Grid item xs={4} sm={4} md={3}>
+                          <FormControl fullWidth color="secondary">
+                            <InputLabel
+                              id="demo-simple-select-label"
+                              color="secondary"
+                            >
+                              KILOMETROS
+                            </InputLabel>
+                            <Select
+                              labelId="demo-simple-select-label"
+                              id="demo-simple-select"
+                              name="kilometrosM"
+                              label="KILOMETROS"
+                              value={filtro.kilometrosM}
+                              onChange={handleChange}
+                              color="secondary"
+                            >
+                              <MenuItem value={"todos"}>Todos</MenuItem>
+                              <MenuItem value={"mayor"}>Mayor</MenuItem>
+                              <MenuItem value={"menor"}>Menor</MenuItem>
+                            </Select>
+                          </FormControl>
+                        </Grid>
+                        <Grid item xs={4} sm={4} md={3}>
+                          <FormControl fullWidth color="secondary">
+                            <InputLabel
+                              id="demo-simple-select-label"
+                              color="secondary"
+                            >
+                              PRECIO
+                            </InputLabel>
+                            <Select
+                              labelId="demo-simple-select-label"
+                              id="demo-simple-select"
+                              name="precioM"
+                              label="PRECIO"
+                              value={filtro.precioM}
+                              onChange={handleChange}
+                              color="secondary"
+                            >
+                              <MenuItem value={"todos"}>Todos</MenuItem>
+                              <MenuItem value={"mayor"}>Mayor</MenuItem>
+                              <MenuItem value={"menor"}>Menor</MenuItem>
+                            </Select>
+                          </FormControl>
+                        </Grid>
+                      </Grid>
+                    </Box>
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button>Borrar Filtros</Button>
+                  <Button onClick={handleClose}>Listo</Button>
+                </DialogActions>
+              </Dialog>
+            </Box>
+          </Stack>
+        </Grid>
+      </Grid>
       <Footer />
     </div>
   );
