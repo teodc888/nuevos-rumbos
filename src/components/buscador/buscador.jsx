@@ -43,7 +43,6 @@ export default function Buscador({ opciones }) {
         <TextField
           type="text"
           label="Buscar..." 
-          focused 
           name="text"
           value={input}
           onChange={(e) => handleInputChange(e)}

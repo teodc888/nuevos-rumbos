@@ -41,7 +41,6 @@ import {
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
-
 function App() {
   const login = useSelector((state) => state.login);
 
@@ -56,7 +55,6 @@ function App() {
   //modo dark
   const [mode, setMode] = React.useState("light");
 
-
   const theme = React.useMemo(
     () =>
       createTheme({
@@ -67,43 +65,42 @@ function App() {
     [mode]
   );
 
-
-
   //Color de la pagina
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
 
-      {login === true ? (
-        <>
-          <NavBarAdmin />
-          <Routes>
-            <Route path="/" element={<HomeAdmin />} />
-            <Route path="/formulario" element={<Formulario />} />
-            <Route path="*" element={<Error />} />
-          </Routes>
-        </>
-      ) : (
-        <>
-          <NavBar setMode={setMode} />
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/autos" element={<HomeAuto />} />
-            <Route path="/motos" element={<HomeMoto />} />
-            <Route path="/repuestos" element={<HomeRepuestos />} />
-            <Route path="/log-in" element={<LogIn />} />
-            <Route path="/detalle/:id" element={<Detalle />} />
-            <Route path="/favoritos" element={<Favoritos />} />
-            <Route path="/editarAutos" element={<EditarAutos />} />
-            <Route path="/formEditarAuto/:id" element={<FormEditarAuto />} />
-            <Route path="*" element={<Error />} />
-
-          </Routes>
-        </>
-      )}
-      <ToastContainer />
-    </ThemeProvider>
+        {login === true ? (
+          <>
+            <NavBarAdmin />
+            <Routes>
+              <Route path="/" element={<HomeAdmin />} />
+              <Route path="/formulario" element={<Formulario />} />
+              <Route path="*" element={<Error />} />
+            </Routes>
+          </>
+        ) : (
+          <>
+            <NavBar setMode={setMode} />
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/autos" element={<HomeAuto />} />
+              <Route path="/motos" element={<HomeMoto />} />
+              <Route path="/repuestos" element={<HomeRepuestos />} />
+              <Route path="/log-in" element={<LogIn />} />
+              <Route path="/detalle/:id" element={<Detalle />} />
+              <Route path="/favoritos" element={<Favoritos />} />
+              <Route path="/editarAutos" element={<EditarAutos />} />
+              <Route path="/formEditarAuto/:id" element={<FormEditarAuto />} />
+              <Route path="*" element={<Error />} />
+            </Routes>
+          </>
+        )}
+        <ToastContainer />
+      </ThemeProvider>
+    </>
   );
 }
 

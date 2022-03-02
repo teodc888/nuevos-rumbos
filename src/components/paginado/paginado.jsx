@@ -4,8 +4,8 @@ export default function Paginado({ productoPorPagina, productos, paginado }) {
   const pageNumber = [];
   //el Math.ceil redondea para arriba
   for (let i = 1; i <= Math.ceil(productos / productoPorPagina); i++) {
-    pageNumber.push(
-      <Pagination.Item key={i} onClick={() => paginado(i)}>
+    pageNumber.push( 
+      <Pagination.Item  key={i} active={i === pageNumber} onClick={() => paginado(i)} >
         {i}
       </Pagination.Item>
     );
@@ -13,7 +13,7 @@ export default function Paginado({ productoPorPagina, productos, paginado }) {
 
   return (
     <>
-      <Pagination >{pageNumber}</Pagination>
+      <Pagination style={{borderColor:"red"}} size="lg">{pageNumber}</Pagination>
     </>
   );
 }

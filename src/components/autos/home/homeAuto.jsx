@@ -45,7 +45,7 @@ export default function HomeAuto() {
 
   //Paginado
   const [currentPage, setCurrentPage] = useState(1);
-  const [productoPorPagina] = useState(3);
+  const [productoPorPagina] = useState(6);
   const indeceDelUltimoProducto = currentPage * productoPorPagina; // 10
   const indiceDelPrimerProducto = indeceDelUltimoProducto - productoPorPagina; // 0
   const currentAutos = autos.slice(
@@ -100,8 +100,8 @@ export default function HomeAuto() {
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
             <Grid item xs={4} sm={4} md={2}>
-              <FormControl fullWidth color="secondary">
-                <InputLabel id="demo-simple-select-label" color="secondary">
+              <FormControl fullWidth >
+                <InputLabel id="demo-simple-select-label" >
                   GNV
                 </InputLabel>
                 <Select
@@ -111,7 +111,7 @@ export default function HomeAuto() {
                   label="gnv"
                   value={filtro.gnv}
                   onChange={handleChange}
-                  color="secondary"
+                  
     
                 >
                   <MenuItem value={"todos"}>todos</MenuItem>
@@ -121,8 +121,8 @@ export default function HomeAuto() {
               </FormControl>
             </Grid>
             <Grid item xs={4} sm={4} md={2}>
-              <FormControl fullWidth color="secondary">
-                <InputLabel id="demo-simple-select-label" color="secondary">
+              <FormControl fullWidth >
+                <InputLabel id="demo-simple-select-label" >
                   COMBUSTIBLE
                 </InputLabel>
                 <Select
@@ -132,7 +132,7 @@ export default function HomeAuto() {
                   label="COMBUSTIBLE"
                   value={filtro.combustible}
                   onChange={handleChange}
-                  color="secondary"
+                  
                 >
                   <MenuItem value={"todos"}>todos</MenuItem>
                   <MenuItem value={"nafta"}>Nafta</MenuItem>
@@ -141,8 +141,8 @@ export default function HomeAuto() {
               </FormControl>
             </Grid>
             <Grid item xs={4} sm={4} md={2}>
-              <FormControl fullWidth color="secondary">
-                <InputLabel id="demo-simple-select-label" color="secondary">
+              <FormControl fullWidth >
+                <InputLabel id="demo-simple-select-label" >
                   MARCAS
                 </InputLabel>
                 <Select
@@ -152,7 +152,7 @@ export default function HomeAuto() {
                   label="MARCAS"
                   value={filtro.marca}
                   onChange={handleChange}
-                  color="secondary"
+                  
                 >
                   <MenuItem value={"todos"}>todos</MenuItem>
                   {uniqueArr.map((marca) => {
@@ -166,8 +166,8 @@ export default function HomeAuto() {
               </FormControl>
             </Grid>
             <Grid item xs={4} sm={4} md={2}>
-              <FormControl fullWidth color="secondary">
-                <InputLabel id="demo-simple-select-label" color="secondary">
+              <FormControl fullWidth >
+                <InputLabel id="demo-simple-select-label" >
                   PRECIO
                 </InputLabel>
                 <Select
@@ -177,7 +177,7 @@ export default function HomeAuto() {
                   label="PRECIO"
                   value={filtro.precio}
                   onChange={handleChange}
-                  color="secondary"
+                  
                 >
                   <MenuItem value={"todos"}>todos</MenuItem>
                   <MenuItem value={"mayor"}>Mayor</MenuItem>
@@ -186,8 +186,8 @@ export default function HomeAuto() {
               </FormControl>
             </Grid>
             <Grid item xs={4} sm={4} md={2}>
-              <FormControl fullWidth color="secondary">
-                <InputLabel id="demo-simple-select-label" color="secondary">
+              <FormControl fullWidth >
+                <InputLabel id="demo-simple-select-label" >
                   KILOMETROS
                 </InputLabel>
                 <Select
@@ -197,7 +197,7 @@ export default function HomeAuto() {
                   label="KILOMETROS"
                   value={filtro.kilometros}
                   onChange={handleChange}
-                  color="secondary"
+                  
                 >
                   <MenuItem value={"todos"}>todos</MenuItem>
                   <MenuItem value={"mayor"}>Mayor</MenuItem>
@@ -206,8 +206,8 @@ export default function HomeAuto() {
               </FormControl>
             </Grid>
             <Grid item xs={4} sm={4} md={2}>
-              <FormControl fullWidth color="secondary">
-                <InputLabel id="demo-simple-select-label" color="secondary">
+              <FormControl fullWidth >
+                <InputLabel id="demo-simple-select-label" >
                   CARROCERIA
                 </InputLabel>
                 <Select
@@ -217,7 +217,7 @@ export default function HomeAuto() {
                   label="CARROCERIA"
                   value={filtro.carroceria}
                   onChange={handleChange}
-                  color="secondary"
+                  
                   required
                 >
                   <MenuItem value={"todos"}>todos</MenuItem>

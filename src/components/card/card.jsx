@@ -4,12 +4,12 @@ import React, { useState } from "react";
 import {
   Card,
   Typography,
-  Button,
   CardMedia,
   CardContent,
   CardActions,
   Checkbox,
   IconButton,
+  CardActionArea,
 } from "@mui/material";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
@@ -17,6 +17,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 //Router
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 //Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -36,6 +37,7 @@ export default function CardNR({
   setOpen,
   favorito,
 }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   //color
@@ -99,58 +101,55 @@ export default function CardNR({
     errorSubmit();
   };
 
+  const handleNavigate = () => {
+    navigate(`/detalle/${id}`);
+    if (buscador === true) {
+      setOpen(false);
+    }
+  };
+
   return (
     <Card sx={{ maxWidth: 445, margin: "auto" }}>
-      <Link to={`/detalle/${id}`}>
-        <CardMedia
-          component="img"
-          height="240"
-          image={imagen}
-          alt="green iguana"
-          onClick={() => (buscador === true ? setOpen(false) : null)}
-        />
-      </Link>
-      <CardContent>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          textAlign="center"
-          sx={{ textTransform: "lowercase" }}
-        >
-          {marca} {modelo}
-        </Typography>
-        <Typography gutterBottom variant="h6" component="div">
-          ${precio}
-        </Typography>
-      </CardContent>
-      {favorito === "true" ? (
-        <CardActions sx={{ float: "right" }}>
-          <Checkbox
-            checked={checked}
-            onChange={handleChange}
-            icon={<FavoriteBorder sx={{ color: colorElegido }} />}
-            checkedIcon={<Favorite sx={{ color: colorElegido }} />}
-          />
-        </CardActions>
-      ) : (
-        <CardActions sx={{ float: "right" }}>
-          <IconButton onClick={deleteFavorito}>
-            <DeleteIcon sx={{ color: colorElegido }} />
-          </IconButton>
-        </CardActions>
-      )}
-      <CardActions sx={{ float: "left" }}>
+      <CardActionArea onClick={handleNavigate}>
         <Link to={`/detalle/${id}`}>
-          <Button
-            onClick={() => (buscador === true ? setOpen(false) : null)}
-            size="small"
-            sx={{ color: colorElegido }}
-          >
-            Ver
-          </Button>
+          <CardMedia
+            component="img"
+            height="240"
+            image={imagen}
+            alt="Image NotFount"
+          />
         </Link>
-      </CardActions>
+        <CardContent>
+          <Typography
+            gutterBottom
+            variant="h4"
+            component="div"
+            textAlign="center"
+            textTransform="capitalize"
+          >
+            {marca} {modelo}
+          </Typography>
+          <Typography gutterBottom variant="h5" component="div">
+            ${precio}
+          </Typography>
+        </CardContent>
+        {favorito === "true" ? (
+          <CardActions sx={{ float: "right" }}>
+            <Checkbox
+              checked={checked}
+              onChange={handleChange}
+              icon={<FavoriteBorder sx={{ color: colorElegido }} />}
+              checkedIcon={<Favorite sx={{ color: colorElegido }} />}
+            />
+          </CardActions>
+        ) : (
+          <CardActions sx={{ float: "right" }}>
+            <IconButton onClick={deleteFavorito}>
+              <DeleteIcon sx={{ color: colorElegido }} />
+            </IconButton>
+          </CardActions>
+        )}
+      </CardActionArea>
     </Card>
   );
 }
