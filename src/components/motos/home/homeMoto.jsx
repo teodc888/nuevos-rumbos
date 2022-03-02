@@ -224,7 +224,7 @@ export default function HomeMoto() {
                 display: { xs: "block", md: "block", sm: "block", lg: "none" },
               }}
             >
-              <Typography variant="h1" component="div">
+              <Typography variant="h1" component="div" textAlign="center">
                 Motos
               </Typography>
               <Box sx={{ width: "100%" }}>

@@ -180,7 +180,7 @@ export default function HomeRepuestos() {
                 display: { xs: "block", md: "block", sm: "block", lg: "none" },
               }}
             >
-              <Typography variant="h2" component="div">
+              <Typography variant="h2" component="div" textAlign="center">
                 Repuestos
               </Typography>
               <Box sx={{ width: "100%" }}>
