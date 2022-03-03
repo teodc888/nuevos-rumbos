@@ -11,11 +11,6 @@ import {
   MenuItem,
   Menu,
   Checkbox,
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  Slide,
-  Button,
 } from "@mui/material";
 // import MenuIcon from "@mui/icons-material/Menu";
 import MoreIcon from "@mui/icons-material/MoreVert";
@@ -25,22 +20,15 @@ import HomeIcon from "@mui/icons-material/Home";
 import AddIcon from "@mui/icons-material/Add";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness4OutlinedIcon from "@mui/icons-material/Brightness4Outlined";
-import FormatPaintIcon from "@mui/icons-material/FormatPaint";
 
 //Router
 import { useNavigate } from "react-router";
 
 // React Router
-import { useSelector, useDispatch } from "react-redux";
-import { eleccionColor } from "../../redux/actions/index";
+import { useSelector } from "react-redux";
 
 // Componetes
 import PopUp from "../popUp/popUp";
-
-//color
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
 
 export default function NavBar({ setMode }) {
   //dark mode
@@ -52,24 +40,6 @@ export default function NavBar({ setMode }) {
     }),
     [setMode]
   );
-
-  //Color
-  const dispatch = useDispatch();
-
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const eleccionColorr = (e) => {
-    dispatch(eleccionColor(e.target.value));
-    handleClose();
-  };
 
   const colorElegido = useSelector((state) => state.color);
 
@@ -159,20 +129,6 @@ export default function NavBar({ setMode }) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem onClick={navigateToFavoritos}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <Badge badgeContent={fav.length} color="secondary">
-            <FavoriteIcon />
-          </Badge>
-        </IconButton>
-        <p>Favoritos</p>
-      </MenuItem>
       <MenuItem onClick={navigateToLogin}>
         <IconButton
           size="large"
@@ -232,47 +188,9 @@ export default function NavBar({ setMode }) {
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton onClick={handleClickOpen}>
-              <FormatPaintIcon sx={{ color: "white" }} />
-            </IconButton>
-            <Dialog
-              open={open}
-              TransitionComponent={Transition}
-              keepMounted
-              onClose={handleClose}
-              aria-describedby="alert-dialog-slide-description"
-            >
-              <DialogTitle>{"Elija un color para la pagina"}</DialogTitle>
-              <DialogContent>
-                <Button name="color" value="#d50000" onClick={eleccionColorr}>
-                  Rojo
-                </Button>
-                <Button name="color" value="#1a237e" onClick={eleccionColorr}>
-                  Azul
-                </Button>
-                <Button name="color" value="#311b92" onClick={eleccionColorr}>
-                  Violeta
-                </Button>
-                <Button name="color" value="#212121" onClick={eleccionColorr}>
-                  Negro
-                </Button>
-                <Button name="color" value="#263238" onClick={eleccionColorr}>
-                  Gris
-                </Button>
-                <Button name="color" value="#3e2723" onClick={eleccionColorr}>
-                  Marron
-                </Button>
-                <Button name="color" value="#4fc3f7" onClick={eleccionColorr}>
-                  Turquesa
-                </Button>
-                <Button name="color" value="#880e4f" onClick={eleccionColorr}>
-                  Rosa
-                </Button>
-              </DialogContent>
-            </Dialog>
             <Checkbox
               icon={<Brightness4Icon sx={{ color: "white" }} />}
-              checkedIcon={<Brightness4OutlinedIcon />}
+              checkedIcon={<Brightness4OutlinedIcon sx={{ color: "white" }}  />}
               onClick={colorMode.toggleColorMode}
             />
             <IconButton
@@ -283,7 +201,7 @@ export default function NavBar({ setMode }) {
               color="inherit"
               onClick={navigateToFavoritos}
             >
-              <Badge badgeContent={fav.length} color="secondary">
+              <Badge badgeContent={fav.length} color="primary">
                 <FavoriteIcon />
               </Badge>
             </IconButton>
@@ -302,15 +220,24 @@ export default function NavBar({ setMode }) {
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton onClick={handleClickOpen}>
-              <FormatPaintIcon sx={{ color: "white" }} />
-            </IconButton>
             <Checkbox
-              icon={<Brightness4Icon />}
-              checkedIcon={<Brightness4OutlinedIcon />}
+              icon={<Brightness4Icon sx={{ color: "white" }} />}
+              checkedIcon={<Brightness4OutlinedIcon sx={{ color: "white" }} />}
               onClick={colorMode.toggleColorMode}
               sx={{ color: "white" }}
             />
+            <IconButton
+              size="large"
+              edge="end"
+              aria-label="account of current user"
+              aria-haspopup="true"
+              color="inherit"
+              onClick={navigateToFavoritos}
+            >
+              <Badge badgeContent={fav.length} color="primary">
+                <FavoriteIcon />
+              </Badge>
+            </IconButton>
             <IconButton
               size="large"
               aria-label="show more"

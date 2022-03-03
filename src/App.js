@@ -35,11 +35,21 @@ import {
   getProductosAuto,
   getProductosMoto,
   getProductosRepuesto,
+  darkModee,
 } from "./redux/actions/index";
 
 //MUi modo dark
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+
+//Mui fab
+import { Box, Fab } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import ShareIcon from "@mui/icons-material/Share";
+
+import { useState } from "react";
 
 function App() {
   const login = useSelector((state) => state.login);
@@ -53,7 +63,9 @@ function App() {
   }, [dispatch]);
 
   //modo dark
-  const [mode, setMode] = React.useState("light");
+  const modo = useSelector((state) => state.darkMode);
+  const [mode, setMode] = React.useState(modo);
+  dispatch(darkModee(mode));
 
   const theme = React.useMemo(
     () =>
@@ -65,7 +77,20 @@ function App() {
     [mode]
   );
 
-  //Color de la pagina
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    if (open === false) {
+      setOpen(true);
+    } else {
+      setOpen(false);
+    }
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
 
   return (
     <>
@@ -96,6 +121,75 @@ function App() {
               <Route path="/formEditarAuto/:id" element={<FormEditarAuto />} />
               <Route path="*" element={<Error />} />
             </Routes>
+            <Box
+              sx={{
+                display: { xs: "none", md: "none", sm: "none", lg: "block" },
+                position: "fixed",
+                bottom: "5%",
+                right: "5%",
+              }}
+            >
+              {open === true ? (
+                <>
+                  <Fab
+                    aria-label="add"
+                    sx={{ bgcolor: "pink" }}
+                    onClick={handleClose}
+                  >
+                    <FontAwesomeIcon icon={faInstagram} />
+                  </Fab>
+                  <Fab
+                    aria-label="add"
+                    sx={{ bgcolor: "green" }}
+                    onClick={handleClose}
+                  >
+                    <FontAwesomeIcon icon={faWhatsapp} />
+                  </Fab>
+                </>
+              ) : null}
+              <Fab
+                sx={{ bgcolor: "#2196f3" }}
+                aria-label="add"
+                onClick={handleClickOpen}
+              >
+                <ShareIcon />
+              </Fab>
+            </Box>
+
+            <Box
+              sx={{
+                display: { xs: "block", md: "block", sm: "block", lg: "none" },
+                position: "fixed",
+                bottom: "5%",
+                left: "5%",
+              }}
+            >
+              <Fab
+                sx={{ bgcolor: "#2196f3" }}
+                aria-label="add"
+                onClick={handleClickOpen}
+              >
+                <ShareIcon />
+              </Fab>
+              {open === true ? (
+                <>
+                    <Fab
+                      aria-label="add"
+                      sx={{ bgcolor: "pink" }}
+                      onClick={handleClose}
+                    >
+                      <FontAwesomeIcon icon={faInstagram} />
+                    </Fab>
+                    <Fab
+                      aria-label="add"
+                      sx={{ bgcolor: "green" }}
+                      onClick={handleClose}
+                    >
+                      <FontAwesomeIcon icon={faWhatsapp} />
+                    </Fab>
+                </>
+              ) : null}
+            </Box>
           </>
         )}
         <ToastContainer />

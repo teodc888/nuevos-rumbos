@@ -14,6 +14,8 @@ import {
   ELIMINAR_FAVORITOS,
   LOGIN,
   COLOR,
+  DARK_MODE,
+  RESET_FILTRO,
 } from "./actionsTypes";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
@@ -134,6 +136,20 @@ export const Login = (payload) => {
 export const eleccionColor = (payload) => {
   return {
     type: COLOR,
+    payload,
+  };
+}
+
+export const darkModee = (payload) => {
+  return {
+    type: DARK_MODE,
+    payload,
+  };
+}
+
+export const resetFiltro = (payload) => {
+  return {
+    type: RESET_FILTRO,
     payload,
   };
 }

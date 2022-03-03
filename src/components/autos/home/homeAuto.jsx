@@ -15,7 +15,6 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
   Slide,
 } from "@mui/material";
@@ -28,8 +27,11 @@ import Paginado from "../../paginado/paginado";
 
 //Redux
 import { useSelector, useDispatch } from "react-redux";
-import { filtroAuto } from "../../../redux/actions/index";
+import { filtroAuto, resetFiltro } from "../../../redux/actions/index";
 import Footer from "../../footer/footer";
+
+//toastify
+import { toast } from "react-toastify";
 
 //Pop Up
 
@@ -37,6 +39,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
+//Funcion
 export default function HomeAuto() {
   //Dispatch
   const dispatch = useDispatch();
@@ -48,8 +51,6 @@ export default function HomeAuto() {
 
   //useState
   const [filtro, setFiltro] = useState(orden);
-
-  console.log(autos);
 
   // UseEffect
   useEffect(() => {
@@ -94,6 +95,27 @@ export default function HomeAuto() {
     setOpen(false);
   };
 
+  //toastify
+  const successSubmitFavorite = () => {
+    toast.success("Filtros borrados", {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  // Filtros borrados
+  const resetFiltros = () => {
+    setFiltro(orden);
+    dispatch(resetFiltro());
+    successSubmitFavorite();
+    setOpen(false);
+  };
+
   return (
     <div>
       <Grid container spacing={10} columns={16}>
@@ -111,7 +133,7 @@ export default function HomeAuto() {
             <Typography variant="h1" component="div">
               Autos
             </Typography>
-            <Box sx={{ width: "100%"}}>
+            <Box sx={{ width: "100%" }}>
               <Buscador opciones="auto" />
             </Box>
           </Stack>
@@ -254,6 +276,9 @@ export default function HomeAuto() {
                   </Select>
                 </FormControl>
               </Grid>
+              <Grid item xs={4} sm={4} md={12}>
+                <Button fullWidth sx={{bgcolor:"green", color:"white"}} variant="contained" onClick={resetFiltros}>Borrar filtros</Button>
+              </Grid>
             </Grid>
           </Box>
         </Grid>
@@ -334,9 +359,9 @@ export default function HomeAuto() {
                 color="secondary"
                 aria-label="edit"
                 onClick={handleClickOpen}
-                sx={{bgcolor:"green"}}
+                sx={{ bgcolor: "green" }}
               >
-                <FilterListIcon  />
+                <FilterListIcon />
               </Fab>
               <Dialog
                 open={open}
@@ -347,161 +372,156 @@ export default function HomeAuto() {
               >
                 <DialogTitle>{"FILTROS"}</DialogTitle>
                 <DialogContent>
-                  <DialogContentText id="alert-dialog-slide-description">
-                    <Box sx={{ width: "100%", marginTop: "10%" }}>
-                      <Grid
-                        container
-                        spacing={{ xs: 3, md: 6 }}
-                        columns={{ xs: 4, sm: 8, md: 12 }}
-                      >
-                        <Grid item xs={4} sm={4} md={12}>
-                          <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">
-                              GNV
-                            </InputLabel>
-                            <Select
-                              labelId="demo-simple-select-label"
-                              id="demo-simple-select"
-                              name="gnv"
-                              label="gnv"
-                              value={filtro.gnv}
-                              onChange={handleChange}
-                            >
-                              <MenuItem value={"todos"}>todos</MenuItem>
-                              <MenuItem value={"si"}>Si</MenuItem>
-                              <MenuItem value={"no"}>No</MenuItem>
-                            </Select>
-                          </FormControl>
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={12}>
-                          <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">
-                              COMBUSTIBLE
-                            </InputLabel>
-                            <Select
-                              labelId="demo-simple-select-label"
-                              id="demo-simple-select"
-                              name="combustible"
-                              label="COMBUSTIBLE"
-                              value={filtro.combustible}
-                              onChange={handleChange}
-                            >
-                              <MenuItem value={"todos"}>todos</MenuItem>
-                              <MenuItem value={"nafta"}>Nafta</MenuItem>
-                              <MenuItem value={"diesel"}>Diesel</MenuItem>
-                            </Select>
-                          </FormControl>
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={12}>
-                          <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">
-                              MARCAS
-                            </InputLabel>
-                            <Select
-                              labelId="demo-simple-select-label"
-                              id="demo-simple-select"
-                              name="marca"
-                              label="MARCAS"
-                              value={filtro.marca}
-                              onChange={handleChange}
-                            >
-                              <MenuItem value={"todos"}>todos</MenuItem>
-                              {uniqueArr.map((marca) => {
-                                return (
-                                  <MenuItem value={marca} key={marca}>
-                                    {marca}
-                                  </MenuItem>
-                                );
-                              })}
-                            </Select>
-                          </FormControl>
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={12}>
-                          <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">
-                              PRECIO
-                            </InputLabel>
-                            <Select
-                              labelId="demo-simple-select-label"
-                              id="demo-simple-select"
-                              name="precio"
-                              label="PRECIO"
-                              value={filtro.precio}
-                              onChange={handleChange}
-                            >
-                              <MenuItem value={"todos"}>todos</MenuItem>
-                              <MenuItem value={"mayor"}>Mayor</MenuItem>
-                              <MenuItem value={"menor"}>Menor</MenuItem>
-                            </Select>
-                          </FormControl>
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={12}>
-                          <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">
-                              KILOMETROS
-                            </InputLabel>
-                            <Select
-                              labelId="demo-simple-select-label"
-                              id="demo-simple-select"
-                              name="kilometros"
-                              label="KILOMETROS"
-                              value={filtro.kilometros}
-                              onChange={handleChange}
-                            >
-                              <MenuItem value={"todos"}>todos</MenuItem>
-                              <MenuItem value={"mayor"}>Mayor</MenuItem>
-                              <MenuItem value={"menor"}>Menor</MenuItem>
-                            </Select>
-                          </FormControl>
-                        </Grid>
-                        <Grid item xs={4} sm={4} md={12}>
-                          <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">
-                              CARROCERIA
-                            </InputLabel>
-                            <Select
-                              labelId="demo-simple-select-label"
-                              id="demo-simple-select"
-                              name="carroceria"
-                              label="CARROCERIA"
-                              value={filtro.carroceria}
-                              onChange={handleChange}
-                              required
-                            >
-                              <MenuItem value={"todos"}>todos</MenuItem>
-                              <MenuItem name="carroceria" value={"sedan"}>
-                                Sedán
-                              </MenuItem>
-                              <MenuItem name="carroceria" value={"compacto"}>
-                                Compacto
-                              </MenuItem>
-                              <MenuItem name="carroceria" value={"familiar"}>
-                                Familiar
-                              </MenuItem>
-                              <MenuItem name="carroceria" value={"Coupe"}>
-                                Coupé
-                              </MenuItem>
-                              <MenuItem name="carroceria" value={"todoterreno"}>
-                                Todoterreno
-                              </MenuItem>
-                              <MenuItem
-                                name="carroceria"
-                                value={"descapotable"}
-                              >
-                                Descapotable
-                              </MenuItem>
-                              <MenuItem name="carroceria" value={"suv"}>
-                                SUV
-                              </MenuItem>
-                            </Select>
-                          </FormControl>
-                        </Grid>
+                  <Box sx={{ width: "100%", marginTop: "10%" }}>
+                    <Grid
+                      container
+                      spacing={{ xs: 3, md: 6 }}
+                      columns={{ xs: 4, sm: 8, md: 12 }}
+                    >
+                      <Grid item xs={4} sm={4} md={12}>
+                        <FormControl fullWidth>
+                          <InputLabel id="demo-simple-select-label">
+                            GNV
+                          </InputLabel>
+                          <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            name="gnv"
+                            label="gnv"
+                            value={filtro.gnv}
+                            onChange={handleChange}
+                          >
+                            <MenuItem value={"todos"}>todos</MenuItem>
+                            <MenuItem value={"si"}>Si</MenuItem>
+                            <MenuItem value={"no"}>No</MenuItem>
+                          </Select>
+                        </FormControl>
                       </Grid>
-                    </Box>
-                  </DialogContentText>
+                      <Grid item xs={4} sm={4} md={12}>
+                        <FormControl fullWidth>
+                          <InputLabel id="demo-simple-select-label">
+                            COMBUSTIBLE
+                          </InputLabel>
+                          <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            name="combustible"
+                            label="COMBUSTIBLE"
+                            value={filtro.combustible}
+                            onChange={handleChange}
+                          >
+                            <MenuItem value={"todos"}>todos</MenuItem>
+                            <MenuItem value={"nafta"}>Nafta</MenuItem>
+                            <MenuItem value={"diesel"}>Diesel</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                      <Grid item xs={4} sm={4} md={12}>
+                        <FormControl fullWidth>
+                          <InputLabel id="demo-simple-select-label">
+                            MARCAS
+                          </InputLabel>
+                          <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            name="marca"
+                            label="MARCAS"
+                            value={filtro.marca}
+                            onChange={handleChange}
+                          >
+                            <MenuItem value={"todos"}>todos</MenuItem>
+                            {uniqueArr.map((marca) => {
+                              return (
+                                <MenuItem value={marca} key={marca}>
+                                  {marca}
+                                </MenuItem>
+                              );
+                            })}
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                      <Grid item xs={4} sm={4} md={12}>
+                        <FormControl fullWidth>
+                          <InputLabel id="demo-simple-select-label">
+                            PRECIO
+                          </InputLabel>
+                          <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            name="precio"
+                            label="PRECIO"
+                            value={filtro.precio}
+                            onChange={handleChange}
+                          >
+                            <MenuItem value={"todos"}>todos</MenuItem>
+                            <MenuItem value={"mayor"}>Mayor</MenuItem>
+                            <MenuItem value={"menor"}>Menor</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                      <Grid item xs={4} sm={4} md={12}>
+                        <FormControl fullWidth>
+                          <InputLabel id="demo-simple-select-label">
+                            KILOMETROS
+                          </InputLabel>
+                          <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            name="kilometros"
+                            label="KILOMETROS"
+                            value={filtro.kilometros}
+                            onChange={handleChange}
+                          >
+                            <MenuItem value={"todos"}>todos</MenuItem>
+                            <MenuItem value={"mayor"}>Mayor</MenuItem>
+                            <MenuItem value={"menor"}>Menor</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                      <Grid item xs={4} sm={4} md={12}>
+                        <FormControl fullWidth>
+                          <InputLabel id="demo-simple-select-label">
+                            CARROCERIA
+                          </InputLabel>
+                          <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            name="carroceria"
+                            label="CARROCERIA"
+                            value={filtro.carroceria}
+                            onChange={handleChange}
+                            required
+                          >
+                            <MenuItem value={"todos"}>todos</MenuItem>
+                            <MenuItem name="carroceria" value={"sedan"}>
+                              Sedán
+                            </MenuItem>
+                            <MenuItem name="carroceria" value={"compacto"}>
+                              Compacto
+                            </MenuItem>
+                            <MenuItem name="carroceria" value={"familiar"}>
+                              Familiar
+                            </MenuItem>
+                            <MenuItem name="carroceria" value={"Coupe"}>
+                              Coupé
+                            </MenuItem>
+                            <MenuItem name="carroceria" value={"todoterreno"}>
+                              Todoterreno
+                            </MenuItem>
+                            <MenuItem name="carroceria" value={"descapotable"}>
+                              Descapotable
+                            </MenuItem>
+                            <MenuItem name="carroceria" value={"suv"}>
+                              SUV
+                            </MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                    </Grid>
+                  </Box>
                 </DialogContent>
                 <DialogActions>
-                  <Button>Borrar Filtros</Button>
+                  <Button onClick={resetFiltros}>Borrar Filtros</Button>
                   <Button onClick={handleClose}>Listo</Button>
                 </DialogActions>
               </Dialog>

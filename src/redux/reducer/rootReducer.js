@@ -13,6 +13,8 @@ import {
   ELIMINAR_FAVORITOS,
   LOGIN,
   COLOR,
+  DARK_MODE,
+  RESET_FILTRO,
 } from "../actions/actionsTypes";
 
 const inicialState = {
@@ -41,6 +43,8 @@ const inicialState = {
   },
   login: "",
   color: "#d50000",
+  darkMode: "light",
+
 };
 
 export default function rootReducer(state = inicialState, action) {
@@ -254,6 +258,33 @@ export default function rootReducer(state = inicialState, action) {
       return {
         ...state,
         color: action.payload,
+      };
+    case DARK_MODE:
+      return {
+        ...state,
+        darkMode: action.payload,
+      };
+    case RESET_FILTRO:
+      return {
+        ...state,
+        autos: [...state.autosBuscados],
+        motos: [...state.motosBuscados],
+        repuestos: [...state.repuestosBuscados],
+        buscados: [],
+        orden: {
+          gnv: "todos",
+          combustible: "todos",
+          marca: "todos",
+          precio: "todos",
+          kilometros: "todos",
+          carroceria: "todos",
+          kilometrosM: "todos",
+          precioM: "todos",
+          marcaM: "todos",
+          cilindrada: "todos",
+          precioR: "todos",
+          marcaR: "todos",
+        },
       };
     default:
       return state;
