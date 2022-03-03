@@ -38,7 +38,7 @@ export default function Landing() {
 
   return (
     <>
-      <Box sx={{ width: "100%", marginTop: "1%" }}>
+      <Box sx={{ width: "100%", marginTop:"1%" }}>
         <Grid
           container
           spacing={{ xs: 2, md: 2, sm: 2 }}
@@ -48,7 +48,7 @@ export default function Landing() {
             className="App"
             item
             xs={16}
-            sm={8}
+            sm={16}
             md={8}
             sx={{ margin: "auto" }}
           >
@@ -149,15 +149,20 @@ export default function Landing() {
             className="App"
             item
             xs={16}
-            sm={8}
+            sm={16}
             md={8}
-            sx={{ marginTop: "6%" }}
           >
-            <Card sx={{ maxWidth: 800, margin: "auto" }}>
+            <Card sx={{ maxWidth: "100%", maxHeight:"100%",margin: "auto", display: { xs: "block", sm:"none" ,md: "none" } }}>
               <CardMedia
                 component="img"
-                height="500"
-                image="https://scontent.fcor2-2.fna.fbcdn.net/v/t1.6435-9/121409666_3270786793044323_821596622646100409_n.png?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=LVAoisEStmcAX8zADv0&_nc_ht=scontent.fcor2-2.fna&oh=00_AT8MGj0dVLhO4mNBvUO-eRLpWsk6cyKvV3ONqkCQ_R0WkA&oe=62342CCE"
+                image="https://w0.peakpx.com/wallpaper/575/190/HD-wallpaper-488-wheel-ferrari-red-silver-car-supercar-sports-america.jpg"
+                alt="green iguana"
+              />
+            </Card>
+            <Card sx={{ maxWidth: "100%", maxHeight:"100%",margin: "auto", display: { xs: "none", sm:"block" ,md: "block" } }}>
+              <CardMedia
+                component="img"
+                image="https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2013/12/02/13859743417025.jpg"
                 alt="green iguana"
               />
             </Card>
@@ -167,3 +172,4 @@ export default function Landing() {
     </>
   );
 }
+

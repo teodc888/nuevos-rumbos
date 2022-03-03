@@ -173,20 +173,20 @@ function App() {
               </Fab>
               {open === true ? (
                 <>
-                    <Fab
-                      aria-label="add"
-                      sx={{ bgcolor: "pink" }}
-                      onClick={handleClose}
-                    >
-                      <FontAwesomeIcon icon={faInstagram} />
-                    </Fab>
-                    <Fab
-                      aria-label="add"
-                      sx={{ bgcolor: "green" }}
-                      onClick={handleClose}
-                    >
-                      <FontAwesomeIcon icon={faWhatsapp} />
-                    </Fab>
+                  <Fab
+                    aria-label="add"
+                    sx={{ bgcolor: "pink" }}
+                    onClick={handleClose}
+                  >
+                    <FontAwesomeIcon icon={faInstagram} />
+                  </Fab>
+                  <Fab
+                    aria-label="add"
+                    sx={{ bgcolor: "green" }}
+                    onClick={handleClose}
+                  >
+                    <FontAwesomeIcon icon={faWhatsapp} />
+                  </Fab>
                 </>
               ) : null}
             </Box>
