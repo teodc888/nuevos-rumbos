@@ -28,7 +28,7 @@ export default function Favoritos() {
         justifyContent="center"
         spacing={2}
       >
-        <Typography variant="h3" component="div">
+        <Typography variant="h3" component="div" textAlign="center">
           FAVORITOS
         </Typography>
       </Stack>
@@ -42,8 +42,8 @@ export default function Favoritos() {
           {/* mapeo de los productos para mostrarlos en la pantalla */}
           {favoritos.length === 0 ? (
             <Grid item xs={12} sm={12} md={12} >
-              <Typography variant="h2" component="div" textAlign="center">
-                No hay Favoritos
+              <Typography variant="h4" component="div" textAlign="center">
+                No hay ningun producto en favoritos 
               </Typography>
             </Grid>
           ) : (

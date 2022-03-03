@@ -133,7 +133,7 @@ export default function CardNR({
             {marca} {modelo}
           </Typography>
           <Typography gutterBottom variant="h5" component="div">
-            ${precio}
+            ${Number(precio).toLocaleString("es-AR")}
           </Typography>
           {tipo === "auto" ? (
             <Typography variant="body1" color="text.secondary">

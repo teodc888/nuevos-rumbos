@@ -50,7 +50,7 @@ export default function Detalle() {
             carroceria={productoSeleccionado.carroceria}
             motor={productoSeleccionado.motor}
             transmision={productoSeleccionado.transmision}
-            precio={productoSeleccionado.precio}
+            precio={Number(productoSeleccionado.precio).toLocaleString("es-AR")}
             combustible={productoSeleccionado.combustible}
             kilometros={productoSeleccionado.kilometros}
             cv={productoSeleccionado.cv}
@@ -68,7 +68,7 @@ export default function Detalle() {
             descripcion={productoSeleccionado.descripcion}
             id={productoSeleccionado.id}
             año={productoSeleccionado.año}
-            precio={productoSeleccionado.precio}
+            precio={Number(productoSeleccionado.precio).toLocaleString("es-AR")}
             cilindrada={productoSeleccionado.cilindrada}
             cv={productoSeleccionado.cv}
             kilometros={productoSeleccionado.kilometros}
@@ -82,7 +82,7 @@ export default function Detalle() {
             imagen={productoSeleccionado.imagen}
             descripcion={productoSeleccionado.descripcion}
             id={productoSeleccionado.id}
-            precio={productoSeleccionado.precio}
+            precio={Number(productoSeleccionado.precio).toLocaleString("es-AR")}
           />
         </>
       ) : (
