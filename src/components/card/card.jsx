@@ -135,41 +135,37 @@ export default function CardNR({
           <Typography gutterBottom variant="h5" component="div">
             ${precio}
           </Typography>
-           {
-            tipo === "auto" ? (
-          <Typography variant="body1" color="text.secondary">
-            {año} | {kilometros} Km
-          </Typography>
-            ) : tipo === "moto" ? (
-              <Typography variant="body1" color="text.secondary">
+          {tipo === "auto" ? (
+            <Typography variant="body1" color="text.secondary">
               {año} | {kilometros} Km
             </Typography>
-            ) : tipo === "repuesto" ? (
-              <Typography variant="body2" color="text.secondary">
+          ) : tipo === "moto" ? (
+            <Typography variant="body1" color="text.secondary">
+              {año} | {kilometros} Km
+            </Typography>
+          ) : tipo === "repuesto" ? (
+            <Typography variant="body2" color="text.secondary">
               {año}
             </Typography>
-            ) : (
-              null
-            )
-           }
+          ) : null}
         </CardContent>
-        {favorito === "true" ? (
-          <CardActions sx={{ float: "right" }}>
-            <Checkbox
-              checked={checked}
-              onChange={handleChange}
-              icon={<FavoriteBorder sx={{ color: colorElegido }} />}
-              checkedIcon={<Favorite sx={{ color: colorElegido }} />}
-            />
-          </CardActions>
-        ) : (
-          <CardActions sx={{ float: "right" }}>
-            <IconButton onClick={deleteFavorito}>
-              <DeleteIcon sx={{ color: colorElegido }} />
-            </IconButton>
-          </CardActions>
-        )}
       </CardActionArea>
+      {favorito === "true" ? (
+        <CardActions sx={{ float: "right" }}>
+          <Checkbox
+            checked={checked}
+            onChange={handleChange}
+            icon={<FavoriteBorder sx={{ color: colorElegido }} />}
+            checkedIcon={<Favorite sx={{ color: colorElegido }} />}
+          />
+        </CardActions>
+      ) : (
+        <CardActions sx={{ float: "right" }}>
+          <IconButton onClick={deleteFavorito}>
+            <DeleteIcon sx={{ color: colorElegido }} />
+          </IconButton>
+        </CardActions>
+      )}
     </Card>
   );
 }
