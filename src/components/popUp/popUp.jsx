@@ -44,7 +44,7 @@ export default function PopUp() {
     <div>
       <IconButton sx={{ color: "white" }} onClick={handleClickOpen}>
         <SearchIcon />
-        <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+        <Typography sx={{ ml: 2, flex: 1, display:{xs:"none", md:"block", lg:"block", sm:"block"} }} variant="h6" component="div">
           Buscar
         </Typography>
       </IconButton>

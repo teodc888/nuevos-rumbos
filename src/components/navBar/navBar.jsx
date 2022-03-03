@@ -274,7 +274,7 @@ export default function NavBar({ setMode }) {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" }, cursor: "pointer" }}
+            sx={{ display: { xs: "none", sm: "block", md:"block", lg:"block" }, cursor: "pointer" }}
             onClick={navigateToLanding}
           >
             NUEVOS RUMBOS
