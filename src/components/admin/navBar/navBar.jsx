@@ -8,8 +8,11 @@ import {
   Typography,
   Button,
   IconButton,
+  Checkbox,
 } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness4OutlinedIcon from "@mui/icons-material/Brightness4Outlined";
 
 //Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -21,7 +24,7 @@ import { useNavigate } from "react-router";
 //Swal
 import Swal from "sweetalert2";
 
-export default function NavBarAdmin() {
+export default function NavBarAdmin({ setMode }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const colorElegido = useSelector((state) => state.color);
@@ -42,6 +45,15 @@ export default function NavBarAdmin() {
     navigate("/");
   };
 
+  //dark mode
+  const colorMode = React.useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+      },
+    }),
+    [setMode]
+  );
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ bgcolor: colorElegido }}>
@@ -59,6 +71,11 @@ export default function NavBarAdmin() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             ADMIN
           </Typography>
+          <Checkbox
+            icon={<Brightness4Icon sx={{ color: "white" }} />}
+            checkedIcon={<Brightness4OutlinedIcon sx={{ color: "white" }} />}
+            onClick={colorMode.toggleColorMode}
+          />
           <Button color="inherit" onClick={handleClickLogout}>
             Cerrar Sesion
           </Button>
