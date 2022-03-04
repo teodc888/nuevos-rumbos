@@ -85,7 +85,7 @@ export default function PopUp() {
             spacing={{ xs: 4, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
-            {buscar &&
+            {buscar.length > 0 &&
               buscar.map((buscar) => (
                 <Grid item xs={4} sm={4} md={4} key={buscar.id}>
                   <CardNR
