@@ -103,6 +103,8 @@ function App() {
             <Routes>
               <Route path="/" element={<HomeAdmin />} />
               <Route path="/formulario" element={<Formulario />} />
+              <Route path="/editarAutos" element={<EditarAutos />} />
+              <Route path="/formEditarAuto/:id" element={<FormEditarAuto />} />
               <Route path="*" element={<Error />} />
             </Routes>
           </>
@@ -117,8 +119,6 @@ function App() {
               <Route path="/log-in" element={<LogIn />} />
               <Route path="/detalle/:id" element={<Detalle />} />
               <Route path="/favoritos" element={<Favoritos />} />
-              <Route path="/editarAutos" element={<EditarAutos />} />
-              <Route path="/formEditarAuto/:id" element={<FormEditarAuto />} />
               <Route path="*" element={<Error />} />
             </Routes>
             <Box
