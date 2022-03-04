@@ -125,7 +125,7 @@ export default function CardNR({
         <CardContent>
           <Typography
             gutterBottom
-            variant="h4"
+            variant="h5"
             component="div"
             textAlign="center"
             textTransform="capitalize"
