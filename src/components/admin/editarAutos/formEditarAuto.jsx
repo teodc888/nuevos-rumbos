@@ -17,6 +17,7 @@ const FormEditarAuto = () => {
 		padding: '5%',
 		margin: '2.5% auto',
 		borderRadius: '2px',
+		width: '90%',
 	};
 	const useStyle = makeStyles({
 		root: {

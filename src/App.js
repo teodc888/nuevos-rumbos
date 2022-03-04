@@ -103,13 +103,13 @@ function App() {
 
         {login === true ? (
           <>
-            <NavBarAdmin />
+            <NavBarAdmin setMode={setMode} />
             <Routes>
               <Route path="/" element={<HomeAdmin />} />
               <Route path="/formulario" element={<Formulario />} />
               <Route path="/editarAutos" element={<EditarAutos />} />
               <Route path="/formEditarAuto/:id" element={<FormEditarAuto />} />
-              <Route path="*" element={<Error />} />
+              {/* <Route path="*" element={<Error />} /> */}
             </Routes>
           </>
         ) : (
