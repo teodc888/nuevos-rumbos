@@ -44,7 +44,6 @@ const inicialState = {
   login: "",
   color: "#d50000",
   darkMode: "light",
-
 };
 
 export default function rootReducer(state = inicialState, action) {
@@ -71,49 +70,77 @@ export default function rootReducer(state = inicialState, action) {
         buscadosFiltrados: [...state.buscadosFiltrados, action.payload],
       };
     case BUSCAR_PRODUCTOS_AUTO:
+      const autosModelo = state.autosBuscados.filter((auto) => {
+        return auto.modelo.toLowerCase().includes(action.payload.toLowerCase());
+      });
+      const autosMarca = state.autosBuscados.filter((auto) => {
+        return auto.marca.toLowerCase().includes(action.payload.toLowerCase());
+      });
+
       return {
         ...state,
-        autos: state.autosBuscados.filter((producto) => {
-          return producto.modelo
-            .toLowerCase()
-            .includes(action.payload.toLowerCase());
-        }),
+        autos: autosModelo.length > 0 ? autosModelo : autosMarca,
       };
     case BUSCAR_PRODUCTOS_MOTO:
+      const motosModelo = state.motosBuscados.filter((producto) => {
+        return producto.modelo
+          .toLowerCase()
+          .includes(action.payload.toLowerCase());
+      });
+      const motosMarca = state.motosBuscados.filter((producto) => {
+        return producto.marca
+          .toLowerCase()
+          .includes(action.payload.toLowerCase());
+      });
+
       return {
         ...state,
-        motos: state.motosBuscados.filter((producto) => {
-          return producto.modelo
-            .toLowerCase()
-            .includes(action.payload.toLowerCase());
-        }),
+        motos: motosModelo.length > 0 ? motosModelo : motosMarca,
       };
     case BUSCAR_PRODUCTOS_REPUESTO:
+      const repuestosModelo = state.repuestosBuscados.filter((producto) => {
+        return producto.modelo
+          .toLowerCase()
+          .includes(action.payload.toLowerCase());
+      });
+      const repuestosMarca = state.repuestosBuscados.filter((producto) => {
+        return producto.marca
+          .toLowerCase()
+          .includes(action.payload.toLowerCase());
+      });
+
       return {
         ...state,
-        repuestos: state.repuestosBuscados.filter((producto) => {
-          return producto.modelo
-            .toLowerCase()
-            .includes(action.payload.toLowerCase());
-        }),
+        repuestos:
+          repuestosModelo.length > 0 ? repuestosModelo : repuestosMarca,
       };
     case BUSCAR_TOTAL:
       let x = state.buscadosFiltrados.flat();
+      const buscadorModelo = x.filter((producto) => {
+        return producto.modelo
+          .toLowerCase()
+          .includes(action.payload.toLowerCase());
+      });
+      const buscadorMarca = x.filter((producto) => {
+        return producto.marca
+          .toLowerCase()
+          .includes(action.payload.toLowerCase());
+      });
       return {
         ...state,
         buscados:
-          action.payload === " " ?
-          state.buscados = [] :
-         x.filter((producto) => {
-          return producto.modelo
-            .toLowerCase()
-            .includes(action.payload.toLowerCase());
-        }),
+          action.payload === ""
+            ? (state.buscados = [])
+            : buscadorModelo.length > 0
+            ? (state.buscados = buscadorModelo)
+            : buscadorMarca.length > 0
+            ? (state.buscados = buscadorMarca)
+            : (state.buscados = []),
       };
     case FILTRO_AUTO:
       const { gnv, combustible, marca, precio, kilometros, carroceria } =
         action.payload;
-      let autosFiltro = [...state.autosBuscados];
+      let autosFiltro = state.autosBuscados
 
       autosFiltro =
         gnv === "todos"
@@ -241,14 +268,16 @@ export default function rootReducer(state = inicialState, action) {
     case FAVORITOS:
       return {
         ...state,
-        favoritos: [...state.favoritos, action.payload]
-    };
+        favoritos: [...state.favoritos, action.payload],
+      };
 
     case ELIMINAR_FAVORITOS:
-      return{
+      return {
         ...state,
-        favoritos: state.favoritos.filter(producto => producto.id !== action.payload)
-      }
+        favoritos: state.favoritos.filter(
+          (producto) => producto.id !== action.payload
+        ),
+      };
     case LOGIN:
       return {
         ...state,
