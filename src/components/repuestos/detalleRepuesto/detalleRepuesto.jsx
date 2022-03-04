@@ -33,7 +33,7 @@ export default function DetalleRepuesto({
   precio,
 }) {
 
-    //color
+    // //color
     const colorElegido = useSelector((state) => state.color);
 
   const favorite = useSelector((state) => state.favoritos);
@@ -152,7 +152,7 @@ export default function DetalleRepuesto({
                     <Button
                       variant="contained"
                       onClick={addFavoritos}
-                      sx={{ bgcolor: colorElegido, color: "white" }}
+                      sx={{ bgcolor: "green", color: "white" }}
                     >
                       Agregar a favoritos
                     </Button>
@@ -161,6 +161,7 @@ export default function DetalleRepuesto({
                       variant="contained"
                       color="error"
                       onClick={deleteFavoritos}
+                      sx={{ bgcolor: colorElegido, color: "white" }}
                     >
                       Eliminar de favoritos
                     </Button>

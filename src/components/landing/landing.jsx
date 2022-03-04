@@ -121,6 +121,7 @@ export default function Landing() {
                   variant="contained"
                   sx={{ bgcolor: colorElegido, color: "white" }}
                   onClick={navigateToAuto}
+                  color="error"
                 >
                   <DirectionsCarIcon sx={{ marginRight: "10%" }} /> Autos
                 </Button>
@@ -130,6 +131,7 @@ export default function Landing() {
                   variant="contained"
                   sx={{ bgcolor: colorElegido, color: "white" }}
                   onClick={navigateToMoto}
+                  color="error"
                 >
                   <TwoWheelerIcon sx={{ marginRight: "10%" }} /> Motos
                 </Button>
@@ -139,6 +141,7 @@ export default function Landing() {
                   variant="contained"
                   sx={{ bgcolor: colorElegido, color: "white" }}
                   onClick={navigateToRepuestos}
+                  color="error"
                 >
                   <BuildIcon sx={{ marginRight: "10%" }} /> Repuestos
                 </Button>

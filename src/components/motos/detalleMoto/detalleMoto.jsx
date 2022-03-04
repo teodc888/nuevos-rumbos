@@ -160,7 +160,7 @@ export default function DetalleMoto({
                     <Button
                       variant="contained"
                       onClick={addFavoritos}
-                      sx={{ bgcolor: colorElegido, color: "white" }}
+                      sx={{ bgcolor: "green", color: "white" }}
                     >
                       Agregar a favoritos
                     </Button>
@@ -169,6 +169,7 @@ export default function DetalleMoto({
                       variant="contained"
                       color="error"
                       onClick={deleteFavoritos}
+                      sx={{ bgcolor: colorElegido, color: "white" }}
                     >
                       Eliminar de favoritos
                     </Button>

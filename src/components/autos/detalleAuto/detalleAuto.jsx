@@ -42,7 +42,10 @@ export default function DetalleAuto({
   gnv,
   id,
 }) {
+  
+  //color
   const colorElegido = useSelector((state) => state.color);
+
   const favorite = useSelector((state) => state.favoritos);
   let aux = [];
   if (favorite.length > 0) {
@@ -161,7 +164,7 @@ export default function DetalleAuto({
                     <Button
                       variant="contained"
                       onClick={addFavoritos}
-                      sx={{ bgcolor: colorElegido , color: "white" }}
+                      sx={{ bgcolor: "green" , color: "white" }}
                     >
                       Agregar a favoritos
                     </Button>
@@ -170,6 +173,7 @@ export default function DetalleAuto({
                       variant="contained"
                       color="error"
                       onClick={deleteFavoritos}
+                      sx={{ bgcolor: colorElegido, color: "white" }}
                     >
                       Eliminar de favoritos
                     </Button>
