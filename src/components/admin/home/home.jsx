@@ -17,6 +17,10 @@ export default function HomeAdmin() {
         navigate("/formulario");
     };
 
+    const handleClickNavigateEditarAutos = () => {
+        navigate("/editarAutos");
+    };
+
   return (
     <div>
       <Stack
@@ -29,6 +33,7 @@ export default function HomeAdmin() {
           Bienvenido Admin
         </Typography>
         <Button onClick={handleClickNavigateFormulario}>FORMULARIO</Button>
+        <Button onClick={handleClickNavigateEditarAutos}>Editar Autos</Button>
       </Stack>
     </div>
   );
