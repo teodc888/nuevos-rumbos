@@ -54,6 +54,7 @@ export default function HomeAuto() {
 
   // UseEffect
   useEffect(() => {
+    window.scrollTo(0,0);
     document.title = "Autos";
     dispatch(filtroAuto(filtro));
   }, [dispatch, filtro]);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //Mui
 import {
@@ -86,6 +86,11 @@ export default function DetalleRepuesto({
     setFav(false);
     errorSubmit();
   };
+
+  useEffect(() =>{
+    window.scrollTo(0,0);
+  },[])
+
 
   return (
     <>
