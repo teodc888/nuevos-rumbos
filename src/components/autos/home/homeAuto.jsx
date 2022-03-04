@@ -357,7 +357,6 @@ export default function HomeAuto() {
               }}
             >
               <Fab
-                color="secondary"
                 aria-label="edit"
                 onClick={handleClickOpen}
                 sx={{ bgcolor: "green" }}

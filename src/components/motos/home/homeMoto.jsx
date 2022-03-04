@@ -316,7 +316,6 @@ export default function HomeMoto() {
               }}
             >
               <Fab
-                color="secondary"
                 aria-label="edit"
                 onClick={handleClickOpen}
                 sx={{ bgcolor: "green" }}

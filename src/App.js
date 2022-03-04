@@ -91,6 +91,10 @@ function App() {
     setOpen(false);
   };
 
+  const handleInstagram = () => {
+    window.open("https://www.instagram.com/");
+    setOpen(false);
+  };
 
   return (
     <>
@@ -134,7 +138,7 @@ function App() {
                   <Fab
                     aria-label="add"
                     sx={{ bgcolor: "pink" }}
-                    onClick={handleClose}
+                    onClick={handleInstagram}
                   >
                     <FontAwesomeIcon icon={faInstagram} />
                   </Fab>
@@ -176,7 +180,7 @@ function App() {
                   <Fab
                     aria-label="add"
                     sx={{ bgcolor: "pink" }}
-                    onClick={handleClose}
+                    onClick={handleInstagram}
                   >
                     <FontAwesomeIcon icon={faInstagram} />
                   </Fab>
