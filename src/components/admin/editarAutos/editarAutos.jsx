@@ -2,6 +2,9 @@ import React from 'react';
 // packages
 import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
+// consultas firebase
+import eliminarAuto from './eliminarAutoFirebase';
 // material ui
 import { Avatar } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -41,12 +44,34 @@ const EditarAutos = () => {
 	const autos = useSelector((state) => state.autos);
 
 	// funcion OnCLick
-	const editarAuto = (id) =>{
-		navigate(`/formEditarAuto/${id}`)
-	}
+	const editarAuto = (id) => {
+		navigate(`/formEditarAuto/${id}`);
+	};
+
+	// funcion eliminar auto
+	const eliminar = (id) => {
+		if (eliminarAuto(id)) {
+			Swal.fire({
+				text: 'Publicacion eliminada',
+				confirmButtonText: 'Ok',
+				icon: 'success',
+				width: 'auto',
+			});
+			navigate('/editarAutos');
+		} else {
+			Swal.fire({
+				title: 'Error!',
+				text: 'No se pudo eliminar la publicaion',
+				icon: 'error',
+				confirmButtonText: 'Ok',
+				width: 'auto',
+			});
+			navigate('/editarAutos');
+		}
+	};
 
 	return (
-		<TableContainer component={Paper} sx={{ marginTop: '1%' }} >
+		<TableContainer component={Paper} sx={{ marginTop: '1%' }}>
 			<Table sx={{ minWidth: 'auto' }} aria-label="customized table">
 				<TableHead>
 					<TableRow>
@@ -71,10 +96,14 @@ const EditarAutos = () => {
 								<h6>{auto.marca + ' - ' + auto.modelo}</h6>
 							</StyledTableCell>
 							<StyledTableCell align="center">
-								<Button variant="outlined" onClick={()=>editarAuto(auto.id)}>EDITAR</Button>
+								<Button variant="outlined" onClick={() => editarAuto(auto.id)}>
+									EDITAR
+								</Button>
 							</StyledTableCell>
 							<StyledTableCell align="center">
-								<Button variant="outlined">ELIMINAR</Button>
+								<Button variant="outlined" onClick={() => eliminar(auto.id)}>
+									ELIMINAR
+								</Button>
 							</StyledTableCell>
 						</StyledTableRow>
 					))}
