@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 // packages
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import useObtenerAuto from '../../../hooks/useObtenerAutos';
+import Swal from 'sweetalert2';
+// consulta firebase
+import editarAuto from './editarAutoFirebase';
 // Mui
 import {
 	Grid,
@@ -13,25 +16,9 @@ import {
 	InputLabel,
 } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
-// consulta firebase
-import editarAuto from './editarAutoFirebase';
 
 const FormEditarAuto = () => {
-	// estilos
-	const containerStyle = {
-		padding: '5%',
-		margin: '2.5% auto',
-		borderRadius: '2px',
-	};
-	const useStyle = makeStyles({
-		root: {
-			width: '80%',
-			margin: 'auto',
-			backgroundColor: '#8c8c8c',
-		},
-	});
-	const formStyle = useStyle();
-
+	const navigate = useNavigate();
 	// funcion para obtener los autos
 	const { id } = useParams();
 	const [auto] = useObtenerAuto(id);
@@ -72,6 +59,7 @@ const FormEditarAuto = () => {
 	// funciones
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		// comprobamos que los campos no esten vacios
 		if (
 			marca !== '' &&
 			modelo !== '' &&
@@ -87,7 +75,6 @@ const FormEditarAuto = () => {
 			precio !== '' &&
 			descripcion !== ''
 		) {
-			console.log(id);
 			editarAuto({
 				id,
 				marca,
@@ -102,13 +89,27 @@ const FormEditarAuto = () => {
 				gnv,
 				transmision,
 				precio,
-				descripcion
+				descripcion,
 			});
+			Swal.fire({
+				text: 'Datos actualizados',
+				confirmButtonText: 'Ok',
+				icon: 'success',
+				width: 'auto',
+			});
+			navigate('/editarAutos');
 		} else {
-			console.log('Hay campos incompletos');
+			Swal.fire({
+				title: 'Error!',
+				text: 'Hay campos incompletos',
+				icon: 'error',
+				confirmButtonText: 'Ok',
+				width: 'auto',
+			});
 		}
 	};
 
+	// permitioms modificar el input
 	const handleChange = (e) => {
 		switch (e.target.name) {
 			case 'marca':
@@ -141,6 +142,21 @@ const FormEditarAuto = () => {
 				break;
 		}
 	};
+
+	// estilos
+	const containerStyle = {
+		padding: '5%',
+		margin: '2.5% auto',
+		borderRadius: '2px',
+	};
+	const useStyle = makeStyles({
+		root: {
+			width: '80%',
+			margin: 'auto',
+			backgroundColor: '#8c8c8c',
+		},
+	});
+	const formStyle = useStyle();
 
 	return (
 		<form align="center" className={formStyle.root} onSubmit={handleSubmit}>
