@@ -1,4 +1,8 @@
-import React from 'react';
+import { useState } from 'react';
+// packages
+// import { useSelector } from 'react-redux';
+import { useParams } from 'react-router';
+import useObtenerAuto from '../../../hooks/useObtenerAutos';
 // Mui
 import {
 	Grid,
@@ -22,15 +26,35 @@ const FormEditarAuto = () => {
 		root: {
 			width: '80%',
 			margin: 'auto',
-			backgroundColor: '#e0e0e0',
+			backgroundColor: '#8c8c8c',
 		},
 	});
 	const formStyle = useStyle();
+	
+	// funcion para obtener los autos
+	const {id} = useParams();
+	const [auto] = useObtenerAuto(id);
+	console.log(auto.marca);
+	// states
+	const [marca, cambiarMarca] = useState(auto.marca);
+	const [modelo, cambiarModelo] = useState();
+	const [motor, cambiarMotos] = useState();
+	const [cv, cambiarCv] = useState();
+	const [km, cambiarKm] = useState();
+	const [year, cambiarYear] = useState();
+	const [puertas, cambiarPuertas] = useState();
+	const [carroceria, cambiarCarroceria] = useState('sedan');
+	const [combustible, cambiarCombustible] = useState('Nafta');
+	const [gnv, cambiarGnv] = useState('no');
+	const [transmision, cambiarTransmision] = useState();
+	const [precio, cambiarPrecio] = useState();
+	const [descripcion, cambiarDescripcion] = useState();
 
 	// funciones
 	const handleSubmit = (e) => {
 		e.preventDefault();
 	};
+
 	return (
 		<form align="center" className={formStyle.root} onSubmit={handleSubmit}>
 			<Grid container style={containerStyle}>
@@ -40,7 +64,7 @@ const FormEditarAuto = () => {
 					lg={6}
 					md={6}
 					sm={6}
-					sx={12}
+					// sx={12}
 					style={{ padding: '1%' }}
 				>
 					<TextField
@@ -48,41 +72,44 @@ const FormEditarAuto = () => {
 						fullWidth
 						type="text"
 						label="Marca"
+						value={marca}
 						sx={{ marginTop: '2%' }}
 					/>
 					<TextField
-						label="Motor"
 						variant="outlined"
+						fullWidth
+						label="Motor"
 						name="motor"
 						type="text"
-						fullWidth
+						value={motor}
 						sx={{ marginTop: '2%' }}
 					/>
 
 					<TextField
-						fullWidth
 						variant="outlined"
-						type="number"
+						fullWidth
 						label="Kilometros"
-						min="1"
-						pattern="^[0-9]+"
+						type="number"
+						value={km}
 						sx={{ marginTop: '2%' }}
 					/>
 
 					<TextField
-						label="Puertas"
 						variant="outlined"
+						fullWidth
+						label="Puertas"
 						name="puertas"
 						type="number"
-						fullWidth
+						value={puertas}
 						sx={{ marginTop: '2%' }}
 					/>
 
 					<TextField
 						select
+						fullWidth
 						label="Combustible"
 						name="combustible"
-						fullWidth
+						value={combustible}
 						sx={{ marginTop: '2%' }}
 					>
 						<MenuItem name="combustible" value={'Nafta'}>
@@ -93,19 +120,21 @@ const FormEditarAuto = () => {
 						</MenuItem>
 					</TextField>
 					<TextField
-						label="Transmision"
 						variant="outlined"
+						fullWidth
+						label="Transmision"
 						name="transmision"
 						type="text"
-						fullWidth
+						value={transmision}
 						sx={{ marginTop: '2%' }}
 					/>
 					<TextField
-						label="Precio"
 						variant="outlined"
+						fullWidth
+						label="Precio"
 						name="precio"
 						type="number"
-						fullWidth
+						value={precio}
 						sx={{ marginTop: '2%' }}
 					/>
 				</Grid>
@@ -115,39 +144,42 @@ const FormEditarAuto = () => {
 					lg={6}
 					md={6}
 					sm={6}
-					sx={12}
+					// sx={12}
 					style={{ padding: '1%' }}
 				>
 					<TextField
 						variant="outlined"
 						fullWidth
-						type="text"
 						label="Modelo"
+						type="text"
+						value={modelo}
 						sx={{ marginTop: '2%' }}
 					/>
 					<TextField
-						label="CV"
 						variant="outlined"
+						fullWidth
+						label="CV"
 						name="cv"
 						type="text"
-						fullWidth
+						value={cv}
 						sx={{ marginTop: '2%' }}
 					/>
 					<TextField
-						label="Año"
 						variant="outlined"
+						fullWidth
+						label="Año"
 						name="año"
 						type="number"
-						fullWidth
+						value={year}
 						sx={{ marginTop: '2%' }}
-						min="1"
 					/>
 					<TextField
 						variant="outlined"
+						select
 						fullWidth
 						type="number"
 						label="Carroceria"
-						select
+						value={carroceria}
 						sx={{ marginTop: '2%' }}
 					>
 						<MenuItem name="carroceria" value={'sedan'}>
@@ -174,9 +206,10 @@ const FormEditarAuto = () => {
 					</TextField>
 					<TextField
 						select
+						fullWidth
 						label="GNV"
 						name="gnv"
-						fullWidth
+						value={gnv}
 						sx={{ marginTop: '2%' }}
 					>
 						<MenuItem name="gnv" value={'si'}>
@@ -192,8 +225,9 @@ const FormEditarAuto = () => {
 					<TextareaAutosize
 						placeholder="Descripcion"
 						id="demo-simple-select-label"
-						style={{ width: '90%', maxHeight: 150 }}
 						name="descripcion"
+						value={descripcion}
+						style={{ width: '90%', maxHeight: 150 }}
 					/>
 					<Input type="file" name="imagen" />
 				</Grid>
@@ -202,10 +236,8 @@ const FormEditarAuto = () => {
 				type="submit"
 				color="primary"
 				variant="contained"
-				// style={btnstyle}
-				// fullWidth
 				sx={{
-					bgcolor: '#4a148c',
+					bgcolor: 'green',
 					color: 'white',
 					marginBottom: '5%',
 					width: '60%',
