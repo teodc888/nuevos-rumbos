@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // packages
-// import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import useObtenerAuto from '../../../hooks/useObtenerAutos';
 // Mui
@@ -14,6 +13,8 @@ import {
 	InputLabel,
 } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
+// consulta firebase
+import editarAuto from './editarAutoFirebase';
 
 const FormEditarAuto = () => {
 	// estilos
@@ -30,29 +31,115 @@ const FormEditarAuto = () => {
 		},
 	});
 	const formStyle = useStyle();
-	
+
 	// funcion para obtener los autos
-	const {id} = useParams();
+	const { id } = useParams();
 	const [auto] = useObtenerAuto(id);
-	console.log(auto.marca);
+
 	// states
-	const [marca, cambiarMarca] = useState(auto.marca);
-	const [modelo, cambiarModelo] = useState();
-	const [motor, cambiarMotos] = useState();
-	const [cv, cambiarCv] = useState();
-	const [km, cambiarKm] = useState();
-	const [year, cambiarYear] = useState();
-	const [puertas, cambiarPuertas] = useState();
-	const [carroceria, cambiarCarroceria] = useState('sedan');
-	const [combustible, cambiarCombustible] = useState('Nafta');
-	const [gnv, cambiarGnv] = useState('no');
-	const [transmision, cambiarTransmision] = useState();
-	const [precio, cambiarPrecio] = useState();
-	const [descripcion, cambiarDescripcion] = useState();
+	useEffect(() => {
+		if (auto) {
+			cambiarMarca(auto.marca);
+			cambiarModelo(auto.modelo);
+			cambiarMotor(auto.motor);
+			cambiarCv(auto.cv);
+			cambiarKm(auto.kilometros);
+			cambiarYear(auto.año);
+			cambiarPuertas(auto.puertas);
+			cambiarCarroceria(auto.carroceria);
+			cambiarCombustible(auto.combustible);
+			cambiarGnv(auto.gnv);
+			cambiarPrecio(auto.precio);
+			cambiarTransmision(auto.transmision);
+			cambiarDescripcion(auto.descripcion);
+		}
+	}, [auto]);
+
+	const [marca, cambiarMarca] = useState('');
+	const [modelo, cambiarModelo] = useState('');
+	const [motor, cambiarMotor] = useState('');
+	const [cv, cambiarCv] = useState('');
+	const [km, cambiarKm] = useState('');
+	const [year, cambiarYear] = useState('');
+	const [puertas, cambiarPuertas] = useState('');
+	const [carroceria, cambiarCarroceria] = useState('');
+	const [combustible, cambiarCombustible] = useState('');
+	const [gnv, cambiarGnv] = useState('');
+	const [transmision, cambiarTransmision] = useState('');
+	const [precio, cambiarPrecio] = useState('');
+	const [descripcion, cambiarDescripcion] = useState('');
 
 	// funciones
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		if (
+			marca !== '' &&
+			modelo !== '' &&
+			motor !== '' &&
+			cv !== '' &&
+			km !== '' &&
+			year !== '' &&
+			puertas !== '' &&
+			carroceria !== '' &&
+			combustible !== '' &&
+			gnv !== '' &&
+			transmision !== '' &&
+			precio !== '' &&
+			descripcion !== ''
+		) {
+			console.log(id);
+			editarAuto({
+				id,
+				marca,
+				modelo,
+				motor,
+				cv,
+				km,
+				year,
+				puertas,
+				carroceria,
+				combustible,
+				gnv,
+				transmision,
+				precio,
+				descripcion
+			});
+		} else {
+			console.log('Hay campos incompletos');
+		}
+	};
+
+	const handleChange = (e) => {
+		switch (e.target.name) {
+			case 'marca':
+				return cambiarMarca(e.target.value);
+			case 'modelo':
+				return cambiarModelo(e.target.value);
+			case 'motor':
+				return cambiarMotor(e.target.value);
+			case 'cv':
+				return cambiarCv(e.target.value);
+			case 'km':
+				return cambiarKm(e.target.value.replace(/[^0-9.]/g, ''));
+			case 'year':
+				return cambiarYear(e.target.value.replace(/[^0-9.]/g, ''));
+			case 'puertas':
+				return cambiarPuertas(e.target.value.replace(/[^0-9.]/g, ''));
+			case 'carroceria':
+				return cambiarCarroceria(e.target.value);
+			case 'combustible':
+				return cambiarCombustible(e.target.value);
+			case 'gnv':
+				return cambiarGnv(e.target.value);
+			case 'transmision':
+				return cambiarTransmision(e.target.value);
+			case 'precio':
+				return cambiarPrecio(e.target.value.replace(/[^0-9.]/g, ''));
+			case 'descripcion':
+				return cambiarDescripcion(e.target.value);
+			default:
+				break;
+		}
 	};
 
 	return (
@@ -70,18 +157,21 @@ const FormEditarAuto = () => {
 					<TextField
 						variant="outlined"
 						fullWidth
-						type="text"
 						label="Marca"
+						type="text"
 						value={marca}
+						name="marca"
+						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
 					<TextField
 						variant="outlined"
 						fullWidth
 						label="Motor"
-						name="motor"
 						type="text"
 						value={motor}
+						name="motor"
+						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
 
@@ -91,6 +181,8 @@ const FormEditarAuto = () => {
 						label="Kilometros"
 						type="number"
 						value={km}
+						name="km"
+						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
 
@@ -98,24 +190,27 @@ const FormEditarAuto = () => {
 						variant="outlined"
 						fullWidth
 						label="Puertas"
-						name="puertas"
 						type="number"
 						value={puertas}
+						name="puertas"
+						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
 
 					<TextField
 						select
+						variant="outlined"
 						fullWidth
 						label="Combustible"
-						name="combustible"
 						value={combustible}
+						name="combustible"
+						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					>
-						<MenuItem name="combustible" value={'Nafta'}>
+						<MenuItem name="combustible" value={'nafta'}>
 							Nafta
 						</MenuItem>
-						<MenuItem name="combustible" value={'Diesel'}>
+						<MenuItem name="combustible" value={'diesel'}>
 							Diesel
 						</MenuItem>
 					</TextField>
@@ -123,18 +218,20 @@ const FormEditarAuto = () => {
 						variant="outlined"
 						fullWidth
 						label="Transmision"
-						name="transmision"
 						type="text"
 						value={transmision}
+						name="transmision"
+						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
 					<TextField
 						variant="outlined"
 						fullWidth
 						label="Precio"
-						name="precio"
 						type="number"
 						value={precio}
+						name="precio"
+						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
 				</Grid>
@@ -153,24 +250,28 @@ const FormEditarAuto = () => {
 						label="Modelo"
 						type="text"
 						value={modelo}
+						name="modelo"
+						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
 					<TextField
 						variant="outlined"
 						fullWidth
 						label="CV"
-						name="cv"
 						type="text"
 						value={cv}
+						name="cv"
+						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
 					<TextField
 						variant="outlined"
 						fullWidth
 						label="Año"
-						name="año"
 						type="number"
 						value={year}
+						name="year"
+						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
 					<TextField
@@ -180,6 +281,8 @@ const FormEditarAuto = () => {
 						type="number"
 						label="Carroceria"
 						value={carroceria}
+						name="carroceria"
+						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					>
 						<MenuItem name="carroceria" value={'sedan'}>
@@ -206,10 +309,12 @@ const FormEditarAuto = () => {
 					</TextField>
 					<TextField
 						select
+						variant="outlined"
 						fullWidth
 						label="GNV"
-						name="gnv"
 						value={gnv}
+						name="gnv"
+						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					>
 						<MenuItem name="gnv" value={'si'}>
@@ -223,10 +328,11 @@ const FormEditarAuto = () => {
 						Descripcion
 					</InputLabel>
 					<TextareaAutosize
-						placeholder="Descripcion"
+						variant="outlined"
 						id="demo-simple-select-label"
-						name="descripcion"
 						value={descripcion}
+						name="descripcion"
+						onChange={handleChange}
 						style={{ width: '90%', maxHeight: 150 }}
 					/>
 					<Input type="file" name="imagen" />
