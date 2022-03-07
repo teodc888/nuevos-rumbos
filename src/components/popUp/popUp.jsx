@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 //Mui
 import {
@@ -10,6 +10,8 @@ import {
   Stack,
   Grid,
   Box,
+  Card,
+  CardMedia,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
@@ -27,7 +29,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function PopUp() {
-  const [open, setOpen] = React.useState(false);
+  const [resultado, setResultado] = useState("");
+
+  const [open, setOpen] = useState(false);
 
   const buscar = useSelector((state) => state.buscados);
   const colorElegido = useSelector((state) => state.color);
@@ -39,6 +43,8 @@ export default function PopUp() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  console.log(buscar.length);
 
   return (
     <div>
@@ -74,9 +80,9 @@ export default function PopUp() {
           alignItems="center"
           justifyContent="center"
           spacing={2}
-          sx={{marginTop: "2%"}}
+          sx={{ marginTop: "2%" }}
         >
-          <Buscador />
+          <Buscador setResultado={setResultado} />
         </Stack>
 
         <Box sx={{ width: "100%", marginTop: "3%" }}>
@@ -85,7 +91,24 @@ export default function PopUp() {
             spacing={{ xs: 4, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
-            {buscar.length > 0 &&
+            {buscar.length === 0 && resultado !== "" ? (
+              <Grid item xs={4} sm={8} md={12} textAlign="center">
+                <Typography variant="h5">
+                  No hay publicaciones que coincidan con tu búsqueda.
+                </Typography>
+                <Typography variant="h5">
+                  La búsqueda fue: {resultado}
+                </Typography>
+                <Card sx={{ maxWidth: 445, margin: "auto" }}>
+                  <CardMedia
+                    component="img"
+                    height="350"
+                    image={"https://media0.giphy.com/media/NnSFnC428LRHaxUNzj/giphy.gif?cid=ecf05e47iwvvag667o4fgte95kxhlubf7fzlw61l83vkmbe2&rid=giphy.gif&ct=s"}
+                    alt="Image NotFount"
+                  />
+                </Card>
+              </Grid>
+            ) : (
               buscar.map((buscar) => (
                 <Grid item xs={4} sm={4} md={4} key={buscar.id}>
                   <CardNR
@@ -100,7 +123,8 @@ export default function PopUp() {
                     favorito="true"
                   />
                 </Grid>
-              ))}
+              ))
+            )}
           </Grid>
         </Box>
       </Dialog>

@@ -13,7 +13,7 @@ import {
   buscarProductosRepuesto,
 } from "../../redux/actions/index";
 
-export default function Buscador({ opciones }) {
+export default function Buscador({ opciones, setResultado }) {
   const dispatch = useDispatch();
 
   const [input, setInput] = useState("");
@@ -21,6 +21,7 @@ export default function Buscador({ opciones }) {
   const handleInputChange = (e) => {
     e.preventDefault();
     setInput(e.target.value);
+    setResultado(e.target.value);
   };
 
   useEffect(() => {
