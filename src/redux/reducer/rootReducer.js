@@ -15,6 +15,7 @@ import {
   COLOR,
   DARK_MODE,
   RESET_FILTRO,
+  DELETE_FAVORITOS,
 } from "../actions/actionsTypes";
 
 const inicialState = {
@@ -140,7 +141,7 @@ export default function rootReducer(state = inicialState, action) {
     case FILTRO_AUTO:
       const { gnv, combustible, marca, precio, kilometros, carroceria } =
         action.payload;
-      let autosFiltro = state.autosBuscados
+      let autosFiltro = state.autosBuscados;
 
       autosFiltro =
         gnv === "todos"
@@ -314,6 +315,11 @@ export default function rootReducer(state = inicialState, action) {
           precioR: "todos",
           marcaR: "todos",
         },
+      };
+    case DELETE_FAVORITOS:
+      return {
+        ...state,
+        favoritos: [],
       };
     default:
       return state;

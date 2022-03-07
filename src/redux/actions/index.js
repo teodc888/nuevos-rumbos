@@ -16,6 +16,7 @@ import {
   COLOR,
   DARK_MODE,
   RESET_FILTRO,
+  DELETE_FAVORITOS,
 } from "./actionsTypes";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
@@ -150,6 +151,13 @@ export const darkModee = (payload) => {
 export const resetFiltro = (payload) => {
   return {
     type: RESET_FILTRO,
+    payload,
+  };
+}
+
+export const deleteFavoritos = (payload) => {
+  return {
+    type: DELETE_FAVORITOS,
     payload,
   };
 }
