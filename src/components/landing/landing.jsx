@@ -155,14 +155,14 @@ export default function Landing() {
             sm={16}
             md={8}
           >
-            <Card sx={{ maxWidth: "100%", maxHeight:"100%",margin: "auto", display: { xs: "block", sm:"none" ,md: "none" } }}>
+            <Card sx={{ maxWidth: "100%", maxHeight:"100%",margin: "auto", marginTop:"5%", display: { xs: "block", sm:"none" ,md: "none" } }}>
               <CardMedia
                 component="img"
                 image="https://w0.peakpx.com/wallpaper/575/190/HD-wallpaper-488-wheel-ferrari-red-silver-car-supercar-sports-america.jpg"
                 alt="green iguana"
               />
             </Card>
-            <Card sx={{ maxWidth: "100%", maxHeight:"100%",margin: "auto", display: { xs: "none", sm:"block" ,md: "block" } }}>
+            <Card sx={{ maxWidth: "100%", maxHeight:"100%",margin: "auto", marginTop:"3.5%", display: { xs: "none", sm:"block" ,md: "block" } }}>
               <CardMedia
                 component="img"
                 image="https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2013/12/02/13859743417025.jpg"
