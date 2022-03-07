@@ -4,7 +4,12 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 //Redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  getProductosAuto,
+  getProductosMoto,
+  getProductosRepuesto,
+} from "../../redux/actions/index";
 
 //Component
 import DetalleAuto from "../autos/detalleAuto/detalleAuto";
@@ -12,8 +17,15 @@ import DetalleMoto from "../motos/detalleMoto/detalleMoto";
 import DetalleRepuesto from "../repuestos/detalleRepuesto/detalleRepuesto";
 
 export default function Detalle() {
+  const dispatch = useDispatch();
   // trae el id del producto
   const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(getProductosAuto());
+    dispatch(getProductosMoto());
+    dispatch(getProductosRepuesto());
+  }, [dispatch]);
 
   // Traer todos los productos
   let producto = [];
