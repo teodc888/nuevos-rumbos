@@ -370,6 +370,7 @@ const FormEditarAuto = () => {
 						value={descripcion}
 						name="descripcion"
 						onChange={handleChange}
+						maxRows={10}
 						style={{ width: '90%', maxHeight: 150 }}
 					/>
 					<Input type="file" name="imagen" onChange={handleFiles} />
