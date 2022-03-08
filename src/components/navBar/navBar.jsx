@@ -18,6 +18,7 @@ import {
   ListItemText,
   Divider,
   Avatar,
+  Button,
 } from "@mui/material";
 // import MenuIcon from "@mui/icons-material/Menu";
 import MoreIcon from "@mui/icons-material/MoreVert";
@@ -31,6 +32,7 @@ import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
 import BuildIcon from "@mui/icons-material/Build";
 import HomeIcon from "@mui/icons-material/Home";
+import SearchIcon from "@mui/icons-material/Search";
 
 //Router
 import { useNavigate } from "react-router";
@@ -38,9 +40,6 @@ import { Link } from "react-router-dom";
 
 // React Router
 import { useSelector } from "react-redux";
-
-// Componetes
-import PopUp from "../popUp/popUp";
 
 //Slider
 const useStyles = makeStyles((theme) => ({
@@ -168,16 +167,20 @@ export default function NavBar({ setMode }) {
     setMobileMoreAnchorEl(null);
   };
 
+  const handleBuscador = () => {
+    navigate("/buscador");
+    window.location.reload();
+  };
+
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
   const fav = useSelector((state) => state.favoritos);
-  
+
   const mobileMenuId = "primary-search-account-menu-mobile";
 
   const renderMobileMenu = (
-
     <Menu
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{
@@ -193,7 +196,6 @@ export default function NavBar({ setMode }) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-
       <MenuItem onClick={navigateToLogin}>
         <IconButton
           size="large"
@@ -262,7 +264,9 @@ export default function NavBar({ setMode }) {
 
           {/* buscador */}
           <Typography variant="h6" component="div" sx={{ marginLeft: "1%" }}>
-            <PopUp />
+            <Button onClick={handleBuscador} sx={{ color: "white" }}>
+              <SearchIcon sx={{ mr: "10%", color: "white" }} /> Buscar
+            </Button>
           </Typography>
 
           {/* iconos */}
