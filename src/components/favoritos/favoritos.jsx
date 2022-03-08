@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 //Mui
 import { Stack, Typography, Grid, Box, Button } from "@mui/material";
@@ -33,6 +33,10 @@ export default function Favoritos() {
     dispatch(deleteFavoritos());
     errorSubmit();
   };
+
+  useEffect(() => {
+    document.title = "Favoritos";
+  }, []);
 
   return (
     <>

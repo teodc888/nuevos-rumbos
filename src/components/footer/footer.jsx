@@ -15,6 +15,7 @@ export default function Footer() {
         bgcolor="text.secondary"
         color="white"
         sx={{ marginTop: "5%", bgcolor: colorElegido }}
+        // sx={{ marginTop: "5%", background:"rgb(2,0,36)", background:" linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,0,0,0.9023984593837535) 0%, rgba(0,12,222,0.9360119047619048) 48%, rgba(0,255,46,0.8715861344537815) 100%)" }}
       >
         <Container maxWidth="lg">
           <Grid container spacing={5}>

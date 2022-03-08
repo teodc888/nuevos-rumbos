@@ -110,6 +110,19 @@ function App() {
     setOpen(false);
   };
 
+  const [visible, setVisible] = useState(false);
+
+  const toggleVisible = () => {
+    const scrolled = document.documentElement.scrollTop;
+    if (scrolled > 90) {
+      setVisible(true);
+    } else if (scrolled <= 300) {
+      setVisible(false);
+    }
+  };
+
+  window.addEventListener("scroll", toggleVisible);
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -153,14 +166,14 @@ function App() {
                 <>
                   <Fab
                     aria-label="add"
-                    sx={{ bgcolor: "pink", mr:"6px"  }}
+                    sx={{ bgcolor: "pink", mr: "6px" }}
                     onClick={handleInstagram}
                   >
                     <FontAwesomeIcon icon={faInstagram} />
                   </Fab>
                   <Fab
                     aria-label="add"
-                    sx={{ bgcolor: "green", mr:"6px"  }}
+                    sx={{ bgcolor: "green", mr: "6px" }}
                     onClick={handleClose}
                   >
                     <FontAwesomeIcon icon={faWhatsapp} />
@@ -177,22 +190,25 @@ function App() {
             </Box>
 
             {/* Icono subir */}
-            <Box
-              sx={{
-                display: { xs: "none", md: "none", sm: "none", lg: "block" },
-                position: "fixed",
-                bottom: "5%",
-                right: "92%",
-              }}
-            >
-              <Fab
-                aria-label="add"
-                sx={{ bgcolor: "red" }}
-                onClick={handleSubir}
+
+            {visible === true ? (
+              <Box
+                sx={{
+                  display: { xs: "none", md: "none", sm: "none", lg: "block" },
+                  position: "fixed",
+                  bottom: "5%",
+                  right: "92%",
+                }}
               >
-                <ArrowUpwardIcon />
-              </Fab>
-            </Box>
+                <Fab
+                  aria-label="add"
+                  sx={{ bgcolor: "#2196f3" }}
+                  onClick={handleSubir}
+                >
+                  <ArrowUpwardIcon />
+                </Fab>
+              </Box>
+            ) : null}
 
             {/* Redes sociales responsivas    */}
             <Box
@@ -204,7 +220,7 @@ function App() {
               }}
             >
               <Fab
-                sx={{ bgcolor: "#2196f3", mr:"6px" }}
+                sx={{ bgcolor: "#2196f3", mr: "6px" }}
                 aria-label="add"
                 onClick={handleClickOpen}
               >
@@ -214,21 +230,21 @@ function App() {
                 <>
                   <Fab
                     aria-label="add"
-                    sx={{ bgcolor: "pink", mr:"6px"  }}
+                    sx={{ bgcolor: "pink", mr: "6px" }}
                     onClick={handleInstagram}
                   >
                     <FontAwesomeIcon icon={faInstagram} />
                   </Fab>
                   <Fab
                     aria-label="add"
-                    sx={{ bgcolor: "green", mr:"6px"  }}
+                    sx={{ bgcolor: "green", mr: "6px" }}
                     onClick={handleWhatsapp}
                   >
                     <FontAwesomeIcon icon={faWhatsapp} />
                   </Fab>
                   <Fab
                     aria-label="add"
-                    sx={{ bgcolor: "red", mr:"6px"  }}
+                    sx={{ bgcolor: "red", mr: "6px" }}
                     onClick={handleSubir}
                   >
                     <ArrowUpwardIcon />
