@@ -54,7 +54,7 @@ export default function HomeAuto() {
 
   // UseEffect
   useEffect(() => {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     document.title = "Autos";
     dispatch(filtroAuto(filtro));
   }, [dispatch, filtro]);
@@ -116,6 +116,8 @@ export default function HomeAuto() {
     successSubmitFavorite();
     setOpen(false);
   };
+
+
 
   return (
     <div>
@@ -278,7 +280,14 @@ export default function HomeAuto() {
                 </FormControl>
               </Grid>
               <Grid item xs={4} sm={4} md={12}>
-                <Button fullWidth sx={{bgcolor:"green", color:"white"}} variant="contained" onClick={resetFiltros}>Borrar filtros</Button>
+                <Button
+                  fullWidth
+                  sx={{ bgcolor: "green", color: "white" }}
+                  variant="contained"
+                  onClick={resetFiltros}
+                >
+                  Borrar filtros
+                </Button>
               </Grid>
             </Grid>
           </Box>

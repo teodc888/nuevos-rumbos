@@ -48,6 +48,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import ShareIcon from "@mui/icons-material/Share";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 import { useState } from "react";
 
@@ -91,8 +92,21 @@ function App() {
     setOpen(false);
   };
 
+  const handleSubir = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    setOpen(false);
+  };
+
   const handleInstagram = () => {
     window.open("https://www.instagram.com/");
+    setOpen(false);
+  };
+
+  const handleWhatsapp = () => {
+    window.open("https://wa.me/543512550311");
     setOpen(false);
   };
 
@@ -125,6 +139,8 @@ function App() {
               <Route path="/favoritos" element={<Favoritos />} />
               <Route path="*" element={<Error />} />
             </Routes>
+
+            {/* redes sociales */}
             <Box
               sx={{
                 display: { xs: "none", md: "none", sm: "none", lg: "block" },
@@ -137,14 +153,14 @@ function App() {
                 <>
                   <Fab
                     aria-label="add"
-                    sx={{ bgcolor: "pink" }}
+                    sx={{ bgcolor: "pink", mr:"6px"  }}
                     onClick={handleInstagram}
                   >
                     <FontAwesomeIcon icon={faInstagram} />
                   </Fab>
                   <Fab
                     aria-label="add"
-                    sx={{ bgcolor: "green" }}
+                    sx={{ bgcolor: "green", mr:"6px"  }}
                     onClick={handleClose}
                   >
                     <FontAwesomeIcon icon={faWhatsapp} />
@@ -160,6 +176,25 @@ function App() {
               </Fab>
             </Box>
 
+            {/* Icono subir */}
+            <Box
+              sx={{
+                display: { xs: "none", md: "none", sm: "none", lg: "block" },
+                position: "fixed",
+                bottom: "5%",
+                right: "92%",
+              }}
+            >
+              <Fab
+                aria-label="add"
+                sx={{ bgcolor: "red" }}
+                onClick={handleSubir}
+              >
+                <ArrowUpwardIcon />
+              </Fab>
+            </Box>
+
+            {/* Redes sociales responsivas    */}
             <Box
               sx={{
                 display: { xs: "block", md: "block", sm: "block", lg: "none" },
@@ -169,7 +204,7 @@ function App() {
               }}
             >
               <Fab
-                sx={{ bgcolor: "#2196f3" }}
+                sx={{ bgcolor: "#2196f3", mr:"6px" }}
                 aria-label="add"
                 onClick={handleClickOpen}
               >
@@ -179,21 +214,47 @@ function App() {
                 <>
                   <Fab
                     aria-label="add"
-                    sx={{ bgcolor: "pink" }}
+                    sx={{ bgcolor: "pink", mr:"6px"  }}
                     onClick={handleInstagram}
                   >
                     <FontAwesomeIcon icon={faInstagram} />
                   </Fab>
                   <Fab
                     aria-label="add"
-                    sx={{ bgcolor: "green" }}
-                    onClick={handleClose}
+                    sx={{ bgcolor: "green", mr:"6px"  }}
+                    onClick={handleWhatsapp}
                   >
                     <FontAwesomeIcon icon={faWhatsapp} />
+                  </Fab>
+                  <Fab
+                    aria-label="add"
+                    sx={{ bgcolor: "red", mr:"6px"  }}
+                    onClick={handleSubir}
+                  >
+                    <ArrowUpwardIcon />
                   </Fab>
                 </>
               ) : null}
             </Box>
+
+            {/* Icono subir Responsivo */}
+            {/* 
+            <Box
+              sx={{
+                display: { xs: "block", md: "block", sm: "block", lg: "none" },
+                position: "fixed",
+                bottom: "5%",
+                left: "45%",
+              }}
+            >
+              <Fab
+                aria-label="add"
+                sx={{ bgcolor: "red" }}
+                onClick={handleSubir}
+              >
+                <ArrowUpwardIcon />
+              </Fab>
+            </Box> */}
           </>
         )}
         <ToastContainer />

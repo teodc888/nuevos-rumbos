@@ -21,7 +21,9 @@ export default function Buscador({ opciones, setResultado }) {
   const handleInputChange = (e) => {
     e.preventDefault();
     setInput(e.target.value);
-    setResultado(e.target.value);
+    if(opciones === "repuestos"){
+      setResultado(e.target.value);
+    }
   };
 
   useEffect(() => {

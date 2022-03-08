@@ -44,7 +44,6 @@ export default function PopUp() {
     setOpen(false);
   };
 
-  console.log(buscar.length);
 
   return (
     <div>

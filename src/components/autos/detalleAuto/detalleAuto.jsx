@@ -42,7 +42,6 @@ export default function DetalleAuto({
   gnv,
   id,
 }) {
-  
   //color
   const colorElegido = useSelector((state) => state.color);
 
@@ -97,9 +96,9 @@ export default function DetalleAuto({
     errorSubmit();
   };
 
-  useEffect(() =>{
-    window.scrollTo(0,0);
-  },[])
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
@@ -164,7 +163,7 @@ export default function DetalleAuto({
                     <Button
                       variant="contained"
                       onClick={addFavoritos}
-                      sx={{ bgcolor: "green" , color: "white" }}
+                      sx={{ bgcolor: "green", color: "white" }}
                     >
                       Agregar a favoritos
                     </Button>
