@@ -16,6 +16,7 @@ const editarAuto = async ({
 	transmision,
 	precio,
 	descripcion,
+	imagen
 }) => {
 	const documento = doc(db, 'auto', id);
 
@@ -33,6 +34,7 @@ const editarAuto = async ({
 		transmision: transmision,
 		precio: precio,
 		descripcion: descripcion,
+		imagen: imagen,
 	});
 };
 
