@@ -22,7 +22,7 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 
 //Components
 import CardNR from "../../card/card";
-import Buscador from "../../buscador/buscador";
+import InputBuscador from "../../buscador/InputBuscador/InputBuscador";
 import Paginado from "../../paginado/paginado";
 import Footer from "../../footer/footer";
 
@@ -134,7 +134,7 @@ export default function HomeRepuestos() {
               Repuestos
             </Typography>
             <Box sx={{ width: "100%" }}>
-              <Buscador opciones="repuesto" />
+              <InputBuscador opciones="repuesto" />
             </Box>
           </Stack>
           <Box sx={{ width: "100%", marginTop: "10%" }}>
@@ -212,7 +212,7 @@ export default function HomeRepuestos() {
                 Repuestos
               </Typography>
               <Box sx={{ width: "100%" }}>
-                <Buscador opciones="repuesto" />
+                <InputBuscador opciones="repuesto" />
               </Box>
             </Box>
             <Box sx={{ width: "100%", marginTop: "3%" }}>

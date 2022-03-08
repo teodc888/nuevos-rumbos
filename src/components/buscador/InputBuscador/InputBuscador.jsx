@@ -11,9 +11,9 @@ import {
   buscarProductosAuto,
   buscarProductosMotos,
   buscarProductosRepuesto,
-} from "../../redux/actions/index";
+} from "../../../redux/actions/index";
 
-export default function Buscador({ opciones, setResultado }) {
+export default function InputBuscador({ opciones, setResultado }) {
   const dispatch = useDispatch();
 
   const [input, setInput] = useState("");
@@ -21,7 +21,7 @@ export default function Buscador({ opciones, setResultado }) {
   const handleInputChange = (e) => {
     e.preventDefault();
     setInput(e.target.value);
-    if(opciones === "repuestos"){
+    if(opciones !== "auto" && opciones !== "moto" && opciones !== "repuesto"){
       setResultado(e.target.value);
     }
   };

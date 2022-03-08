@@ -22,7 +22,7 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 
 //Components
 import CardNR from "../../card/card";
-import Buscador from "../../buscador/buscador";
+import InputBuscador from "../../buscador/InputBuscador/InputBuscador";
 import Paginado from "../../paginado/paginado";
 
 //Redux
@@ -137,7 +137,7 @@ export default function HomeAuto() {
               Autos
             </Typography>
             <Box sx={{ width: "100%" }}>
-              <Buscador opciones="auto" />
+              <InputBuscador opciones="auto" />
             </Box>
           </Stack>
           <Box sx={{ width: "100%", marginTop: "10%" }}>
@@ -309,7 +309,7 @@ export default function HomeAuto() {
                 Autos
               </Typography>
               <Box sx={{ width: "100%" }}>
-                <Buscador opciones="auto" />
+                <InputBuscador opciones="auto" />
               </Box>
             </Box>
 

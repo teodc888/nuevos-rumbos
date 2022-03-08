@@ -11,6 +11,7 @@ import { ToastContainer } from "react-toastify";
 // package's
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+
 // components
 import NavBar from "./components/navBar/navBar";
 import LogIn from "./components/log-in/log-in";
@@ -23,6 +24,7 @@ import Favoritos from "./components/favoritos/favoritos";
 import EditarAutos from "./components/admin/editarAutos/editarAutos";
 import FormEditarAuto from "./components/admin/editarAutos/formEditarAuto";
 import Error from "./components/error/error";
+import Buscador from "./components/buscador/buscador/buscador";
 
 //components Admin
 import HomeAdmin from "./components/admin/home/home";
@@ -151,6 +153,7 @@ function App() {
               <Route path="/detalle/:id" element={<Detalle />} />
               <Route path="/favoritos" element={<Favoritos />} />
               <Route path="*" element={<Error />} />
+              <Route path="/buscador" element={<Buscador />} />
             </Routes>
 
             {/* redes sociales */}

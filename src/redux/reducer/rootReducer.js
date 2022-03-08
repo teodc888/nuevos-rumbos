@@ -72,10 +72,10 @@ export default function rootReducer(state = inicialState, action) {
       };
     case BUSCAR_PRODUCTOS_AUTO:
       const autosModelo = state.autosBuscados.filter((auto) => {
-        return auto.modelo.toLowerCase().includes(action.payload.toLowerCase());
+        return auto.modelo.toLowerCase().startsWith(action.payload.toLowerCase());
       });
       const autosMarca = state.autosBuscados.filter((auto) => {
-        return auto.marca.toLowerCase().includes(action.payload.toLowerCase());
+        return auto.marca.toLowerCase().startsWith(action.payload.toLowerCase());
       });
 
       return {
@@ -86,12 +86,12 @@ export default function rootReducer(state = inicialState, action) {
       const motosModelo = state.motosBuscados.filter((producto) => {
         return producto.modelo
           .toLowerCase()
-          .includes(action.payload.toLowerCase());
+          .startsWith(action.payload.toLowerCase());
       });
       const motosMarca = state.motosBuscados.filter((producto) => {
         return producto.marca
           .toLowerCase()
-          .includes(action.payload.toLowerCase());
+          .startsWith(action.payload.toLowerCase());
       });
 
       return {
@@ -102,12 +102,12 @@ export default function rootReducer(state = inicialState, action) {
       const repuestosModelo = state.repuestosBuscados.filter((producto) => {
         return producto.modelo
           .toLowerCase()
-          .includes(action.payload.toLowerCase());
+          .startsWith(action.payload.toLowerCase());
       });
       const repuestosMarca = state.repuestosBuscados.filter((producto) => {
         return producto.marca
           .toLowerCase()
-          .includes(action.payload.toLowerCase());
+          .startsWith(action.payload.toLowerCase());
       });
 
       return {
@@ -120,12 +120,12 @@ export default function rootReducer(state = inicialState, action) {
       const buscadorModelo = x.filter((producto) => {
         return producto.modelo
           .toLowerCase()
-          .includes(action.payload.toLowerCase());
+          .startsWith(action.payload.toLowerCase());
       });
       const buscadorMarca = x.filter((producto) => {
         return producto.marca
           .toLowerCase()
-          .includes(action.payload.toLowerCase());
+          .startsWith(action.payload.toLowerCase());
       });
       return {
         ...state,

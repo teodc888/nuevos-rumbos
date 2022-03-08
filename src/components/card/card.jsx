@@ -35,8 +35,6 @@ export default function CardNR({
   id,
   año,
   kilometros,
-  buscador,
-  setOpen,
   favorito,
   tipo,
 }) {
@@ -106,9 +104,6 @@ export default function CardNR({
 
   const handleNavigate = () => {
     navigate(`/detalle/${id}`);
-    if (buscador === true) {
-      setOpen(false);
-    }
   };
 
   return (
