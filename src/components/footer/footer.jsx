@@ -37,17 +37,22 @@ export default function Footer() {
               </Box>
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Box borderBottom={1}>Admin</Box>
+              <Box borderBottom={1}>Developers</Box>
               <Box>
-                <Link href="/log-in" color="inherit">
-                  Login
+                <Link href="https://www.linkedin.com/in/santiagoclemenzi-fullstack/" color="inherit">
+                  Santiago Clemenzi
                 </Link>
+                <Box>
+                  <Link href="https://www.linkedin.com/in/mateo-dellacqua-castro/" color="inherit">
+                    Mateo Dell'Acqua
+                  </Link>
+                </Box>
               </Box>
             </Grid>
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Redes</Box>
               <Box>
-                <Link href="/" color="inherit">
+                <Link href="https://www.instagram.com/" color="inherit">
                   Instagram
                 </Link>
               </Box>
@@ -57,8 +62,13 @@ export default function Footer() {
                 </Link>
               </Box>
               <Box>
-                <Link href="/" color="inherit">
+                <Link href="https://twitter.com/home" color="inherit">
                   Twitter
+                </Link>
+              </Box>
+              <Box>
+                <Link href="/" color="inherit">
+                  Whatsapp
                 </Link>
               </Box>
             </Grid>
