@@ -15,11 +15,12 @@ import {
 } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
 // components
-// import BtnGuardar from './components/btn-guardar';
+import BtnGuardar from './components/btn-guardar-motos';
 
 const FormEditarMoto = () => {
 	const navigate = useNavigate();
-	// funcion para obtener los autos
+    
+	// funcion para obtener las motos
 	const { id } = useParams();
 	const [moto] = useObtenerMoto(id);
 
@@ -80,7 +81,7 @@ const FormEditarMoto = () => {
 				icon: 'success',
 				width: 'auto',
 			});
-			navigate('/editarAutos');
+			navigate('/editarMotos');
 		} else {
 			Swal.fire({
 				title: 'Error!',
@@ -274,7 +275,7 @@ const FormEditarMoto = () => {
 					<Input type="file" name="imagen" onChange={handleFiles} />
 				</Grid>
 			</Grid>
-			{/* <BtnGuardar /> */}
+			<BtnGuardar />
 		</form>
 	);
 };
