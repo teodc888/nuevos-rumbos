@@ -11,11 +11,12 @@ import {
 	TextField,
 	TextareaAutosize,
 	MenuItem,
-	Button,
 	Input,
 	InputLabel,
 } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
+// components
+import BtnGuardar from './components/btn-guardar';
 
 const FormEditarAuto = () => {
 	const navigate = useNavigate();
@@ -111,7 +112,10 @@ const FormEditarAuto = () => {
 			});
 		}
 	};
-
+	// bloqueamos el submit por enter
+	const preventEnter = (e) => {
+		e.key === 'Enter' && e.preventDefault();
+	};
 	// permitioms modificar el input
 	const handleChange = (e) => {
 		switch (e.target.name) {
@@ -146,7 +150,7 @@ const FormEditarAuto = () => {
 		}
 	};
 
-	// ejecutamos el cambio en el input de la imagen 
+	// ejecutamos el cambio en el input de la imagen
 	const handleFiles = async (e) => {
 		const files = e.target.files;
 		const data = new FormData();
@@ -162,7 +166,7 @@ const FormEditarAuto = () => {
 		const file = await res.json();
 		cambiarImagen(file.secure_url);
 	};
-	
+
 	// estilos
 	const containerStyle = {
 		padding: '5%',
@@ -180,7 +184,12 @@ const FormEditarAuto = () => {
 	const formStyle = useStyle();
 
 	return (
-		<form align="center" className={formStyle.root} onSubmit={handleSubmit}>
+		<form
+			align="center"
+			id="myform-auto"
+			className={formStyle.root}
+			onSubmit={handleSubmit}
+		>
 			<Grid container style={containerStyle}>
 				<Grid
 					item
@@ -198,6 +207,7 @@ const FormEditarAuto = () => {
 						type="text"
 						value={marca}
 						name="marca"
+						onKeyPress={preventEnter}
 						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
@@ -208,6 +218,7 @@ const FormEditarAuto = () => {
 						type="text"
 						value={motor}
 						name="motor"
+						onKeyPress={preventEnter}
 						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
@@ -219,6 +230,7 @@ const FormEditarAuto = () => {
 						type="number"
 						value={km}
 						name="km"
+						onKeyPress={preventEnter}
 						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
@@ -230,6 +242,7 @@ const FormEditarAuto = () => {
 						type="number"
 						value={puertas}
 						name="puertas"
+						onKeyPress={preventEnter}
 						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
@@ -241,6 +254,7 @@ const FormEditarAuto = () => {
 						label="Combustible"
 						value={combustible}
 						name="combustible"
+						onKeyPress={preventEnter}
 						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					>
@@ -258,6 +272,7 @@ const FormEditarAuto = () => {
 						type="text"
 						value={transmision}
 						name="transmision"
+						onKeyPress={preventEnter}
 						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
@@ -268,6 +283,7 @@ const FormEditarAuto = () => {
 						type="number"
 						value={precio}
 						name="precio"
+						onKeyPress={preventEnter}
 						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
@@ -289,6 +305,7 @@ const FormEditarAuto = () => {
 						value={modelo}
 						name="modelo"
 						onChange={handleChange}
+						onKeyPress={preventEnter}
 						sx={{ marginTop: '2%' }}
 					/>
 					<TextField
@@ -299,6 +316,7 @@ const FormEditarAuto = () => {
 						value={cv}
 						name="cv"
 						onChange={handleChange}
+						onKeyPress={preventEnter}
 						sx={{ marginTop: '2%' }}
 					/>
 					<TextField
@@ -309,6 +327,7 @@ const FormEditarAuto = () => {
 						value={year}
 						name="year"
 						onChange={handleChange}
+						onKeyPress={preventEnter}
 						sx={{ marginTop: '2%' }}
 					/>
 					<TextField
@@ -320,6 +339,7 @@ const FormEditarAuto = () => {
 						value={carroceria}
 						name="carroceria"
 						onChange={handleChange}
+						onKeyPress={preventEnter}
 						sx={{ marginTop: '2%' }}
 					>
 						<MenuItem name="carroceria" value={'sedan'}>
@@ -352,6 +372,7 @@ const FormEditarAuto = () => {
 						value={gnv}
 						name="gnv"
 						onChange={handleChange}
+						onKeyPress={preventEnter}
 						sx={{ marginTop: '2%' }}
 					>
 						<MenuItem name="gnv" value={'si'}>
@@ -369,6 +390,7 @@ const FormEditarAuto = () => {
 						id="demo-simple-select-label"
 						value={descripcion}
 						name="descripcion"
+						onKeyPress={preventEnter}
 						onChange={handleChange}
 						maxRows={10}
 						style={{ width: '90%', maxHeight: 150 }}
@@ -376,19 +398,7 @@ const FormEditarAuto = () => {
 					<Input type="file" name="imagen" onChange={handleFiles} />
 				</Grid>
 			</Grid>
-			<Button
-				type="submit"
-				color="primary"
-				variant="contained"
-				sx={{
-					bgcolor: 'green',
-					color: 'white',
-					marginBottom: '5%',
-					width: '60%',
-				}}
-			>
-				Guardar
-			</Button>
+			<BtnGuardar />
 		</form>
 	);
 };
