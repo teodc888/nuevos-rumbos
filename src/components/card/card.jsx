@@ -10,6 +10,8 @@ import {
   Checkbox,
   IconButton,
   CardActionArea,
+  Alert,
+  Box,
 } from "@mui/material";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
@@ -37,12 +39,15 @@ export default function CardNR({
   kilometros,
   favorito,
   tipo,
+  descuento,
+  precioDescuento,
 }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   //color
   const colorElegido = useSelector((state) => state.color);
+  const darkMode = useSelector((state) => state.darkMode);
 
   //Favoritos
   const fav = useSelector((state) => state.favoritos);
@@ -106,10 +111,29 @@ export default function CardNR({
     navigate(`/detalle/${id}`);
   };
 
+  const darkModeCard = () => {
+    if (darkMode === "dark") {
+      return "black";
+    } else {
+      return "white";
+    }
+  };
+
   return (
-    <Card sx={{ maxWidth: 445, margin: "auto" }}>
+    <Card sx={{ maxWidth: 450, margin: "auto" }}>
       <CardActionArea onClick={handleNavigate}>
         <Link to={`/detalle/${id}`}>
+          {descuento > 0 ? (
+            <Box sx={{ position: "absolute" }}>
+              <Alert
+                variant="outlined"
+                severity="success"
+                sx={{ bgcolor: darkModeCard() }}
+              >
+                {descuento}% descuento
+              </Alert>
+            </Box>
+          ) : null}
           <CardMedia
             component="img"
             height="240"
@@ -118,17 +142,38 @@ export default function CardNR({
           />
         </Link>
         <CardContent>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
-            textAlign="center"
-            textTransform="capitalize"
-          >
-            {marca} {modelo}
-          </Typography>
+          {tipo === "repuesto" ? (
+            <Typography
+              gutterBottom
+              variant="h7"
+              component="div"
+              textAlign="center"
+              textTransform="capitalize"
+              textOverflow="ellipsis"
+            >
+              {marca} {modelo}
+            </Typography>
+          ) : (
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
+              textAlign="center"
+              textTransform="capitalize"
+            >
+              {marca} {modelo}
+            </Typography>
+          )}
+
           <Typography gutterBottom variant="h5" component="div">
-            ${Number(precio).toLocaleString("es-AR")}
+            {tipo === "repuesto" && descuento > 0 ? (
+              <>
+                <del>${precio}</del> $
+                {Number(precioDescuento).toLocaleString("es-AR")}
+              </>
+            ) : (
+              <>${Number(precio).toLocaleString("es-AR")}</>
+            )}
           </Typography>
           {tipo === "auto" ? (
             <Typography variant="body1" color="text.secondary">
@@ -145,22 +190,22 @@ export default function CardNR({
           ) : null}
         </CardContent>
       </CardActionArea>
-      {favorito === "true" ? (
-        <CardActions sx={{ float: "right" }}>
-          <Checkbox
-            checked={checked}
-            onChange={handleChange}
-            icon={<FavoriteBorder sx={{ color: colorElegido }} />}
-            checkedIcon={<Favorite sx={{ color: colorElegido }} />}
-          />
-        </CardActions>
-      ) : (
-        <CardActions sx={{ float: "right" }}>
+      <CardActions sx={{ float: "right" }}>
+        {favorito === "true" ? (
+          <>
+            <Checkbox
+              checked={checked}
+              onChange={handleChange}
+              icon={<FavoriteBorder sx={{ color: colorElegido }} />}
+              checkedIcon={<Favorite sx={{ color: colorElegido }} />}
+            />
+          </>
+        ) : (
           <IconButton onClick={deleteFavorito}>
             <DeleteIcon sx={{ color: colorElegido }} />
           </IconButton>
-        </CardActions>
-      )}
+        )}
+      </CardActions>
     </Card>
   );
 }
