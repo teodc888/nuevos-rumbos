@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // packages
 // import { useNavigate } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
-// import { getProductosAuto } from '../../../redux/actions/index';
+import { getProductosMoto } from '../../../redux/actions/index';
 // material ui
 import { Avatar } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -41,6 +41,13 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const EditarMotos = () => {
 	// funcion para obtener los autos
 	const motos = useSelector((state) => state.motos);
+
+	//Redux
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getProductosMoto());
+	}, [dispatch]);
 	return (
 		<TableContainer component={Paper} sx={{ marginTop: '1%' }}>
 			<Table sx={{ minWidth: 'auto' }} aria-label="customized table">
