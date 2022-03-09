@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 // consultas firebase
-import eliminarMoto from './../consultas/eliminarMotoFirebase';
+import eliminarMoto from '../consultas/eliminarMotoFirebase';
 // material iu
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -39,7 +39,7 @@ const BtnEliminar = ({ id, marca, modelo }) => {
 		setOpen(false);
 	};
 
-	// funcion eliminar auto
+	// funcion eliminar moto
 	const eliminar = () => {
 		if (eliminarMoto(id)) {
 			setTimeout(() => {
