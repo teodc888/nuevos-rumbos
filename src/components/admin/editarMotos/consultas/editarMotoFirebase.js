@@ -1,7 +1,7 @@
 import { db } from './../../../../firebase/firebaseConfig';
 import { doc, updateDoc } from 'firebase/firestore';
 
-const editarAuto = async ({
+const editarMoto = async ({
 	id,
 	marca,
 	modelo,
@@ -28,4 +28,4 @@ const editarAuto = async ({
 	});
 };
 
-export default editarAuto;
+export default editarMoto;
