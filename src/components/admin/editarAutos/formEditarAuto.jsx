@@ -112,7 +112,10 @@ const FormEditarAuto = () => {
 			});
 		}
 	};
-
+	// bloqueamos el submit por enter
+	const preventEnter = (e) => {
+		e.key === 'Enter' && e.preventDefault();
+	};
 	// permitioms modificar el input
 	const handleChange = (e) => {
 		switch (e.target.name) {
@@ -204,6 +207,7 @@ const FormEditarAuto = () => {
 						type="text"
 						value={marca}
 						name="marca"
+						onKeyPress={preventEnter}
 						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
@@ -214,6 +218,7 @@ const FormEditarAuto = () => {
 						type="text"
 						value={motor}
 						name="motor"
+						onKeyPress={preventEnter}
 						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
@@ -225,6 +230,7 @@ const FormEditarAuto = () => {
 						type="number"
 						value={km}
 						name="km"
+						onKeyPress={preventEnter}
 						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
@@ -236,6 +242,7 @@ const FormEditarAuto = () => {
 						type="number"
 						value={puertas}
 						name="puertas"
+						onKeyPress={preventEnter}
 						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
@@ -247,6 +254,7 @@ const FormEditarAuto = () => {
 						label="Combustible"
 						value={combustible}
 						name="combustible"
+						onKeyPress={preventEnter}
 						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					>
@@ -264,6 +272,7 @@ const FormEditarAuto = () => {
 						type="text"
 						value={transmision}
 						name="transmision"
+						onKeyPress={preventEnter}
 						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
@@ -274,6 +283,7 @@ const FormEditarAuto = () => {
 						type="number"
 						value={precio}
 						name="precio"
+						onKeyPress={preventEnter}
 						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
@@ -295,9 +305,7 @@ const FormEditarAuto = () => {
 						value={modelo}
 						name="modelo"
 						onChange={handleChange}
-						onKeyPress={(e) => {
-							e.key === 'Enter' && e.preventDefault();
-						}}
+						onKeyPress={preventEnter}
 						sx={{ marginTop: '2%' }}
 					/>
 					<TextField
@@ -308,6 +316,7 @@ const FormEditarAuto = () => {
 						value={cv}
 						name="cv"
 						onChange={handleChange}
+						onKeyPress={preventEnter}
 						sx={{ marginTop: '2%' }}
 					/>
 					<TextField
@@ -318,6 +327,7 @@ const FormEditarAuto = () => {
 						value={year}
 						name="year"
 						onChange={handleChange}
+						onKeyPress={preventEnter}
 						sx={{ marginTop: '2%' }}
 					/>
 					<TextField
@@ -329,6 +339,7 @@ const FormEditarAuto = () => {
 						value={carroceria}
 						name="carroceria"
 						onChange={handleChange}
+						onKeyPress={preventEnter}
 						sx={{ marginTop: '2%' }}
 					>
 						<MenuItem name="carroceria" value={'sedan'}>
@@ -361,6 +372,7 @@ const FormEditarAuto = () => {
 						value={gnv}
 						name="gnv"
 						onChange={handleChange}
+						onKeyPress={preventEnter}
 						sx={{ marginTop: '2%' }}
 					>
 						<MenuItem name="gnv" value={'si'}>
@@ -378,6 +390,7 @@ const FormEditarAuto = () => {
 						id="demo-simple-select-label"
 						value={descripcion}
 						name="descripcion"
+						onKeyPress={preventEnter}
 						onChange={handleChange}
 						maxRows={10}
 						style={{ width: '90%', maxHeight: 150 }}
