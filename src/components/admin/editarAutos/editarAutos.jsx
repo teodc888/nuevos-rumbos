@@ -43,6 +43,7 @@ const EditarAutos = () => {
 
 	// funcion Navigate
 	const navigate = useNavigate();
+	
 	// funcion para obtener los autos
 	const autos = useSelector((state) => state.autos);
 
