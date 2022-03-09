@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router';
 import useObtenerAuto from '../../../hooks/useObtenerAutos';
 import Swal from 'sweetalert2';
 // consulta firebase
-import editarAuto from './editarAutoFirebase';
+import editarAuto from './consultas/editarAutoFirebase';
 // Mui
 import {
 	Grid,

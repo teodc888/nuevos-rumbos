@@ -1,4 +1,4 @@
-import { db } from './../../../firebase/firebaseConfig';
+import { db } from './../../../../firebase/firebaseConfig';
 import { doc, updateDoc } from 'firebase/firestore';
 
 const editarAuto = async ({
