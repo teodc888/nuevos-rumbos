@@ -21,6 +21,10 @@ export default function HomeAdmin() {
         navigate("/editarAutos");
     };
 
+    const handleClickNavigateEditarMotos = () => {
+        navigate("/editarMotos");
+    };
+
   return (
     <div>
       <Stack
@@ -34,6 +38,7 @@ export default function HomeAdmin() {
         </Typography>
         <Button onClick={handleClickNavigateFormulario}>FORMULARIO</Button>
         <Button onClick={handleClickNavigateEditarAutos}>Editar Autos</Button>
+        <Button onClick={handleClickNavigateEditarMotos}>Editar Motos</Button>
       </Stack>
     </div>
   );

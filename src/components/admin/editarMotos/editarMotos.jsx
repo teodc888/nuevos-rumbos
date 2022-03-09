@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 // packages
 import { useNavigate } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProductosAuto } from '../../../redux/actions/index';
+import { getProductosMoto } from '../../../redux/actions/index';
 // material ui
 import { Avatar } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -15,8 +15,9 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 // components
-import BtnEliminar from './components/btn-eliminar';
+import BtnEliminar from './components/btn-eliminar-moto';
 
+// estilos de tabla
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
 		backgroundColor: theme.palette.common.black,
@@ -37,60 +38,59 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 	},
 }));
 
-const EditarAutos = () => {
+const EditarMotos = () => {
+	// navigate
+	const navigate = useNavigate();
+
+	// funcion para obtener los autos
+	const motos = useSelector((state) => state.motos);
+
+	// funcion OnCLick
+	const editarMoto = (id) => {
+		navigate(`/formEditarMoto/${id}`);
+	};
+
 	//Redux
 	const dispatch = useDispatch();
 
-	// funcion Navigate
-	const navigate = useNavigate();
-	
-	// funcion para obtener los autos
-	const autos = useSelector((state) => state.autos);
-
-	// funcion OnCLick
-	const editarAuto = (id) => {
-		navigate(`/formEditarAuto/${id}`);
-	};
-
 	useEffect(() => {
-		dispatch(getProductosAuto());
+		dispatch(getProductosMoto());
 	}, [dispatch]);
-
 	return (
 		<TableContainer component={Paper} sx={{ marginTop: '1%' }}>
 			<Table sx={{ minWidth: 'auto' }} aria-label="customized table">
 				<TableHead>
 					<TableRow>
 						<StyledTableCell>IMAGEN</StyledTableCell>
-						<StyledTableCell align="center">NOMBRE DEL AUTO</StyledTableCell>
+						<StyledTableCell align="center">NOMBRE DE LA MOTO</StyledTableCell>
 						<StyledTableCell align="center">EDITAR</StyledTableCell>
 						<StyledTableCell align="center">ELIMINAR</StyledTableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					{autos.map((auto) => (
-						<StyledTableRow key={auto.id}>
+					{motos.map((moto) => (
+						<StyledTableRow key={moto.id}>
 							<StyledTableCell component="th" scope="row">
 								<Avatar
-									src={auto.imagen}
-									alt={auto.marca}
+									src={moto.imagen}
+									alt={moto.marca}
 									sx={{ width: 150, height: 150 }}
 									variant="rounded"
 								/>
 							</StyledTableCell>
 							<StyledTableCell align="center">
-								<h6>{auto.marca + ' - ' + auto.modelo}</h6>
+								<h6>{moto.marca + ' - ' + moto.modelo}</h6>
 							</StyledTableCell>
 							<StyledTableCell align="center">
-								<Button variant="outlined" onClick={() => editarAuto(auto.id)}>
+								<Button variant="outlined" onClick={() => editarMoto(moto.id)}>
 									EDITAR
 								</Button>
 							</StyledTableCell>
 							<StyledTableCell align="center">
 								<BtnEliminar
-									id={auto.id}
-									modelo={auto.modelo}
-									marca={auto.marca}
+									id={moto.id}
+									modelo={moto.modelo}
+									marca={moto.marca}
 								/>
 							</StyledTableCell>
 						</StyledTableRow>
@@ -101,4 +101,4 @@ const EditarAutos = () => {
 	);
 };
 
-export default EditarAutos;
+export default EditarMotos;
