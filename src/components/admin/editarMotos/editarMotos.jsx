@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 // packages
-// import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProductosMoto } from '../../../redux/actions/index';
 // material ui
@@ -39,8 +39,16 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const EditarMotos = () => {
+	// navigate
+	const navigate = useNavigate();
+
 	// funcion para obtener los autos
 	const motos = useSelector((state) => state.motos);
+
+	// funcion OnCLick
+	const editarMoto = (id) => {
+		navigate(`/formEditarMoto/${id}`);
+	};
 
 	//Redux
 	const dispatch = useDispatch();
@@ -74,7 +82,9 @@ const EditarMotos = () => {
 								<h6>{moto.marca + ' - ' + moto.modelo}</h6>
 							</StyledTableCell>
 							<StyledTableCell align="center">
-								<Button variant="outlined">EDITAR</Button>
+								<Button variant="outlined" onClick={() => editarMoto(moto.id)}>
+									EDITAR
+								</Button>
 							</StyledTableCell>
 							<StyledTableCell align="center">
 								<BtnEliminar
