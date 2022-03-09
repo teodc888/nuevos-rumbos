@@ -95,6 +95,8 @@ export default function Detalle() {
             descripcion={productoSeleccionado.descripcion}
             id={productoSeleccionado.id}
             precio={Number(productoSeleccionado.precio).toLocaleString("es-AR")}
+            descuento={productoSeleccionado.descuento}
+            precioDescuento={Number(productoSeleccionado.precioDescuento).toLocaleString("es-AR")}
           />
         </>
       ) : (

@@ -11,6 +11,7 @@ import {
   Box,
   Button,
   CardActions,
+  Alert,
 } from "@mui/material";
 
 //Components
@@ -31,10 +32,11 @@ export default function DetalleRepuesto({
   descripcion,
   id,
   precio,
+  descuento,
+  precioDescuento,
 }) {
-
-    // //color
-    const colorElegido = useSelector((state) => state.color);
+  // //color
+  const colorElegido = useSelector((state) => state.color);
 
   const favorite = useSelector((state) => state.favoritos);
   let aux = [];
@@ -87,10 +89,19 @@ export default function DetalleRepuesto({
     errorSubmit();
   };
 
-  useEffect(() =>{
-    window.scrollTo(0,0);
-  },[])
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
+  const darkMode = useSelector((state) => state.darkMode);
+
+  const darkModeCard = () => {
+    if (darkMode === "dark") {
+      return "black";
+    } else {
+      return "white";
+    }
+  };
 
   return (
     <>
@@ -107,11 +118,22 @@ export default function DetalleRepuesto({
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
             <Grid item xs={4} sm={8} md={8}>
+              {descuento > 0 ? (
+                <Box sx={{ position: "absolute" }}>
+                  <Alert
+                    variant="outlined"
+                    severity="success"
+                    sx={{ bgcolor: darkModeCard() }}
+                  >
+                    {descuento}% descuento
+                  </Alert>
+                </Box>
+              ) : null}
               <Card sx={{ maxWidth: "100%", margin: "auto" }}>
                 <CardMedia
                   sx={{ display: { xs: "none", md: "flex" } }}
                   component="img"
-                  height="540"
+                  height="100%"
                   image={imagen}
                   alt="green iguana"
                 />
@@ -137,7 +159,13 @@ export default function DetalleRepuesto({
                     {marca} {modelo}
                   </Typography>
                   <Typography variant="h4" sx={{ marginTop: "10%" }}>
-                    ${precio}
+                    {descuento > 0 ? (
+                      <>
+                        <del>${precio}</del> ${precioDescuento}
+                      </>
+                    ) : (
+                      <>${precio}</>
+                    )}
                   </Typography>
                   <Typography
                     variant="body1"

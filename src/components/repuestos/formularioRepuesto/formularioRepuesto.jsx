@@ -4,15 +4,18 @@ import {
   TextField,
   TextareaAutosize,
   Input,
+  Button,
 } from "@mui/material";
 
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../../firebase/firebaseConfig";
 import Swal from "sweetalert2";
 
-export default function FormularioRepuesto({setTipo}) {
+export default function FormularioRepuesto({ setTipo }) {
   const [input, setInput] = useState({
-    detalle:"repuesto"
+    detalle: "repuesto",
+    descuento: "0",
+    precioDescuento: 0,
   });
 
   const handleChange = (e) => {
@@ -21,7 +24,6 @@ export default function FormularioRepuesto({setTipo}) {
       [e.target.name]: e.target.value,
     });
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,7 +67,16 @@ export default function FormularioRepuesto({setTipo}) {
     setInput({ ...input, imagen: file.secure_url });
   };
 
+  const handleClickCalcularPrecio = async (e) => {
+    if (input.descuento > 0) {
+      const precio =
+        (Number(input.precio) * Number(input.descuento)) / 100;
+        const precioDescuento =Number(input.precio) - precio ;
+      setInput({ ...input, precioDescuento: precioDescuento });
+    }
+  };
 
+  console.log(input);
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -111,6 +122,24 @@ export default function FormularioRepuesto({setTipo}) {
               value={input.precio}
               required
             />
+          </Grid>
+          <Grid item xs={16}>
+            <TextField
+              id="outlined-basic"
+              label="descuento"
+              variant="outlined"
+              name="descuento"
+              onChange={handleChange}
+              type="number"
+              value={input.descuento}
+              required
+            />
+          </Grid>
+          <Grid item xs={16}>
+            <Button onClick={handleClickCalcularPrecio}>
+              Calcular descuento
+            </Button>
+            <p>{input.precioDescuento}</p>
           </Grid>
           <Grid item xs={16}>
             <Input type="file" name="imagen" onChange={handleFiles} required />

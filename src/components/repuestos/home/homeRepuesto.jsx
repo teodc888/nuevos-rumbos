@@ -58,7 +58,7 @@ export default function HomeRepuestos() {
 
   // Paginado
   const [currentPage, setCurrentPage] = useState(1);
-  const [productoPorPagina] = useState(3);
+  const [productoPorPagina] = useState(10);
   const indeceDelUltimoProducto = currentPage * productoPorPagina; // 10
   const indiceDelPrimerProducto = indeceDelUltimoProducto - productoPorPagina; // 0
   const currentRepuestos = repuestos.slice(
@@ -245,6 +245,8 @@ export default function HomeRepuestos() {
                         tipo={"repuesto"}
                         descripcion={repuesto.descripcion}
                         favorito={"true"}
+                        descuento={repuesto.descuento}
+                        precioDescuento={repuesto.precioDescuento}
                       />
                     </Grid>
                   ))
