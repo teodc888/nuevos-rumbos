@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router';
 import useObtenerAuto from '../../../hooks/useObtenerAutos';
 import Swal from 'sweetalert2';
 // consulta firebase
-import editarAuto from './editarAutoFirebase';
+import editarAuto from './consultas/editarAutoFirebase';
 // Mui
 import {
 	Grid,
@@ -39,6 +39,7 @@ const FormEditarAuto = () => {
 			cambiarPrecio(auto.precio);
 			cambiarTransmision(auto.transmision);
 			cambiarDescripcion(auto.descripcion);
+			cambiarImagen(auto.imagen);
 		}
 	}, [auto]);
 
@@ -55,6 +56,7 @@ const FormEditarAuto = () => {
 	const [transmision, cambiarTransmision] = useState('');
 	const [precio, cambiarPrecio] = useState('');
 	const [descripcion, cambiarDescripcion] = useState('');
+	const [imagen, cambiarImagen] = useState('');
 
 	// funciones
 	const handleSubmit = (e) => {
@@ -90,6 +92,7 @@ const FormEditarAuto = () => {
 				transmision,
 				precio,
 				descripcion,
+				imagen,
 			});
 			Swal.fire({
 				text: 'Datos actualizados',
@@ -143,6 +146,23 @@ const FormEditarAuto = () => {
 		}
 	};
 
+	// ejecutamos el cambio en el input de la imagen 
+	const handleFiles = async (e) => {
+		const files = e.target.files;
+		const data = new FormData();
+		data.append('file', files[0]);
+		data.append('upload_preset', 'Product_photo ');
+		const res = await fetch(
+			'https://api.cloudinary.com/v1_1/djtkn6o7r/image/upload',
+			{
+				method: 'POST',
+				body: data,
+			}
+		);
+		const file = await res.json();
+		cambiarImagen(file.secure_url);
+	};
+	
 	// estilos
 	const containerStyle = {
 		padding: '5%',
@@ -350,9 +370,10 @@ const FormEditarAuto = () => {
 						value={descripcion}
 						name="descripcion"
 						onChange={handleChange}
+						maxRows={10}
 						style={{ width: '90%', maxHeight: 150 }}
 					/>
-					<Input type="file" name="imagen" />
+					<Input type="file" name="imagen" onChange={handleFiles} />
 				</Grid>
 			</Grid>
 			<Button
