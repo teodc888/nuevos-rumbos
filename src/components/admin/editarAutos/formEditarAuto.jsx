@@ -11,11 +11,12 @@ import {
 	TextField,
 	TextareaAutosize,
 	MenuItem,
-	Button,
 	Input,
 	InputLabel,
 } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
+// components
+import BtnGuardar from './components/btn-guardar';
 
 const FormEditarAuto = () => {
 	const navigate = useNavigate();
@@ -146,7 +147,7 @@ const FormEditarAuto = () => {
 		}
 	};
 
-	// ejecutamos el cambio en el input de la imagen 
+	// ejecutamos el cambio en el input de la imagen
 	const handleFiles = async (e) => {
 		const files = e.target.files;
 		const data = new FormData();
@@ -162,7 +163,7 @@ const FormEditarAuto = () => {
 		const file = await res.json();
 		cambiarImagen(file.secure_url);
 	};
-	
+
 	// estilos
 	const containerStyle = {
 		padding: '5%',
@@ -180,7 +181,12 @@ const FormEditarAuto = () => {
 	const formStyle = useStyle();
 
 	return (
-		<form align="center" className={formStyle.root} onSubmit={handleSubmit}>
+		<form
+			align="center"
+			id="myform-auto"
+			className={formStyle.root}
+			onSubmit={handleSubmit}
+		>
 			<Grid container style={containerStyle}>
 				<Grid
 					item
@@ -289,6 +295,9 @@ const FormEditarAuto = () => {
 						value={modelo}
 						name="modelo"
 						onChange={handleChange}
+						onKeyPress={(e) => {
+							e.key === 'Enter' && e.preventDefault();
+						}}
 						sx={{ marginTop: '2%' }}
 					/>
 					<TextField
@@ -376,19 +385,7 @@ const FormEditarAuto = () => {
 					<Input type="file" name="imagen" onChange={handleFiles} />
 				</Grid>
 			</Grid>
-			<Button
-				type="submit"
-				color="primary"
-				variant="contained"
-				sx={{
-					bgcolor: 'green',
-					color: 'white',
-					marginBottom: '5%',
-					width: '60%',
-				}}
-			>
-				Guardar
-			</Button>
+			<BtnGuardar />
 		</form>
 	);
 };
