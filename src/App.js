@@ -127,6 +127,7 @@ function App() {
 
   window.addEventListener("scroll", toggleVisible);
 
+  console.log(visible);
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -196,25 +197,53 @@ function App() {
               </Fab>
             </Box>
 
-            {/* Icono subir */}
+            {/* Icono subir normal y responsivo*/}
 
-            {visible === true ? (
-              <Box
-                sx={{
-                  display: { xs: "none", md: "none", sm: "none", lg: "block" },
-                  position: "fixed",
-                  bottom: "5%",
-                  right: "92%",
-                }}
-              >
-                <Fab
-                  aria-label="add"
-                  sx={{ bgcolor: "#2196f3" }}
-                  onClick={handleSubir}
+            {visible === true && open === false ? (
+              <>
+                <Box
+                  sx={{
+                    display: {
+                      xs: "none",
+                      md: "none",
+                      sm: "none",
+                      lg: "block",
+                    },
+                    position: "fixed",
+                    bottom: "5%",
+                    right: "92%",
+                  }}
                 >
-                  <ArrowUpwardIcon />
-                </Fab>
-              </Box>
+                  <Fab
+                    aria-label="add"
+                    sx={{ bgcolor: "#2196f3" }}
+                    onClick={handleSubir}
+                  >
+                    <ArrowUpwardIcon />
+                  </Fab>
+                </Box>
+                <Box
+                  sx={{
+                    display: {
+                      xs: "block",
+                      md: "block",
+                      sm: "block",
+                      lg: "none",
+                    },
+                    position: "fixed",
+                    bottom: "5%",
+                    left: "42.5%",
+                  }}
+                >
+                  <Fab
+                    aria-label="add"
+                    sx={{ bgcolor: "red" }}
+                    onClick={handleSubir}
+                  >
+                    <ArrowUpwardIcon />
+                  </Fab>
+                </Box>
+              </>
             ) : null}
 
             {/* Redes sociales responsivas    */}
@@ -249,35 +278,9 @@ function App() {
                   >
                     <FontAwesomeIcon icon={faWhatsapp} />
                   </Fab>
-                  <Fab
-                    aria-label="add"
-                    sx={{ bgcolor: "red", mr: "6px" }}
-                    onClick={handleSubir}
-                  >
-                    <ArrowUpwardIcon />
-                  </Fab>
                 </>
               ) : null}
             </Box>
-
-            {/* Icono subir Responsivo */}
-            {/* 
-            <Box
-              sx={{
-                display: { xs: "block", md: "block", sm: "block", lg: "none" },
-                position: "fixed",
-                bottom: "5%",
-                left: "45%",
-              }}
-            >
-              <Fab
-                aria-label="add"
-                sx={{ bgcolor: "red" }}
-                onClick={handleSubir}
-              >
-                <ArrowUpwardIcon />
-              </Fab>
-            </Box> */}
           </>
         )}
         <ToastContainer />
