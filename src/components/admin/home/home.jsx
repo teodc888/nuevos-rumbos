@@ -25,8 +25,8 @@ export default function HomeAdmin() {
 		navigate('/editarMotos');
 	};
 
-	const handleClickNavigateEditarRespuestos = () => {
-		navigate('/editarRespuestos');
+	const handleClickNavigateEditarRepuestos = () => {
+		navigate('/editarRepuestos');
 	};
 
 	return (
@@ -43,8 +43,8 @@ export default function HomeAdmin() {
 				<Button onClick={handleClickNavigateFormulario}>FORMULARIO</Button>
 				<Button onClick={handleClickNavigateEditarAutos}>Editar Autos</Button>
 				<Button onClick={handleClickNavigateEditarMotos}>Editar Motos</Button>
-				<Button onClick={handleClickNavigateEditarRespuestos}>
-					Editar Respuestos
+				<Button onClick={handleClickNavigateEditarRepuestos}>
+					Editar Repuestos
 				</Button>
 			</Stack>
 		</div>

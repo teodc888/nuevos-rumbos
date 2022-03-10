@@ -27,7 +27,7 @@ import Error from "./components/error/error";
 import Buscador from "./components/buscador/buscador/buscador";
 import EditarMotos from "./components/admin/editarMotos/editarMotos";
 import FormEditarMoto from "./components/admin/editarMotos/formEditarMoto";
-import EditarRespuestos from "./components/admin/editarRespuestos/editarRespuestos";
+import EditarRepuestos from "./components/admin/editarRepuestos/editarRepuestos";
 //components Admin
 import HomeAdmin from "./components/admin/home/home";
 import NavBarAdmin from "./components/admin/navBar/navBar";
@@ -142,7 +142,7 @@ function App() {
               <Route path="/formEditarAuto/:id" element={<FormEditarAuto />} />
               <Route path="/editarMotos" element={<EditarMotos />} />
               <Route path="/formEditarMoto/:id" element={<FormEditarMoto />} />
-              <Route path="/editarRespuestos" element={<EditarRespuestos />} />
+              <Route path="/editarRepuestos" element={<EditarRepuestos />} />
               {/* <Route path="*" element={<Error />} /> */}
             </Routes>
           </>
