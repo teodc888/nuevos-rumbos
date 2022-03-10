@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../../firebase/firebaseConfig";
+import { db } from "../../../../firebase/firebaseConfig";
 import Swal from "sweetalert2";
 import InfoIcon from "@mui/icons-material/Info";
 export default function FormularioAuto({setTipo}) {
