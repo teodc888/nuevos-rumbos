@@ -5,6 +5,12 @@ import { Container, Grid, Box, Link } from "@mui/material";
 //Redux
 import { useSelector } from "react-redux";
 
+//Fab
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+
 export default function Footer() {
   const colorElegido = useSelector((state) => state.color);
   return (
@@ -54,22 +60,17 @@ export default function Footer() {
               <Box borderBottom={1}>Redes</Box>
               <Box>
                 <Link href="https://www.instagram.com/" color="inherit">
-                  Instagram
+                <FontAwesomeIcon icon={faInstagram} /> Instagram
                 </Link>
               </Box>
               <Box>
                 <Link href="/" color="inherit">
-                  Facebook
-                </Link>
-              </Box>
-              <Box>
-                <Link href="https://twitter.com/home" color="inherit">
-                  Twitter
+                <FontAwesomeIcon icon={faFacebook} /> Facebook
                 </Link>
               </Box>
               <Box>
                 <Link href="/" color="inherit">
-                  Whatsapp
+                <FontAwesomeIcon icon={faWhatsapp} /> Whatsapp
                 </Link>
               </Box>
             </Grid>
