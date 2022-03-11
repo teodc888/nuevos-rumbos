@@ -20,7 +20,7 @@ import BtnGuardar from './components/btn-guardar-repuesto';
 const FormEditarRepuesto = () => {
 	const navigate = useNavigate();
 
-	// funcion para obtener las motos
+	// funcion para obtener los repuestos
 	const { id } = useParams();
 	const [repuesto] = useObtenerRepuesto(id);
 
@@ -60,7 +60,7 @@ const FormEditarRepuesto = () => {
 				icon: 'success',
 				width: 'auto',
 			});
-			navigate('/editarRepuesto');
+			navigate('/editarRepuestos');
 		} else {
 			Swal.fire({
 				title: 'Error!',

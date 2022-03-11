@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 // packages
 import { useNavigate } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
-// import { getProductosRepuesto } from '../../../redux/actions/index';
+import { getProductosRepuesto } from '../../../redux/actions/index';
 // material ui
 import { Avatar } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -42,9 +42,8 @@ const EditarRepuestos = () => {
 	// navigate
 	const navigate = useNavigate();
 
-	// funcion para obtener los autos
+	// funcion para obtener los repuestos
 	const repuestos = useSelector((state) => state.repuestos);
-	console.log(repuestos);
 
 	// funcion OnCLick
 	const editarRepuesto = (id) => {
@@ -52,11 +51,11 @@ const EditarRepuestos = () => {
 	};
 
 	//Redux
-	// const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-	// useEffect(() => {
-	// 	dispatch(getProductosMoto());
-	// }, [dispatch]);
+	useEffect(() => {
+		dispatch(getProductosRepuesto());
+	}, [dispatch]);
 
 	return (
 		<TableContainer component={Paper} sx={{ marginTop: '1%' }}>

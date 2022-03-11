@@ -56,6 +56,7 @@ const EditarMotos = () => {
 	useEffect(() => {
 		dispatch(getProductosMoto());
 	}, [dispatch]);
+	
 	return (
 		<TableContainer component={Paper} sx={{ marginTop: '1%' }}>
 			<Table sx={{ minWidth: 'auto' }} aria-label="customized table">
