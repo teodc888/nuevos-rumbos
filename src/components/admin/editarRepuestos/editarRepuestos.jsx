@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 // packages
-// import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 // import { getProductosRepuesto } from '../../../redux/actions/index';
 // material ui
@@ -15,7 +15,6 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 // components
-// import BtnEliminar from './components/btn-eliminar-moto';
 import BtnEliminar from './components/btn-eliminar-repuesto';
 
 // estilos de tabla
@@ -41,16 +40,16 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const EditarRepuestos = () => {
 	// navigate
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
 
 	// funcion para obtener los autos
 	const repuestos = useSelector((state) => state.repuestos);
 	console.log(repuestos);
 
 	// funcion OnCLick
-	// const editarMoto = (id) => {
-	// 	navigate(`/formEditarMoto/${id}`);
-	// };
+	const editarRepuesto = (id) => {
+		navigate(`/formEditarRepuesto/${id}`);
+	};
 
 	//Redux
 	// const dispatch = useDispatch();
@@ -85,7 +84,7 @@ const EditarRepuestos = () => {
 								<h6>{repuesto.marca + ' - ' + repuesto.modelo}</h6>
 							</StyledTableCell>
 							<StyledTableCell align="center">
-								<Button variant="outlined">
+								<Button variant="outlined" onClick={()=>editarRepuesto(repuesto.id)}>
 									EDITAR
 								</Button>
 							</StyledTableCell>
