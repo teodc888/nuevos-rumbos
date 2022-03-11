@@ -4,15 +4,21 @@ import {
   TextField,
   TextareaAutosize,
   Input,
+  Button,
 } from "@mui/material";
 
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../../firebase/firebaseConfig";
+import { db } from "../../../../firebase/firebaseConfig";
 import Swal from "sweetalert2";
 
-export default function FormularioMoto({setTipo}) {
+import {useNavigate} from 'react-router-dom';
+
+export default function FormularioRepuesto() {
+  const navigate = useNavigate();
   const [input, setInput] = useState({
-    detalle:"moto"
+    detalle: "repuesto",
+    descuento: "0",
+    precioDescuento: 0,
   });
 
   const handleChange = (e) => {
@@ -22,13 +28,11 @@ export default function FormularioMoto({setTipo}) {
     });
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const docRef = await addDoc(collection(db, "moto"), input);
+      const docRef = await addDoc(collection(db, "repuesto"), input);
       setInput("");
-      setTipo("");
       Swal.fire({
         text: "se Cargo con exito",
         confirmButtonText: "Ok",
@@ -37,6 +41,7 @@ export default function FormularioMoto({setTipo}) {
         timer: 2500,
       });
       console.log("Document written with ID: ", docRef.id);
+      navigate("/");
     } catch (error) {
       Swal.fire({
         title: "Error!",
@@ -65,11 +70,20 @@ export default function FormularioMoto({setTipo}) {
     setInput({ ...input, imagen: file.secure_url });
   };
 
+  const handleClickCalcularPrecio = async (e) => {
+    if (input.descuento > 0) {
+      const precio =
+        (Number(input.precio) * Number(input.descuento)) / 100;
+        const precioDescuento =Number(input.precio) - precio ;
+      setInput({ ...input, precioDescuento: precioDescuento });
+    }
+  };
 
+  console.log(input);
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <h1 className="App">Moto</h1>
+        <h1 className="App">Repuesto</h1>
         <Grid
           container
           spacing={2}
@@ -103,54 +117,6 @@ export default function FormularioMoto({setTipo}) {
           <Grid item xs={16}>
             <TextField
               id="outlined-basic"
-              label="cilindrada"
-              variant="outlined"
-              name="cilindrada"
-              onChange={handleChange}
-              type="text"
-              value={input.cilindrada}
-              required
-            />
-          </Grid>
-          <Grid item xs={16}>
-            <TextField
-              id="outlined-basic"
-              label="cv"
-              variant="outlined"
-              name="cv"
-              onChange={handleChange}
-              type="text"
-              value={input.cv}
-              required
-            />
-          </Grid>
-          <Grid item xs={16}>
-            <TextField
-              id="outlined-basic"
-              label="año"
-              variant="outlined"
-              name="año"
-              onChange={handleChange}
-              type="number"
-              value={input.año}
-              required
-            />
-          </Grid>
-          <Grid item xs={16}>
-            <TextField
-              id="outlined-basic"
-              label="kilometros"
-              variant="outlined"
-              name="kilometros"
-              onChange={handleChange}
-              type="number"
-              value={input.kilometros}
-              required
-            />
-          </Grid>
-          <Grid item xs={16}>
-            <TextField
-              id="outlined-basic"
               label="precio"
               variant="outlined"
               name="precio"
@@ -159,6 +125,24 @@ export default function FormularioMoto({setTipo}) {
               value={input.precio}
               required
             />
+          </Grid>
+          <Grid item xs={16}>
+            <TextField
+              id="outlined-basic"
+              label="descuento"
+              variant="outlined"
+              name="descuento"
+              onChange={handleChange}
+              type="number"
+              value={input.descuento}
+              required
+            />
+          </Grid>
+          <Grid item xs={16}>
+            <Button onClick={handleClickCalcularPrecio}>
+              Calcular descuento
+            </Button>
+            <p>{input.precioDescuento}</p>
           </Grid>
           <Grid item xs={16}>
             <Input type="file" name="imagen" onChange={handleFiles} required />
