@@ -15,7 +15,7 @@ import {
 } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
 // components
-// import BtnGuardar from './components/btn-guardar-motos';
+import BtnGuardar from './components/btn-guardar-repuesto';
 
 const FormEditarRepuesto = () => {
 	const navigate = useNavigate();
@@ -202,7 +202,7 @@ const FormEditarRepuesto = () => {
 					<Input type="file" name="imagen" onChange={handleFiles} />
 				</Grid>
 			</Grid>
-			{/* <BtnGuardar /> */}
+			<BtnGuardar />
 		</form>
 	);
 };
