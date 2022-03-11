@@ -16,6 +16,7 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 // components
 // import BtnEliminar from './components/btn-eliminar-moto';
+import BtnEliminar from './components/btn-eliminar-repuesto';
 
 // estilos de tabla
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -89,7 +90,11 @@ const EditarRepuestos = () => {
 								</Button>
 							</StyledTableCell>
 							<StyledTableCell align="center">
-								<Button variant="outlined" >ELIMINAR</Button>
+								<BtnEliminar
+									id={repuesto.id}
+									marca={repuesto.marca}
+									modelo={repuesto.modelo}
+								/>
 							</StyledTableCell>
 						</StyledTableRow>
 					))}
