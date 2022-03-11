@@ -44,7 +44,7 @@ export default function Footer() {
               </Box>
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Box borderBottom={1}>Developers</Box>
+              <Box borderBottom={1}>Desarrolladores</Box>
               <Box>
                 <Link href="https://www.linkedin.com/in/santiagoclemenzi-fullstack/" color="inherit">
                   Santiago Clemenzi

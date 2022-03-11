@@ -14,10 +14,14 @@ import {
 } from "@mui/material";
 
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../../firebase/firebaseConfig";
+import { db } from "../../../../firebase/firebaseConfig";
 import Swal from "sweetalert2";
 import InfoIcon from "@mui/icons-material/Info";
-export default function FormularioAuto({setTipo}) {
+
+import { useNavigate } from "react-router-dom";
+
+export default function FormularioAuto() {
+  const navigate = useNavigate();
   const [input, setInput] = useState({
     gnv:"no",
     carroceria:"Coupe",
@@ -58,8 +62,9 @@ export default function FormularioAuto({setTipo}) {
         width: "30%",
         timer: 2500,
       });
-      setTipo("");
+
       console.log("Document written with ID: ", docRef.id);
+      navigate("/");
     } catch (error) {
       Swal.fire({
         title: "Error!",

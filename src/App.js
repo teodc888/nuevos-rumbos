@@ -32,7 +32,9 @@ import FormEditarRepuesto from "./components/admin/editarRepuestos/formEditarRep
 //components Admin
 import HomeAdmin from "./components/admin/home/home";
 import NavBarAdmin from "./components/admin/navBar/navBar";
-import Formulario from "./components/admin/formulario/formulario";
+import FormularioAuto from "./components/admin/formulario/formularioAuto/formularioAuto";
+import FormularioMoto from "./components/admin/formulario/formularioMoto/formularioMoto";
+import FormularioRepuesto from "./components/admin/formulario/formularioRepuesto/formularioRepuesto";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -57,7 +59,7 @@ import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 import { useState } from "react";
 
-function App() {
+export default function App() {
   const login = useSelector((state) => state.login);
 
   const dispatch = useDispatch();
@@ -139,7 +141,9 @@ function App() {
             <NavBarAdmin setMode={setMode} />
             <Routes>
               <Route path="/" element={<HomeAdmin />} />
-              <Route path="/formulario" element={<Formulario />} />
+              <Route path="/formularioAuto" element={<FormularioAuto />} />
+              <Route path="/formularioMoto" element={<FormularioMoto />} />
+              <Route path="/formularioRepuesto" element={<FormularioRepuesto />} />
               <Route path="/editarAutos" element={<EditarAutos />} />
               <Route path="/formEditarAuto/:id" element={<FormEditarAuto />} />
               <Route path="/editarMotos" element={<EditarMotos />} />
@@ -292,4 +296,3 @@ function App() {
   );
 }
 
-export default App;
