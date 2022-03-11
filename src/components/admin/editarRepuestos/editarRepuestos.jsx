@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 // packages
 import { useNavigate } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProductosMoto } from '../../../redux/actions/index';
+import { getProductosRepuesto } from '../../../redux/actions/index';
 // material ui
 import { Avatar } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -15,7 +15,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 // components
-import BtnEliminar from './components/btn-eliminar-moto';
+import BtnEliminar from './components/btn-eliminar-repuesto';
 
 // estilos de tabla
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -38,25 +38,25 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 	},
 }));
 
-const EditarMotos = () => {
+const EditarRepuestos = () => {
 	// navigate
 	const navigate = useNavigate();
 
-	// funcion para obtener los autos
-	const motos = useSelector((state) => state.motos);
+	// funcion para obtener los repuestos
+	const repuestos = useSelector((state) => state.repuestos);
 
 	// funcion OnCLick
-	const editarMoto = (id) => {
-		navigate(`/formEditarMoto/${id}`);
+	const editarRepuesto = (id) => {
+		navigate(`/formEditarRepuesto/${id}`);
 	};
 
 	//Redux
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(getProductosMoto());
+		dispatch(getProductosRepuesto());
 	}, [dispatch]);
-	
+
 	return (
 		<TableContainer component={Paper} sx={{ marginTop: '1%' }}>
 			<Table sx={{ minWidth: 'auto' }} aria-label="customized table">
@@ -69,29 +69,29 @@ const EditarMotos = () => {
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					{motos.map((moto) => (
-						<StyledTableRow key={moto.id}>
+					{repuestos.map((repuesto) => (
+						<StyledTableRow key={repuesto.id}>
 							<StyledTableCell component="th" scope="row">
 								<Avatar
-									src={moto.imagen}
-									alt={moto.marca}
+									src={repuesto.imagen}
+									alt={repuesto.marca}
 									sx={{ width: 150, height: 150 }}
 									variant="rounded"
 								/>
 							</StyledTableCell>
 							<StyledTableCell align="center">
-								<h6>{moto.marca + ' - ' + moto.modelo}</h6>
+								<h6>{repuesto.marca + ' - ' + repuesto.modelo}</h6>
 							</StyledTableCell>
 							<StyledTableCell align="center">
-								<Button variant="outlined" onClick={() => editarMoto(moto.id)}>
+								<Button variant="outlined" onClick={()=>editarRepuesto(repuesto.id)}>
 									EDITAR
 								</Button>
 							</StyledTableCell>
 							<StyledTableCell align="center">
 								<BtnEliminar
-									id={moto.id}
-									modelo={moto.modelo}
-									marca={moto.marca}
+									id={repuesto.id}
+									marca={repuesto.marca}
+									modelo={repuesto.modelo}
 								/>
 							</StyledTableCell>
 						</StyledTableRow>
@@ -102,4 +102,4 @@ const EditarMotos = () => {
 	);
 };
 
-export default EditarMotos;
+export default EditarRepuestos;
