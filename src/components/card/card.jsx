@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import {
   Card,
   Typography,
-  CardMedia,
   CardContent,
   CardActions,
   Checkbox,
@@ -18,7 +17,6 @@ import Favorite from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 //Router
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 
 //Redux
@@ -28,6 +26,8 @@ import { eliminarFavoritos } from "../../redux/actions/index";
 
 //toastify
 import { toast } from "react-toastify";
+
+import Carrousel from "../../components/carrousel/carrousel";
 
 export default function CardNR({
   marca,
@@ -121,26 +121,19 @@ export default function CardNR({
 
   return (
     <Card sx={{ maxWidth: 450, margin: "auto" }}>
+      {descuento > 0 ? (
+        <Box sx={{ position: "absolute" }}>
+          <Alert
+            variant="outlined"
+            severity="success"
+            sx={{ bgcolor: darkModeCard() }}
+          >
+            {descuento}% descuento
+          </Alert>
+        </Box>
+      ) : null}
+      <Carrousel imagen={imagen} tamañoCard={"450"} tamañoImagen={"240"} velocidad={null} />
       <CardActionArea onClick={handleNavigate}>
-        <Link to={`/detalle/${id}`}>
-          {descuento > 0 ? (
-            <Box sx={{ position: "absolute" }}>
-              <Alert
-                variant="outlined"
-                severity="success"
-                sx={{ bgcolor: darkModeCard() }}
-              >
-                {descuento}% descuento
-              </Alert>
-            </Box>
-          ) : null}
-          <CardMedia
-            component="img"
-            height="240"
-            image={imagen}
-            alt="Image NotFount"
-          />
-        </Link>
         <CardContent>
           {tipo === "repuesto" ? (
             <Typography

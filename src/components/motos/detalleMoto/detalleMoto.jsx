@@ -5,7 +5,6 @@ import {
   Stack,
   Typography,
   Card,
-  CardMedia,
   Box,
   Grid,
   CardContent,
@@ -16,6 +15,8 @@ import {
 //Componentes
 import CardDetalle from "../../autos/cardDetalle/cardDetalle";
 import Footer from "../../footer/footer";
+import Carrousel from "../../carrousel/carrousel";
+
 
 //Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -37,7 +38,6 @@ export default function DetalleMoto({
   cv,
   kilometros,
 }) {
-
   //color
   const colorElegido = useSelector((state) => state.color);
 
@@ -92,10 +92,9 @@ export default function DetalleMoto({
     errorSubmit();
   };
 
-
   useEffect(() => {
     window.scrollTo(0, 0);
-  },[])
+  }, []);
 
   return (
     <>
@@ -112,22 +111,60 @@ export default function DetalleMoto({
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
             <Grid item xs={4} sm={8} md={8}>
-              <Card sx={{ maxWidth: "100%", margin: "auto" }}>
-                <CardMedia
-                  sx={{ display: { xs: "none", md: "flex" } }}
-                  component="img"
-                  height="540"
-                  image={imagen}
-                  alt="green iguana"
-                />
-                <CardMedia
-                  sx={{ display: { xs: "flex", md: "none" } }}
-                  component="img"
-                  height="240"
-                  image={imagen}
-                  alt="green iguana"
-                />
-              </Card>
+            <Box sx={{ width: "100%" }}>
+                <Card
+                  sx={{
+                    maxWidth: "100%",
+                    margin: "auto",
+                    display: { xs: "none", md: "none", sm: "none", lg: "block" },
+                  }}
+                >
+                  <Carrousel
+                    imagen={imagen}
+                    tamañoImagen={"740"}
+                    velocidad={"2000"}
+                  />
+                </Card>
+                <Card
+                  sx={{
+                    maxWidth: "100%",
+                    margin: "auto",
+                    display: { xs: "none", md: "none", sm: "block", lg: "none" },
+                  }}
+                >
+                  <Carrousel
+                    imagen={imagen}
+                    tamañoImagen={"340"}
+                    velocidad={"2000"}
+                  />
+                </Card>
+                <Card
+                  sx={{
+                    maxWidth: "100%",
+                    margin: "auto",
+                    display: { xs: "none", md: "block", sm: "none", lg: "none" },
+                  }}
+                >
+                  <Carrousel
+                    imagen={imagen}
+                    tamañoImagen={"540"}
+                    velocidad={"2000"}
+                  />
+                </Card>
+                <Card
+                  sx={{
+                    maxWidth: "100%",
+                    margin: "auto",
+                    display: { xs: "block", md: "none", sm: "none", lg:"none" },
+                  }}
+                >
+                  <Carrousel
+                    imagen={imagen}
+                    tamañoImagen={"240"}
+                    velocidad={"2000"}
+                  />
+                </Card>
+              </Box>
             </Grid>
             <Grid item xs={4} sm={8} md={4}>
               <Card sx={{ maxWidth: 445, height: "100%", margin: "auto" }}>
