@@ -11,6 +11,7 @@ import {
 	IconButton,
 	Popover,
 	Typography,
+  Button
 } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
 
@@ -129,8 +130,18 @@ export default function FormularioAuto() {
 				className={formStyle.root}
 				onSubmit={handleSubmit}
 			>
-				<h1 className="App">Auto</h1>
 				<Grid container style={containerStyle}>
+					<Grid
+						item
+						xl={12}
+						lg={12}
+						md={12}
+						sm={12}
+						// sx={12}
+						style={{ padding: '1%' }}
+					>
+						<h1 className="App">Auto</h1>
+					</Grid>
 					<Grid
 						item
 						xl={6}
@@ -149,6 +160,8 @@ export default function FormularioAuto() {
 							type="text"
 							value={input.marca}
 							required
+							fullWidth
+							sx={{ marginTop: '2%' }}
 						/>
 						<TextField
 							id="outlined-basic"
@@ -159,6 +172,8 @@ export default function FormularioAuto() {
 							type="text"
 							value={input.motor}
 							required
+							fullWidth
+							sx={{ marginTop: '2%' }}
 						/>
 						<TextField
 							id="outlined-basic"
@@ -169,6 +184,8 @@ export default function FormularioAuto() {
 							type="number"
 							value={input.kilometros}
 							required
+							fullWidth
+							sx={{ marginTop: '2%' }}
 						/>
 						<TextField
 							id="outlined-basic"
@@ -179,6 +196,8 @@ export default function FormularioAuto() {
 							type="number"
 							value={input.puertas}
 							required
+							fullWidth
+							sx={{ marginTop: '2%' }}
 						/>
 						<TextField
 							labelId="demo-simple-select-label"
@@ -188,6 +207,8 @@ export default function FormularioAuto() {
 							value={input.combustible}
 							onChange={handleSelectChangeCombustible}
 							required
+							fullWidth
+							sx={{ marginTop: '2%' }}
 						>
 							<MenuItem name="combustible" value={'nafta'}>
 								Nafta
@@ -206,6 +227,8 @@ export default function FormularioAuto() {
 							type="text"
 							value={input.transmision}
 							required
+							fullWidth
+							sx={{ marginTop: '2%' }}
 						/>
 						<TextField
 							id="outlined-basic"
@@ -216,6 +239,8 @@ export default function FormularioAuto() {
 							type="number"
 							value={input.precio}
 							required
+							fullWidth
+							sx={{ marginTop: '2%' }}
 						/>
 					</Grid>
 					<Grid
@@ -236,6 +261,8 @@ export default function FormularioAuto() {
 							type="text"
 							value={input.modelo}
 							required
+							fullWidth
+							sx={{ marginTop: '2%' }}
 						/>
 						<TextField
 							id="outlined-basic"
@@ -246,6 +273,8 @@ export default function FormularioAuto() {
 							type="text"
 							value={input.cv}
 							required
+							fullWidth
+							sx={{ marginTop: '2%' }}
 						/>
 						<TextField
 							id="outlined-basic"
@@ -256,6 +285,8 @@ export default function FormularioAuto() {
 							type="number"
 							value={input.año}
 							required
+							fullWidth
+							sx={{ marginTop: '2%' }}
 						/>
 						<TextField
 							labelId="demo-simple-select-label"
@@ -265,6 +296,8 @@ export default function FormularioAuto() {
 							value={input.carroceria}
 							onChange={handleSelectChangeCarroceria}
 							required
+							fullWidth
+							sx={{ marginTop: '2%' }}
 						>
 							<MenuItem name="carroceria" value={'sedan'}>
 								Sedán
@@ -296,6 +329,8 @@ export default function FormularioAuto() {
 							value={input.gnv}
 							onChange={handleSelectChangeGnv}
 							required
+							fullWidth
+							sx={{ marginTop: '2%' }}
 						>
 							<MenuItem name="gnv" value={'si'}>
 								Si
@@ -304,17 +339,24 @@ export default function FormularioAuto() {
 								No
 							</MenuItem>
 						</TextField>
+						<InputLabel id="demo-simple-select-label" sx={{ marginTop: '2%' }}>
+							Descripcion
+						</InputLabel>
 						<TextareaAutosize
-							minRows={7}
-							aria-label="maximum height"
-							style={{ width: 200 }}
+							// minRows={7}
+							// aria-label="maximum height"
+							// style={{ width: 200 }}
 							onChange={handleChange}
 							name="descripcion"
 							required
+							maxRows={10}
+							style={{ width: '90%', maxHeight: 150 }}
 						/>
+						<InputLabel id="demo-simple-select-label" sx={{ marginTop: '2%' }}>
+							Imagen
+						</InputLabel>
 						<Input type="file" name="imagen" onChange={handleFiles} required />
 					</Grid>
-					{/* A partir de abajo es codigo viejo */}
 
 					{/* <Grid item xs={16}>
 						<Grid item xs={16}>
@@ -376,11 +418,20 @@ export default function FormularioAuto() {
 							</Popover>
 						</Grid>
 					</Grid> */}
-
-					<Grid item xs={16}>
-						<button variant="text">Guardar</button>
-					</Grid>
 				</Grid>
+					<Button
+						type="submit"
+						color="primary"
+						variant="contained"
+						sx={{
+							bgcolor: 'green',
+							color: 'white',
+							marginBottom: '5%',
+							width: '60%',
+						}}
+					>
+						GUARDAR
+					</Button>
 			</form>
 		</>
 	);
