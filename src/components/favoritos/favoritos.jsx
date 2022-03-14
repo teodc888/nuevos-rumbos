@@ -38,6 +38,7 @@ export default function Favoritos() {
     document.title = "Favoritos";
   }, []);
 
+
   return (
     <>
       <Stack
@@ -80,7 +81,7 @@ export default function Favoritos() {
                   marca={producto.marca}
                   modelo={producto.modelo}
                   imagen={producto.imagen}
-                  precio={producto.precio}
+                  precio={Number(producto.precio)}
                   id={producto.id}
                   descripcion={producto.descripcion}
                 />
