@@ -317,7 +317,7 @@ export default function HomeAuto() {
               <Grid
                 container
                 spacing={{ xs: 4, md: 3 }}
-                columns={{ xs: 4, sm: 8, md: 12 }}
+                columns={{ xs: 4, sm: 8, md: 12, lg: 12 }}
               >
                 {/* mapeo de los autos para mostrarlos en la pantalla */}
                 {currentAutos.length === 0 ? (
@@ -333,7 +333,7 @@ export default function HomeAuto() {
                   </Grid>
                 ) : (
                   currentAutos.map((auto) => (
-                    <Grid item xs={4} sm={4} md={4} key={auto.id}>
+                    <Grid item xs={4} sm={4} md={4} lg={4} key={auto.id}>
                       <CardNR
                         marca={auto.marca}
                         modelo={auto.modelo}

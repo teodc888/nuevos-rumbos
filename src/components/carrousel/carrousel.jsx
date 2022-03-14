@@ -10,7 +10,7 @@ export default function Carrousel({ imagen, tamañoCard, tamañoImagen, velocida
 
   return (
     <>
-      <Carousel fade style={{ maxWidth: tamañoCard, margin: "auto" }} activeIndex={index} onSelect={handleSelect} interval={velocidad}>
+      <Carousel style={{ maxWidth: tamañoCard, margin: "auto" }} activeIndex={index} onSelect={handleSelect} interval={velocidad} >
         {imagen.map((picture) => (
           <Carousel.Item>
             <img
