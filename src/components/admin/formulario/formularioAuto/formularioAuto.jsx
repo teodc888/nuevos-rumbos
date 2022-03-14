@@ -3,6 +3,7 @@ import {
 	Grid,
 	TextField,
 	// Select as TextField,
+	Select,
 	MenuItem,
 	FormControl,
 	TextareaAutosize,
@@ -11,7 +12,7 @@ import {
 	IconButton,
 	Popover,
 	Typography,
-  Button
+	Button,
 } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
 
@@ -152,7 +153,6 @@ export default function FormularioAuto() {
 						style={{ padding: '1%' }}
 					>
 						<TextField
-							id="outlined-basic"
 							label="marca"
 							variant="outlined"
 							name="marca"
@@ -164,7 +164,6 @@ export default function FormularioAuto() {
 							sx={{ marginTop: '2%' }}
 						/>
 						<TextField
-							id="outlined-basic"
 							label="motor"
 							variant="outlined"
 							name="motor"
@@ -176,7 +175,6 @@ export default function FormularioAuto() {
 							sx={{ marginTop: '2%' }}
 						/>
 						<TextField
-							id="outlined-basic"
 							label="kilometros"
 							variant="outlined"
 							name="kilometros"
@@ -188,7 +186,6 @@ export default function FormularioAuto() {
 							sx={{ marginTop: '2%' }}
 						/>
 						<TextField
-							id="outlined-basic"
 							label="puertas"
 							variant="outlined"
 							name="puertas"
@@ -200,8 +197,7 @@ export default function FormularioAuto() {
 							sx={{ marginTop: '2%' }}
 						/>
 						<TextField
-							labelId="demo-simple-select-label"
-							id="demo-simple-select"
+              select
 							label="combustible"
 							name="combustible"
 							value={input.combustible}
@@ -219,7 +215,6 @@ export default function FormularioAuto() {
 						</TextField>
 
 						<TextField
-							id="outlined-basic"
 							label="transmision"
 							variant="outlined"
 							name="transmision"
@@ -231,7 +226,6 @@ export default function FormularioAuto() {
 							sx={{ marginTop: '2%' }}
 						/>
 						<TextField
-							id="outlined-basic"
 							label="precio"
 							variant="outlined"
 							name="precio"
@@ -253,7 +247,6 @@ export default function FormularioAuto() {
 						style={{ padding: '1%' }}
 					>
 						<TextField
-							id="outlined-basic"
 							label="modelo"
 							variant="outlined"
 							name="modelo"
@@ -265,7 +258,6 @@ export default function FormularioAuto() {
 							sx={{ marginTop: '2%' }}
 						/>
 						<TextField
-							id="outlined-basic"
 							label="cv"
 							variant="outlined"
 							name="cv"
@@ -277,7 +269,6 @@ export default function FormularioAuto() {
 							sx={{ marginTop: '2%' }}
 						/>
 						<TextField
-							id="outlined-basic"
 							label="año"
 							variant="outlined"
 							name="año"
@@ -289,8 +280,7 @@ export default function FormularioAuto() {
 							sx={{ marginTop: '2%' }}
 						/>
 						<TextField
-							labelId="demo-simple-select-label"
-							id="demo-simple-select"
+              select
 							label="carroceria"
 							name="carroceria"
 							value={input.carroceria}
@@ -322,8 +312,7 @@ export default function FormularioAuto() {
 							</MenuItem>
 						</TextField>
 						<TextField
-							labelId="demo-simple-select-label"
-							id="demo-simple-select"
+              select
 							label="GNV"
 							name="gnv"
 							value={input.gnv}
@@ -343,9 +332,6 @@ export default function FormularioAuto() {
 							Descripcion
 						</InputLabel>
 						<TextareaAutosize
-							// minRows={7}
-							// aria-label="maximum height"
-							// style={{ width: 200 }}
 							onChange={handleChange}
 							name="descripcion"
 							required
@@ -419,19 +405,19 @@ export default function FormularioAuto() {
 						</Grid>
 					</Grid> */}
 				</Grid>
-					<Button
-						type="submit"
-						color="primary"
-						variant="contained"
-						sx={{
-							bgcolor: 'green',
-							color: 'white',
-							marginBottom: '5%',
-							width: '60%',
-						}}
-					>
-						GUARDAR
-					</Button>
+				<Button
+					type="submit"
+					color="primary"
+					variant="contained"
+					sx={{
+						bgcolor: 'green',
+						color: 'white',
+						marginBottom: '5%',
+						width: '60%',
+					}}
+				>
+					GUARDAR
+				</Button>
 			</form>
 		</>
 	);
