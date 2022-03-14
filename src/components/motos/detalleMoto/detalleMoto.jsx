@@ -10,13 +10,12 @@ import {
   CardContent,
   CardActions,
   Button,
+  CardMedia,
 } from "@mui/material";
 
 //Componentes
-import CardDetalle from "../../autos/cardDetalle/cardDetalle";
 import Footer from "../../footer/footer";
 import Carrousel from "../../carrousel/carrousel";
-
 
 //Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -111,12 +110,17 @@ export default function DetalleMoto({
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
             <Grid item xs={4} sm={8} md={8}>
-            <Box sx={{ width: "100%" }}>
+              <Box sx={{ width: "100%" }}>
                 <Card
                   sx={{
                     maxWidth: "100%",
                     margin: "auto",
-                    display: { xs: "none", md: "none", sm: "none", lg: "block" },
+                    display: {
+                      xs: "none",
+                      md: "none",
+                      sm: "none",
+                      lg: "block",
+                    },
                   }}
                 >
                   <Carrousel
@@ -129,7 +133,12 @@ export default function DetalleMoto({
                   sx={{
                     maxWidth: "100%",
                     margin: "auto",
-                    display: { xs: "none", md: "none", sm: "block", lg: "none" },
+                    display: {
+                      xs: "none",
+                      md: "none",
+                      sm: "block",
+                      lg: "none",
+                    },
                   }}
                 >
                   <Carrousel
@@ -142,7 +151,12 @@ export default function DetalleMoto({
                   sx={{
                     maxWidth: "100%",
                     margin: "auto",
-                    display: { xs: "none", md: "block", sm: "none", lg: "none" },
+                    display: {
+                      xs: "none",
+                      md: "block",
+                      sm: "none",
+                      lg: "none",
+                    },
                   }}
                 >
                   <Carrousel
@@ -155,7 +169,12 @@ export default function DetalleMoto({
                   sx={{
                     maxWidth: "100%",
                     margin: "auto",
-                    display: { xs: "block", md: "none", sm: "none", lg:"none" },
+                    display: {
+                      xs: "block",
+                      md: "none",
+                      sm: "none",
+                      lg: "none",
+                    },
                   }}
                 >
                   <Carrousel
@@ -216,7 +235,7 @@ export default function DetalleMoto({
             </Grid>
           </Grid>
         </Box>
-        <Box textAlign="center">
+        {/* <Box textAlign="center">
           <Typography
             gutterBottom
             variant="h3"
@@ -239,6 +258,157 @@ export default function DetalleMoto({
               </Grid>
             </Grid>
           </Box>
+        </Box> */}
+        <Box sx={{ width: "100%", marginTop: "3%" }}>
+          <Grid
+            container
+            spacing={{ xs: 4, md: 3 }}
+            columns={{ xs: 4, sm: 8, md: 12 }}
+          >
+            <Grid item xs={4} sm={8} md={6}>
+              <Card sx={{ maxWidth: 700, height: "100%", margin: "auto" }}>
+                <CardContent>
+                  <Typography
+                    gutterBottom
+                    variant="h3"
+                    component="div"
+                    textAlign="center"
+                  >
+                    CILINDRADA
+                  </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="h4"
+                    component="div"
+                    textAlign="center"
+                    sx={{ marginTop: "5%" }}
+                  >
+                    {cilindrada}
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    component="div"
+                    sx={{ marginTop: "5%" }}
+                  >
+                    Cilindrada es la denominación que se da a la suma del
+                    volumen útil de todos los cilindros de un motor alternativo.
+                    Es muy usual que se mida en centímetros cúbicos pero los
+                    vehículos norteamericanos usaban el sistema inglés de
+                    pulgadas cúbicas.
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={4} sm={8} md={6}>
+              <Card sx={{ maxWidth: "100%", margin: "auto" }}>
+                <CardMedia
+                  sx={{ display: { xs: "none", md: "block" } }}
+                  component="img"
+                  height="450"
+                  image={imagen[1]}
+                  alt="green iguana"
+                />
+                <CardMedia
+                  sx={{ display: { xs: "block", md: "none" } }}
+                  component="img"
+                  height="240"
+                  image={imagen[1]}
+                  alt="green iguana"
+                />
+              </Card>
+            </Grid>
+          </Grid>
+        </Box>
+        <Box sx={{ width: "100%", marginTop: "10%" }}>
+          <Grid
+            container
+            spacing={{ xs: 4, md: 3 }}
+            columns={{ xs: 4, sm: 8, md: 12 }}
+          >
+            <Grid
+              item
+              xs={4}
+              sm={8}
+              md={6}
+              sx={{ display: { xs: "none", md: "block" } }}
+            >
+              <Card sx={{ maxWidth: "100%", margin: "auto" }}>
+                <CardMedia
+                  sx={{ display: { xs: "none", md: "block" } }}
+                  component="img"
+                  height="450"
+                  image={imagen[2]}
+                  alt="green iguana"
+                />
+                <CardMedia
+                  sx={{ display: { xs: "block", md: "none" } }}
+                  component="img"
+                  height="240"
+                  image={imagen[2]}
+                  alt="green iguana"
+                />
+              </Card>
+            </Grid>
+            <Grid item xs={4} sm={8} md={6}>
+              <Card sx={{ maxWidth: 700, height: "100%", margin: "auto" }}>
+                <CardContent>
+                  <Typography
+                    gutterBottom
+                    variant="h3"
+                    component="div"
+                    textAlign="center"
+                  >
+                    CV
+                  </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="h4"
+                    component="div"
+                    textAlign="center"
+                    sx={{ marginTop: "5%" }}
+                  >
+                    {cv} cv
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    component="div"
+                    sx={{ marginTop: "5%" }}
+                  >
+                    Caballo de vapor (CV): Esta unidad de potencia proviene del
+                    sistema métrico decimal nacido en Francia al buscar en
+                    Europa una medida similar al HP inglés pero aplicando las
+                    unidades decimales. En su caso se refiere a la potencia
+                    necesaria para levantar 75 kgf (kilogramos-fuerza; 1 kgf = 1
+                    kg) a 1 metro en 1 segundo.
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid
+              item
+              xs={4}
+              sm={8}
+              md={6}
+              sx={{ display: { xs: "block", md: "none" } }}
+            >
+              <Card sx={{ maxWidth: "100%", margin: "auto" }}>
+                <CardMedia
+                  sx={{ display: { xs: "none", md: "block" } }}
+                  component="img"
+                  height="450"
+                  image={imagen[2]}
+                  alt="green iguana"
+                />
+                <CardMedia
+                  sx={{ display: { xs: "block", md: "none" } }}
+                  component="img"
+                  height="240"
+                  image={imagen[2]}
+                  alt="green iguana"
+                />
+              </Card>
+            </Grid>
+          </Grid>
         </Box>
       </Stack>
       <Footer />

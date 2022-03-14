@@ -286,7 +286,11 @@ export default function DetalleAuto({
                         component="div"
                         sx={{ marginTop: "5%" }}
                       >
-                        Carrocería de tres volúmenes.
+                        Sedán​ o berlina​ es un tipo de carrocería típica de un
+                        automóvil de turismo. Es un tres volúmenes en el que la
+                        tapa del maletero no incluye el vidrio trasero, por lo
+                        que este está fijo y el maletero está separado de la
+                        cabina.
                       </Typography>
                     ) : carroceria === "compacto" ? (
                       <Typography
@@ -304,8 +308,11 @@ export default function DetalleAuto({
                         component="div"
                         sx={{ marginTop: "5%" }}
                       >
-                        Carrocería de techo elevado hasta el portón trasero que
-                        permite un amplio espacio de acceso y carga.
+                        Familiar es un tipo de carrocería utilizada en
+                        automóviles de turismo. Es una carrocería de dos
+                        volúmenes simples en la que el acceso al maletero es una
+                        puerta o portón con vidrio trasero, y "cinco puertas"
+                        suele ser la norma general.
                       </Typography>
                     ) : carroceria === "Coupe" ? (
                       <Typography
@@ -313,8 +320,12 @@ export default function DetalleAuto({
                         component="div"
                         sx={{ marginTop: "5%" }}
                       >
-                        Carrocería de dos o tres volúmenes con dos puertas
-                        acristaladas.
+                        Se trata de un tipo de carrocería de coche, que puede
+                        contar con dos o tres volúmenes y con solo dos puertas.
+                        Se caracterizan por contar con un estilo y unas
+                        prestaciones muy deportivas. En la actualidad, el
+                        término coupé es más un reclamo de publicidad que la
+                        definición de un tipo de carrocería.
                       </Typography>
                     ) : carroceria === "todoterreno" ? (
                       <Typography
@@ -332,8 +343,9 @@ export default function DetalleAuto({
                         component="div"
                         sx={{ marginTop: "5%" }}
                       >
-                        Techo plegable o capota, generalmente de tela o rígida
-                        articulada.
+                        Un descapotable es un tipo de carrocería de automóvil
+                        sin techo o cuyo techo puede o bien quitarse o bien
+                        plegarse y guardarse en el maletero.
                       </Typography>
                     ) : carroceria === "suv" ? (
                       <Typography
