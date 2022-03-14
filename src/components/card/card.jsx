@@ -90,7 +90,7 @@ export default function CardNR({
           marca: marca,
           modelo: modelo,
           imagen: imagen,
-          precio: precio,
+          precio: Number(precio),
           id: id,
         })
       );
@@ -119,6 +119,7 @@ export default function CardNR({
     }
   };
 
+  console.log(precio)
   return (
     <Card sx={{ maxWidth: 450, margin: "auto" }}>
       {descuento > 0 ? (

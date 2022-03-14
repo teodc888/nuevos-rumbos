@@ -8,6 +8,7 @@ import {
   Box,
   Grid,
   CardContent,
+  CardMedia,
   CardActions,
   Button,
 } from "@mui/material";
@@ -100,6 +101,8 @@ export default function DetalleAuto({
     window.scrollTo(0, 0);
   }, []);
 
+  console.log(transmision);
+
   return (
     <>
       <Stack
@@ -120,7 +123,12 @@ export default function DetalleAuto({
                   sx={{
                     maxWidth: "100%",
                     margin: "auto",
-                    display: { xs: "none", md: "none", sm: "none", lg: "block" },
+                    display: {
+                      xs: "none",
+                      md: "none",
+                      sm: "none",
+                      lg: "block",
+                    },
                   }}
                 >
                   <Carrousel
@@ -133,7 +141,12 @@ export default function DetalleAuto({
                   sx={{
                     maxWidth: "100%",
                     margin: "auto",
-                    display: { xs: "none", md: "none", sm: "block", lg: "none" },
+                    display: {
+                      xs: "none",
+                      md: "none",
+                      sm: "block",
+                      lg: "none",
+                    },
                   }}
                 >
                   <Carrousel
@@ -146,7 +159,12 @@ export default function DetalleAuto({
                   sx={{
                     maxWidth: "100%",
                     margin: "auto",
-                    display: { xs: "none", md: "block", sm: "none", lg: "none" },
+                    display: {
+                      xs: "none",
+                      md: "block",
+                      sm: "none",
+                      lg: "none",
+                    },
                   }}
                 >
                   <Carrousel
@@ -159,7 +177,12 @@ export default function DetalleAuto({
                   sx={{
                     maxWidth: "100%",
                     margin: "auto",
-                    display: { xs: "block", md: "none", sm: "none", lg:"none" },
+                    display: {
+                      xs: "block",
+                      md: "none",
+                      sm: "none",
+                      lg: "none",
+                    },
                   }}
                 >
                   <Carrousel
@@ -220,7 +243,7 @@ export default function DetalleAuto({
             </Grid>
           </Grid>
         </Box>
-        <Box textAlign="center">
+        <Box width="100%">
           <Typography
             gutterBottom
             variant="h3"
@@ -235,26 +258,335 @@ export default function DetalleAuto({
               spacing={{ xs: 4, md: 3 }}
               columns={{ xs: 4, sm: 8, md: 12 }}
             >
-              <Grid item xs={4} sm={4} md={4}>
-                <CardDetalle titulo="Carroceria" descripcion={carroceria} />
+              <Grid item xs={4} sm={8} md={6}>
+                <Card sx={{ maxWidth: 700, height: "100%", margin: "auto" }}>
+                  <CardContent>
+                    <Typography
+                      gutterBottom
+                      variant="h3"
+                      component="div"
+                      textAlign="center"
+                    >
+                      CARROCERIA
+                    </Typography>
+                    <Typography
+                      gutterBottom
+                      variant="h4"
+                      component="div"
+                      textAlign="center"
+                      sx={{ marginTop: "5%" }}
+                      textTransform="capitalize"
+                      textOverflow="ellipsis"
+                    >
+                      {carroceria}
+                    </Typography>
+                    {carroceria === "sedan" ? (
+                      <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{ marginTop: "5%" }}
+                      >
+                        Carrocería de tres volúmenes.
+                      </Typography>
+                    ) : carroceria === "compacto" ? (
+                      <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{ marginTop: "5%" }}
+                      >
+                        Carrocería de tres o cinco puertas en la que el portón
+                        trasero incluye la luneta, haciendo posible el acceso al
+                        habitáculo de los pasajeros.
+                      </Typography>
+                    ) : carroceria === "familiar" ? (
+                      <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{ marginTop: "5%" }}
+                      >
+                        Carrocería de techo elevado hasta el portón trasero que
+                        permite un amplio espacio de acceso y carga.
+                      </Typography>
+                    ) : carroceria === "Coupe" ? (
+                      <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{ marginTop: "5%" }}
+                      >
+                        Carrocería de dos o tres volúmenes con dos puertas
+                        acristaladas.
+                      </Typography>
+                    ) : carroceria === "todoterreno" ? (
+                      <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{ marginTop: "5%" }}
+                      >
+                        Diseñado para ofrecer sus mejores prestaciones fuera de
+                        las carreteras asfaltadas y dotado de una mayor altura
+                        al suelo, así como interior en el habitáculo.
+                      </Typography>
+                    ) : carroceria === "descapotable" ? (
+                      <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{ marginTop: "5%" }}
+                      >
+                        Techo plegable o capota, generalmente de tela o rígida
+                        articulada.
+                      </Typography>
+                    ) : carroceria === "suv" ? (
+                      <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{ marginTop: "5%" }}
+                      >
+                        La carrocería de moda actualmente, parte de la base de
+                        un turismo, pero gana altura con respecto al suelo e
+                        interior, aunque no permite un uso en campo equiparable
+                        al de los todoterreno.
+                      </Typography>
+                    ) : null}
+                  </CardContent>
+                </Card>
               </Grid>
+              <Grid item xs={4} sm={8} md={6}>
+                <Card sx={{ maxWidth: "100%", margin: "auto" }}>
+                  <CardMedia
+                    sx={{ display: { xs: "none", md: "block" } }}
+                    component="img"
+                    height="450"
+                    image={imagen[1]}
+                    alt="green iguana"
+                  />
+                  <CardMedia
+                    sx={{ display: { xs: "block", md: "none" } }}
+                    component="img"
+                    height="240"
+                    image={imagen[1]}
+                    alt="green iguana"
+                  />
+                </Card>
+              </Grid>
+            </Grid>
+          </Box>
+          <Box sx={{ width: "100%", marginTop: "3%" }}>
+            <Grid
+              container
+              spacing={{ xs: 4, md: 3 }}
+              columns={{ xs: 4, sm: 8, md: 12 }}
+            >
+              <Grid item xs={4} sm={8} md={6}>
+                <Card sx={{ maxWidth: "100%", margin: "auto" }}>
+                  <CardMedia
+                    sx={{ display: { xs: "none", md: "block" } }}
+                    component="img"
+                    height="450"
+                    image={imagen[2]}
+                    alt="green iguana"
+                  />
+                </Card>
+              </Grid>
+              <Grid item xs={4} sm={8} md={6}>
+                <Card sx={{ maxWidth: 700, height: "100%", margin: "auto" }}>
+                  <CardContent>
+                    <Typography
+                      gutterBottom
+                      variant="h3"
+                      component="div"
+                      textAlign="center"
+                    >
+                      TRANSMISION
+                    </Typography>
+                    <Typography
+                      gutterBottom
+                      variant="h4"
+                      component="div"
+                      textAlign="center"
+                      sx={{ marginTop: "5%" }}
+                    >
+                      {transmision === "automatico" ? "Automatica" : "Manual"}
+                    </Typography>
+                    {transmision === "manual" ? (
+                      <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{ marginTop: "5%" }}
+                      >
+                        Una transmisión manual es una caja de cambios que no
+                        puede alterar la relación de cambio por sí sola,
+                        requiriendo la intervención del conductor para hacer
+                        esto. Por lo tanto, se diferencia de una transmisión
+                        automática en que esta última sí puede cambiar de marcha
+                        de forma autónoma.
+                      </Typography>
+                    ) : transmision === "automatico" ? (
+                      <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{ marginTop: "5%" }}
+                      >
+                        Una transmisión automática o caja automática, es una
+                        caja de cambios de automóviles u otro tipo de vehículos
+                        que puede encargarse por sí misma de cambiar la relación
+                        de cambio automáticamente a medida que el vehículo se
+                        mueve, liberando así al conductor de la tarea de cambiar
+                        de marcha manualmente.
+                      </Typography>
+                    ) : (
+                      <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{ marginTop: "5%" }}
+                      >
+                        Una transmisión manual es una caja de cambios que no
+                        puede alterar la relación de cambio por sí sola,
+                        requiriendo la intervención del conductor para hacer
+                        esto. Por lo tanto, se diferencia de una transmisión
+                        automática en que esta última sí puede cambiar de marcha
+                        de forma autónoma.
+                      </Typography>
+                    )}
+                  </CardContent>
+                </Card>
+              </Grid>
+              <Grid
+                item
+                xs={4}
+                sm={8}
+                md={6}
+                sx={{ display: { xs: "block", md: "none" }, mb: "6%" }}
+              >
+                <Card sx={{ maxWidth: "100%", margin: "auto" }}>
+                  <CardMedia
+                    sx={{ display: { xs: "block", md: "none" } }}
+                    component="img"
+                    height="240"
+                    image={imagen[2]}
+                    alt="green iguana"
+                  />
+                </Card>
+              </Grid>
+            </Grid>
+          </Box>
+          <Box sx={{ width: "100%", marginTop: "3%" }}>
+            <Grid
+              container
+              spacing={{ xs: 4, md: 3 }}
+              columns={{ xs: 4, sm: 8, md: 12 }}
+            >
+              <Grid item xs={4} sm={8} md={6}>
+                <Card sx={{ maxWidth: 700, height: "100%", margin: "auto" }}>
+                  <CardContent>
+                    <Typography
+                      gutterBottom
+                      variant="h3"
+                      component="div"
+                      textAlign="center"
+                    >
+                      COMBUSTIBLE
+                    </Typography>
+                    <Typography
+                      gutterBottom
+                      variant="h4"
+                      component="div"
+                      textAlign="center"
+                      sx={{ marginTop: "5%" }}
+                    >
+                      {combustible === "nafta" && gnv === "si"
+                        ? "Gasolina/Nafta con GNV"
+                        : combustible === "nafta"
+                        ? "Gasolina/Nafta"
+                        : combustible === "diesel" && gnv === "si"
+                        ? "Diesel con GNV"
+                        : "Diesel"}
+                    </Typography>
+                    {combustible === "nafta" ? (
+                      <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{ marginTop: "5%" }}
+                      >
+                        Normalmente se considera nafta/gasolina a la fracción
+                        del petróleo cuyo punto de ebullición se encuentra
+                        aproximadamente entre 28 y 177 °C (umbral que varía en
+                        función de las necesidades comerciales de la refinería).
+                        A su vez, este subproducto se subdivide en nafta ligera
+                        (hasta unos 100°C) y nafta pesada (el resto).
+                      </Typography>
+                    ) : transmision === "diesel" ? (
+                      <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{ marginTop: "5%" }}
+                      >
+                        El gasóleo o diésel —también denominado gasoil o dísel—
+                        es un hidrocarburo líquido de densidad sobre 850 kg/m³
+                        (0,850 g/cm³ a 15 °C), compuesto fundamentalmente por
+                        parafinas y utilizado principalmente como combustible en
+                        calefacción y en motores diésel.
+                      </Typography>
+                    ) : (
+                      <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{ marginTop: "5%" }}
+                      >
+                        Una transmisión manual es una caja de cambios que no
+                        puede alterar la relación de cambio por sí sola,
+                        requiriendo la intervención del conductor para hacer
+                        esto. Por lo tanto, se diferencia de una transmisión
+                        automática en que esta última sí puede cambiar de marcha
+                        de forma autónoma.
+                      </Typography>
+                    )}
+                  </CardContent>
+                </Card>
+              </Grid>
+              <Grid item xs={4} sm={8} md={6}>
+                <Card sx={{ maxWidth: "100%", margin: "auto" }}>
+                  <CardMedia
+                    sx={{ display: { xs: "none", md: "block" } }}
+                    component="img"
+                    height="450"
+                    image={imagen[3]}
+                    alt="green iguana"
+                  />
+                  <CardMedia
+                    sx={{ display: { xs: "block", md: "none" } }}
+                    component="img"
+                    height="240"
+                    image={imagen[3]}
+                    alt="green iguana"
+                  />
+                </Card>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Box textAlign="center" width="100%">
+          <Typography
+            gutterBottom
+            variant="h3"
+            component="div"
+            textAlign="center"
+          >
+            Otras Caracteristicas
+          </Typography>
+          <Box sx={{ width: "100%", marginTop: "3%" }}>
+            <Grid
+              container
+              spacing={{ xs: 4, md: 3 }}
+              columns={{ xs: 4, sm: 8, md: 12 }}
+            >
               <Grid item xs={4} sm={4} md={4}>
                 <CardDetalle titulo="Motor" descripcion={motor} />
-              </Grid>
-              <Grid item xs={4} sm={4} md={4}>
-                <CardDetalle titulo="Transmision" descripcion={transmision} />
-              </Grid>
-              <Grid item xs={4} sm={4} md={4}>
-                <CardDetalle titulo="Combustible" descripcion={combustible} />
               </Grid>
               <Grid item xs={4} sm={4} md={4}>
                 <CardDetalle titulo="Cv" descripcion={cv} />
               </Grid>
               <Grid item xs={4} sm={4} md={4}>
                 <CardDetalle titulo="Puertas" descripcion={puertas} />
-              </Grid>
-              <Grid item xs={4} sm={4} md={4}>
-                <CardDetalle titulo="Gnv" descripcion={gnv} />
               </Grid>
             </Grid>
           </Box>
