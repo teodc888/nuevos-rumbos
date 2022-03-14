@@ -1,46 +1,26 @@
-import React from "react";
+import React,{useState} from "react";
 import { Carousel } from "react-bootstrap";
-import Supra from "../../images/supra.jpg"
 
-export default function Carrousel({tamaño}) {
+export default function Carrousel({ imagen, tamañoCard, tamañoImagen, velocidad }) {
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
+
   return (
     <>
-      <Carousel style={{width:tamaño, margin:"auto"}}>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src={Supra}
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>IMAGEN DE PRUEBA</h3>
-            <p>texto de prueba</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src={Supra}
-            alt="Second slide"
-          />
-
-          <Carousel.Caption>
-          <h3>IMAGEN DE PRUEBA</h3>
-            <p>texto de prueba</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src={Supra}
-            alt="Third slide"
-          />
-
-          <Carousel.Caption>
-          <h3>IMAGEN DE PRUEBA</h3>
-            <p>texto de prueba</p>
-          </Carousel.Caption>
-        </Carousel.Item>
+      <Carousel fade style={{ maxWidth: tamañoCard, margin: "auto" }} activeIndex={index} onSelect={handleSelect} interval={velocidad}>
+        {imagen.map((picture) => (
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              height={tamañoImagen}
+              src={picture}
+              alt="Not fount"
+            />
+          </Carousel.Item>
+        ))}
       </Carousel>
     </>
   );
