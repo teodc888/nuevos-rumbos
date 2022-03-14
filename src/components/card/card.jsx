@@ -133,7 +133,7 @@ export default function CardNR({
           </Alert>
         </Box>
       ) : null}
-      <Carrousel imagen={imagen} tamañoCard={"450"} tamañoImagen={"240"} velocidad={null} />
+      <Carrousel imagen={imagen} tamañoCard={"450"} tamañoImagen={"290"} velocidad={null} />
       <CardActionArea onClick={handleNavigate}>
         <CardContent>
           {tipo === "repuesto" ? (
