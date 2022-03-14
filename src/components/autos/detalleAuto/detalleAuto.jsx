@@ -187,7 +187,7 @@ export default function DetalleAuto({
                 >
                   <Carrousel
                     imagen={imagen}
-                    tamañoImagen={"240"}
+                    tamañoImagen={"290"}
                     velocidad={"2000"}
                   />
                 </Card>
