@@ -14,6 +14,8 @@ import { db } from '../../../../firebase/firebaseConfig';
 import Swal from 'sweetalert2';
 
 import { useNavigate } from 'react-router-dom';
+// components
+import BtnGuardar from './btnFormularioRepuesto';
 
 export default function FormularioRepuesto() {
 	const navigate = useNavigate();
@@ -104,8 +106,18 @@ export default function FormularioRepuesto() {
 				className={formStyle.root}
 				onSubmit={handleSubmit}
 			>
-				<h1 className="App">Repuesto</h1>
 				<Grid container style={containerStyle}>
+					<Grid
+						item
+						xl={12}
+						lg={12}
+						md={12}
+						sm={12}
+						// sx={12}
+						style={{ padding: '1%' }}
+					>
+						<h1 className="App">Repuesto</h1>
+					</Grid>
 					<Grid
 						item
 						xl={6}
@@ -175,9 +187,6 @@ export default function FormularioRepuesto() {
 						/>
 						<InputLabel sx={{ marginTop: '2%' }}>Descripcion</InputLabel>
 						<TextareaAutosize
-							// minRows={7}
-							// aria-label="maximum height"
-							// style={{ width: 200 }}
 							onChange={handleChange}
 							name="descripcion"
 							required
@@ -187,27 +196,9 @@ export default function FormularioRepuesto() {
 						<InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
 						<Input type="file" name="imagen" onChange={handleFiles} required />
 					</Grid>
-
-					{/* <Grid item xs={16}>
-						<TextField
-							id="outlined-basic"
-							label="descuento"
-							variant="outlined"
-							name="descuento"
-							onChange={handleChange}
-							type="number"
-							value={input.descuento}
-							required
-						/>
-					</Grid> */}
-					{/* <Grid item xs={16}>
-						<Button onClick={handleClickCalcularPrecio}>
-							Calcular descuento
-						</Button>
-						<p>{input.precioDescuento}</p>
-					</Grid> */}
 				</Grid>
-				<button variant="text">Guardar</button>
+				{/* <button variant="text">Guardar</button> */}
+				<BtnGuardar />
 			</form>
 		</>
 	);
