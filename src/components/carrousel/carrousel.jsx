@@ -18,6 +18,7 @@ export default function Carrousel({ imagen, tamañoCard, tamañoImagen, velocida
               height={tamañoImagen}
               src={picture}
               alt="Not fount"
+              style={{objectFit: "contain"}}
             />
           </Carousel.Item>
         ))}
