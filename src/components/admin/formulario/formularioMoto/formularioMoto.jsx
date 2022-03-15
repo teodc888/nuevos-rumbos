@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { Grid, TextField, TextareaAutosize, Input, InputLabel } from '@mui/material';
+import {
+	Grid,
+	TextField,
+	TextareaAutosize,
+	Input,
+	InputLabel,
+} from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
 
 import { addDoc, collection } from 'firebase/firestore';
@@ -7,6 +13,9 @@ import { db } from '../../../../firebase/firebaseConfig';
 import Swal from 'sweetalert2';
 
 import { useNavigate } from 'react-router-dom';
+
+// components
+import BtnGuardar from './btnFormularioMoto';
 
 export default function FormularioMoto() {
 	const navigate = useNavigate();
@@ -83,13 +92,13 @@ export default function FormularioMoto() {
 		<>
 			<form
 				align="center"
-				// id="myform-formMoto"
+				id="myform-formMoto"
 				className={formStyle.root}
 				onSubmit={handleSubmit}
 			>
 				{/* <h1 className="App">Moto</h1> */}
 				<Grid container style={containerStyle}>
-        <Grid
+					<Grid
 						item
 						xl={12}
 						lg={12}
@@ -198,9 +207,6 @@ export default function FormularioMoto() {
 						/>
 						<InputLabel sx={{ marginTop: '2%' }}>Descripcion</InputLabel>
 						<TextareaAutosize
-							// minRows={7}
-							// aria-label="maximum height"
-							// style={{ width: 200 }}
 							onChange={handleChange}
 							name="descripcion"
 							required
@@ -211,10 +217,11 @@ export default function FormularioMoto() {
 						<Input type="file" name="imagen" onChange={handleFiles} required />
 					</Grid>
 
-					<Grid item xs={16}>
+					{/* <Grid item xs={16}>
 						<button variant="text">Guardar</button>
-					</Grid>
+					</Grid> */}
 				</Grid>
+					<BtnGuardar />
 			</form>
 		</>
 	);
