@@ -72,7 +72,7 @@ const EditarAutos = () => {
 						<StyledTableRow key={auto.id}>
 							<StyledTableCell component="th" scope="row">
 								<Avatar
-									src={auto.imagen}
+									src={auto.imagen[0]}
 									alt={auto.marca}
 									sx={{ width: 150, height: 150 }}
 									variant="rounded"

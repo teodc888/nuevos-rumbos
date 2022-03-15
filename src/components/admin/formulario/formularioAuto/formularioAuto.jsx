@@ -91,9 +91,8 @@ export default function FormularioAuto() {
 			}
 		);
 		const file = await res.json();
-		setInput({ ...input, imagen: file.secure_url });
+		setInput({ ...input, imagen: [file.secure_url] });
 	};
-
 	const [anchorEl, setAnchorEl] = React.useState(null);
 
 	const handlePopoverOpen = (event) => {
