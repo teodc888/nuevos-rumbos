@@ -144,6 +144,8 @@ export default function FormularioRepuesto() {
 							name="precio"
 							onChange={handleChange}
 							type="number"
+							inputProps={{ min: 0 }}
+							min={0}
 							value={input.precio}
 							required
 							fullWidth
@@ -155,15 +157,31 @@ export default function FormularioRepuesto() {
 							name="descuento"
 							onChange={handleChange}
 							type="number"
+							inputProps={{ min: 0 }}
+							min={0}
 							value={input.descuento}
 							required
 							fullWidth
 							sx={{ marginTop: '2%' }}
 						/>
-						<Button onClick={handleClickCalcularPrecio}>
+						{/* <Grid item sx={10}> */}
+						<Button
+							// color="primary"
+							variant="contained"
+							sx={{
+								color: 'white',
+								marginBottom: '5%',
+								marginTop: '5%',
+								width: '60%',
+							}}
+							onClick={handleClickCalcularPrecio}
+						>
 							Calcular descuento
 						</Button>
+						{/* </Grid> */}
+						{/* <Grid item sx={{ margin: 0, width: 'auto' }}> */}
 						<p>{input.precioDescuento}</p>
+						{/* </Grid> */}
 					</Grid>
 					<Grid
 						item
@@ -197,7 +215,6 @@ export default function FormularioRepuesto() {
 						<Input type="file" name="imagen" onChange={handleFiles} required />
 					</Grid>
 				</Grid>
-				{/* <button variant="text">Guardar</button> */}
 				<BtnGuardar />
 			</form>
 		</>
