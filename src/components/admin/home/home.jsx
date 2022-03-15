@@ -2,44 +2,42 @@ import React, { useEffect } from "react";
 
 //Mui
 import { Stack, Typography, Box, Grid } from "@mui/material";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import TwoWheelerIcon from '@mui/icons-material/TwoWheeler';
+import ConstructionIcon from '@mui/icons-material/Construction';
 
 import CardAdmin from "../cardAdmin/cardAdmin";
 
 const admin = [
   {
     titulo: "Formulario Autos",
-    imagen:
-      "https://cdn.motor1.com/images/mgl/4JyZA/s1/lamborghini-aventador-lp-780-4-ultimae.webp",
+    imagen: <DirectionsCarIcon />,
+
     boton: "/formularioAuto",
   },
   {
-    titulo: "Formulario Motos",
-    imagen:
-      "https://i0.wp.com/minutomotor.com.ar/wp-content/uploads/2020/10/DucatiPanigaleV12.jpg?resize=829%2C548&ssl=1",
+    titulo: "Formulario Motos", 
+    imagen: <TwoWheelerIcon />,
     boton: "/formularioMoto",
   },
   {
     titulo: "Formulario Repuestos",
-    imagen:
-      "https://fotos.perfil.com/2021/09/29/trim/1280/720/gnc-1236972.jpg",
+    imagen: <ConstructionIcon /> ,
     boton: "/formularioRepuesto",
   },
   {
     titulo: "Editar Autos",
-    imagen:
-      "https://cdn.motor1.com/images/mgl/4JyZA/s1/lamborghini-aventador-lp-780-4-ultimae.webp",
+    imagen: <DirectionsCarIcon />,
     boton: "/editarAutos",
   },
   {
     titulo: "Editar Motos",
-    imagen:
-      "https://i0.wp.com/minutomotor.com.ar/wp-content/uploads/2020/10/DucatiPanigaleV12.jpg?resize=829%2C548&ssl=1",
+    imagen:<TwoWheelerIcon />,
     boton: "/editarMotos",
   },
   {
     titulo: "Editar Repuestos",
-    imagen:
-      "https://fotos.perfil.com/2021/09/29/trim/1280/720/gnc-1236972.jpg",
+    imagen: <ConstructionIcon /> ,
     boton: "/editarRepuestos",
   },
 ];

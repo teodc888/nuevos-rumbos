@@ -8,7 +8,6 @@ import {
   Box,
   Grid,
   CardContent,
-  CardMedia,
   CardActions,
   Button,
 } from "@mui/material";
@@ -100,8 +99,6 @@ export default function DetalleAuto({
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  console.log(transmision);
 
   return (
     <>
@@ -243,7 +240,7 @@ export default function DetalleAuto({
             </Grid>
           </Grid>
         </Box>
-        <Box width="100%">
+        <Box textAlign="center">
           <Typography
             gutterBottom
             variant="h3"
@@ -262,166 +259,20 @@ export default function DetalleAuto({
           >
             Características principales
           </Typography>
-          <Box sx={{ width: "100%", marginTop: "3%" }}>
-            <Grid
-              container
-              spacing={{ xs: 4, md: 3 }}
-              columns={{ xs: 4, sm: 8, md: 12 }}
-            >
-              <Grid item xs={4} sm={8} md={6}>
-                <CardDetalle titulo="CARROCERIA" descripcion={carroceria} />
-              </Grid>
-              <Grid item xs={4} sm={8} md={6}>
-                <CardMedia
-                  sx={{
-                    display: { xs: "none", md: "block" },
-                    objectFit: "contain",
-                  }}
-                  component="img"
-                  height="400px"
-                  image={imagen[1] ? imagen[1] : imagen[0]}
-                  alt="green iguana"
-                />
-                <CardMedia
-                  sx={{
-                    display: { xs: "block", md: "none" },
-                    objectFit: "contain",
-                  }}
-                  component="img"
-                  height="240"
-                  image={imagen[1] ? imagen[1] : imagen[0]}
-                  alt="green iguana"
-                />
-              </Grid>
-            </Grid>
-          </Box>
-          <Box sx={{ width: "100%", marginTop: "3%" }}>
-            <Grid
-              container
-              spacing={{ xs: 4, md: 3 }}
-              columns={{ xs: 4, sm: 8, md: 12 }}
-            >
-              <Grid item xs={4} sm={8} md={6}>
-                <CardMedia
-                  sx={{
-                    display: { xs: "none", md: "block" },
-                    objectFit: "contain",
-                  }}
-                  component="img"
-                  height="400"
-                  image={imagen[2] ? imagen[2] : imagen[0]}
-                  alt="green iguana"
-                />
-              </Grid>
-              <Grid item xs={4} sm={8} md={6}>
-                <CardDetalle
-                  titulo="TRANSMISION"
-                  descripcion={
-                    transmision === "automatico" ? "Automatica" : "Manual"
-                  }
-                />
-              </Grid>
-              <Grid
-                item
-                xs={4}
-                sm={8}
-                md={6}
-                sx={{ display: { xs: "block", md: "none" }, mb: "6%" }}
-              >
-                <CardMedia
-                  sx={{
-                    display: { xs: "block", md: "none" },
-                    objectFit: "contain",
-                  }}
-                  component="img"
-                  height="240"
-                  image={imagen[2] ? imagen[2] : imagen[0]}
-                  alt="green iguana"
-                />
-              </Grid>
-            </Grid>
-          </Box>
-          <Box sx={{ width: "100%", marginTop: "3%" }}>
-            <Grid
-              container
-              spacing={{ xs: 4, md: 3 }}
-              columns={{ xs: 4, sm: 8, md: 12 }}
-            >
-              <Grid item xs={4} sm={8} md={6}>
-                <CardDetalle
-                  titulo="COMBUSTIBLE"
-                  descripcion={
-                    combustible === "nafta" && gnv === "si"
-                      ? "Gasolina/Nafta con GNV"
-                      : combustible === "nafta"
-                      ? "Gasolina/Nafta"
-                      : combustible === "diesel" && gnv === "si"
-                      ? "Diesel con GNV"
-                      : "Diesel"
-                  }
-                />
-              </Grid>
-              <Grid item xs={4} sm={8} md={6}>
-                <CardMedia
-                  sx={{
-                    display: { xs: "none", md: "block" },
-                    objectFit: "contain",
-                  }}
-                  component="img"
-                  height="400"
-                  image={imagen[3] ? imagen[3] : imagen[0]}
-                  alt="green iguana"
-                />
-                <CardMedia
-                  sx={{
-                    display: { xs: "block", md: "none" },
-                    objectFit: "contain",
-                  }}
-                  component="img"
-                  height="240"
-                  image={imagen[3] ? imagen[3] : imagen[0]}
-                  alt="green iguana"
-                />
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-        <Box textAlign="center" width="100%">
-          <Typography
-            gutterBottom
-            variant="h3"
-            component="div"
-            textAlign="center"
-            sx={{ display: { xs: "none", md: "block" } }}
-          >
-            Otras Caracteristicas
-          </Typography>
-          <Typography
-            gutterBottom
-            variant="h4"
-            component="div"
-            textAlign="center"
-            sx={{ display: { xs: "block", md: "none" } }}
-          >
-            Otras Caracteristicas
-          </Typography>
-          <Box sx={{ width: "100%", marginTop: "3%" }}>
-            <Grid
-              container
-              spacing={{ xs: 4, md: 3 }}
-              columns={{ xs: 4, sm: 8, md: 12 }}
-            >
-              <Grid item xs={4} sm={4} md={4}>
-                <CardDetalle titulo="Motor" descripcion={motor} />
-              </Grid>
-              <Grid item xs={4} sm={4} md={4}>
-                <CardDetalle titulo="Cv" descripcion={`${cv} cv`} />
-              </Grid>
-              <Grid item xs={4} sm={4} md={4}>
-                <CardDetalle titulo="Puertas" descripcion={puertas} />
-              </Grid>
-            </Grid>
-          </Box>
+          <CardDetalle
+            tipo="auto"
+            carroceria={carroceria}
+            motor={motor}
+            puertas={puertas}
+            cv={cv}
+            transmision={transmision}
+            combustible={combustible}
+            gnv={gnv}
+            marca={marca}
+            modelo={modelo}
+            kilometros={kilometros}
+            año={año}
+          />
         </Box>
       </Stack>
       <Footer />

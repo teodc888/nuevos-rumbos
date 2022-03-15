@@ -1,33 +1,38 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
+import {
+  Button,
+  Card,
+  CardActions,
+  Avatar,
+  Box,
+} from "@mui/material";
 
 
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-export default function CardAdmin({titulo, imagen, boton}) {
+export default function CardAdmin({ titulo, imagen, boton }) {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-
-    const handleClick = () => {
-        navigate(boton);
-    }
+  const handleClick = () => {
+    navigate(boton);
+  };
 
   return (
-    <Card sx={{ maxWidth: 445, margin:"auto" }}>
-      <CardMedia
-        component="img"
-        height="240"
-        image={imagen}
-        alt="green iguana"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+    <Card sx={{ maxWidth: 345, margin: "auto" }}>
+      <Box
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt:"10%" }}
+      >
+        <Avatar>
+          {imagen}
+        </Avatar>
+      </Box>
+      <CardActions
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt:"10%", mb:"10%" }}
+      >
+        <Button size="small" onClick={handleClick}>
           {titulo}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small" onClick={handleClick}>Editar</Button>
+        </Button>
       </CardActions>
     </Card>
   );

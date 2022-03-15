@@ -10,7 +10,6 @@ import {
   CardContent,
   CardActions,
   Button,
-  CardMedia,
 } from "@mui/material";
 
 //Componentes
@@ -236,119 +235,36 @@ export default function DetalleMoto({
             </Grid>
           </Grid>
         </Box>
-        <Typography
-          gutterBottom
-          variant="h3"
-          component="div"
-          textAlign="center"
-          sx={{ display: { xs: "none", md: "block" } }}
-        >
-          Características principales
-        </Typography>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          textAlign="center"
-          sx={{ display: { xs: "block", md: "none" } }}
-        >
-          Características principales
-        </Typography>
-        <Box sx={{ width: "100%", marginTop: "3%" }}>
-          <Grid
-            container
-            spacing={{ xs: 4, md: 3 }}
-            columns={{ xs: 4, sm: 8, md: 12 }}
+        <Box textAlign="center">
+          <Typography
+            gutterBottom
+            variant="h3"
+            component="div"
+            textAlign="center"
+            sx={{ display: { xs: "none", md: "block" } }}
           >
-            <Grid item xs={4} sm={8} md={6}>
-              <CardDetalle titulo="CILINDRADA" descripcion={cilindrada} />
-            </Grid>
-            <Grid item xs={4} sm={8} md={6}>
-              <CardMedia
-                sx={{
-                  display: { xs: "none", md: "block" },
-                  objectFit: "contain",
-                }}
-                component="img"
-                height="400"
-                image={imagen[1] ? imagen[1] : imagen[0]}
-                alt="green iguana"
-              />
-              <CardMedia
-                sx={{
-                  display: { xs: "block", md: "none" },
-                  objectFit: "contain",
-                }}
-                component="img"
-                height="240"
-                image={imagen[1] ?  imagen[1] : imagen[0]}
-                alt="green iguana"
-              />
-            </Grid>
-          </Grid>
-        </Box>
-        <Box sx={{ width: "100%", marginTop: "5%" }}>
-          <Grid
-            container
-            spacing={{ xs: 4, md: 3 }}
-            columns={{ xs: 4, sm: 8, md: 12 }}
+            Características principales
+          </Typography>
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            textAlign="center"
+            sx={{ display: { xs: "block", md: "none" } }}
           >
-            <Grid
-              item
-              xs={4}
-              sm={8}
-              md={6}
-              sx={{ display: { xs: "none", md: "block" }, mt:"3%" }}
-            >
-              <CardMedia
-                sx={{
-                  display: { xs: "none", md: "block" },
-                  objectFit: "contain",
-                }}
-                component="img"
-                height="400"
-                image={imagen[2] ? imagen[2] : imagen[0]}
-                alt="green iguana"
-              />
-              <CardMedia
-                sx={{
-                  display: { xs: "block", md: "none" },
-                  objectFit: "contain",
-                }}
-                component="img"
-                height="240"
-                image={imagen[2] ? imagen[2] : imagen[0]}
-                alt="green iguana"
-              />
-            </Grid>
-            <Grid item xs={4} sm={8} md={6} sx={{mt:"3%"}}>
-              <CardDetalle titulo="CV" descripcion={`${cv} cv`} />
-            </Grid>
-            <Grid
-              item
-              xs={4}
-              sm={8}
-              md={6}
-              sx={{ display: { xs: "block", md: "none" }, mt:"3%" }}
-            >
-              <Card sx={{ maxWidth: "100%", margin: "auto" }}>
-                <CardMedia
-                  sx={{ display: { xs: "none", md: "block" } }}
-                  component="img"
-                  height="450"
-                  image={imagen[2] ? imagen[2] : imagen[0]}
-                  alt="green iguana"
-                />
-                <CardMedia
-                  sx={{ display: { xs: "block", md: "none" } }}
-                  component="img"
-                  height="240"
-                  image={imagen[2] ? imagen[2] : imagen[0]}
-                  alt="green iguana"
-                />
-              </Card>
-            </Grid>
-          </Grid>
+            Características principales
+          </Typography>
+          <Box>
+            <CardDetalle
+              tipo="moto"
+              cilindrada={cilindrada}
+              cv={cv}
+              año={año}
+              modelo={modelo}
+              kilometros={kilometros}
+              marca={marca}
+            />
+          </Box>
         </Box>
       </Stack>
       <Footer />
