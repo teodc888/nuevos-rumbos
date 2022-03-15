@@ -15,32 +15,38 @@ import CardEstadisticas from "../cardEstadisticas/cardEstadisticas";
 import { useSelector } from "react-redux";
 const admin = [
   {
+    id:"1",
     titulo: "Formulario Autos",
     imagen: <DirectionsCarIcon />,
 
     boton: "/formularioAuto",
   },
   {
+    id:"2",
     titulo: "Formulario Motos",
     imagen: <TwoWheelerIcon />,
     boton: "/formularioMoto",
   },
   {
+    id:"3",
     titulo: "Formulario Repuestos",
     imagen: <ConstructionIcon />,
     boton: "/formularioRepuesto",
   },
   {
+    id:"4",
     titulo: "Editar Autos",
     imagen: <DirectionsCarIcon />,
     boton: "/editarAutos",
   },
   {
+    id:"5",
     titulo: "Editar Motos",
     imagen: <TwoWheelerIcon />,
     boton: "/editarMotos",
   },
   {
+    id:"6",
     titulo: "Editar Repuestos",
     imagen: <ConstructionIcon />,
     boton: "/editarRepuestos",
@@ -75,7 +81,7 @@ export default function HomeAdmin() {
           >
             {admin &&
               admin.map((producto) => (
-                <Grid item xs={4} sm={4} md={2}>
+                <Grid item xs={4} sm={4} md={2} key={producto.id}>
                   <CardAdmin
                     titulo={producto.titulo}
                     imagen={producto.imagen}
