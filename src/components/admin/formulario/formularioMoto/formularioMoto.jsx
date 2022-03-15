@@ -69,7 +69,7 @@ export default function FormularioMoto() {
 			}
 		);
 		const file = await res.json();
-		setInput({ ...input, imagen: file.secure_url });
+		setInput({ ...input, imagen: [file.secure_url] });
 	};
 
 	// estilos
