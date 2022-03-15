@@ -164,24 +164,28 @@ export default function FormularioRepuesto() {
 							fullWidth
 							sx={{ marginTop: '2%' }}
 						/>
-						{/* <Grid item sx={10}> */}
-						<Button
-							// color="primary"
-							variant="contained"
+						<Grid
 							sx={{
-								color: 'white',
-								marginBottom: '5%',
-								marginTop: '5%',
-								width: '60%',
+								border: ' 2px solid #cccccc',
+								borderRadius: '4px',
+								margin: '1%',
 							}}
-							onClick={handleClickCalcularPrecio}
 						>
-							Calcular descuento
-						</Button>
-						{/* </Grid> */}
-						{/* <Grid item sx={{ margin: 0, width: 'auto' }}> */}
-						<p>{input.precioDescuento}</p>
-						{/* </Grid> */}
+							<Button
+								// color="primary"
+								variant="contained"
+								sx={{
+									color: 'white',
+									marginBottom: '1%',
+									marginTop: '1%',
+									width: '60%',
+								}}
+								onClick={handleClickCalcularPrecio}
+							>
+								Calcular descuento
+							</Button>
+							<p>{input.precioDescuento}</p>
+						</Grid>
 					</Grid>
 					<Grid
 						item
