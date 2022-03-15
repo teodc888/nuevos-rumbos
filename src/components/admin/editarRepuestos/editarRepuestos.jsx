@@ -73,7 +73,7 @@ const EditarRepuestos = () => {
 						<StyledTableRow key={repuesto.id}>
 							<StyledTableCell component="th" scope="row">
 								<Avatar
-									src={repuesto.imagen}
+									src={repuesto.imagen[0]}
 									alt={repuesto.marca}
 									sx={{ width: 150, height: 150 }}
 									variant="rounded"
