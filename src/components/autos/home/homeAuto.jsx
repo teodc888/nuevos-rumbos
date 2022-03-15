@@ -47,7 +47,7 @@ export default function HomeAuto() {
   //UseSelector
   const orden = useSelector((state) => state.orden);
   const autos = useSelector((state) => state.autos);
-  const autosBuscados = useSelector((state) => state.autosBuscados);
+
 
   //useState
   const [filtro, setFiltro] = useState(orden);
@@ -81,7 +81,7 @@ export default function HomeAuto() {
   // funcion para mostrar las marcas sin repetir
   let uniqueArr = ["todos"];
   if (autos.length > 0) {
-    const autosFilterMarca = autosBuscados.map((auto) => auto.marca);
+    const autosFilterMarca = autos.map((auto) => auto.marca);
     uniqueArr = [...new Set(autosFilterMarca)];
   }
 

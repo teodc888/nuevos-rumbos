@@ -271,7 +271,7 @@ export default function DetalleMoto({
                 }}
                 component="img"
                 height="400"
-                image={imagen[1]}
+                image={imagen[1] ? imagen[1] : imagen[0]}
                 alt="green iguana"
               />
               <CardMedia
@@ -281,7 +281,7 @@ export default function DetalleMoto({
                 }}
                 component="img"
                 height="240"
-                image={imagen[1]}
+                image={imagen[1] ?  imagen[1] : imagen[0]}
                 alt="green iguana"
               />
             </Grid>
@@ -307,7 +307,7 @@ export default function DetalleMoto({
                 }}
                 component="img"
                 height="400"
-                image={imagen[2]}
+                image={imagen[2] ? imagen[2] : imagen[0]}
                 alt="green iguana"
               />
               <CardMedia
@@ -317,7 +317,7 @@ export default function DetalleMoto({
                 }}
                 component="img"
                 height="240"
-                image={imagen[2]}
+                image={imagen[2] ? imagen[2] : imagen[0]}
                 alt="green iguana"
               />
             </Grid>
@@ -336,14 +336,14 @@ export default function DetalleMoto({
                   sx={{ display: { xs: "none", md: "block" } }}
                   component="img"
                   height="450"
-                  image={imagen[2]}
+                  image={imagen[2] ? imagen[2] : imagen[0]}
                   alt="green iguana"
                 />
                 <CardMedia
                   sx={{ display: { xs: "block", md: "none" } }}
                   component="img"
                   height="240"
-                  image={imagen[2]}
+                  image={imagen[2] ? imagen[2] : imagen[0]}
                   alt="green iguana"
                 />
               </Card>

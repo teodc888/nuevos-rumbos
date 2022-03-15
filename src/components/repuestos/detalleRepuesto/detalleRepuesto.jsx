@@ -131,14 +131,20 @@ export default function DetalleRepuesto({
               ) : null}
               <Card sx={{ maxWidth: "100%", margin: "auto" }}>
                 <CardMedia
-                  sx={{ display: { xs: "none", md: "flex" } }}
+                  sx={{
+                    display: { xs: "none", md: "flex" },
+                    objectFit: "contain",
+                  }}
                   component="img"
-                  height="100%"
+                  height="700"
                   image={imagen}
                   alt="green iguana"
                 />
                 <CardMedia
-                  sx={{ display: { xs: "flex", md: "none" } }}
+                  sx={{
+                    display: { xs: "flex", md: "none" },
+                    objectFit: "contain",
+                  }}
                   component="img"
                   height="240"
                   image={imagen}

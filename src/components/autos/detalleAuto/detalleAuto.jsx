@@ -279,7 +279,7 @@ export default function DetalleAuto({
                   }}
                   component="img"
                   height="400px"
-                  image={imagen[1]}
+                  image={imagen[1] ? imagen[1] : imagen[0]}
                   alt="green iguana"
                 />
                 <CardMedia
@@ -289,7 +289,7 @@ export default function DetalleAuto({
                   }}
                   component="img"
                   height="240"
-                  image={imagen[1]}
+                  image={imagen[1] ? imagen[1] : imagen[0]}
                   alt="green iguana"
                 />
               </Grid>
@@ -309,7 +309,7 @@ export default function DetalleAuto({
                   }}
                   component="img"
                   height="400"
-                  image={imagen[2]}
+                  image={imagen[2] ? imagen[2] : imagen[0]}
                   alt="green iguana"
                 />
               </Grid>
@@ -335,7 +335,7 @@ export default function DetalleAuto({
                   }}
                   component="img"
                   height="240"
-                  image={imagen[2]}
+                  image={imagen[2] ? imagen[2] : imagen[0]}
                   alt="green iguana"
                 />
               </Grid>
@@ -369,7 +369,7 @@ export default function DetalleAuto({
                   }}
                   component="img"
                   height="400"
-                  image={imagen[3]}
+                  image={imagen[3] ? imagen[3] : imagen[0]}
                   alt="green iguana"
                 />
                 <CardMedia
@@ -379,7 +379,7 @@ export default function DetalleAuto({
                   }}
                   component="img"
                   height="240"
-                  image={imagen[3]}
+                  image={imagen[3] ? imagen[3] : imagen[0]}
                   alt="green iguana"
                 />
               </Grid>

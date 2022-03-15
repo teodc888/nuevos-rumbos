@@ -11,6 +11,7 @@ import {
   CardActionArea,
   Alert,
   Box,
+  CardMedia,
 } from "@mui/material";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
@@ -119,21 +120,53 @@ export default function CardNR({
     }
   };
 
-  console.log(precio)
+  console.log(precio);
   return (
     <Card sx={{ maxWidth: 450, margin: "auto" }}>
-      {descuento > 0 ? (
-        <Box sx={{ position: "absolute" }}>
-          <Alert
-            variant="outlined"
-            severity="success"
-            sx={{ bgcolor: darkModeCard() }}
-          >
-            {descuento}% descuento
-          </Alert>
-        </Box>
-      ) : null}
-      <Carrousel imagen={imagen} tamañoCard={"450"} tamañoImagen={"290"} velocidad={null} />
+      {tipo === "repuesto" ? (
+        <>
+          {descuento > 0 ? (
+            <Box sx={{ position: "absolute" }}>
+              <Alert
+                variant="outlined"
+                severity="success"
+                sx={{ bgcolor: darkModeCard() }}
+              >
+                {descuento}% descuento
+              </Alert>
+            </Box>
+          ) : null}
+          <Card sx={{ maxWidth: "100%", margin: "auto" }}>
+            <CardMedia
+              sx={{
+                display: { xs: "none", md: "flex" },
+                objectFit: "contain",
+              }}
+              component="img"
+              height="290"
+              image={imagen}
+              alt="green iguana"
+            />
+            <CardMedia
+              sx={{
+                display: { xs: "flex", md: "none" },
+                objectFit: "contain",
+              }}
+              component="img"
+              height="240"
+              image={imagen}
+              alt="green iguana"
+            />
+          </Card>
+        </>
+      ) : (
+        <Carrousel
+          imagen={imagen}
+          tamañoCard={"450"}
+          tamañoImagen={"290"}
+          velocidad={null}
+        />
+      )}
       <CardActionArea onClick={handleNavigate}>
         <CardContent>
           {tipo === "repuesto" ? (
