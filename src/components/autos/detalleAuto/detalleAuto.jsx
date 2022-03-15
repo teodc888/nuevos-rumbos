@@ -240,7 +240,41 @@ export default function DetalleAuto({
             </Grid>
           </Grid>
         </Box>
-        <Box textAlign="center">
+        <Box textAlign="center" sx={{ display: { xs: "none", md: "block" } }} width="50%" >
+          <Typography
+            gutterBottom
+            variant="h3"
+            component="div"
+            textAlign="center"
+            sx={{ display: { xs: "none", md: "block" } }}
+          >
+            Características principales
+          </Typography>
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            textAlign="center"
+            sx={{ display: { xs: "block", md: "none" } }}
+          >
+            Características principales
+          </Typography>
+          <CardDetalle
+            tipo="auto"
+            carroceria={carroceria}
+            motor={motor}
+            puertas={puertas}
+            cv={cv}
+            transmision={transmision}
+            combustible={combustible}
+            gnv={gnv}
+            marca={marca}
+            modelo={modelo}
+            kilometros={kilometros}
+            año={año}
+          />
+        </Box>
+        <Box textAlign="center" sx={{ display: { xs: "block", md: "none" } }}  >
           <Typography
             gutterBottom
             variant="h3"
