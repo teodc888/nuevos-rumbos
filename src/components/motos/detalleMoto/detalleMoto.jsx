@@ -235,7 +235,38 @@ export default function DetalleMoto({
             </Grid>
           </Grid>
         </Box>
-        <Box textAlign="center">
+        <Box textAlign="center"  sx={{ display: { xs: "none", md: "block" } }} width="50%">
+          <Typography
+            gutterBottom
+            variant="h3"
+            component="div"
+            textAlign="center"
+            sx={{ display: { xs: "none", md: "block" } }}
+          >
+            Características principales
+          </Typography>
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            textAlign="center"
+            sx={{ display: { xs: "block", md: "none" } }}
+          >
+            Características principales
+          </Typography>
+          <Box>
+            <CardDetalle
+              tipo="moto"
+              cilindrada={cilindrada}
+              cv={cv}
+              año={año}
+              modelo={modelo}
+              kilometros={kilometros}
+              marca={marca}
+            />
+          </Box>
+        </Box>
+        <Box textAlign="center" sx={{ display: { xs: "block", md: "none" } }}>
           <Typography
             gutterBottom
             variant="h3"

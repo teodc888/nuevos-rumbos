@@ -1,9 +1,23 @@
-import React from "react";
+import * as React from "react";
 
-export default function CardEstadisticas() {
+import {
+  Card,
+  CardContent,
+  Typography,
+} from "@mui/material";
+
+export default function CardEstadisticas({titulo, numero}) {
   return (
-    <>
-      <h1>hola</h1>
-    </>
+    <Card sx={{ maxWidth: "100%"}}>
+      <CardContent>
+        <Typography gutterBottom variant="h2" component="div">
+          {titulo}
+        </Typography>
+        <Typography gutterBottom variant="h5" component="div">
+         Cantidad: {numero}
+        </Typography>
+      </CardContent>
+
+    </Card>
   );
 }
