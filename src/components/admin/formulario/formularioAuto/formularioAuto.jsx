@@ -1,27 +1,25 @@
 import React, { useState } from 'react';
+// packages
 import {
 	Grid,
 	TextField,
-	// Select as TextField,
-	Select,
 	MenuItem,
-	FormControl,
 	TextareaAutosize,
 	InputLabel,
 	Input,
 	IconButton,
 	Popover,
 	Typography,
-	Button,
 } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
-
-import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../../../../firebase/firebaseConfig';
 import Swal from 'sweetalert2';
 import InfoIcon from '@mui/icons-material/Info';
-
 import { useNavigate } from 'react-router-dom';
+// recursos de firebase
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../../../../firebase/firebaseConfig';
+// components
+import BtnGuardar from './btnFormularioAuto';
 
 export default function FormularioAuto() {
 	const navigate = useNavigate();
@@ -126,7 +124,7 @@ export default function FormularioAuto() {
 		<>
 			<form
 				align="center"
-				// id="myform-auto"
+				id="myform-formAuto"
 				className={formStyle.root}
 				onSubmit={handleSubmit}
 			>
@@ -409,19 +407,7 @@ export default function FormularioAuto() {
 						<Input type="file" name="imagen" onChange={handleFiles} required />
 					</Grid>
 				</Grid>
-				<Button
-					type="submit"
-					color="primary"
-					variant="contained"
-					sx={{
-						bgcolor: 'green',
-						color: 'white',
-						marginBottom: '5%',
-						width: '60%',
-					}}
-				>
-					GUARDAR
-				</Button>
+				<BtnGuardar />
 			</form>
 		</>
 	);
