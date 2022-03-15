@@ -103,7 +103,6 @@ export default function FormularioAuto() {
 
 	const open = Boolean(anchorEl);
 
-	console.log(input);
 	// estilos
 	const containerStyle = {
 		padding: '5%',
