@@ -66,7 +66,7 @@ export default function HomeAdmin() {
           >
             {admin &&
               admin.map((producto) => (
-                <Grid item xs={4} sm={4} md={4}>
+                <Grid item xs={4} sm={4} md={2}>
                   <CardAdmin
                     titulo={producto.titulo}
                     imagen={producto.imagen}

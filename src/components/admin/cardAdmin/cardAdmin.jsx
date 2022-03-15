@@ -19,18 +19,18 @@ export default function CardAdmin({ titulo, imagen, boton }) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345, margin: "auto" }}>
+    <Card sx={{ maxWidth: 245, margin: "auto" }}>
       <Box
         sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt:"10%" }}
       >
-        <Avatar>
+        <Avatar sx={{color:"white", bgcolor:"black"}}>
           {imagen}
         </Avatar>
       </Box>
       <CardActions
         sx={{ display: "flex", justifyContent: "center", alignItems: "center", mt:"10%", mb:"10%" }}
       >
-        <Button size="small" onClick={handleClick}>
+        <Button size="told" variant="contained" color="error" sx={{bgcolor:"#b71c1c", color:"white"}} onClick={handleClick}>
           {titulo}
         </Button>
       </CardActions>
