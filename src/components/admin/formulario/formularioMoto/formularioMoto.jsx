@@ -96,7 +96,6 @@ export default function FormularioMoto() {
 				className={formStyle.root}
 				onSubmit={handleSubmit}
 			>
-				{/* <h1 className="App">Moto</h1> */}
 				<Grid container style={containerStyle}>
 					<Grid
 						item
@@ -146,6 +145,8 @@ export default function FormularioMoto() {
 							name="kilometros"
 							onChange={handleChange}
 							type="number"
+							inputProps={{ min: 0 }}
+							min={0}
 							value={input.kilometros}
 							required
 							fullWidth
@@ -157,6 +158,8 @@ export default function FormularioMoto() {
 							name="precio"
 							onChange={handleChange}
 							type="number"
+							inputProps={{ min: 0 }}
+							min={0}
 							value={input.precio}
 							required
 							fullWidth
@@ -200,6 +203,8 @@ export default function FormularioMoto() {
 							name="año"
 							onChange={handleChange}
 							type="number"
+							inputProps={{ min: 0 }}
+							min={0}
 							value={input.año}
 							required
 							fullWidth
@@ -216,12 +221,8 @@ export default function FormularioMoto() {
 						<InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
 						<Input type="file" name="imagen" onChange={handleFiles} required />
 					</Grid>
-
-					{/* <Grid item xs={16}>
-						<button variant="text">Guardar</button>
-					</Grid> */}
 				</Grid>
-					<BtnGuardar />
+				<BtnGuardar />
 			</form>
 		</>
 	);
