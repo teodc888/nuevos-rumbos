@@ -10,43 +10,42 @@ import ConstructionIcon from "@mui/icons-material/Construction";
 import CardAdmin from "../cardAdmin/cardAdmin";
 import CardEstadisticas from "../cardEstadisticas/cardEstadisticas";
 
-
 //Redux
 import { useSelector } from "react-redux";
 const admin = [
   {
-    id:"1",
-    titulo: "Formulario Autos",
+    id: "1",
+    titulo: "Cargar Autos",
     imagen: <DirectionsCarIcon />,
 
     boton: "/formularioAuto",
   },
   {
-    id:"2",
-    titulo: "Formulario Motos",
+    id: "2",
+    titulo: "Cargar Motos",
     imagen: <TwoWheelerIcon />,
     boton: "/formularioMoto",
   },
   {
-    id:"3",
-    titulo: "Formulario Repuestos",
+    id: "3",
+    titulo: "Cargar Repuestos",
     imagen: <ConstructionIcon />,
     boton: "/formularioRepuesto",
   },
   {
-    id:"4",
+    id: "4",
     titulo: "Editar Autos",
     imagen: <DirectionsCarIcon />,
     boton: "/editarAutos",
   },
   {
-    id:"5",
+    id: "5",
     titulo: "Editar Motos",
     imagen: <TwoWheelerIcon />,
     boton: "/editarMotos",
   },
   {
-    id:"6",
+    id: "6",
     titulo: "Editar Repuestos",
     imagen: <ConstructionIcon />,
     boton: "/editarRepuestos",
@@ -74,6 +73,9 @@ export default function HomeAdmin() {
           Bienvenido Admin
         </Typography>
         <Box sx={{ width: "100%", marginTop: "3%" }}>
+          <Typography variant="h2" component="div" sx={{mb:"2%"}}>
+            Editar/Cargar
+          </Typography>
           <Grid
             container
             spacing={{ xs: 4, md: 3 }}
@@ -92,6 +94,9 @@ export default function HomeAdmin() {
           </Grid>
         </Box>
         <Box sx={{ width: "100%", marginTop: "3%" }}>
+          <Typography variant="h2" component="div" sx={{mt:"3%", mb:"3%"}}>
+            Estadisticas
+          </Typography>
           <Grid
             container
             spacing={{ xs: 4, md: 3 }}
@@ -101,10 +106,13 @@ export default function HomeAdmin() {
               <CardEstadisticas titulo={"Auto"} numero={autos.length} />
             </Grid>
             <Grid item xs={4} sm={4} md={4}>
-              <CardEstadisticas titulo={"Motos"} numero={motos.length}  />
+              <CardEstadisticas titulo={"Motos"} numero={motos.length} />
             </Grid>
             <Grid item xs={4} sm={4} md={4}>
-              <CardEstadisticas titulo={"Repuestos"} numero={repuestos.length} />
+              <CardEstadisticas
+                titulo={"Repuestos"}
+                numero={repuestos.length}
+              />
             </Grid>
           </Grid>
         </Box>

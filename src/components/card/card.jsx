@@ -120,7 +120,7 @@ export default function CardNR({
     }
   };
 
-  console.log(precio);
+
   return (
     <Card sx={{ maxWidth: 450, margin: "auto" }}>
       {tipo === "repuesto" ? (

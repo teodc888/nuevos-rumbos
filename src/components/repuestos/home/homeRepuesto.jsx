@@ -239,7 +239,7 @@ export default function HomeRepuestos() {
                       <CardNR
                         marca={repuesto.marca}
                         modelo={repuesto.modelo}
-                        imagen={repuesto.imagen}
+                        imagen={repuesto.imagen[0]}
                         precio={repuesto.precio}
                         id={repuesto.id}
                         tipo={"repuesto"}

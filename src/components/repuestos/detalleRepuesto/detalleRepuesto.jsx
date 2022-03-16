@@ -137,7 +137,7 @@ export default function DetalleRepuesto({
                   }}
                   component="img"
                   height="700"
-                  image={imagen}
+                  image={imagen[0]}
                   alt="green iguana"
                 />
                 <CardMedia
@@ -147,7 +147,7 @@ export default function DetalleRepuesto({
                   }}
                   component="img"
                   height="240"
-                  image={imagen}
+                  image={imagen[0]}
                   alt="green iguana"
                 />
               </Card>

@@ -130,7 +130,7 @@ export default function App() {
 
   window.addEventListener("scroll", toggleVisible);
 
-  console.log(visible);
+  
   return (
     <>
       <ThemeProvider theme={theme}>

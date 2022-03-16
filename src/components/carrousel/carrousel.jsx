@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import { Carousel } from "react-bootstrap";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Carrousel({ imagen, tamañoCard, tamañoImagen, velocidad }) {
   const [index, setIndex] = useState(0);
@@ -12,7 +13,7 @@ export default function Carrousel({ imagen, tamañoCard, tamañoImagen, velocida
     <>
       <Carousel style={{ maxWidth: tamañoCard, margin: "auto" }} activeIndex={index} onSelect={handleSelect} interval={velocidad} >
         {imagen.map((picture) => (
-          <Carousel.Item>
+          <Carousel.Item key={uuidv4()}>
             <img
               className="d-block w-100"
               height={tamañoImagen}
