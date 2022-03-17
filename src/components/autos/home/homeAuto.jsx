@@ -134,7 +134,7 @@ export default function HomeAuto() {
               justifyContent="center"
               spacing={2}
             >
-              <Typography variant="h2" component="div">
+              <Typography variant="h3" component="div">
                 Autos
               </Typography>
               <Box sx={{ width: "100%" }}>

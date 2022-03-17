@@ -183,7 +183,7 @@ export default function CardNR({
           ) : (
             <Typography
               gutterBottom
-              variant="h5"
+              variant="h6"
               component="div"
               textAlign="center"
               textTransform="capitalize"

@@ -133,7 +133,7 @@ export default function DetalleAuto({
                   >
                     <Carrousel
                       imagen={imagen}
-                      tamañoImagen={"700"}
+                      tamañoImagen={"500"}
                       velocidad={"3000"}
                     />
                   </Card>
@@ -198,7 +198,6 @@ export default function DetalleAuto({
                 xs={4}
                 sm={8}
                 md={4}
-                sx={{ display: "flex", justifyContent: "center" }}
               >
                 <Card sx={{ maxWidth: 445, margin: "auto" }}>
                   <CardContent>
@@ -207,7 +206,7 @@ export default function DetalleAuto({
                     </Typography>
                     <Typography
                       gutterBottom
-                      variant="h3"
+                      variant="h4"
                       component="div"
                       textAlign="center"
                       sx={{ marginTop: "5%" }}
@@ -218,7 +217,7 @@ export default function DetalleAuto({
                       ${precio}
                     </Typography>
                     <Typography
-                      variant="body1"
+                      variant="body2"
                       component="div"
                       sx={{ marginTop: "10%" }}
                     >
@@ -256,7 +255,7 @@ export default function DetalleAuto({
           <Box
             textAlign="center"
             sx={{ display: { xs: "none", md: "block" } }}
-            width="40%"
+            width="65%"
           >
             <Typography
               gutterBottom
