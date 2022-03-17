@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 //Mui
-import { Typography, Stack, Grid, Box, Card, CardMedia } from "@mui/material";
+import { Typography, Stack, Grid, Box, Card, CardMedia, Container } from "@mui/material";
 
 //Componets
 import CardNR from "../../card/card";
@@ -19,7 +19,7 @@ export default function Buscador() {
   }, []);
 
   return (
-    <>
+    <Container maxWidth="xl">
       <Stack
         direction="column"
         alignItems="center"
@@ -76,6 +76,6 @@ export default function Buscador() {
           </Grid>
         </Box>
       </Stack>
-    </>
+    </Container>
   );
 }

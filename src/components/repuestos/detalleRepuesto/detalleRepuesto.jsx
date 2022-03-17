@@ -12,6 +12,7 @@ import {
   Button,
   CardActions,
   Alert,
+  Container,
 } from "@mui/material";
 
 //Components
@@ -105,116 +106,134 @@ export default function DetalleRepuesto({
 
   return (
     <>
-      <Stack
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-        spacing={2}
-      >
-        <Box sx={{ width: "100%", marginTop: "1%" }}>
-          <Grid
-            container
-            spacing={{ xs: 4, md: 3 }}
-            columns={{ xs: 4, sm: 8, md: 12 }}
-          >
-            <Grid item xs={4} sm={8} md={8}>
-              {descuento > 0 ? (
-                <Box sx={{ position: "absolute" }}>
-                  <Alert
-                    variant="outlined"
-                    severity="success"
-                    sx={{ bgcolor: darkModeCard() }}
-                  >
-                    {descuento}% descuento
-                  </Alert>
-                </Box>
-              ) : null}
-              <Card sx={{ maxWidth: "100%", margin: "auto" }}>
-                <CardMedia
-                  sx={{
-                    display: { xs: "none", md: "flex" },
-                    objectFit: "contain",
-                  }}
-                  component="img"
-                  height="700"
-                  image={imagen[0]}
-                  alt="green iguana"
-                />
-                <CardMedia
-                  sx={{
-                    display: { xs: "flex", md: "none" },
-                    objectFit: "contain",
-                  }}
-                  component="img"
-                  height="240"
-                  image={imagen[0]}
-                  alt="green iguana"
-                />
-              </Card>
-            </Grid>
-            <Grid item xs={4} sm={8} md={4} sx={{display:"flex", justifyContent:"center"}}>
-              <Card sx={{ maxWidth: 445, margin: "auto"  }}>
-                <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div"
-                    textAlign="center"
-                    sx={{ marginTop: "1%", display: { xs: "block", md: "none" } }}
-                  >
-                    {marca} {modelo}
-                  </Typography>
-                  <Typography
-                    gutterBottom
-                    variant="h4"
-                    component="div"
-                    textAlign="center"
-                    sx={{ marginTop: "1%", display: { xs: "none", md: "block" } }}
-                  >
-                    {marca} {modelo}
-                  </Typography>
-                  <Typography variant="h4" sx={{ marginTop: "10%" }}>
-                    {descuento > 0 ? (
-                      <>
-                        <del>${precio}</del> ${precioDescuento}
-                      </>
+      <Container maxWidth="xl">
+        <Stack
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+          spacing={2}
+        >
+          <Box sx={{ width: "100%", marginTop: "1%" }}>
+            <Grid
+              container
+              spacing={{ xs: 4, md: 3 }}
+              columns={{ xs: 4, sm: 8, md: 12 }}
+            >
+              <Grid item xs={4} sm={8} md={8}>
+                {descuento > 0 ? (
+                  <Box sx={{ position: "absolute" }}>
+                    <Alert
+                      variant="outlined"
+                      severity="success"
+                      sx={{ bgcolor: darkModeCard() }}
+                    >
+                      {descuento}% descuento
+                    </Alert>
+                  </Box>
+                ) : null}
+                <Card sx={{ maxWidth: "100%", margin: "auto" }}>
+                  <CardMedia
+                    sx={{
+                      display: { xs: "none", md: "flex" },
+                      objectFit: "contain",
+                    }}
+                    component="img"
+                    height="550"
+                    image={imagen[0]}
+                    alt="green iguana"
+                  />
+                  <CardMedia
+                    sx={{
+                      display: { xs: "flex", md: "none" },
+                      objectFit: "contain",
+                    }}
+                    component="img"
+                    height="240"
+                    image={imagen[0]}
+                    alt="green iguana"
+                  />
+                </Card>
+              </Grid>
+              <Grid
+                item
+                xs={4}
+                sm={8}
+                md={4}
+                sx={{ display: "flex", justifyContent: "center" }}
+              >
+                <Card sx={{ maxWidth: 445, margin: "auto" }}>
+                  <CardContent>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                      textAlign="center"
+                      sx={{
+                        marginTop: "1%",
+                        display: { xs: "block", md: "none" },
+                      }}
+                    >
+                      {marca} {modelo}
+                    </Typography>
+                    <Typography
+                      gutterBottom
+                      variant="h4"
+                      component="div"
+                      textAlign="center"
+                      sx={{
+                        marginTop: "1%",
+                        display: { xs: "none", md: "block" },
+                      }}
+                    >
+                      {marca} {modelo}
+                    </Typography>
+                    <Typography variant="h4" sx={{ marginTop: "10%" }}>
+                      {descuento > 0 ? (
+                        <>
+                          <del>${precio}</del> ${precioDescuento}
+                        </>
+                      ) : (
+                        <>${precio}</>
+                      )}
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      component="div"
+                      sx={{ marginTop: "10%" }}
+                    >
+                      Descripcion: {descripcion}
+                    </Typography>
+                  </CardContent>
+                  <CardActions sx={{ mt: "5%" }}>
+                    {fav === false ? (
+                      <Button
+                        variant="contained"
+                        onClick={addFavoritos}
+                        sx={{ bgcolor: "green", color: "white", width: "100%" }}
+                      >
+                        Agregar a favoritos
+                      </Button>
                     ) : (
-                      <>${precio}</>
+                      <Button
+                        variant="contained"
+                        color="error"
+                        onClick={deleteFavoritos}
+                        sx={{
+                          bgcolor: colorElegido,
+                          color: "white",
+                          width: "100%",
+                        }}
+                      >
+                        Eliminar de favoritos
+                      </Button>
                     )}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    component="div"
-                    sx={{ marginTop: "10%" }}
-                  >
-                    Descripcion: {descripcion}
-                  </Typography>
-                </CardContent>
-                <CardActions sx={{mt:"5%"}}>
-                  {fav === false ? (
-                    <Button
-                      variant="contained"
-                      onClick={addFavoritos}
-                      sx={{ bgcolor: "green", color: "white", width: "100%" }}
-                    >
-                      Agregar a favoritos
-                    </Button>
-                  ) : (
-                    <Button
-                      variant="contained"
-                      color="error"
-                      onClick={deleteFavoritos}
-                      sx={{ bgcolor: colorElegido, color: "white", width: "100%" }}
-                    >
-                      Eliminar de favoritos
-                    </Button>
-                  )}
-                </CardActions>
-              </Card>
+                  </CardActions>
+                </Card>
+              </Grid>
             </Grid>
-          </Grid>
-        </Box>
-      </Stack>
+          </Box>
+        </Stack>
+      </Container>
       <Footer />
     </>
   );

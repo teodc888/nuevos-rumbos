@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 //Mui
-import { Button, Grid, Card, CardMedia, Typography, Box } from "@mui/material";
+import { Button, Grid, Card, CardMedia, Typography, Box, Container } from "@mui/material";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
 import BuildIcon from "@mui/icons-material/Build";
@@ -37,7 +37,7 @@ export default function Landing() {
   }, []);
 
   return (
-    <>
+    <Container maxWidth="L">
       <Box sx={{ width: "100%", marginTop:"1%" }}>
         <Grid
           container
@@ -172,7 +172,7 @@ export default function Landing() {
           </Grid>
         </Grid>
       </Box>
-    </>
+    </Container>
   );
 }
 
