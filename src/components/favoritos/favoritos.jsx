@@ -41,7 +41,7 @@ export default function Favoritos() {
 
   return (
     <>
-      <Container>
+      <Container maxWidth="lg">
         <Stack
           direction="column"
           alignItems="center"

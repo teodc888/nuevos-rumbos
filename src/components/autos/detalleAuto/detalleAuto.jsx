@@ -104,7 +104,7 @@ export default function DetalleAuto({
 
   return (
     <>
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Stack
           direction="column"
           alignItems="center"

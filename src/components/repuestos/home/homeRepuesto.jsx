@@ -119,7 +119,7 @@ export default function HomeRepuestos() {
 
   return (
     <>
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Grid container spacing={10} columns={16}>
           <Grid
             item

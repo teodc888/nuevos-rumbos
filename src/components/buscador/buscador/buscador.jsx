@@ -19,7 +19,7 @@ export default function Buscador() {
   }, []);
 
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="lg">
       <Stack
         direction="column"
         alignItems="center"

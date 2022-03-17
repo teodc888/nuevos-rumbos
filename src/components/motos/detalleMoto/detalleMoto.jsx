@@ -99,7 +99,7 @@ export default function DetalleMoto({
 
   return (
     <>
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Stack
           direction="column"
           alignItems="center"
