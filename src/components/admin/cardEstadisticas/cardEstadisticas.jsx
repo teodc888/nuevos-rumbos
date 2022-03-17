@@ -14,7 +14,7 @@ export default function CardEstadisticas({titulo, numero}) {
           {titulo}
         </Typography>
         <Typography gutterBottom variant="h5" component="div">
-         Cantidad: {numero}
+         Cantidad de Productos: {numero}
         </Typography>
       </CardContent>
 

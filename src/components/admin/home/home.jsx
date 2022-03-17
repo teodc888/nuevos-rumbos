@@ -102,13 +102,13 @@ export default function HomeAdmin() {
 						spacing={{ xs: 4, md: 3 }}
 						columns={{ xs: 4, sm: 8, md: 12 }}
 					>
-						<Grid item xs={4} sm={4} md={4}>
+						<Grid item xs={12} sm={12} md={12}>
 							<CardEstadisticas titulo={'Auto'} numero={autos.length} />
 						</Grid>
-						<Grid item xs={4} sm={4} md={4}>
+						<Grid item xs={12} sm={12} md={12}>
 							<CardEstadisticas titulo={'Motos'} numero={motos.length} />
 						</Grid>
-						<Grid item xs={4} sm={4} md={4}>
+						<Grid item xs={12} sm={12} md={12}>
 							<CardEstadisticas
 								titulo={'Repuestos'}
 								numero={repuestos.length}
