@@ -14,7 +14,7 @@ import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 export default function Footer() {
   const colorElegido = useSelector((state) => state.color);
   return (
-    <footer>
+    <footer >
       <Box
         px={{ xs: 3, sm: 10 }}
         py={{ xs: 5, sm: 10 }}
