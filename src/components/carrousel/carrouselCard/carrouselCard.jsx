@@ -10,9 +10,9 @@ import CardNR from "../../card/card";
 import { useSelector } from "react-redux";
 
 const breakPoints = [
-  { width: 5, itemsToShow: 1 },
-  { width: 5, itemsToShow: 2 },
-  { width: 5, itemsToShow: 3 },
+  { width: 1000, itemsToShow: 1 },
+  { width: 1000, itemsToShow: 2 },
+  { width: 1000, itemsToShow: 3 },
 ];
 
 export default function CarrouselCard({ tipo }) {
@@ -21,7 +21,7 @@ export default function CarrouselCard({ tipo }) {
 
   console.log(autos);
   return (
-    <div style={{ marginTop: "3%", width:"100%" }}>
+    <div style={{ marginTop: "3%",}}>
       {tipo === "auto" ? (
         <Carouseal breakPoints={breakPoints}>
           {autos.map((auto) => (
