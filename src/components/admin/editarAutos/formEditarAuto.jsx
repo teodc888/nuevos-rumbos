@@ -395,6 +395,7 @@ const FormEditarAuto = () => {
 						maxRows={10}
 						style={{ width: '90%', maxHeight: 150 }}
 					/>
+					<InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
 					<Input type="file" name="imagen" onChange={handleFiles} />
 				</Grid>
 			</Grid>
