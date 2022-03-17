@@ -152,15 +152,24 @@ export default function DetalleRepuesto({
                 />
               </Card>
             </Grid>
-            <Grid item xs={4} sm={8} md={4}>
-              <Card sx={{ maxWidth: 445, height: "100%", margin: "auto" }}>
+            <Grid item xs={4} sm={8} md={4} sx={{display:"flex", justifyContent:"center"}}>
+              <Card sx={{ maxWidth: 445, margin: "auto"  }}>
                 <CardContent>
                   <Typography
                     gutterBottom
-                    variant="h3"
+                    variant="h5"
                     component="div"
                     textAlign="center"
-                    sx={{ marginTop: "1%" }}
+                    sx={{ marginTop: "1%", display: { xs: "block", md: "none" } }}
+                  >
+                    {marca} {modelo}
+                  </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="h4"
+                    component="div"
+                    textAlign="center"
+                    sx={{ marginTop: "1%", display: { xs: "none", md: "block" } }}
                   >
                     {marca} {modelo}
                   </Typography>
@@ -181,12 +190,12 @@ export default function DetalleRepuesto({
                     Descripcion: {descripcion}
                   </Typography>
                 </CardContent>
-                <CardActions>
+                <CardActions sx={{mt:"5%"}}>
                   {fav === false ? (
                     <Button
                       variant="contained"
                       onClick={addFavoritos}
-                      sx={{ bgcolor: "green", color: "white" }}
+                      sx={{ bgcolor: "green", color: "white", width: "100%" }}
                     >
                       Agregar a favoritos
                     </Button>
@@ -195,7 +204,7 @@ export default function DetalleRepuesto({
                       variant="contained"
                       color="error"
                       onClick={deleteFavoritos}
-                      sx={{ bgcolor: colorElegido, color: "white" }}
+                      sx={{ bgcolor: colorElegido, color: "white", width: "100%" }}
                     >
                       Eliminar de favoritos
                     </Button>
