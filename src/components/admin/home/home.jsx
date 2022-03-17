@@ -73,9 +73,6 @@ export default function HomeAdmin() {
 					BIENVENIDO ADMIN
 				</Typography>
 				<Box sx={{ width: '100%', marginTop: '3%' }}>
-					{/* <Typography variant="h2" component="div" sx={{ mb: '2%' }}>
-						Editar/Cargar
-					</Typography> */}
 					<Grid
 						container
 						spacing={{ xs: 4, md: 3 }}
