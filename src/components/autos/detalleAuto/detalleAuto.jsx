@@ -16,6 +16,7 @@ import {
 import CardDetalle from "../../detalle/cardDetalle/cardDetalle";
 import Footer from "../../footer/footer";
 import Carrousel from "../../carrousel/carrousel";
+import CarrouselCard from "../../carrousel/carrouselCard/carrouselCard";
 
 //Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -130,8 +131,8 @@ export default function DetalleAuto({
                 >
                   <Carrousel
                     imagen={imagen}
-                    tamañoImagen={"740"}
-                    velocidad={"2000"}
+                    tamañoImagen={"600"}
+                    velocidad={"3000"}
                   />
                 </Card>
                 <Card
@@ -149,7 +150,7 @@ export default function DetalleAuto({
                   <Carrousel
                     imagen={imagen}
                     tamañoImagen={"340"}
-                    velocidad={"2000"}
+                    velocidad={"3000"}
                   />
                 </Card>
                 <Card
@@ -167,7 +168,7 @@ export default function DetalleAuto({
                   <Carrousel
                     imagen={imagen}
                     tamañoImagen={"540"}
-                    velocidad={"2000"}
+                    velocidad={"3000"}
                   />
                 </Card>
                 <Card
@@ -185,12 +186,18 @@ export default function DetalleAuto({
                   <Carrousel
                     imagen={imagen}
                     tamañoImagen={"290"}
-                    velocidad={"2000"}
+                    velocidad={"3000"}
                   />
                 </Card>
               </Box>
             </Grid>
-            <Grid item xs={4} sm={8} md={4} sx={{display:"flex", justifyContent:"center"}}>
+            <Grid
+              item
+              xs={4}
+              sm={8}
+              md={4}
+              sx={{ display: "flex", justifyContent: "center" }}
+            >
               <Card sx={{ maxWidth: 445, margin: "auto" }}>
                 <CardContent>
                   <Typography variant="body1" color="text.secondary">
@@ -216,7 +223,7 @@ export default function DetalleAuto({
                     Descripcion: {descripcion}
                   </Typography>
                 </CardContent>
-                <CardActions sx={{mt:"5%"}}>
+                <CardActions sx={{ mt: "5%" }}>
                   {fav === false ? (
                     <Button
                       variant="contained"
@@ -230,7 +237,11 @@ export default function DetalleAuto({
                       variant="contained"
                       color="error"
                       onClick={deleteFavoritos}
-                      sx={{ bgcolor: colorElegido, color: "white", width: "100%" }}
+                      sx={{
+                        bgcolor: colorElegido,
+                        color: "white",
+                        width: "100%",
+                      }}
                     >
                       Eliminar de favoritos
                     </Button>
@@ -240,22 +251,17 @@ export default function DetalleAuto({
             </Grid>
           </Grid>
         </Box>
-        <Box textAlign="center" sx={{ display: { xs: "none", md: "block" } }} width="50%" >
+        <Box
+          textAlign="center"
+          sx={{ display: { xs: "none", md: "block" }}}
+          width="40%"
+        >
           <Typography
             gutterBottom
             variant="h3"
             component="div"
             textAlign="center"
-            sx={{ display: { xs: "none", md: "block" } }}
-          >
-            Características principales
-          </Typography>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
-            textAlign="center"
-            sx={{ display: { xs: "block", md: "none" } }}
+            sx={{ marginTop: "5%" }}
           >
             Características principales
           </Typography>
@@ -274,22 +280,19 @@ export default function DetalleAuto({
             año={año}
           />
         </Box>
-        <Box textAlign="center" sx={{ display: { xs: "block", md: "none" } }}  >
-          <Typography
-            gutterBottom
-            variant="h3"
-            component="div"
-            textAlign="center"
-            sx={{ display: { xs: "none", md: "block" } }}
-          >
-            Características principales
-          </Typography>
+        <Box
+          textAlign="center"
+          sx={{
+            display: { xs: "block", md: "none", sm: "block" },
+            width: "100%",
+          }}
+        >
           <Typography
             gutterBottom
             variant="h5"
             component="div"
             textAlign="center"
-            sx={{ display: { xs: "block", md: "none" } }}
+            sx={{ marginTop: "5%" }}
           >
             Características principales
           </Typography>
@@ -307,6 +310,27 @@ export default function DetalleAuto({
             kilometros={kilometros}
             año={año}
           />
+        </Box>
+        <Box sx={{ width: "100%" }}>
+          <Typography
+            gutterBottom
+            variant="h3"
+            component="div"
+            textAlign="center"
+            sx={{ mt: "2%", display: { xs: "none", md: "block" } }}
+          >
+            Productos relacionados
+          </Typography>
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            textAlign="center"
+            sx={{ mt: "2%", display: { xs: "block", md: "none" } }}
+          >
+            Productos relacionados
+          </Typography>
+          <CarrouselCard tipo="auto" />
         </Box>
       </Stack>
       <Footer />

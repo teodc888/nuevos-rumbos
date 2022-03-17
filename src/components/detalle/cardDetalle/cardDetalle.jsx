@@ -26,8 +26,8 @@ export default function BasicTable({
   marca,
 }) {
   return (
-    <TableContainer component={Paper}>
-      <Table>
+    <TableContainer component={Paper} sx={{marginTop:"5%"}} >
+      <Table >
         {tipo === "auto" ? (
           <TableBody>
             <TableRow>
@@ -35,7 +35,7 @@ export default function BasicTable({
                 <Typography variant="h6">Marca</Typography>
               </TableCell>
               <TableCell align="left">
-                <Typography variant="h6">{marca}</Typography>
+                <Typography variant="h6" >{marca}</Typography>
               </TableCell>
             </TableRow>
             <TableRow>

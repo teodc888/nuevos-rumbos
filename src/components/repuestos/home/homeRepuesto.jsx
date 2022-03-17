@@ -58,7 +58,7 @@ export default function HomeRepuestos() {
 
   // Paginado
   const [currentPage, setCurrentPage] = useState(1);
-  const [productoPorPagina] = useState(10);
+  const [productoPorPagina] = useState(9);
   const indeceDelUltimoProducto = currentPage * productoPorPagina; // 10
   const indiceDelPrimerProducto = indeceDelUltimoProducto - productoPorPagina; // 0
   const currentRepuestos = repuestos.slice(
