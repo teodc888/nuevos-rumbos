@@ -4,30 +4,41 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import CardActionArea from "@mui/material/CardActionArea";
 
-export default function CardDestacado({ marca, modelo, precio, imagen, tipo }) {
+import { useNavigate } from "react-router-dom";
+
+export default function CardDestacado({ marca, modelo, precio, imagen, tipo, id }) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/detalle/${id}`);
+  };
+
   return (
     <Card sx={{ display: "flex", maxWidth: 200, margin: "auto" }}>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
-        <CardContent sx={{ flex: "1 0 auto" }}>
-          {tipo === "repuesto" ? (
-            <Typography component="div"  variant="subtitle2">
-              {marca}
-            </Typography>
-          ) : (
-            <Typography component="div"  variant="subtitle2">
-              {marca} {modelo}
-            </Typography>
-          )}
+        <CardActionArea onClick={handleClick}>
+          <CardContent sx={{ flex: "1 0 auto" }}>
+            {tipo === "repuesto" ? (
+              <Typography component="div" variant="subtitle2">
+                {marca}
+              </Typography>
+            ) : (
+              <Typography component="div" variant="subtitle2">
+                {marca} {modelo}
+              </Typography>
+            )}
 
-          <Typography
-            variant="subtitle2"
-            color="text.secondary"
-            component="div"
-          >
-            $ {precio}
-          </Typography>
-        </CardContent>
+            <Typography
+              variant="subtitle2"
+              color="text.secondary"
+              component="div"
+            >
+              $ {precio}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
       </Box>
       <CardMedia
         component="img"

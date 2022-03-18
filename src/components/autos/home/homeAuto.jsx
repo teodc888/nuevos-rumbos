@@ -309,6 +309,7 @@ export default function HomeAuto() {
                       modelo={auto.modelo}
                       imagen={auto.imagen[0]}
                       precio={auto.precio}
+                      id={auto.id}
                     />
                   </Grid>
                 ))}

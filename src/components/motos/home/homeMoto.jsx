@@ -261,6 +261,7 @@ export default function HomeMoto() {
                       modelo={moto.modelo}
                       imagen={moto.imagen[0]}
                       precio={moto.precio}
+                      id={moto.id}
                     />
                   </Grid>
                 ))}

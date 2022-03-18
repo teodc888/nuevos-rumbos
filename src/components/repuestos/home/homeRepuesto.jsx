@@ -213,6 +213,7 @@ export default function HomeRepuestos() {
                       imagen={repuestos.imagen[0]}
                       precio={repuestos.precio}
                       tipo="repuesto"
+                      id={repuestos.id}
                     />
                   </Grid>
                 ))}
