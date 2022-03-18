@@ -61,7 +61,7 @@ export default function Landing() {
             variant="h3"
             component="div"
             textAlign="center"
-            sx={{ position: "absolute" }}
+            sx={{ position: "absolute", color:"white" }}
           >
             Nuevos Rumbos
           </Typography>
