@@ -26,6 +26,7 @@ import CardNR from "../../card/card";
 import InputBuscador from "../../buscador/InputBuscador/InputBuscador";
 import Paginado from "../../paginado/paginado";
 import Footer from "../../footer/footer";
+import CardDestacado from "../../card/cardDestacado/cardDestacado";
 
 //Redux
 import { useSelector, useDispatch } from "react-redux";
@@ -48,6 +49,8 @@ export default function HomeMoto() {
   const orden = useSelector((state) => state.orden);
   const motos = useSelector((state) => state.motos);
   const motosBuscados = useSelector((state) => state.motosBuscados);
+
+  const motosDestacadas = motos.filter((el) => el.destacado === "si");
 
   //useState
   const [filtro, setFiltro] = useState(orden);
@@ -107,7 +110,7 @@ export default function HomeMoto() {
   const successSubmitFavorite = () => {
     toast.success("Filtros borrados", {
       position: "bottom-right",
-      autoClose: 2000,
+      motoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: false,
@@ -246,6 +249,21 @@ export default function HomeMoto() {
                     Borrar filtros
                   </Button>
                 </Grid>
+                <Grid item xs={4} sm={4} md={12}>
+                  <Typography variant="h5" gutterBottom textAlign="center">
+                    Destacados
+                  </Typography>
+                </Grid>
+                {motosDestacadas.map((moto) => (
+                  <Grid item xs={4} sm={4} md={12} key={moto.id}>
+                    <CardDestacado
+                      marca={moto.marca}
+                      modelo={moto.modelo}
+                      imagen={moto.imagen[0]}
+                      precio={moto.precio}
+                    />
+                  </Grid>
+                ))}
               </Grid>
             </Box>
           </Grid>

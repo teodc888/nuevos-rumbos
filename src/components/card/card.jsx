@@ -120,7 +120,6 @@ export default function CardNR({
     }
   };
 
-
   return (
     <Card sx={{ maxWidth: 450, margin: "auto" }}>
       {tipo === "repuesto" ? (
@@ -136,35 +135,29 @@ export default function CardNR({
               </Alert>
             </Box>
           ) : null}
-          <Card sx={{ maxWidth: "100%", margin: "auto" }}>
-            <CardMedia
-              sx={{
-                display: { xs: "none", md: "flex" },
-                objectFit: "contain",
-              }}
-              component="img"
-              height="200"
-              image={imagen}
-              alt="green iguana"
-            />
-            <CardMedia
-              sx={{
-                display: { xs: "flex", md: "none" },
-                objectFit: "contain",
-              }}
-              component="img"
-              height="240"
-              image={imagen}
-              alt="green iguana"
-            />
-          </Card>
+          <CardMedia
+            sx={{
+              display: { xs: "none", md: "flex" },
+              objectFit: "contain",
+            }}
+            component="img"
+            height="200"
+            image={imagen}
+            alt="green iguana"
+          />
+          <CardMedia
+            sx={{
+              display: { xs: "flex", md: "none" },
+              objectFit: "contain",
+            }}
+            component="img"
+            height="240"
+            image={imagen}
+            alt="green iguana"
+          />
         </>
       ) : (
-        <Carrousel
-          imagen={imagen}
-          tamañoImagen={"180"}
-          velocidad={null}
-        />
+        <Carrousel imagen={imagen} tamañoImagen={"180"} velocidad={null} />
       )}
       <CardActionArea onClick={handleNavigate}>
         <CardContent>

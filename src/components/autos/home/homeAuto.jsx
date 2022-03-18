@@ -25,6 +25,7 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import CardNR from "../../card/card";
 import InputBuscador from "../../buscador/InputBuscador/InputBuscador";
 import Paginado from "../../paginado/paginado";
+import CardDestacado from "../../card/cardDestacado/cardDestacado";
 
 //Redux
 import { useSelector, useDispatch } from "react-redux";
@@ -48,6 +49,8 @@ export default function HomeAuto() {
   //UseSelector
   const orden = useSelector((state) => state.orden);
   const autos = useSelector((state) => state.autos);
+
+  const autosDestacados = autos.filter((el) => el.destacado === "si");
 
   //useState
   const [filtro, setFiltro] = useState(orden);
@@ -294,6 +297,21 @@ export default function HomeAuto() {
                     Borrar filtros
                   </Button>
                 </Grid>
+                <Grid item xs={4} sm={4} md={12}>
+                  <Typography variant="h5" gutterBottom textAlign="center">
+                    Destacados
+                  </Typography>
+                </Grid>
+                {autosDestacados.map((auto) => (
+                  <Grid item xs={4} sm={4} md={12} key={auto.id} >
+                    <CardDestacado
+                      marca={auto.marca}
+                      modelo={auto.modelo}
+                      imagen={auto.imagen[0]}
+                      precio={auto.precio}
+                    />
+                  </Grid>
+                ))}
               </Grid>
             </Box>
           </Grid>

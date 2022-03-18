@@ -26,6 +26,7 @@ import CardNR from "../../card/card";
 import InputBuscador from "../../buscador/InputBuscador/InputBuscador";
 import Paginado from "../../paginado/paginado";
 import Footer from "../../footer/footer";
+import CardDestacado from "../../card/cardDestacado/cardDestacado";
 
 //Redux
 import { useSelector, useDispatch } from "react-redux";
@@ -47,6 +48,8 @@ export default function HomeRepuestos() {
   const orden = useSelector((state) => state.orden);
   const repuestos = useSelector((state) => state.repuestos);
   const repuestosBuscados = useSelector((state) => state.repuestosBuscados);
+
+  const repuestosDestacados = repuestos.filter((el) => el.destacado === "si");
 
   //useState
   const [filtro, setFiltro] = useState(orden);
@@ -197,6 +200,22 @@ export default function HomeRepuestos() {
                     Borrar filtros
                   </Button>
                 </Grid>
+                <Grid item xs={4} sm={4} md={12}>
+                  <Typography variant="h5" gutterBottom textAlign="center">
+                    Destacados
+                  </Typography>
+                </Grid>
+                {repuestosDestacados.map((repuestos) => (
+                  <Grid item xs={4} sm={4} md={12} key={repuestos.id}>
+                    <CardDestacado
+                      marca={repuestos.marca}
+                      modelo={repuestos.modelo}
+                      imagen={repuestos.imagen[0]}
+                      precio={repuestos.precio}
+                      tipo="repuesto"
+                    />
+                  </Grid>
+                ))}
               </Grid>
             </Box>
           </Grid>
