@@ -1,19 +1,31 @@
 import React, { useEffect } from "react";
 
 //Mui
-import { Button, Grid, Card, CardMedia, Typography, Box, Container } from "@mui/material";
+import {
+  Button,
+  Grid,
+  Typography,
+  Box,
+  Container,
+  Stack,
+  Card,
+  CardMedia,
+} from "@mui/material";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
 import BuildIcon from "@mui/icons-material/Build";
 
 //Type
-import Typed from "react-typed";
+// import Typed from "react-typed";
 
 //Router
 import { useNavigate } from "react-router";
 
 //Redux
 import { useSelector } from "react-redux";
+
+import CarrouselCad from "../carrousel/carrouselCard/carrouselCard";
+import Footer from "../footer/footer";
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -37,142 +49,106 @@ export default function Landing() {
   }, []);
 
   return (
-    <Container maxWidth="L">
-      <Box sx={{ width: "100%", marginTop:"1%" }}>
-        <Grid
-          container
-          spacing={{ xs: 2, md: 2, sm: 2 }}
-          columns={{ xs: 16, sm: 16, md: 16 }}
-        >
-          <Grid
-            className="App"
-            item
-            xs={16}
-            sm={16}
-            md={8}
-            sx={{ margin: "auto" }}
+    <>
+      <Stack
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        spacing={2}
+      >
+        <Card sx={{ maxWidth: "100%" }}>
+          <Typography
+            variant="h3"
+            component="div"
+            textAlign="center"
+            sx={{ position: "absolute" }}
           >
-            <Typography
-              variant="h2"
-              component="div"
-              sx={{ marginBottom: "3%", display: { xs: "none", md: "block" } }}
-              fontFamily="Segoe UI Symbol"
-            >
-              NUEVOS RUMBOS
-            </Typography>
-            <Typography
-              variant="h4"
-              component="div"
-              sx={{
-                marginBottom: "5%",
-                display: { xs: "block", md: "none", sm: "none" },
-                marginTop: "3%",
-              }}
-              fontFamily="Segoe UI Symbol"
-            >
-              NUEVOS RUMBOS
-            </Typography>
-            <Typography
-              variant="h4"
-              component="div"
-              sx={{
-                marginBottom: "3%",
-                display: { xs: "none", md: "none", sm: "block" },
-              }}
-              fontFamily="Segoe UI Symbol"
-            >
-              NUEVOS RUMBOS
-            </Typography>
-            <Typography
-              variant="h5"
-              component="div"
-              sx={{ marginBottom: "5%", display: { xs: "none", md: "block" } }}
-            >
-              La mejor pagina de importaciones de -
-              <Typed
-                strings={[" AUTOS", "  MOTOS", "  REPUESTOS"]}
-                typeSpeed={65}
-                backSpeed={65}
-                loop
-              />
-            </Typography>
-            <Typography
-              variant="h9"
-              component="div"
-              sx={{ marginBottom: "5%", display: { xs: "block", md: "none" } }}
-            >
-              La mejor pagina de importaciones de -
-              <Typed
-                strings={[" AUTOS", "  MOTOS", "  REPUESTOS"]}
-                typeSpeed={65}
-                backSpeed={65}
-                loop
-              />
-            </Typography>
-
+            Nuevos Rumbos
+          </Typography>
+          <CardMedia
+            component="img"
+            height="500"
+            image="https://elintranews.com/wp-content/uploads/2020/02/IMG_20200227_222932.jpg"
+            alt="green iguana"
+          />
+        </Card>
+        <Container maxWidth="lg">
+          <Box sx={{ width: "100%" }}>
             <Grid
               container
-              spacing={{ xs: 3, md: 2, sm: 2 }}
-              columns={{ xs: 6, sm: 6, md: 6 }}
-              sx={{ marginTop: "1%" }}
+              spacing={{ xs: 2, md: 2, sm: 2 }}
+              columns={{ xs: 4, sm: 8, md: 16 }}
             >
-              <Grid className="App" item xs={6} sm={6} md={2}>
+              <Grid item xs={4} sm={8} md={5.33}>
                 <Button
                   variant="contained"
-                  sx={{ bgcolor: colorElegido, color: "white" }}
+                  color="error"
+                  sx={{
+                    width: "100%",
+                    height: "60px",
+                    mt: "6%",
+                    bgcolor: colorElegido,
+                    color: "white",
+                  }}
                   onClick={navigateToAuto}
-                  color="error"
                 >
-                  <DirectionsCarIcon sx={{ marginRight: "10%" }} /> Autos
+                  <DirectionsCarIcon sx={{ mr: "5%", color: "white" }} />
+                  <Typography variant="h5">Autos</Typography>
                 </Button>
               </Grid>
-              <Grid item xs={6} sm={6} md={2}>
+              <Grid item xs={4} sm={8} md={5.33}>
                 <Button
                   variant="contained"
-                  sx={{ bgcolor: colorElegido, color: "white" }}
+                  color="error"
+                  sx={{
+                    width: "100%",
+                    height: "60px",
+                    mt: "6%",
+                    bgcolor: colorElegido,
+                    color: "white",
+                  }}
                   onClick={navigateToMoto}
-                  color="error"
                 >
-                  <TwoWheelerIcon sx={{ marginRight: "10%" }} /> Motos
+                  <TwoWheelerIcon sx={{ mr: "5%", color: "white" }} />
+                  <Typography variant="h5">Motos</Typography>
                 </Button>
               </Grid>
-              <Grid item xs={6} sm={6} md={2}>
+              <Grid item xs={4} sm={8} md={5.33}>
                 <Button
                   variant="contained"
-                  sx={{ bgcolor: colorElegido, color: "white" }}
-                  onClick={navigateToRepuestos}
                   color="error"
+                  sx={{
+                    width: "100%",
+                    height: "60px",
+                    mt: "6%",
+                    bgcolor: colorElegido,
+                    color: "white",
+                  }}
+                  onClick={navigateToRepuestos}
                 >
-                  <BuildIcon sx={{ marginRight: "10%" }} /> Repuestos
+                  <BuildIcon sx={{ mr: "5%", color: "white" }} />{" "}
+                  <Typography variant="h5">Repuestos</Typography>
                 </Button>
               </Grid>
             </Grid>
-          </Grid>
-          <Grid
-            className="App"
-            item
-            xs={16}
-            sm={16}
-            md={8}
-          >
-            <Card sx={{ maxWidth: "100%", maxHeight:"100%",margin: "auto", marginTop:"5%", display: { xs: "block", sm:"none" ,md: "none" } }}>
-              <CardMedia
-                component="img"
-                image="https://w0.peakpx.com/wallpaper/575/190/HD-wallpaper-488-wheel-ferrari-red-silver-car-supercar-sports-america.jpg"
-                alt="green iguana"
-              />
-            </Card>
-            <Card sx={{ maxWidth: "100%", maxHeight:"100%",margin: "auto", marginTop:"3.5%", display: { xs: "none", sm:"block" ,md: "block" } }}>
-              <CardMedia
-                component="img"
-                image="https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2013/12/02/13859743417025.jpg"
-                alt="green iguana"
-              />
-            </Card>
-          </Grid>
-        </Grid>
-      </Box>
-    </Container>
+          </Box>
+          <Box sx={{ width: "100%" }}>
+            <Typography variant="h5" component="div" sx={{ mt: "4%" }}>
+              Autos destacados
+            </Typography>
+            <CarrouselCad tipo="auto" />
+            <Typography variant="h5" component="div" sx={{ mt: "4%" }}>
+              Motos destacados
+            </Typography>
+            <CarrouselCad tipo="moto" />
+            <Typography variant="h5" component="div" sx={{ mt: "4%" }}>
+              Repuestos destacados
+            </Typography>
+            <CarrouselCad tipo="repuesto" />
+          </Box>
+        </Container>
+      </Stack>
+      <Footer />
+    </>
   );
 }
-
