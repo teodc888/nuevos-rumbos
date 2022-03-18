@@ -143,7 +143,7 @@ export default function CardNR({
                 objectFit: "contain",
               }}
               component="img"
-              height="290"
+              height="200"
               image={imagen}
               alt="green iguana"
             />
@@ -162,8 +162,7 @@ export default function CardNR({
       ) : (
         <Carrousel
           imagen={imagen}
-          tamañoCard={"450"}
-          tamañoImagen={"290"}
+          tamañoImagen={"180"}
           velocidad={null}
         />
       )}
@@ -192,22 +191,22 @@ export default function CardNR({
             </Typography>
           )}
 
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h6" component="div">
             {tipo === "repuesto" && descuento > 0 ? (
               <>
                 <del>${precio}</del> $
                 {Number(precioDescuento).toLocaleString("es-AR")}
               </>
             ) : (
-              <>${Number(precio).toLocaleString("es-AR")}</>
+              <>$ {Number(precio).toLocaleString("es-AR")}</>
             )}
           </Typography>
           {tipo === "auto" ? (
-            <Typography variant="body1" color="text.secondary">
+            <Typography variant="body2" color="text.secondary">
               {año} | {kilometros} Km
             </Typography>
           ) : tipo === "moto" ? (
-            <Typography variant="body1" color="text.secondary">
+            <Typography variant="body2" color="text.secondary">
               {año} | {kilometros} Km
             </Typography>
           ) : tipo === "repuesto" ? (
