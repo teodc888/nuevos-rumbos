@@ -18,13 +18,19 @@ const breakPoints = [
 export default function CarrouselCard({ tipo }) {
   const autos = useSelector((state) => state.autos);
   const motos = useSelector((state) => state.motos);
+  const repuestos = useSelector((state) => state.repuestos);
 
-  console.log(autos);
+  const autosDestacados = autos.filter((auto) => auto.destacado === "si");
+  const motosDestacados = motos.filter((moto) => moto.destacado === "si");
+  const repuestosDestacados = repuestos.filter(
+    (repuesto) => repuesto.destacado === "si"
+  );
+
   return (
-    <div style={{ marginTop: "3%",}}>
+    <div style={{ marginTop: "3%" }}>
       {tipo === "auto" ? (
         <Carouseal breakPoints={breakPoints}>
-          {autos.map((auto) => (
+          {autosDestacados.map((auto) => (
             <CardNR
               marca={auto.marca}
               modelo={auto.modelo}
@@ -42,7 +48,7 @@ export default function CarrouselCard({ tipo }) {
         </Carouseal>
       ) : tipo === "moto" ? (
         <Carouseal breakPoints={breakPoints}>
-          {motos.map((moto) => (
+          {motosDestacados.map((moto) => (
             <CardNR
               marca={moto.marca}
               modelo={moto.modelo}
@@ -54,6 +60,23 @@ export default function CarrouselCard({ tipo }) {
               tipo={"moto"}
               descripcion={moto.descripcion}
               favorito={"true"}
+            />
+          ))}
+        </Carouseal>
+      ) : tipo === "repuesto" ? (
+        <Carouseal breakPoints={breakPoints}>
+          {repuestosDestacados.map((repuesto) => (
+            <CardNR
+              marca={repuesto.marca}
+              modelo={repuesto.modelo}
+              imagen={repuesto.imagen[0]}
+              precio={repuesto.precio}
+              id={repuesto.id}
+              tipo={"repuesto"}
+              descripcion={repuesto.descripcion}
+              favorito={"true"}
+              descuento={repuesto.descuento}
+              precioDescuento={repuesto.precioDescuento}
             />
           ))}
         </Carouseal>

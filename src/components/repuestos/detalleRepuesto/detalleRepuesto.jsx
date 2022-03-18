@@ -17,6 +17,7 @@ import {
 
 //Components
 import Footer from "../../footer/footer";
+import CarrouselCard from "../../carrousel/carrouselCard/carrouselCard";
 
 //Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -138,7 +139,7 @@ export default function DetalleRepuesto({
                       objectFit: "contain",
                     }}
                     component="img"
-                    height="550"
+                    height="450"
                     image={imagen[0]}
                     alt="green iguana"
                   />
@@ -159,13 +160,12 @@ export default function DetalleRepuesto({
                 xs={4}
                 sm={8}
                 md={4}
-                sx={{ display: "flex", justifyContent: "center" }}
               >
                 <Card sx={{ maxWidth: 445, margin: "auto" }}>
                   <CardContent>
                     <Typography
                       gutterBottom
-                      variant="h5"
+                      variant="h6"
                       component="div"
                       textAlign="center"
                       sx={{
@@ -177,7 +177,7 @@ export default function DetalleRepuesto({
                     </Typography>
                     <Typography
                       gutterBottom
-                      variant="h4"
+                      variant="h6"
                       component="div"
                       textAlign="center"
                       sx={{
@@ -187,7 +187,7 @@ export default function DetalleRepuesto({
                     >
                       {marca} {modelo}
                     </Typography>
-                    <Typography variant="h4" sx={{ marginTop: "10%" }}>
+                    <Typography variant="h5" sx={{ marginTop: "10%" }}>
                       {descuento > 0 ? (
                         <>
                           <del>${precio}</del> ${precioDescuento}
@@ -197,7 +197,7 @@ export default function DetalleRepuesto({
                       )}
                     </Typography>
                     <Typography
-                      variant="body1"
+                      variant="body2"
                       component="div"
                       sx={{ marginTop: "10%" }}
                     >
@@ -231,6 +231,27 @@ export default function DetalleRepuesto({
                 </Card>
               </Grid>
             </Grid>
+          </Box>
+          <Box sx={{ width: "100%" }}>
+            <Typography
+              gutterBottom
+              variant="h3"
+              component="div"
+              textAlign="center"
+              sx={{ mt: "2%", display: { xs: "none", md: "block" } }}
+            >
+              Repuestos Destacados
+            </Typography>
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
+              textAlign="center"
+              sx={{ mt: "2%", display: { xs: "block", md: "none" } }}
+            >
+              Repuestos Destacados
+            </Typography>
+            <CarrouselCard tipo="repuesto" />
           </Box>
         </Stack>
       </Container>

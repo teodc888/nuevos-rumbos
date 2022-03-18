@@ -310,7 +310,7 @@ export default function DetalleMoto({
               textAlign="center"
               sx={{ mt: "2%", display: { xs: "none", md: "block" } }}
             >
-              Productos relacionados
+              Motos Destacadas
             </Typography>
             <Typography
               gutterBottom
@@ -319,7 +319,7 @@ export default function DetalleMoto({
               textAlign="center"
               sx={{ mt: "2%", display: { xs: "block", md: "none" } }}
             >
-              Productos relacionados
+              Motos Destacadas
             </Typography>
             <CarrouselCard tipo="moto" />
           </Box>

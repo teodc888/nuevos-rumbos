@@ -320,7 +320,7 @@ export default function DetalleAuto({
               textAlign="center"
               sx={{ mt: "2%", display: { xs: "none", md: "block" } }}
             >
-              Productos relacionados
+              Autos Destacados
             </Typography>
             <Typography
               gutterBottom
@@ -329,7 +329,7 @@ export default function DetalleAuto({
               textAlign="center"
               sx={{ mt: "2%", display: { xs: "block", md: "none" } }}
             >
-              Productos relacionados
+              Autos Destacados
             </Typography>
             <CarrouselCard tipo="auto" />
           </Box>
@@ -339,3 +339,4 @@ export default function DetalleAuto({
     </>
   );
 }
+
