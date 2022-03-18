@@ -55,6 +55,7 @@ export default function HomeRepuestos() {
   useEffect(() => {
     document.title = "Repuestos";
     dispatch(filtroRepuesto(filtro));
+    window.scrollTo(0, 0);
   }, [dispatch, filtro]);
 
   // Paginado

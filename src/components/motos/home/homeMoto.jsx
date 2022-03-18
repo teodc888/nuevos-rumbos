@@ -56,6 +56,7 @@ export default function HomeMoto() {
   useEffect(() => {
     document.title = "Motos";
     dispatch(filtroMoto(filtro));
+    window.scrollTo(0, 0);
   }, [dispatch, filtro]);
 
   //Paginado
