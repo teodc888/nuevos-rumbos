@@ -134,7 +134,7 @@ export default function HomeRepuestos() {
               justifyContent="center"
               spacing={2}
             >
-              <Typography variant="h2" component="div" textAlign="center">
+              <Typography variant="h3" component="div" textAlign="center">
                 Repuestos
               </Typography>
               <Box sx={{ width: "100%" }}>
