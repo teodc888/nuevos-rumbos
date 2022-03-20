@@ -89,7 +89,7 @@ export default function Landing() {
                     width: "100%",
                     height: "60px",
                     mt: "6%",
-                    bgcolor: colorElegido,
+                    bgcolor: "black",
                     color: "white",
                   }}
                   onClick={navigateToAuto}
@@ -101,12 +101,11 @@ export default function Landing() {
               <Grid item xs={4} sm={8} md={5.33}>
                 <Button
                   variant="contained"
-                  color="error"
                   sx={{
                     width: "100%",
                     height: "60px",
                     mt: "6%",
-                    bgcolor: colorElegido,
+                    bgcolor: "black",
                     color: "white",
                   }}
                   onClick={navigateToMoto}
@@ -118,12 +117,12 @@ export default function Landing() {
               <Grid item xs={4} sm={8} md={5.33}>
                 <Button
                   variant="contained"
-                  color="error"
+                  color="success"
                   sx={{
                     width: "100%",
                     height: "60px",
                     mt: "6%",
-                    bgcolor: colorElegido,
+                    bgcolor: "black",
                     color: "white",
                   }}
                   onClick={navigateToRepuestos}
