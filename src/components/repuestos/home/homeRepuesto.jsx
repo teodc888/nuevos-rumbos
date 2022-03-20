@@ -72,6 +72,7 @@ export default function HomeRepuestos() {
   );
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
+    window.scrollTo(0, 0);
   };
 
   // Funcion para filtrar las repuestos
@@ -120,6 +121,8 @@ export default function HomeRepuestos() {
     successSubmitFavorite();
     setOpen(false);
   };
+
+  console.log(repuestos);
 
   return (
     <>

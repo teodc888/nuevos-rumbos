@@ -73,6 +73,7 @@ export default function HomeAuto() {
   );
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
+    window.scrollTo(0, 0);
   };
 
   // Funcion para filtrar los autos por gnv

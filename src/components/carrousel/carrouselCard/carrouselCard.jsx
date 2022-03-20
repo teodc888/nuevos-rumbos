@@ -4,7 +4,7 @@ import React from "react";
 import Carouseal from "react-elastic-carousel";
 
 //Componente
-import CardNR from "../../card/card";
+import CardCarrousel from "../../card/cardCarrousel/cardCarrousel";
 
 //Redux
 import { useSelector } from "react-redux";
@@ -26,12 +26,13 @@ export default function CarrouselCard({ tipo }) {
     (repuesto) => repuesto.destacado === "si"
   );
 
+
   return (
     <div style={{ marginTop: "3%" }}>
       {tipo === "auto" ? (
-        <Carouseal breakPoints={breakPoints}>
+        <Carouseal  breakPoints={breakPoints}>
           {autosDestacados.map((auto) => (
-            <CardNR
+            <CardCarrousel
               marca={auto.marca}
               modelo={auto.modelo}
               imagen={auto.imagen}
@@ -49,7 +50,7 @@ export default function CarrouselCard({ tipo }) {
       ) : tipo === "moto" ? (
         <Carouseal breakPoints={breakPoints}>
           {motosDestacados.map((moto) => (
-            <CardNR
+            <CardCarrousel
               marca={moto.marca}
               modelo={moto.modelo}
               imagen={moto.imagen}
@@ -66,10 +67,10 @@ export default function CarrouselCard({ tipo }) {
       ) : tipo === "repuesto" ? (
         <Carouseal breakPoints={breakPoints}>
           {repuestosDestacados.map((repuesto) => (
-            <CardNR
+            <CardCarrousel
               marca={repuesto.marca}
               modelo={repuesto.modelo}
-              imagen={repuesto.imagen[0]}
+              imagen={repuesto.imagen}
               precio={repuesto.precio}
               id={repuesto.id}
               tipo={"repuesto"}
