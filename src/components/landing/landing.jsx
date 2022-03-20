@@ -15,8 +15,9 @@ import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
 import BuildIcon from "@mui/icons-material/Build";
 
-//Type
-// import Typed from "react-typed";
+//imagen
+import Portada from "../../images/portada.png";
+import Portada1 from "../../images/portada1.png";
 
 //Router
 import { useNavigate } from "react-router";
@@ -55,20 +56,21 @@ export default function Landing() {
         alignItems="center"
         justifyContent="center"
         spacing={2}
+        width="100%"
       >
-        <Card sx={{ maxWidth: "100%" }}>
-          <Typography
-            variant="h3"
-            component="div"
-            textAlign="center"
-            sx={{ position: "absolute", color:"white" }}
-          >
-            Nuevos Rumbos
-          </Typography>
+        <Card sx={{ maxWidth: "100%", mt: "2%", }}>
           <CardMedia
+            sx={{ display:{ xs:"none", md:"block"} }}
             component="img"
-            height="500"
-            image="https://elintranews.com/wp-content/uploads/2020/02/IMG_20200227_222932.jpg"
+            height="100%"
+            image={Portada}
+            alt="green iguana"
+          />
+          <CardMedia
+             sx={{  display:{ xs:"block", md:"none"} }}
+            component="img"
+            height="100%"
+            image={Portada1}
             alt="green iguana"
           />
         </Card>

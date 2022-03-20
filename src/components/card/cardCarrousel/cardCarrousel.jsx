@@ -78,7 +78,7 @@ export default function CardCarrousel({
           objectFit: "contain",
         }}
         component="img"
-        height="240"
+        height="150"
         image={imagen[0]}
         alt="green iguana"
       />
