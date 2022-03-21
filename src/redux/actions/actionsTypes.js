@@ -15,3 +15,5 @@ export const COLOR= 'COLOR';
 export const DARK_MODE = 'DARK_MODE';
 export const RESET_FILTRO = 'RESET_FILTRO';
 export const DELETE_FAVORITOS = "DELETE_FAVORITOS";
+export const CARRITO = "CARRITO";
+export const DELETE_CARRITO = "DELETE_CARRITO";

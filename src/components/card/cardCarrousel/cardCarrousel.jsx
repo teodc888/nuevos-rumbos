@@ -17,7 +17,6 @@ import { useNavigate } from "react-router";
 //Redux
 import { useSelector } from "react-redux";
 
-
 export default function CardCarrousel({
   marca,
   modelo,
@@ -33,7 +32,6 @@ export default function CardCarrousel({
   const navigate = useNavigate();
 
   const darkMode = useSelector((state) => state.darkMode);
-
 
   const handleNavigate = () => {
     navigate(`/detalle/${id}`);
@@ -62,26 +60,53 @@ export default function CardCarrousel({
         </Box>
       ) : null}
 
-      <CardMedia
-        sx={{
-          display: { xs: "none", md: "block" },
-          objectFit: "contain",
-        }}
-        component="img"
-        height="200"
-        image={imagen[0]}
-        alt="green iguana"
-      />
-      <CardMedia
-        sx={{
-          display: { xs: "block", md: "none" },
-          objectFit: "contain",
-        }}
-        component="img"
-        height="150"
-        image={imagen[0]}
-        alt="green iguana"
-      />
+      {tipo === "carrito" ? (
+        <>
+          <CardMedia
+            sx={{
+              display: { xs: "none", md: "block" },
+              objectFit: "contain",
+            }}
+            component="img"
+            height="200"
+            image={imagen}
+            alt="green iguana"
+          />
+          <CardMedia
+            sx={{
+              display: { xs: "block", md: "none" },
+              objectFit: "contain",
+            }}
+            component="img"
+            height="150"
+            image={imagen}
+            alt="green iguana"
+          />
+        </>
+      ) : (
+        <>
+          <CardMedia
+            sx={{
+              display: { xs: "none", md: "block" },
+              objectFit: "contain",
+            }}
+            component="img"
+            height="200"
+            image={imagen[0]}
+            alt="green iguana"
+          />
+          <CardMedia
+            sx={{
+              display: { xs: "block", md: "none" },
+              objectFit: "contain",
+            }}
+            component="img"
+            height="150"
+            image={imagen[0]}
+            alt="green iguana"
+          />
+        </>
+      )}
 
       <CardActionArea onClick={handleNavigate}>
         <CardContent>

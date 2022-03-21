@@ -16,6 +16,8 @@ import {
   DARK_MODE,
   RESET_FILTRO,
   DELETE_FAVORITOS,
+  CARRITO,
+  DELETE_CARRITO,
 } from "../actions/actionsTypes";
 
 const inicialState = {
@@ -45,6 +47,7 @@ const inicialState = {
   login: "",
   color: "#d50000",
   darkMode: "light",
+  carrito: [],
 };
 
 export default function rootReducer(state = inicialState, action) {
@@ -321,6 +324,20 @@ export default function rootReducer(state = inicialState, action) {
         ...state,
         favoritos: [],
       };
+      case CARRITO:
+        return {
+          ...state,
+          carrito: [...state.carrito, action.payload],
+        };
+        
+        case DELETE_CARRITO:
+          return {
+            ...state,
+            carrito: state.carrito.filter(
+              (producto) => producto.id !== action.payload
+            ),
+          };
+          
     default:
       return state;
   }
