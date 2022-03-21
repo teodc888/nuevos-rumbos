@@ -217,6 +217,8 @@ export default function HomeRepuestos() {
                       precio={repuestos.precio}
                       tipo="repuesto"
                       id={repuestos.id}
+                      precioDescuento={repuestos.precioDescuento}
+                      descuento={repuestos.descuento}
                     />
                   </Grid>
                 ))}

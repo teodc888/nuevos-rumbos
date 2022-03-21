@@ -113,7 +113,7 @@ export default function App() {
   };
 
   const handleWhatsapp = () => {
-    window.open("https://wa.me/543512550311");
+    window.open("https://wa.me/543512550311?text=Hola%20me%20gustaría%20comprar%20un%20auto%20");
     setOpen(false);
   };
 

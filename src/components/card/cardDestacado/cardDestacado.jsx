@@ -8,7 +8,16 @@ import CardActionArea from "@mui/material/CardActionArea";
 
 import { useNavigate } from "react-router-dom";
 
-export default function CardDestacado({ marca, modelo, precio, imagen, tipo, id }) {
+export default function CardDestacado({
+  marca,
+  modelo,
+  precio,
+  imagen,
+  tipo,
+  id,
+  precioDescuento,
+  descuento,
+}) {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -16,16 +25,20 @@ export default function CardDestacado({ marca, modelo, precio, imagen, tipo, id 
   };
 
   return (
-    <Card sx={{ display: "flex", maxWidth: 200, margin: "auto" }}>
+    <Card sx={{ display: "flex", maxWidth: "100%", margin: "auto" }}>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <CardActionArea onClick={handleClick}>
           <CardContent sx={{ flex: "1 0 auto" }}>
             {tipo === "repuesto" ? (
               <Typography component="div" variant="subtitle2">
-                {marca}
+                {modelo}
               </Typography>
             ) : (
-              <Typography component="div" variant="subtitle2">
+              <Typography
+                component="div"
+                variant="subtitle2"
+                sx={{ fontSize: 14 }}
+              >
                 {marca} {modelo}
               </Typography>
             )}
@@ -34,15 +47,23 @@ export default function CardDestacado({ marca, modelo, precio, imagen, tipo, id 
               variant="subtitle2"
               color="text.secondary"
               component="div"
+              sx={{ fontSize: 13 }}
             >
-              $ {precio}
+              {tipo === "repuesto" && descuento > 0 ? (
+                <>
+                  <del>${precio}</del> $
+                  {Number(precioDescuento).toLocaleString("es-AR")}
+                </>
+              ) : (
+                <>$ {Number(precio).toLocaleString("es-AR")}</>
+              )}
             </Typography>
           </CardContent>
         </CardActionArea>
       </Box>
       <CardMedia
         component="img"
-        sx={{ width: 90, objectFit: "contain", position: "static" }}
+        sx={{ width: 100, objectFit: "contain", ml: 2 }}
         image={imagen}
         alt="Live from space album cover"
       />

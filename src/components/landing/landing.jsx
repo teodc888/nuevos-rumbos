@@ -22,16 +22,14 @@ import Portada1 from "../../images/portada1.png";
 //Router
 import { useNavigate } from "react-router";
 
-//Redux
-import { useSelector } from "react-redux";
+// //Redux
+// import { useSelector } from "react-redux";
 
 import CarrouselCad from "../carrousel/carrouselCard/carrouselCard";
 import Footer from "../footer/footer";
 
 export default function Landing() {
   const navigate = useNavigate();
-
-  const colorElegido = useSelector((state) => state.color);
 
   const navigateToAuto = () => {
     navigate("/autos");

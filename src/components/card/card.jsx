@@ -196,11 +196,11 @@ export default function CardNR({
           </Typography>
           {tipo === "auto" ? (
             <Typography variant="body2" color="text.secondary">
-              {año} | {kilometros} Km
+              {año} | {Number(kilometros).toLocaleString("es-AR")} Km
             </Typography>
           ) : tipo === "moto" ? (
             <Typography variant="body2" color="text.secondary">
-              {año} | {kilometros} Km
+              {año} | {Number(kilometros).toLocaleString("es-AR")} Km
             </Typography>
           ) : tipo === "repuesto" ? (
             <Typography variant="body2" color="text.secondary">
