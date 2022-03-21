@@ -17,19 +17,22 @@ import {
   DARK_MODE,
   RESET_FILTRO,
   DELETE_FAVORITOS,
+  CARRITO,
+  DELETE_CARRITO,
 } from "./actionsTypes";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
 
 export function getProductosAuto() {
-
   return async function (dispatch) {
     try {
       const res = await getDocs(collection(db, "auto"));
 
       return dispatch({
         type: GET_PRODUCTOS_AUTO,
-        payload: res.docs.map((doc) => { return { ...doc.data(), id: doc.id };}),
+        payload: res.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+        }),
       });
     } catch (error) {
       console.log(error);
@@ -43,7 +46,9 @@ export function getProductosMoto() {
 
       return dispatch({
         type: GET_PRODUCTOS_MOTO,
-        payload: res.docs.map((doc) => { return { ...doc.data(), id: doc.id };}),
+        payload: res.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+        }),
       });
     } catch (error) {
       console.log(error);
@@ -57,7 +62,9 @@ export function getProductosRepuesto() {
 
       return dispatch({
         type: GET_PRODUCTOS_REPUESTO,
-        payload: res.docs.map((doc) => { return { ...doc.data(), id: doc.id };}),
+        payload: res.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+        }),
       });
     } catch (error) {
       console.log(error);
@@ -139,25 +146,39 @@ export const eleccionColor = (payload) => {
     type: COLOR,
     payload,
   };
-}
+};
 
 export const darkModee = (payload) => {
   return {
     type: DARK_MODE,
     payload,
   };
-}
+};
 
 export const resetFiltro = (payload) => {
   return {
     type: RESET_FILTRO,
     payload,
   };
-}
+};
 
 export const deleteFavoritos = (payload) => {
   return {
     type: DELETE_FAVORITOS,
     payload,
   };
-}
+};
+
+export const agregarCarrito = (payload) => {
+  return {
+    type: CARRITO,
+    payload,
+  };
+};
+
+export const deleteCarrito = (id) => {
+  return {
+    type: DELETE_CARRITO,
+    payload: id,
+  };
+};

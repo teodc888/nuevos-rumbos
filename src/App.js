@@ -29,6 +29,8 @@ import EditarMotos from "./components/admin/editarMotos/editarMotos";
 import FormEditarMoto from "./components/admin/editarMotos/formEditarMoto";
 import EditarRepuestos from "./components/admin/editarRepuestos/editarRepuestos";
 import FormEditarRepuesto from "./components/admin/editarRepuestos/formEditarRepuesto";
+import Carrito from "./components/carrito/carrito";
+
 //components Admin
 import HomeAdmin from "./components/admin/home/home";
 import NavBarAdmin from "./components/admin/navBar/navBar";
@@ -166,6 +168,7 @@ export default function App() {
               <Route path="/favoritos" element={<Favoritos />} />
               <Route path="*" element={<Error />} />
               <Route path="/buscador" element={<Buscador />} />
+              <Route path="/carrito" element={<Carrito />} />
             </Routes>
 
             {/* redes sociales */}

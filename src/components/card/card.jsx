@@ -16,14 +16,20 @@ import {
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 //Router
 import { useNavigate } from "react-router";
 
 //Redux
 import { useDispatch, useSelector } from "react-redux";
-import { favoritos } from "../../redux/actions/index";
-import { eliminarFavoritos } from "../../redux/actions/index";
+import {
+  favoritos,
+  eliminarFavoritos,
+  agregarCarrito,
+  deleteCarrito,
+} from "../../redux/actions/index";
 
 //toastify
 import { toast } from "react-toastify";
@@ -56,6 +62,7 @@ export default function CardNR({
   if (fav.length > 0) {
     aux = fav.map((el) => el.id);
   }
+
   let [checked, setChecked] = useState(aux?.includes(id) ? true : false);
 
   //toastify
@@ -117,6 +124,36 @@ export default function CardNR({
       return "black";
     } else {
       return "white";
+    }
+  };
+
+  //carrito
+  const carrito = useSelector((state) => state.carrito);
+  let aux1 = [];
+  if (carrito.length > 0) {
+    aux1 = carrito.map((el) => el.id);
+  }
+
+  let [checked1, setChecked1] = useState(aux1?.includes(id) ? true : false);
+
+  //agregar o eliminar favoritos
+  const handleChange1 = (event) => {
+    setChecked1(event.target.checked);
+    if (checked1 === false) {
+      dispatch(
+        agregarCarrito({
+          marca: marca,
+          modelo: modelo,
+          imagen: imagen,
+          precio: Number(precio),
+          id: id,
+          precioDescuento: precioDescuento,
+        })
+      );
+      successSubmitFavorite();
+    } else {
+      dispatch(deleteCarrito(id));
+      errorSubmit();
     }
   };
 
@@ -209,6 +246,16 @@ export default function CardNR({
           ) : null}
         </CardContent>
       </CardActionArea>
+      <CardActions sx={{float:"left"}}>
+        {tipo === "repuesto" && favorito === "true" ? (
+          <Checkbox
+            checked={checked1}
+            onChange={handleChange1}
+            icon={<ShoppingCartOutlinedIcon sx={{ color: colorElegido }} />}
+            checkedIcon={<ShoppingCartIcon sx={{ color: colorElegido }} />}
+          />
+        ) : null}
+      </CardActions>
       <CardActions sx={{ float: "right" }}>
         {favorito === "true" ? (
           <>

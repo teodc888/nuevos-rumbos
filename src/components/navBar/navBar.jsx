@@ -33,6 +33,7 @@ import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
 import BuildIcon from "@mui/icons-material/Build";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 //Router
 import { useNavigate } from "react-router";
@@ -172,6 +173,10 @@ export default function NavBar({ setMode }) {
     window.location.reload();
   };
 
+  const handleCarrito = () => {
+    navigate("/carrito");
+  };
+
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
@@ -289,6 +294,18 @@ export default function NavBar({ setMode }) {
             >
               <Badge badgeContent={fav.length} color="primary">
                 <FavoriteIcon />
+              </Badge>
+            </IconButton>
+            <IconButton
+              size="large"
+              edge="end"
+              aria-label="account of current user"
+              aria-haspopup="true"
+              color="inherit"
+              onClick={handleCarrito}
+            >
+              <Badge badgeContent={fav.length} color="primary">
+                <ShoppingCartIcon />
               </Badge>
             </IconButton>
             <IconButton
