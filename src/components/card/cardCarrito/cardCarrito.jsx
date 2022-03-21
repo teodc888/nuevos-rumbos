@@ -6,6 +6,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import { Button } from "@mui/material";
+
+import {deleteCarrito} from "../../../redux/actions/index";
+import { useDispatch } from "react-redux";
+
 
 export default function CardCarrito({
   imagen,
@@ -13,7 +18,9 @@ export default function CardCarrito({
   modelo,
   precio,
   precioDescuento,
+  id,
 }) {
+  const dispatch = useDispatch();
   const [contador, setContador] = useState(1);
 
   const handleClickSuma = () => {
@@ -26,7 +33,11 @@ export default function CardCarrito({
     }
   };
 
-  
+  const eliminar = () => {
+    dispatch(deleteCarrito(id));
+  };
+
+
 
   return (
     <>
@@ -57,6 +68,9 @@ export default function CardCarrito({
             <ArrowRightIcon onClick={handleClickSuma} />
           </CardContent>
         </Box>
+        <CardContent > 
+          <Button onClick={eliminar}>Borrar</Button>
+        </CardContent>
       </Card>
     </>
   );

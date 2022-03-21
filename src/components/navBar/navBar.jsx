@@ -182,6 +182,7 @@ export default function NavBar({ setMode }) {
   };
 
   const fav = useSelector((state) => state.favoritos);
+  const carrito = useSelector((state) => state.carrito);
 
   const mobileMenuId = "primary-search-account-menu-mobile";
 
@@ -233,6 +234,19 @@ export default function NavBar({ setMode }) {
           </Badge>
         </IconButton>
         <p>Favoritos</p>
+      </MenuItem>
+
+      <MenuItem onClick={handleCarrito}>
+        <IconButton
+          size="large"
+          aria-label="show 17 new notifications"
+          color="inherit"
+        >
+          <Badge badgeContent={carrito.length} color="primary">
+            <ShoppingCartIcon />
+          </Badge>
+        </IconButton>
+        <p>Carritos</p>
       </MenuItem>
     </Menu>
   );
@@ -304,7 +318,7 @@ export default function NavBar({ setMode }) {
               color="inherit"
               onClick={handleCarrito}
             >
-              <Badge badgeContent={fav.length} color="primary">
+              <Badge badgeContent={carrito.length} color="primary">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
