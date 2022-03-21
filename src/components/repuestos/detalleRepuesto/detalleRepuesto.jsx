@@ -24,6 +24,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { favoritos } from "../../../redux/actions/index";
 import { eliminarFavoritos } from "../../../redux/actions/index";
 
+//iconos
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+
+
 //toastify
 import { toast } from "react-toastify";
 
@@ -95,6 +100,15 @@ export default function DetalleRepuesto({
     window.scrollTo(0, 0);
   }, []);
 
+  const handleWhatsapp = () => {
+    window.open(
+      "https://wa.me/543512550311?text=Hola,%20me%20gustaria%20obtener%20mas%20informacion%20sobre%20" +
+        marca +
+        "%20" +
+        modelo
+    );
+  };
+
   const darkMode = useSelector((state) => state.darkMode);
 
   const darkModeCard = () => {
@@ -155,12 +169,7 @@ export default function DetalleRepuesto({
                   />
                 </Card>
               </Grid>
-              <Grid
-                item
-                xs={4}
-                sm={8}
-                md={4}
-              >
+              <Grid item xs={4} sm={8} md={4}>
                 <Card sx={{ maxWidth: 445, margin: "auto" }}>
                   <CardContent>
                     <Typography
@@ -204,12 +213,26 @@ export default function DetalleRepuesto({
                       Descripcion: {descripcion}
                     </Typography>
                   </CardContent>
-                  <CardActions sx={{ mt: "5%" }}>
+                  <CardActions>
+                    <Button
+                      variant="contained"
+                      onClick={handleWhatsapp}
+                      color="success"
+                      sx={{ bgcolor: "green", color: "white", width: "100%" }}
+                    >
+                      Consultar por Whatsapp
+                      <FontAwesomeIcon
+                        icon={faWhatsapp}
+                        style={{ marginLeft: "2%" }}
+                      />
+                    </Button>
+                  </CardActions>
+                  <CardActions sx={{ mt: "2%" }}>
                     {fav === false ? (
                       <Button
                         variant="contained"
                         onClick={addFavoritos}
-                        sx={{ bgcolor: "green", color: "white", width: "100%" }}
+                        sx={{ bgcolor: "#2196f3", color: "white", width: "100%" }}
                       >
                         Agregar a favoritos
                       </Button>
