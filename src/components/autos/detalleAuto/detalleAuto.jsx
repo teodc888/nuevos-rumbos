@@ -115,6 +115,8 @@ export default function DetalleAuto({
     );
   };
 
+  //
+
   return (
     <>
       <Container maxWidth="lg">
