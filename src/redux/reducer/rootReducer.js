@@ -10,7 +10,12 @@ import {
   FILTRO_MOTO,
   FILTRO_REPUESTO,
   FAVORITOS,
-  ELIMINAR_FAVORITOS
+  ELIMINAR_FAVORITOS,
+  LOGIN,
+  COLOR,
+  DARK_MODE,
+  RESET_FILTRO,
+  DELETE_FAVORITOS,
 } from "../actions/actionsTypes";
 
 const inicialState = {
@@ -37,6 +42,9 @@ const inicialState = {
     precioR: "todos",
     marcaR: "todos",
   },
+  login: "",
+  color: "#d50000",
+  darkMode: "light",
 };
 
 export default function rootReducer(state = inicialState, action) {
@@ -63,46 +71,77 @@ export default function rootReducer(state = inicialState, action) {
         buscadosFiltrados: [...state.buscadosFiltrados, action.payload],
       };
     case BUSCAR_PRODUCTOS_AUTO:
+      const autosModelo = state.autosBuscados.filter((auto) => {
+        return auto.modelo.toLowerCase().startsWith(action.payload.toLowerCase());
+      });
+      const autosMarca = state.autosBuscados.filter((auto) => {
+        return auto.marca.toLowerCase().startsWith(action.payload.toLowerCase());
+      });
+
       return {
         ...state,
-        autos: state.autosBuscados.filter((producto) => {
-          return producto.modelo
-            .toLowerCase()
-            .includes(action.payload.toLowerCase());
-        }),
+        autos: autosModelo.length > 0 ? autosModelo : autosMarca,
       };
     case BUSCAR_PRODUCTOS_MOTO:
+      const motosModelo = state.motosBuscados.filter((producto) => {
+        return producto.modelo
+          .toLowerCase()
+          .startsWith(action.payload.toLowerCase());
+      });
+      const motosMarca = state.motosBuscados.filter((producto) => {
+        return producto.marca
+          .toLowerCase()
+          .startsWith(action.payload.toLowerCase());
+      });
+
       return {
         ...state,
-        motos: state.motosBuscados.filter((producto) => {
-          return producto.modelo
-            .toLowerCase()
-            .includes(action.payload.toLowerCase());
-        }),
+        motos: motosModelo.length > 0 ? motosModelo : motosMarca,
       };
     case BUSCAR_PRODUCTOS_REPUESTO:
+      const repuestosModelo = state.repuestosBuscados.filter((producto) => {
+        return producto.modelo
+          .toLowerCase()
+          .startsWith(action.payload.toLowerCase());
+      });
+      const repuestosMarca = state.repuestosBuscados.filter((producto) => {
+        return producto.marca
+          .toLowerCase()
+          .startsWith(action.payload.toLowerCase());
+      });
+
       return {
         ...state,
-        repuestos: state.repuestosBuscados.filter((producto) => {
-          return producto.modelo
-            .toLowerCase()
-            .includes(action.payload.toLowerCase());
-        }),
+        repuestos:
+          repuestosModelo.length > 0 ? repuestosModelo : repuestosMarca,
       };
     case BUSCAR_TOTAL:
       let x = state.buscadosFiltrados.flat();
+      const buscadorModelo = x.filter((producto) => {
+        return producto.modelo
+          .toLowerCase()
+          .startsWith(action.payload.toLowerCase());
+      });
+      const buscadorMarca = x.filter((producto) => {
+        return producto.marca
+          .toLowerCase()
+          .startsWith(action.payload.toLowerCase());
+      });
       return {
         ...state,
-        buscados: x.filter((producto) => {
-          return producto.modelo
-            .toLowerCase()
-            .includes(action.payload.toLowerCase());
-        }),
+        buscados:
+          action.payload === ""
+            ? (state.buscados = [])
+            : buscadorModelo.length > 0
+            ? (state.buscados = buscadorModelo)
+            : buscadorMarca.length > 0
+            ? (state.buscados = buscadorMarca)
+            : (state.buscados = []),
       };
     case FILTRO_AUTO:
       const { gnv, combustible, marca, precio, kilometros, carroceria } =
         action.payload;
-      let autosFiltro = [...state.autosBuscados];
+      let autosFiltro = state.autosBuscados;
 
       autosFiltro =
         gnv === "todos"
@@ -230,14 +269,58 @@ export default function rootReducer(state = inicialState, action) {
     case FAVORITOS:
       return {
         ...state,
-        favoritos: [...state.favoritos, action.payload]
-    };
+        favoritos: [...state.favoritos, action.payload],
+      };
 
     case ELIMINAR_FAVORITOS:
-      return{
+      return {
         ...state,
-        favoritos: state.favoritos.filter(producto => producto.id !== action.payload)
-      }
+        favoritos: state.favoritos.filter(
+          (producto) => producto.id !== action.payload
+        ),
+      };
+    case LOGIN:
+      return {
+        ...state,
+        login: action.payload,
+      };
+    case COLOR:
+      return {
+        ...state,
+        color: action.payload,
+      };
+    case DARK_MODE:
+      return {
+        ...state,
+        darkMode: action.payload,
+      };
+    case RESET_FILTRO:
+      return {
+        ...state,
+        autos: [...state.autosBuscados],
+        motos: [...state.motosBuscados],
+        repuestos: [...state.repuestosBuscados],
+        buscados: [],
+        orden: {
+          gnv: "todos",
+          combustible: "todos",
+          marca: "todos",
+          precio: "todos",
+          kilometros: "todos",
+          carroceria: "todos",
+          kilometrosM: "todos",
+          precioM: "todos",
+          marcaM: "todos",
+          cilindrada: "todos",
+          precioR: "todos",
+          marcaR: "todos",
+        },
+      };
+    case DELETE_FAVORITOS:
+      return {
+        ...state,
+        favoritos: [],
+      };
     default:
       return state;
   }

@@ -4,7 +4,12 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 //Redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  getProductosAuto,
+  getProductosMoto,
+  getProductosRepuesto,
+} from "../../redux/actions/index";
 
 //Component
 import DetalleAuto from "../autos/detalleAuto/detalleAuto";
@@ -12,8 +17,15 @@ import DetalleMoto from "../motos/detalleMoto/detalleMoto";
 import DetalleRepuesto from "../repuestos/detalleRepuesto/detalleRepuesto";
 
 export default function Detalle() {
+  const dispatch = useDispatch();
   // trae el id del producto
   const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(getProductosAuto());
+    dispatch(getProductosMoto());
+    dispatch(getProductosRepuesto());
+  }, [dispatch]);
 
   // Traer todos los productos
   let producto = [];
@@ -32,12 +44,10 @@ export default function Detalle() {
     (producto) => producto.id === id
   );
 
-  console.log(productoSeleccionado);
   useEffect(() => {
     document.title = productoSeleccionado.modelo;
   }, [productoSeleccionado.modelo]);
 
-  console.log(productoSeleccionado);
 
   return (
     <div>
@@ -52,12 +62,13 @@ export default function Detalle() {
             carroceria={productoSeleccionado.carroceria}
             motor={productoSeleccionado.motor}
             transmision={productoSeleccionado.transmision}
-            precio={productoSeleccionado.precio}
+            precio={Number(productoSeleccionado.precio).toLocaleString("es-AR")}
             combustible={productoSeleccionado.combustible}
             kilometros={productoSeleccionado.kilometros}
             cv={productoSeleccionado.cv}
             puertas={productoSeleccionado.puertas}
             gnv={productoSeleccionado.gnv}
+            id={productoSeleccionado.id}
           />
         </>
       ) : productoSeleccionado.detalle === "moto" ? (
@@ -67,6 +78,12 @@ export default function Detalle() {
             modelo={productoSeleccionado.modelo}
             imagen={productoSeleccionado.imagen}
             descripcion={productoSeleccionado.descripcion}
+            id={productoSeleccionado.id}
+            año={productoSeleccionado.año}
+            precio={Number(productoSeleccionado.precio).toLocaleString("es-AR")}
+            cilindrada={productoSeleccionado.cilindrada}
+            cv={productoSeleccionado.cv}
+            kilometros={productoSeleccionado.kilometros}
           />
         </>
       ) : productoSeleccionado.detalle === "repuesto" ? (
@@ -76,6 +93,10 @@ export default function Detalle() {
             modelo={productoSeleccionado.modelo}
             imagen={productoSeleccionado.imagen}
             descripcion={productoSeleccionado.descripcion}
+            id={productoSeleccionado.id}
+            precio={Number(productoSeleccionado.precio).toLocaleString("es-AR")}
+            descuento={productoSeleccionado.descuento}
+            precioDescuento={Number(productoSeleccionado.precioDescuento).toLocaleString("es-AR")}
           />
         </>
       ) : (

@@ -4,19 +4,21 @@ import React, { useState } from "react";
 import {
   Card,
   Typography,
-  Button,
-  CardMedia,
   CardContent,
   CardActions,
   Checkbox,
   IconButton,
+  CardActionArea,
+  Alert,
+  Box,
+  CardMedia,
 } from "@mui/material";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 //Router
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 //Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -26,20 +28,27 @@ import { eliminarFavoritos } from "../../redux/actions/index";
 //toastify
 import { toast } from "react-toastify";
 
+import Carrousel from "../../components/carrousel/carrousel";
+
 export default function CardNR({
   marca,
   modelo,
   imagen,
   precio,
   id,
-  setOpen,
+  año,
+  kilometros,
   favorito,
+  tipo,
+  descuento,
+  precioDescuento,
 }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  //color
+  const colorElegido = useSelector((state) => state.color);
+  const darkMode = useSelector((state) => state.darkMode);
 
   //Favoritos
   const fav = useSelector((state) => state.favoritos);
@@ -82,7 +91,7 @@ export default function CardNR({
           marca: marca,
           modelo: modelo,
           imagen: imagen,
-          precio: precio,
+          precio: Number(precio),
           id: id,
         })
       );
@@ -99,50 +108,122 @@ export default function CardNR({
     errorSubmit();
   };
 
+  const handleNavigate = () => {
+    navigate(`/detalle/${id}`);
+  };
+
+  const darkModeCard = () => {
+    if (darkMode === "dark") {
+      return "black";
+    } else {
+      return "white";
+    }
+  };
+
   return (
-    <Card sx={{ maxWidth: 445, margin: "auto" }}>
-      <CardMedia
-        component="img"
-        height="240"
-        image={imagen}
-        alt="green iguana"
-      />
-      <CardContent>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          textAlign="center"
-          sx={{ textTransform: "lowercase" }}
-        >
-          {marca} {modelo}
-        </Typography>
-        <Typography gutterBottom variant="h6" component="div">
-          ${precio}
-        </Typography>
-      </CardContent>
-      {favorito === "true" ? (
-        <CardActions sx={{ float: "right" }}>
-          <Checkbox
-            checked={checked}
-            onChange={handleChange}
-            icon={<FavoriteBorder />}
-            checkedIcon={<Favorite />}
+    <Card sx={{ maxWidth: 450, margin: "auto" }}>
+      {tipo === "repuesto" ? (
+        <>
+          {descuento > 0 ? (
+            <Box sx={{ position: "absolute" }}>
+              <Alert
+                variant="outlined"
+                severity="success"
+                sx={{ bgcolor: darkModeCard() }}
+              >
+                {descuento}% descuento
+              </Alert>
+            </Box>
+          ) : null}
+          <CardMedia
+            sx={{
+              display: { xs: "none", md: "flex" },
+              objectFit: "contain",
+            }}
+            component="img"
+            height="200"
+            image={imagen}
+            alt="green iguana"
           />
-        </CardActions>
+          <CardMedia
+            sx={{
+              display: { xs: "flex", md: "none" },
+              objectFit: "contain",
+            }}
+            component="img"
+            height="240"
+            image={imagen}
+            alt="green iguana"
+          />
+        </>
       ) : (
-        <CardActions sx={{ float: "right" }}>
-          <IconButton  onClick={deleteFavorito} >
-            <DeleteIcon />
-          </IconButton>
-        </CardActions>
+        <Carrousel imagen={imagen} tamañoImagen={"180"} velocidad={null} />
       )}
-      <CardActions sx={{ float: "left" }}>
-        <Link to={`/detalle/${id}`}>
-          <Button onClick={handleClose} size="small">
-            Ver
-          </Button>
-        </Link>
+      <CardActionArea onClick={handleNavigate}>
+        <CardContent>
+          {tipo === "repuesto" ? (
+            <Typography
+              gutterBottom
+              variant="h7"
+              component="div"
+              textAlign="center"
+              textTransform="capitalize"
+              textOverflow="ellipsis"
+            >
+              {marca} {modelo}
+            </Typography>
+          ) : (
+            <Typography
+              gutterBottom
+              variant="h6"
+              component="div"
+              textAlign="center"
+              textTransform="capitalize"
+            >
+              {marca} {modelo}
+            </Typography>
+          )}
+
+          <Typography gutterBottom variant="h6" component="div">
+            {tipo === "repuesto" && descuento > 0 ? (
+              <>
+                <del>${precio}</del> $
+                {Number(precioDescuento).toLocaleString("es-AR")}
+              </>
+            ) : (
+              <>$ {Number(precio).toLocaleString("es-AR")}</>
+            )}
+          </Typography>
+          {tipo === "auto" ? (
+            <Typography variant="body2" color="text.secondary">
+              {año} | {Number(kilometros).toLocaleString("es-AR")} Km
+            </Typography>
+          ) : tipo === "moto" ? (
+            <Typography variant="body2" color="text.secondary">
+              {año} | {Number(kilometros).toLocaleString("es-AR")} Km
+            </Typography>
+          ) : tipo === "repuesto" ? (
+            <Typography variant="body2" color="text.secondary">
+              {año}
+            </Typography>
+          ) : null}
+        </CardContent>
+      </CardActionArea>
+      <CardActions sx={{ float: "right" }}>
+        {favorito === "true" ? (
+          <>
+            <Checkbox
+              checked={checked}
+              onChange={handleChange}
+              icon={<FavoriteBorder sx={{ color: colorElegido }} />}
+              checkedIcon={<Favorite sx={{ color: colorElegido }} />}
+            />
+          </>
+        ) : (
+          <IconButton onClick={deleteFavorito}>
+            <DeleteIcon sx={{ color: colorElegido }} />
+          </IconButton>
+        )}
       </CardActions>
     </Card>
   );

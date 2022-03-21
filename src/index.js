@@ -10,7 +10,6 @@ import Container from "@mui/material/Container";
 
 const { persistor, store } = Store;
 
-
 // persistor.purge();
 
 ReactDOM.render(
@@ -24,7 +23,6 @@ ReactDOM.render(
         </BrowserRouter>
       </PersistGate>
     </Provider>
-    ,
   </>,
   document.getElementById("root")
 );

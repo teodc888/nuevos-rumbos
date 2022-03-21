@@ -1,21 +1,46 @@
-import React, {useEffect} from "react";
-import { Button, Grid, Card, CardMedia, Typography } from "@mui/material";
-import Typed from "react-typed";
-import {useNavigate} from 'react-router';
+import React, { useEffect } from "react";
+
+//Mui
+import {
+  Button,
+  Grid,
+  Typography,
+  Box,
+  Container,
+  Stack,
+  Card,
+  CardMedia,
+} from "@mui/material";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
+import BuildIcon from "@mui/icons-material/Build";
+
+//imagen
+import Portada from "../../images/portada.png";
+import Portada1 from "../../images/portada1.png";
+
+//Router
+import { useNavigate } from "react-router";
+
+// //Redux
+// import { useSelector } from "react-redux";
+
+import CarrouselCad from "../carrousel/carrouselCard/carrouselCard";
+import Footer from "../footer/footer";
 
 export default function Landing() {
   const navigate = useNavigate();
 
   const navigateToAuto = () => {
-    navigate('/autos');
+    navigate("/autos");
   };
 
   const navigateToMoto = () => {
-    navigate('/motos');
+    navigate("/motos");
   };
 
   const navigateToRepuestos = () => {
-    navigate('/repuestos');
+    navigate("/repuestos");
   };
 
   useEffect(() => {
@@ -24,81 +49,105 @@ export default function Landing() {
 
   return (
     <>
-      <Grid
-        container
-        spacing={{ xs: 2, md: 2, sm: 2 }}
-        columns={{ xs: 16, sm: 16, md: 16 }}
+      <Stack
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        spacing={2}
+        width="100%"
       >
-        <Grid
-          className="App"
-          item
-          xs={16}
-          sm={8}
-          md={8}
-          sx={{ margin: "auto" }}
-        >
-          <Typography
-            variant="h3"
-            component="div"
-            sx={{marginBottom: "3%"}}
-          >
-            NUEVOS RUMBOS
-          </Typography>
-          <Typography
-            variant="h5"
-            component="div"
-            sx={{ color: "black", marginBottom: "5%" }}
-          >
-            La mejor pagina de importaciones de -
-            <Typed
-              strings={[" AUTOS", "  MOTOS", "  REPUESTOS"]}
-              typeSpeed={65}
-              backSpeed={65}
-              loop
-            />
-          </Typography>
-
-          <Grid
-            container
-            spacing={{ xs: 2, md: 2, sm: 2 }}
-            columns={{ xs: 6, sm: 6, md: 6 }}
-            sx={{ marginTop: "1%" }}
-          >
-            <Grid className="App" item xs={6} sm={2} md={2}>
-              <Button variant="contained" sx={{ bgcolor: "#4a148c" }} onClick={navigateToAuto}>
-                Autos
-              </Button>
+        <Card sx={{ maxWidth: "100%", mt: "2%", }}>
+          <CardMedia
+            sx={{ display:{ xs:"none", md:"block"} }}
+            component="img"
+            height="100%"
+            image={Portada}
+            alt="green iguana"
+          />
+          <CardMedia
+             sx={{  display:{ xs:"block", md:"none"} }}
+            component="img"
+            height="100%"
+            image={Portada1}
+            alt="green iguana"
+          />
+        </Card>
+        <Container maxWidth="lg">
+          <Box sx={{ width: "100%" }}>
+            <Grid
+              container
+              spacing={{ xs: 2, md: 2, sm: 2 }}
+              columns={{ xs: 4, sm: 8, md: 16 }}
+            >
+              <Grid item xs={4} sm={8} md={5.33}>
+                <Button
+                  variant="contained"
+                  color="error"
+                  sx={{
+                    width: "100%",
+                    height: "60px",
+                    mt: "6%",
+                    bgcolor: "black",
+                    color: "white",
+                  }}
+                  onClick={navigateToAuto}
+                >
+                  <DirectionsCarIcon sx={{ mr: "5%", color: "white" }} />
+                  <Typography variant="h5">Autos</Typography>
+                </Button>
+              </Grid>
+              <Grid item xs={4} sm={8} md={5.33}>
+                <Button
+                  variant="contained"
+                  sx={{
+                    width: "100%",
+                    height: "60px",
+                    mt: "6%",
+                    bgcolor: "black",
+                    color: "white",
+                  }}
+                  onClick={navigateToMoto}
+                >
+                  <TwoWheelerIcon sx={{ mr: "5%", color: "white" }} />
+                  <Typography variant="h5">Motos</Typography>
+                </Button>
+              </Grid>
+              <Grid item xs={4} sm={8} md={5.33}>
+                <Button
+                  variant="contained"
+                  color="success"
+                  sx={{
+                    width: "100%",
+                    height: "60px",
+                    mt: "6%",
+                    bgcolor: "black",
+                    color: "white",
+                  }}
+                  onClick={navigateToRepuestos}
+                >
+                  <BuildIcon sx={{ mr: "5%", color: "white" }} />{" "}
+                  <Typography variant="h5">Repuestos</Typography>
+                </Button>
+              </Grid>
             </Grid>
-            <Grid item xs={6} sm={2} md={2}>
-              <Button variant="contained" sx={{ bgcolor: "#4a148c" }} onClick={navigateToMoto}>
-                Motos
-              </Button>
-            </Grid>
-            <Grid item xs={6} sm={2} md={2}>
-              <Button variant="contained" sx={{ bgcolor: "#4a148c" }} onClick={navigateToRepuestos}>
-                Repuestos
-              </Button>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid
-          className="App"
-          item
-          xs={16}
-          sm={8}
-          md={8}
-          sx={{ marginTop: "6%" }}
-        >
-          <Card sx={{ maxWidth: 800 }}>
-            <CardMedia
-              component="img"
-              height="500"
-              image="https://scontent.fcor2-2.fna.fbcdn.net/v/t1.6435-9/121409666_3270786793044323_821596622646100409_n.png?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=LVAoisEStmcAX8zADv0&_nc_ht=scontent.fcor2-2.fna&oh=00_AT8MGj0dVLhO4mNBvUO-eRLpWsk6cyKvV3ONqkCQ_R0WkA&oe=62342CCE"
-              alt="green iguana"
-            />
-          </Card>
-        </Grid>
-      </Grid>
+          </Box>
+          <Box sx={{ width: "100%" }}>
+            <Typography variant="h5" component="div" sx={{ mt: "4%" }}>
+              Autos destacados
+            </Typography>
+            <CarrouselCad tipo="auto" />
+            <Typography variant="h5" component="div" sx={{ mt: "4%" }}>
+              Motos destacados
+            </Typography>
+            <CarrouselCad tipo="moto" />
+            <Typography variant="h5" component="div" sx={{ mt: "4%" }}>
+              Repuestos destacados
+            </Typography>
+            <CarrouselCad tipo="repuesto" />
+          </Box>
+        </Container>
+      </Stack>
+      <Footer />
     </>
   );
 }

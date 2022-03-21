@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 //Mui
-import { CardActions, Input } from "@mui/material";
+import { CardActions, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 //Redux
@@ -11,9 +11,9 @@ import {
   buscarProductosAuto,
   buscarProductosMotos,
   buscarProductosRepuesto,
-} from "../../redux/actions/index";
+} from "../../../redux/actions/index";
 
-export default function Buscador({ opciones }) {
+export default function InputBuscador({ opciones, setResultado }) {
   const dispatch = useDispatch();
 
   const [input, setInput] = useState("");
@@ -21,6 +21,9 @@ export default function Buscador({ opciones }) {
   const handleInputChange = (e) => {
     e.preventDefault();
     setInput(e.target.value);
+    if(opciones !== "auto" && opciones !== "moto" && opciones !== "repuesto"){
+      setResultado(e.target.value);
+    }
   };
 
   useEffect(() => {
@@ -37,20 +40,17 @@ export default function Buscador({ opciones }) {
 
   return (
     <>
-      <CardActions>
+      <CardActions sx={{margin:"auto"}}>
         <SearchIcon />
 
-        <Input
+        <TextField
           type="text"
+          label="Buscar..." 
           name="text"
           value={input}
-          placeholder="Buscar..."
           onChange={(e) => handleInputChange(e)}
           sx={{
-            bgcolor: "#4a148c",
-            borderColor: "black",
             width: "100%",
-            borderRadius: "10px",
             color: "white",
           }}
         />
