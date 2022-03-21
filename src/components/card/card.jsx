@@ -147,6 +147,7 @@ export default function CardNR({
           imagen: imagen,
           precio: Number(precio),
           id: id,
+          precioDescuento: precioDescuento,
         })
       );
       successSubmitFavorite();
