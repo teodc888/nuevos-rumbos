@@ -22,15 +22,53 @@ export default function Carrito() {
 
   const carrito = useSelector((state) => state.carrito);
 
+  const total = carrito.reduce((total, item) => {
+    return total + Number(item.precioDescuento);
+  }, 0);
+
+  const total1 = carrito.reduce((total1, item) => {
+    return total1 + Number(item.precio);
+  }, 0);
+
+  const total2 = total1 - total;
+
+
   const botonWhatsapp = () => {
     window.open(
-      `https://wa.me/543512550311?text=${encodeURIComponent(
-        "Hola! le mando mi presupuesto:" + "%0D%0A" + "martillo"+ "%0D%0A" + "martillo"+ "%0D%0A" + "martillo")}`
+      `https://wa.me/543512550311?text=${
+        encodeURIComponent("Hola! le mando mi presupuesto:") +
+        "%0D%0A" +
+        carrito.map((item) =>
+          encodeURI(
+            "\n" +
+              "Modelo:  " +
+              item.modelo +
+              "\n" +
+              "Marca: " +
+              item.marca +
+              "\n" +
+              "Precio sin descuento:  " +
+              "$" +
+              item.precio +
+              "\n" +
+              "Precio Con Descuento: " +
+              "$" +
+              item.precioDescuento +
+              "\n"
+          )
+        ) +
+        "%0D%0A" +
+        encodeURIComponent("Total: $" + total1) +
+        "%0D%0A" +
+        encodeURIComponent("Descuento: $" + total2) +
+        "%0D%0A" +
+        encodeURIComponent("Total a pagar: $" + total) +
+        "%0D%0A" +
+        encodeURIComponent("Gracias!")
+      }`
     );
   };
 
-  console.log(encodeURIComponent("hola como estas"))
-  console.log(carrito)
   return (
     <>
       <Container maxWidth="lg">
@@ -101,7 +139,7 @@ export default function Carrito() {
                 <Button
                   variant="contained"
                   color="success"
-                  sx={{ width: "100%", bgcolor: "green" }}
+                  sx={{ width: "100%", bgcolor: "green", color: "white" }}
                   onClick={botonWhatsapp}
                 >
                   Solicitar presupuesto a Whatsapp

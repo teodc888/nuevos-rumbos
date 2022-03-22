@@ -75,7 +75,7 @@ export default function CardCarrito({
               <ArrowRightIcon onClick={handleClickSuma} />
             </CardContent>
           </Box>
-            <CardContent>
+            <CardContent sx={{ justifyContent:"space-between", ml:13}}>
               <Button
                 sx={{ bgcolor: "red", color: "white" }}
                 color="error"
@@ -106,6 +106,7 @@ export default function CardCarrito({
           <CardMedia
             component="img"
             height="240"
+            sx={{objectFit: "contain"}}
             image={imagen[0]}
             alt="green iguana"
           />

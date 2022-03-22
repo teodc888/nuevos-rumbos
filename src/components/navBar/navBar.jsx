@@ -175,6 +175,7 @@ export default function NavBar({ setMode }) {
 
   const handleCarrito = () => {
     navigate("/carrito");
+    handleMobileMenuClose();
   };
 
   const handleMobileMenuOpen = (event) => {
