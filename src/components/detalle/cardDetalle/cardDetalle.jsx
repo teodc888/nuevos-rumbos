@@ -59,7 +59,7 @@ export default function BasicTable({
                 <Typography variant="h6">Kilometros</Typography>
               </TableCell>
               <TableCell align="left">
-                <Typography variant="h6">{kilometros}</Typography>
+                <Typography variant="h6">{kilometros} km</Typography>
               </TableCell>
             </TableRow>
             <TableRow>
@@ -150,7 +150,7 @@ export default function BasicTable({
                 <Typography variant="h6">Kilometros</Typography>
               </TableCell>
               <TableCell align="left">
-                <Typography variant="h6">{kilometros}</Typography>
+                <Typography variant="h6">{kilometros} km</Typography>
               </TableCell>
             </TableRow>
             <TableRow>
