@@ -14,6 +14,8 @@ import {
   Alert,
   Container,
 } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 //Components
 import Footer from "../../footer/footer";
@@ -21,13 +23,16 @@ import CarrouselCard from "../../carrousel/carrouselCard/carrouselCard";
 
 //Redux
 import { useDispatch, useSelector } from "react-redux";
-import { favoritos } from "../../../redux/actions/index";
-import { eliminarFavoritos } from "../../../redux/actions/index";
+import {
+  favoritos,
+  eliminarFavoritos,
+  agregarCarrito,
+  deleteCarrito,
+} from "../../../redux/actions/index";
 
 //iconos
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-
 
 //toastify
 import { toast } from "react-toastify";
@@ -94,6 +99,37 @@ export default function DetalleRepuesto({
     dispatch(eliminarFavoritos(id));
     setFav(false);
     errorSubmit();
+  };
+
+  const carrito = useSelector((state) => state.carrito);
+  let aux1 = [];
+  if (carrito.length > 0) {
+    aux1 = carrito.map((el) => el.id);
+  }
+
+  const [cart, setCart] = useState(aux1?.includes(id) ? true : false);
+
+  console.log(cart);
+  //agregar o eliminar favoritos
+  const agregarCarritos = () => {
+    dispatch(
+      agregarCarrito({
+        marca: marca,
+        modelo: modelo,
+        imagen: imagen,
+        precio: Number(precio),
+        id: id,
+        precioDescuento: precioDescuento,
+      })
+    );
+    setCart(true);
+    successSubmitFavorite();
+  };
+
+  const eliminarDeCarrito = () => {
+    dispatch(deleteCarrito(id));
+    errorSubmit();
+    setCart(false);
   };
 
   useEffect(() => {
@@ -227,14 +263,42 @@ export default function DetalleRepuesto({
                       />
                     </Button>
                   </CardActions>
+                  <CardActions>
+                    {cart === false ? (
+                      <Button
+                        variant="contained"
+                        onClick={agregarCarritos}
+                        color="error"
+                        sx={{ bgcolor: "red", color: "white", width: "100%" }}
+                      >
+                        Agregar al carrito
+                        <ShoppingCartIcon sx={{ marginLeft: "2%" }} />
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="contained"
+                        onClick={eliminarDeCarrito}
+                        color="error"
+                        sx={{ bgcolor: "red", color: "white", width: "100%" }}
+                      >
+                        Eliminar de carrito
+                        <ShoppingCartIcon sx={{ marginLeft: "2%" }} />
+                      </Button>
+                    )}
+                  </CardActions>
                   <CardActions sx={{ mt: "2%" }}>
                     {fav === false ? (
                       <Button
                         variant="contained"
                         onClick={addFavoritos}
-                        sx={{ bgcolor: "#2196f3", color: "white", width: "100%" }}
+                        sx={{
+                          bgcolor: "#2196f3",
+                          color: "white",
+                          width: "100%",
+                        }}
                       >
                         Agregar a favoritos
+                        <FavoriteIcon sx={{ marginLeft: "2%" }} />
                       </Button>
                     ) : (
                       <Button

@@ -205,7 +205,7 @@ export default function DetalleMoto({
                 <Card sx={{ maxWidth: 445, margin: "auto" }}>
                   <CardContent>
                     <Typography variant="body1" color="text.secondary">
-                      {año} | {kilometros} Km
+                      {año} | {Number(kilometros).toLocaleString("es-AR")} Km
                     </Typography>
                     <Typography
                       gutterBottom

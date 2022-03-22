@@ -85,6 +85,9 @@ export default function Favoritos() {
                     precio={Number(producto.precio)}
                     id={producto.id}
                     descripcion={producto.descripcion}
+                    precioDescuento={producto.precioDescuento}
+                    tipo={producto.tipo}
+                    descuento={producto.descuento}
                   />
                 </Grid>
               ))

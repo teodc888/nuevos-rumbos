@@ -1,13 +1,25 @@
 import React from "react";
 
+//Mui
 import { Stack, Typography, Grid, Box, Button, Container } from "@mui/material";
 
+//Componentes
 import Footer from "../footer/footer";
 import CardCarrito from "../card/cardCarrito/cardCarrito";
 
+//Redux
 import { useSelector } from "react-redux";
 
+//router
+import { useNavigate } from "react-router";
+
 export default function Carrito() {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/repuestos");
+  };
+
   const carrito = useSelector((state) => state.carrito);
 
   const botonWhatsapp = () => {
@@ -37,16 +49,16 @@ export default function Carrito() {
           >
             {/* mapeo de los productos para mostrarlos en la pantalla */}
             {carrito.length === 0 ? (
-              <Grid item xs={12} sm={12} md={12}>
-                <Typography
-                  variant="h4"
-                  component="div"
-                  textAlign="center"
-                  sx={{ mb: "40%" }}
-                >
-                  No hay ningun producto en carrito
-                </Typography>
-              </Grid>
+              <>
+                <Grid item xs={12} sm={12} md={12}>
+                  <Typography variant="h4" component="div" textAlign="center">
+                    No hay ningun producto en carrito
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} sx={{ mb: "40%", display:"flex", justifyContent:"center", textAlign:"center" }}>
+                  <Button onClick={handleClick} color="success" variant="contained" sx={{bgcolor:"green", color:"white"}}>Agregar Productos</Button>
+                </Grid>
+              </>
             ) : (
               carrito.map((producto) => (
                 <Grid item xs={4} sm={4} md={12} key={producto.id}>

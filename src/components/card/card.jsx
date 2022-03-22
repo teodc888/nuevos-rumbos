@@ -93,16 +93,35 @@ export default function CardNR({
   const handleChange = (event) => {
     setChecked(event.target.checked);
     if (checked === false) {
-      dispatch(
-        favoritos({
-          marca: marca,
-          modelo: modelo,
-          imagen: imagen,
-          precio: Number(precio),
-          id: id,
-        })
-      );
-      successSubmitFavorite();
+      if(tipo === "repuesto"){
+        dispatch(
+          favoritos({
+            marca: marca,
+            modelo: modelo,
+            imagen: imagen,
+            precio: Number(precio),
+            precioDescuento: Number(precioDescuento),
+            descuento: Number(descuento),
+            id: id,
+            tipo: tipo,
+          })
+        );
+        successSubmitFavorite();
+
+      }else{
+        dispatch(
+          favoritos({
+            marca: marca,
+            modelo: modelo,
+            imagen: imagen,
+            precio: Number(precio),
+            id: id,
+          })
+        );
+        successSubmitFavorite();
+
+      }
+    
     } else {
       dispatch(eliminarFavoritos(id));
       errorSubmit();
@@ -178,7 +197,7 @@ export default function CardNR({
               objectFit: "contain",
             }}
             component="img"
-            height="200"
+            height="190"
             image={imagen}
             alt="green iguana"
           />

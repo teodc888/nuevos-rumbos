@@ -122,8 +122,6 @@ export default function HomeRepuestos() {
     setOpen(false);
   };
 
-  console.log(repuestos);
-
   return (
     <>
       <Container maxWidth="lg">
