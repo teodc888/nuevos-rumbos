@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
+
+//Mui
+import {
+  Card,
+  Typography,
+  CardContent,
+  Box,
+  Button,
+  CardMedia,
+} from "@mui/material";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import { Button } from "@mui/material";
 
-import {deleteCarrito} from "../../../redux/actions/index";
+//Redux
+import { deleteCarrito } from "../../../redux/actions/index";
 import { useDispatch } from "react-redux";
-
 
 export default function CardCarrito({
   imagen,
@@ -37,29 +41,84 @@ export default function CardCarrito({
     dispatch(deleteCarrito(id));
   };
 
-
-
   return (
     <>
-      <Card sx={{ display: "flex", maxWidth: "100%", margin: "auto" }}>
-        <CardMedia
-          component="img"
-          sx={{ width: 250, objectFit: "contain", float: "left" }}
-          image={imagen}
-          alt="Live from space album cover"
-        />
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <CardContent sx={{ flex: "1 0 auto" }}>
-            <Typography component="div" variant="h5">
+      <Box
+        sx={{
+          display: { xs: "none", sm: "none", md: "block", lg: "block" },
+        }}
+      >
+        <Card sx={{ display: "flex", maxWidth: 850, margin: "auto" }}>
+          <CardMedia
+            component="img"
+            sx={{ width: 200, objectFit: "contain", float: "left" }}
+            image={imagen[0]}
+            alt="Live from space album cover"
+          />
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <CardContent sx={{ flex: "1 0 auto" }}>
+              <Typography component="div" variant="h5">
+                {marca} {modelo}
+              </Typography>
+
+              <Typography variant="h5" color="text.secondary" component="div">
+                <del>${precio}</del> $
+                {Number(precioDescuento).toLocaleString("es-AR")}
+              </Typography>
+            </CardContent>
+            <CardContent sx={{ flex: "1 0 auto" }}>
+              <Typography variant="h5" color="text.secondary" component="div">
+                Cantidad
+              </Typography>
+              <ArrowLeftIcon onClick={handleClickResta} />
+              {contador}
+              <ArrowRightIcon onClick={handleClickSuma} />
+            </CardContent>
+          </Box>
+            <CardContent>
+              <Button
+                sx={{ bgcolor: "red", color: "white" }}
+                color="error"
+                variant="contained"
+                onClick={eliminar}
+              >
+                Borrar
+              </Button>
+            </CardContent>
+        </Card>
+      </Box>
+      <Box
+        sx={{
+          display: { xs: "block", sm: "block", md: "none", lg: "none" },
+        }}
+      >
+        <Card sx={{ maxWidth: 450, margin: "auto" }}>
+          <CardContent sx={{ position: "absolute" }}>
+            <Button
+              sx={{ bgcolor: "red", color: "white" }}
+              color="error"
+              variant="contained"
+              onClick={eliminar}
+            >
+              Borrar
+            </Button>
+          </CardContent>
+          <CardMedia
+            component="img"
+            height="240"
+            image={imagen[0]}
+            alt="green iguana"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
               {marca} {modelo}
             </Typography>
-
-            <Typography variant="h5" color="text.secondary" component="div">
+            <Typography variant="h6" color="text.secondary" component="div">
               <del>${precio}</del> $
               {Number(precioDescuento).toLocaleString("es-AR")}
             </Typography>
           </CardContent>
-          <CardContent sx={{ flex: "1 0 auto" }}>
+          <CardContent>
             <Typography variant="h5" color="text.secondary" component="div">
               Cantidad
             </Typography>
@@ -67,11 +126,8 @@ export default function CardCarrito({
             {contador}
             <ArrowRightIcon onClick={handleClickSuma} />
           </CardContent>
-        </Box>
-        <CardContent > 
-          <Button onClick={eliminar}>Borrar</Button>
-        </CardContent>
-      </Card>
+        </Card>
+      </Box>
     </>
   );
 }
