@@ -18,6 +18,7 @@ import {
   DELETE_FAVORITOS,
   CARRITO,
   DELETE_CARRITO,
+  BORRAR_CARRITO_TOTAL,
 } from "../actions/actionsTypes";
 
 const inicialState = {
@@ -75,10 +76,14 @@ export default function rootReducer(state = inicialState, action) {
       };
     case BUSCAR_PRODUCTOS_AUTO:
       const autosModelo = state.autosBuscados.filter((auto) => {
-        return auto.modelo.toLowerCase().startsWith(action.payload.toLowerCase());
+        return auto.modelo
+          .toLowerCase()
+          .startsWith(action.payload.toLowerCase());
       });
       const autosMarca = state.autosBuscados.filter((auto) => {
-        return auto.marca.toLowerCase().startsWith(action.payload.toLowerCase());
+        return auto.marca
+          .toLowerCase()
+          .startsWith(action.payload.toLowerCase());
       });
 
       return {
@@ -324,20 +329,25 @@ export default function rootReducer(state = inicialState, action) {
         ...state,
         favoritos: [],
       };
-      case CARRITO:
-        return {
-          ...state,
-          carrito: [...state.carrito, action.payload],
-        };
-        
-        case DELETE_CARRITO:
-          return {
-            ...state,
-            carrito: state.carrito.filter(
-              (producto) => producto.id !== action.payload
-            ),
-          };
-          
+    case CARRITO:
+      return {
+        ...state,
+        carrito: [...state.carrito, action.payload],
+      };
+
+    case DELETE_CARRITO:
+      return {
+        ...state,
+        carrito: state.carrito.filter(
+          (producto) => producto.id !== action.payload
+        ),
+      };
+    case BORRAR_CARRITO_TOTAL:
+      return {
+        ...state,
+        carrito: [],
+      };
+
     default:
       return state;
   }

@@ -8,12 +8,17 @@ import Footer from "../footer/footer";
 import CardCarrito from "../card/cardCarrito/cardCarrito";
 
 //Redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { borrarCarritoTotal } from "../../redux/actions/index";
 
 //router
 import { useNavigate } from "react-router";
 
+//toastify
+import { toast } from "react-toastify";
+
 export default function Carrito() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -21,6 +26,23 @@ export default function Carrito() {
   };
 
   const carrito = useSelector((state) => state.carrito);
+
+  const errorSubmit = () => {
+    toast.error("Productos eliminados con éxito", {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  const handleClickBorrar = () => {
+    dispatch(borrarCarritoTotal());
+    errorSubmit();
+  };
 
   const total = carrito.reduce((total, item) => {
     return total + Number(item.precioDescuento);
@@ -31,7 +53,6 @@ export default function Carrito() {
   }, 0);
 
   const total2 = total1 - total;
-
 
   const botonWhatsapp = () => {
     window.open(
@@ -67,6 +88,9 @@ export default function Carrito() {
         encodeURIComponent("Gracias!")
       }`
     );
+    // setTimeout(() => {
+    //   dispatch(borrarCarritoTotal());
+    // }, 3000);
   };
 
   return (
@@ -81,73 +105,84 @@ export default function Carrito() {
           <Typography variant="h3" component="div" textAlign="center">
             Carrito
           </Typography>
-        </Stack>
-        <Box sx={{ width: "100%", marginTop: "3%" }}>
-          <Grid
-            container
-            spacing={{ xs: 4, md: 3 }}
-            columns={{ xs: 4, sm: 8, md: 12 }}
-          >
-            {/* mapeo de los productos para mostrarlos en la pantalla */}
-            {carrito.length === 0 ? (
-              <>
-                <Grid item xs={12} sm={12} md={12}>
-                  <Typography variant="h4" component="div" textAlign="center">
-                    No hay ningun producto en carrito
-                  </Typography>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={12}
-                  md={12}
-                  sx={{
-                    mb: "40%",
-                    display: "flex",
-                    justifyContent: "center",
-                    textAlign: "center",
-                  }}
-                >
-                  <Button
-                    onClick={handleClick}
-                    color="success"
-                    variant="contained"
-                    sx={{ bgcolor: "green", color: "white" }}
+          {carrito.length > 0 ? (
+            <Button
+              color="error"
+              variant="contained"
+              sx={{ bgcolor: "red", color: "white" }}
+              onClick={handleClickBorrar}
+            >
+              {" "}
+              Eliminar todo
+            </Button>
+          ) : null}
+          <Box sx={{ width: "100%", marginTop: "3%" }}>
+            <Grid
+              container
+              spacing={{ xs: 4, md: 3 }}
+              columns={{ xs: 4, sm: 8, md: 12 }}
+            >
+              {/* mapeo de los productos para mostrarlos en la pantalla */}
+              {carrito.length === 0 ? (
+                <>
+                  <Grid item xs={12} sm={12} md={12}>
+                    <Typography variant="h4" component="div" textAlign="center">
+                      No hay ningun producto en carrito
+                    </Typography>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    md={12}
+                    sx={{
+                      mb: "40%",
+                      display: "flex",
+                      justifyContent: "center",
+                      textAlign: "center",
+                    }}
                   >
-                    Agregar Productos
+                    <Button
+                      onClick={handleClick}
+                      color="success"
+                      variant="contained"
+                      sx={{ bgcolor: "green", color: "white" }}
+                    >
+                      Agregar Productos
+                    </Button>
+                  </Grid>
+                </>
+              ) : (
+                carrito.map((producto) => (
+                  <Grid item xs={4} sm={12} md={12} key={producto.id}>
+                    <CardCarrito
+                      marca={producto.marca}
+                      modelo={producto.modelo}
+                      imagen={producto.imagen}
+                      precio={Number(producto.precio)}
+                      id={producto.id}
+                      descripcion={producto.descripcion}
+                      tipo="carrito"
+                      precioDescuento={producto.precioDescuento}
+                    />
+                  </Grid>
+                ))
+              )}
+              <Grid item xs={12} sm={12} md={12}>
+                {carrito.length > 0 ? (
+                  <Button
+                    variant="contained"
+                    color="success"
+                    sx={{ width: "100%", bgcolor: "green", color: "white" }}
+                    onClick={botonWhatsapp}
+                  >
+                    Solicitar presupuesto a Whatsapp
                   </Button>
-                </Grid>
-              </>
-            ) : (
-              carrito.map((producto) => (
-                <Grid item xs={4} sm={12} md={12} key={producto.id}>
-                  <CardCarrito
-                    marca={producto.marca}
-                    modelo={producto.modelo}
-                    imagen={producto.imagen}
-                    precio={Number(producto.precio)}
-                    id={producto.id}
-                    descripcion={producto.descripcion}
-                    tipo="carrito"
-                    precioDescuento={producto.precioDescuento}
-                  />
-                </Grid>
-              ))
-            )}
-            <Grid item xs={12} sm={12} md={12}>
-              {carrito.length > 0 ? (
-                <Button
-                  variant="contained"
-                  color="success"
-                  sx={{ width: "100%", bgcolor: "green", color: "white" }}
-                  onClick={botonWhatsapp}
-                >
-                  Solicitar presupuesto a Whatsapp
-                </Button>
-              ) : null}
+                ) : null}
+              </Grid>
             </Grid>
-          </Grid>
-        </Box>
+          </Box>
+        </Stack>
       </Container>
       <Footer />
     </>
