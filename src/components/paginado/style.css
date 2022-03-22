@@ -5486,8 +5486,8 @@ fieldset:disabled .btn {
 
 .page-link:focus {
   z-index: 3;
-  color: #0a58ca;
-  background-color: #e9ecef;
+  color: red;
+  background-color: black;
   outline: 0;
   -webkit-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
           box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
