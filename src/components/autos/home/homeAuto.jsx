@@ -49,8 +49,9 @@ export default function HomeAuto() {
   //UseSelector
   const orden = useSelector((state) => state.orden);
   const autos = useSelector((state) => state.autos);
+  const autosBuscados = useSelector((state) => state.autosBuscados);
 
-  const autosDestacados = autos.filter((el) => el.destacado === "si");
+  const autosDestacados = autosBuscados.filter((el) => el.destacado === "si");
 
   //useState
   const [filtro, setFiltro] = useState(orden);

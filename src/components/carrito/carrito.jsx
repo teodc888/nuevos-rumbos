@@ -106,15 +106,34 @@ export default function Carrito() {
             Carrito
           </Typography>
           {carrito.length > 0 ? (
-            <Button
-              color="error"
-              variant="contained"
-              sx={{ bgcolor: "red", color: "white" }}
-              onClick={handleClickBorrar}
-            >
-              {" "}
-              Eliminar todo
-            </Button>
+            <>
+              <Button
+                color="error"
+                variant="contained"
+                sx={{
+                  bgcolor: "red",
+                  color: "white",
+                  width: "20%",
+                  display: { xs: "none", md: "block" },
+                }}
+                onClick={handleClickBorrar}
+              >
+                Eliminar todo
+              </Button>
+              <Button
+                color="error"
+                variant="contained"
+                sx={{
+                  bgcolor: "red",
+                  color: "white",
+                  width: "100%",
+                  display: { xs: "block", md: "none" },
+                }}
+                onClick={handleClickBorrar}
+              >
+                Eliminar todo
+              </Button>
+            </>
           ) : null}
           <Box sx={{ width: "100%", marginTop: "3%" }}>
             <Grid
@@ -168,16 +187,42 @@ export default function Carrito() {
                   </Grid>
                 ))
               )}
-              <Grid item xs={12} sm={12} md={12}>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                sx={{ display: "flex", justifyContent: "center" }}
+              >
                 {carrito.length > 0 ? (
-                  <Button
-                    variant="contained"
-                    color="success"
-                    sx={{ width: "100%", bgcolor: "green", color: "white" }}
-                    onClick={botonWhatsapp}
-                  >
-                    Solicitar presupuesto a Whatsapp
-                  </Button>
+                  <>
+                    <Button
+                      variant="contained"
+                      color="success"
+                      sx={{
+                        width: "30%",
+                        bgcolor: "green",
+                        color: "white",
+                        display: { xs: "none", md: "block" },
+                      }}
+                      onClick={botonWhatsapp}
+                    >
+                      Solicitar presupuesto a Whatsapp
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="success"
+                      sx={{
+                        width: "100%",
+                        bgcolor: "green",
+                        color: "white",
+                        display: { xs: "block", md: "none" },
+                      }}
+                      onClick={botonWhatsapp}
+                    >
+                      Solicitar presupuesto a Whatsapp
+                    </Button>
+                  </>
                 ) : null}
               </Grid>
             </Grid>

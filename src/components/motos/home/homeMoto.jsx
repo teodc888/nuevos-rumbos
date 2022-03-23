@@ -50,7 +50,7 @@ export default function HomeMoto() {
   const motos = useSelector((state) => state.motos);
   const motosBuscados = useSelector((state) => state.motosBuscados);
 
-  const motosDestacadas = motos.filter((el) => el.destacado === "si");
+  const motosDestacadas = motosBuscados.filter((el) => el.destacado === "si");
 
   //useState
   const [filtro, setFiltro] = useState(orden);
@@ -92,7 +92,7 @@ export default function HomeMoto() {
   // funcion para mostrar las cilindradas sin repetir
   let uniqueArrCilindrada = ["todos"];
   if (motos.length > 0) {
-    const motosFilterCilindrada = motosBuscados.map((moto) => moto.cilindrada);
+    const motosFilterCilindrada = motos.map((moto) => moto.cilindrada);
     uniqueArrCilindrada = [...new Set(motosFilterCilindrada)];
   }
 

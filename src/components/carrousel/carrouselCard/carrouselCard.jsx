@@ -65,7 +65,7 @@ export default function CarrouselCard({ tipo }) {
           ))}
         </Carouseal>
       ) : tipo === "repuesto" ? (
-        <Carouseal breakPoints={breakPoints}>
+        <Carouseal  breakPoints={breakPoints}>
           {repuestosDestacados.map((repuesto) => (
             <CardCarrousel
               marca={repuesto.marca}

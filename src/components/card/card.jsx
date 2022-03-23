@@ -48,6 +48,7 @@ export default function CardNR({
   tipo,
   descuento,
   precioDescuento,
+  addfav,
 }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -93,7 +94,7 @@ export default function CardNR({
   const handleChange = (event) => {
     setChecked(event.target.checked);
     if (checked === false) {
-      if(tipo === "repuesto"){
+      if (tipo === "repuesto") {
         dispatch(
           favoritos({
             marca: marca,
@@ -107,8 +108,7 @@ export default function CardNR({
           })
         );
         successSubmitFavorite();
-
-      }else{
+      } else {
         dispatch(
           favoritos({
             marca: marca,
@@ -119,9 +119,7 @@ export default function CardNR({
           })
         );
         successSubmitFavorite();
-
       }
-    
     } else {
       dispatch(eliminarFavoritos(id));
       errorSubmit();
@@ -246,8 +244,10 @@ export default function CardNR({
                 <del>${precio}</del> $
                 {Number(precioDescuento).toLocaleString("es-AR")}
               </>
+            ) : addfav === true ? (
+              <> ${precio}</>
             ) : (
-              <>$ {Number(precio).toLocaleString("es-AR")}</>
+              <> ${Number(precio).toLocaleString("es-AR")} </>
             )}
           </Typography>
           {tipo === "auto" ? (
@@ -265,13 +265,13 @@ export default function CardNR({
           ) : null}
         </CardContent>
       </CardActionArea>
-      <CardActions sx={{float:"left"}}>
+      <CardActions sx={{ float: "left" }}>
         {tipo === "repuesto" && favorito === "true" ? (
           <Checkbox
             checked={checked1}
             onChange={handleChange1}
-            icon={<ShoppingCartOutlinedIcon sx={{ color: colorElegido }} />}
-            checkedIcon={<ShoppingCartIcon sx={{ color: colorElegido }} />}
+            icon={<ShoppingCartOutlinedIcon sx={{ color: "green" }} />}
+            checkedIcon={<ShoppingCartIcon sx={{ color: "green" }} />}
           />
         ) : null}
       </CardActions>

@@ -223,32 +223,6 @@ export default function NavBar({ setMode }) {
         />
         <p>Dark Mode</p>
       </MenuItem>
-
-      <MenuItem onClick={navigateToFavoritos}>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={fav.length} color="primary">
-            <FavoriteIcon />
-          </Badge>
-        </IconButton>
-        <p>Favoritos</p>
-      </MenuItem>
-
-      <MenuItem onClick={handleCarrito}>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={carrito.length} color="primary">
-            <ShoppingCartIcon />
-          </Badge>
-        </IconButton>
-        <p>Carritos</p>
-      </MenuItem>
     </Menu>
   );
 
@@ -306,6 +280,7 @@ export default function NavBar({ setMode }) {
               aria-haspopup="true"
               color="inherit"
               onClick={navigateToFavoritos}
+              sx={{ mr: "0.1px" }}
             >
               <Badge badgeContent={fav.length} color="primary">
                 <FavoriteIcon />
@@ -318,8 +293,9 @@ export default function NavBar({ setMode }) {
               aria-haspopup="true"
               color="inherit"
               onClick={handleCarrito}
+              sx={{ mr: "0.1px" }}
             >
-              <Badge badgeContent={carrito.length} color="primary">
+              <Badge badgeContent={carrito.length} color="success">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
@@ -337,6 +313,32 @@ export default function NavBar({ setMode }) {
 
           {/* responsivo */}
           <Box sx={{ display: { xs: "block", md: "none", sm: "none" } }}>
+            <IconButton
+              size="large"
+              edge="end"
+              aria-label="account of current user"
+              aria-haspopup="true"
+              color="inherit"
+              onClick={navigateToFavoritos}
+
+            >
+              <Badge badgeContent={fav.length} color="primary">
+                <FavoriteIcon />
+              </Badge>
+            </IconButton>
+            <IconButton
+              size="large"
+              edge="end"
+              aria-label="account of current user"
+              aria-haspopup="true"
+              color="inherit"
+              onClick={handleCarrito}
+
+            >
+              <Badge badgeContent={carrito.length} color="success">
+                <ShoppingCartIcon />
+              </Badge>
+            </IconButton>
             <IconButton
               size="large"
               aria-label="show more"

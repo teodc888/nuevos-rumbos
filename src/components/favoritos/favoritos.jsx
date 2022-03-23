@@ -18,6 +18,8 @@ export default function Favoritos() {
   const dispatch = useDispatch();
   const favoritos = useSelector((state) => state.favoritos);
 
+  console.log(favoritos);
+
   const errorSubmit = () => {
     toast.error("Productos eliminados con éxito", {
       position: "bottom-right",
@@ -82,12 +84,13 @@ export default function Favoritos() {
                     marca={producto.marca}
                     modelo={producto.modelo}
                     imagen={producto.imagen}
-                    precio={Number(producto.precio)}
+                    precio={producto.precio}
                     id={producto.id}
                     descripcion={producto.descripcion}
                     precioDescuento={producto.precioDescuento}
                     tipo={producto.tipo}
                     descuento={producto.descuento}
+                    addfav={true}
                   />
                 </Grid>
               ))

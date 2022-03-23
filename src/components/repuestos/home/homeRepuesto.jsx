@@ -49,7 +49,7 @@ export default function HomeRepuestos() {
   const repuestos = useSelector((state) => state.repuestos);
   const repuestosBuscados = useSelector((state) => state.repuestosBuscados);
 
-  const repuestosDestacados = repuestos.filter((el) => el.destacado === "si");
+  const repuestosDestacados = repuestosBuscados.filter((el) => el.destacado === "si");
 
   //useState
   const [filtro, setFiltro] = useState(orden);

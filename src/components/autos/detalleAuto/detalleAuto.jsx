@@ -18,6 +18,7 @@ import CardDetalle from "../../detalle/cardDetalle/cardDetalle";
 import Footer from "../../footer/footer";
 import Carrousel from "../../carrousel/carrousel";
 import CarrouselCard from "../../carrousel/carrouselCard/carrouselCard";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 //Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -252,6 +253,7 @@ export default function DetalleAuto({
                         sx={{ bgcolor: "#2196f3", color: "white", width: "100%" }}
                       >
                         Agregar a favoritos
+                        <FavoriteIcon sx={{ marginLeft: "2%" }} />
                       </Button>
                     ) : (
                       <Button
@@ -265,6 +267,7 @@ export default function DetalleAuto({
                         }}
                       >
                         Eliminar de favoritos
+                        <FavoriteIcon sx={{ marginLeft: "2%" }} />
                       </Button>
                     )}
                   </CardActions>

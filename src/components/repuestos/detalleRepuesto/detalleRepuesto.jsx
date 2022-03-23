@@ -88,8 +88,11 @@ export default function DetalleRepuesto({
         marca: marca,
         modelo: modelo,
         imagen: imagen,
-        precio: precio,
+        precio: Number(precio),
+        precioDescuento: Number(precioDescuento),
+        descuento: Number(descuento),
         id: id,
+        tipo: "repuesto",
       })
     );
     setFav(true);
@@ -263,29 +266,6 @@ export default function DetalleRepuesto({
                       />
                     </Button>
                   </CardActions>
-                  <CardActions>
-                    {cart === false ? (
-                      <Button
-                        variant="contained"
-                        onClick={agregarCarritos}
-                        color="error"
-                        sx={{ bgcolor: "red", color: "white", width: "100%" }}
-                      >
-                        Agregar al carrito
-                        <ShoppingCartIcon sx={{ marginLeft: "2%" }} />
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="contained"
-                        onClick={eliminarDeCarrito}
-                        color="error"
-                        sx={{ bgcolor: "red", color: "white", width: "100%" }}
-                      >
-                        Eliminar de carrito
-                        <ShoppingCartIcon sx={{ marginLeft: "2%" }} />
-                      </Button>
-                    )}
-                  </CardActions>
                   <CardActions sx={{ mt: "2%" }}>
                     {fav === false ? (
                       <Button
@@ -312,6 +292,31 @@ export default function DetalleRepuesto({
                         }}
                       >
                         Eliminar de favoritos
+                        <FavoriteIcon sx={{ marginLeft: "2%" }} />
+                      </Button>
+                    )}
+                    {cart === false ? (
+                      <Button
+                        variant="contained"
+                        onClick={agregarCarritos}
+                        sx={{
+                          bgcolor: "#2196f3",
+                          color: "white",
+                          width: "100%",
+                        }}
+                      >
+                        Agregar al carrito
+                        <ShoppingCartIcon sx={{ marginLeft: "2%" }} />
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="contained"
+                        onClick={eliminarDeCarrito}
+                        color="error"
+                        sx={{ bgcolor: colorElegido, color: "white", width: "100%" }}
+                      >
+                        Eliminar de carrito
+                        <ShoppingCartIcon sx={{ marginLeft: "2%" }} />
                       </Button>
                     )}
                   </CardActions>
