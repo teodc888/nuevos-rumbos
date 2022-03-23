@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useDropzone, FileRejection } from 'react-dropzone';
+// packages
+import { Grid } from '@mui/material';
 // components
 import {SingleFileUploadWithProgress} from './cargarArchivoIndividual';
 
@@ -19,15 +21,22 @@ const DropZone = () => {
 	}, []);
 	const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
+	// funcion eliminar imagen
+	const onDelete = (file:File) => {
+		setFiles((curr)=>curr.filter((fw) => fw.file !== file));
+	};
+
 	return (
 		<React.Fragment>
-			<div {...getRootProps()}>
-				<input {...getInputProps()} />
-				<p>Drag 'n' drop some files here, or click to select files</p>
-				{files.map((fileWrapper, index) =>(
-					<SingleFileUploadWithProgress key={index} file={fileWrapper.file} />
-				))}
-			</div>
+			<Grid item>
+				<div {...getRootProps()}>
+					<input {...getInputProps()} />
+					<p>Drag 'n' drop some files here, or click to select files</p>
+					{files.map((fileWrapper, index) =>(
+						<SingleFileUploadWithProgress key={index} onDelete={onDelete} file={fileWrapper.file} />
+					))}
+				</div>
+			</Grid>
 		</React.Fragment>
 	);
 };
