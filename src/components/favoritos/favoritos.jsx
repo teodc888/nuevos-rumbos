@@ -51,12 +51,13 @@ export default function Favoritos() {
           spacing={2}
         >
           <Typography variant="h3" component="div" textAlign="center">
-            FAVORITOS
+            Favoritos
           </Typography>
           {favoritos.length !== 0 && (
             <Button
-              sx={{ bgcolor: "green", color: "white" }}
+              sx={{ bgcolor: "red", color: "white" }}
               variant="contained"
+              color="error"
               onClick={() => handleClickDelete()}
             >
               Borrar Todo

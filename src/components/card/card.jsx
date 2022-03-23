@@ -165,6 +165,7 @@ export default function CardNR({
           precio: Number(precio),
           id: id,
           precioDescuento: precioDescuento,
+          cantidad:1
         })
       );
       successSubmitFavorite();

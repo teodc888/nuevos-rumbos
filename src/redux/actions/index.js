@@ -20,6 +20,7 @@ import {
   CARRITO,
   DELETE_CARRITO,
   BORRAR_CARRITO_TOTAL,
+  CANTIDAD
 } from "./actionsTypes";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
@@ -187,5 +188,12 @@ export const deleteCarrito = (id) => {
 export const borrarCarritoTotal = () => {
   return {
     type: BORRAR_CARRITO_TOTAL,
+  };
+}
+
+export const cantidadStock = (id, cantidad) => {
+  return {
+    type: CANTIDAD,
+    payload: { id, cantidad },
   };
 }

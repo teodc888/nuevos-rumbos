@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 //Mui
 import { Stack, Typography, Grid, Box, Button, Container } from "@mui/material";
@@ -45,11 +45,11 @@ export default function Carrito() {
   };
 
   const total = carrito.reduce((total, item) => {
-    return total + Number(item.precioDescuento);
+    return total + Number(item.precioDescuento * item.cantidad);
   }, 0);
 
   const total1 = carrito.reduce((total1, item) => {
-    return total1 + Number(item.precio);
+    return total1 + Number(item.precio * item.cantidad);
   }, 0);
 
   const total2 = total1 - total;
@@ -68,13 +68,24 @@ export default function Carrito() {
               "Marca: " +
               item.marca +
               "\n" +
-              "Precio sin descuento:  " +
+              "Precio sin descuento c/u:  " +
               "$" +
               item.precio +
               "\n" +
-              "Precio Con Descuento: " +
+              "Precio Con Descuento c/u: " +
               "$" +
               item.precioDescuento +
+              "\n" +
+              `Precio sin descuento por ${item.cantidad}:  ` +
+              "$" +
+              item.precio * item.cantidad +
+              "\n" +
+              `Precio con descuento por ${item.cantidad}:  ` +
+              "$" +
+              item.precioDescuento * item.cantidad +
+              "\n" +
+              "Cantidad: " +
+              item.cantidad +
               "\n"
           )
         ) +
@@ -92,6 +103,10 @@ export default function Carrito() {
     //   dispatch(borrarCarritoTotal());
     // }, 3000);
   };
+
+  useEffect(() => {
+    document.title = "Carrito";
+  }, []);
 
   return (
     <>
@@ -183,6 +198,7 @@ export default function Carrito() {
                       descripcion={producto.descripcion}
                       tipo="carrito"
                       precioDescuento={producto.precioDescuento}
+                      cantidad={producto.cantidad}
                     />
                   </Grid>
                 ))

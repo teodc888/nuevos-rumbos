@@ -19,6 +19,7 @@ import {
   CARRITO,
   DELETE_CARRITO,
   BORRAR_CARRITO_TOTAL,
+  CANTIDAD,
 } from "../actions/actionsTypes";
 
 const inicialState = {
@@ -348,6 +349,19 @@ export default function rootReducer(state = inicialState, action) {
         carrito: [],
       };
 
+      case CANTIDAD:
+      return {
+        ...state,
+        carrito: state.carrito.map((producto) => {
+          if (producto.id === action.payload.id) {
+            return {
+              ...producto,
+              cantidad: action.payload.cantidad,
+            };
+          }
+          return producto;
+        }),
+      };
     default:
       return state;
   }

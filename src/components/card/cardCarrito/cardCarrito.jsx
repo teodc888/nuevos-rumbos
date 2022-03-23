@@ -13,7 +13,7 @@ import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 
 //Redux
-import { deleteCarrito } from "../../../redux/actions/index";
+import { deleteCarrito, cantidadStock } from "../../../redux/actions/index";
 import { useDispatch } from "react-redux";
 
 export default function CardCarrito({
@@ -23,23 +23,30 @@ export default function CardCarrito({
   precio,
   precioDescuento,
   id,
+  cantidad,
 }) {
   const dispatch = useDispatch();
-  const [contador, setContador] = useState(1);
+  const [contador, setContador] = useState(cantidad);
 
   const handleClickSuma = () => {
     setContador(contador + 1);
+    dispatch(cantidadStock(id, contador + 1));
   };
 
   const handleClickResta = () => {
     if (contador > 1) {
       setContador(contador - 1);
+      dispatch(cantidadStock(id, contador - 1));
     }
   };
 
   const eliminar = () => {
     dispatch(deleteCarrito(id));
   };
+
+
+  let precioo = precio * cantidad;
+  let precioDescuentoo = precioDescuento * cantidad;
 
   return (
     <>
@@ -62,8 +69,8 @@ export default function CardCarrito({
               </Typography>
 
               <Typography variant="h5" color="text.secondary" component="div">
-                <del>${precio}</del> $
-                {Number(precioDescuento).toLocaleString("es-AR")}
+                <del>${precioo}</del> $
+                {Number(precioDescuentoo).toLocaleString("es-AR")}
               </Typography>
             </CardContent>
             <CardContent sx={{ flex: "1 0 auto" }}>
@@ -75,16 +82,16 @@ export default function CardCarrito({
               <ArrowRightIcon onClick={handleClickSuma} />
             </CardContent>
           </Box>
-            <CardContent sx={{ justifyContent:"space-between", ml:13}}>
-              <Button
-                sx={{ bgcolor: "red", color: "white" }}
-                color="error"
-                variant="contained"
-                onClick={eliminar}
-              >
-                Borrar
-              </Button>
-            </CardContent>
+          <CardContent sx={{ justifyContent: "space-between", ml: 13 }}>
+            <Button
+              sx={{ bgcolor: "red", color: "white" }}
+              color="error"
+              variant="contained"
+              onClick={eliminar}
+            >
+              Borrar
+            </Button>
+          </CardContent>
         </Card>
       </Box>
       <Box
@@ -106,7 +113,7 @@ export default function CardCarrito({
           <CardMedia
             component="img"
             height="240"
-            sx={{objectFit: "contain"}}
+            sx={{ objectFit: "contain" }}
             image={imagen[0]}
             alt="green iguana"
           />
@@ -115,8 +122,8 @@ export default function CardCarrito({
               {marca} {modelo}
             </Typography>
             <Typography variant="h6" color="text.secondary" component="div">
-              <del>${precio}</del> $
-              {Number(precioDescuento).toLocaleString("es-AR")}
+              <del>${precioo}</del> $
+              {Number(precioDescuentoo).toLocaleString("es-AR")}
             </Typography>
           </CardContent>
           <CardContent>
