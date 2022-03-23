@@ -8,6 +8,7 @@ import { SingleFileUploadWithProgress } from './cargarArchivoIndividual';
 export interface UploadableFile {
 	file: File;
 	errors: FileError[];
+	url?: String;
 }
 
 const DropZone = () => {

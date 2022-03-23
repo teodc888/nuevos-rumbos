@@ -6,7 +6,7 @@ import {
 	MenuItem,
 	TextareaAutosize,
 	InputLabel,
-	// Input,
+	Input,
 	IconButton,
 	Popover,
 	Typography,
@@ -407,7 +407,7 @@ export default function FormularioAuto() {
 							style={{ width: '90%', maxHeight: 150 }}
 						/>
 						<InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
-						{/* <Input type="file" name="imagen" onChange={handleFiles} required /> */}
+						<Input type="file" name="imagen" onChange={handleFiles} required />
 						< DropZone />
 					</Grid>
 				</Grid>

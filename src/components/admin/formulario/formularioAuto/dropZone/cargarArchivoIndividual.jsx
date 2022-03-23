@@ -23,7 +23,7 @@ export function SingleFileUploadWithProgress({
     }
 
     upload();
-  }, []);
+  }, [file]);
 
   return (
     <Grid item>
