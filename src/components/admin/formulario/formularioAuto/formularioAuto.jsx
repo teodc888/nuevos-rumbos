@@ -6,7 +6,7 @@ import {
 	MenuItem,
 	TextareaAutosize,
 	InputLabel,
-	Input,
+	// Input,
 	IconButton,
 	Popover,
 	Typography,
@@ -20,7 +20,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../../../firebase/firebaseConfig';
 // components
 import BtnGuardar from './btnFormularioAuto';
-import DropZone from './dropZoneAuto';
+import DropZone from './dropZone/dropZoneAuto';
 
 export default function FormularioAuto() {
 	const navigate = useNavigate();
