@@ -20,6 +20,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../../../firebase/firebaseConfig';
 // components
 import BtnGuardar from './btnFormularioAuto';
+import DropZone from './dropZoneAuto';
 
 export default function FormularioAuto() {
 	const navigate = useNavigate();
@@ -407,6 +408,7 @@ export default function FormularioAuto() {
 						/>
 						<InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
 						<Input type="file" name="imagen" onChange={handleFiles} required />
+						< DropZone />
 					</Grid>
 				</Grid>
 				<BtnGuardar />
