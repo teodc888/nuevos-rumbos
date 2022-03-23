@@ -18,6 +18,7 @@ export function SingleFileUploadWithProgress({
   useEffect(() => {
     async function upload() {
       const url = await uploadFile(file, setProgress);
+      console.log(url);
       onUpload(file, url);
     }
 

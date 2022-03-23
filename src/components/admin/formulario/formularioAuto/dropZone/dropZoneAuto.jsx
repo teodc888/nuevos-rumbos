@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useDropzone, FileRejection } from 'react-dropzone';
 // components
-import SingleFileUploadWithProgress from './cargarArchivoIndividual';
+import {SingleFileUploadWithProgress} from './cargarArchivoIndividual';
 
 export interface UploadableFile{
     file: File;
@@ -24,9 +24,9 @@ const DropZone = () => {
 			<div {...getRootProps()}>
 				<input {...getInputProps()} />
 				<p>Drag 'n' drop some files here, or click to select files</p>
-				{/* {files.map(fileWrapper =>(
-					<SingleFileUploadWithProgress file={fileWrapper.file} />
-				))} */}
+				{files.map((fileWrapper, index) =>(
+					<SingleFileUploadWithProgress key={index} file={fileWrapper.file} />
+				))}
 			</div>
 		</React.Fragment>
 	);
