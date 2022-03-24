@@ -38,8 +38,7 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { toast } from "react-toastify";
 
 export default function DetalleRepuesto({
-  marca,
-  modelo,
+  nombre,
   imagen,
   descripcion,
   id,
@@ -85,8 +84,7 @@ export default function DetalleRepuesto({
   const addFavoritos = () => {
     dispatch(
       favoritos({
-        marca: marca,
-        modelo: modelo,
+        nombre: nombre,
         imagen: imagen,
         precio: Number(precio),
         precioDescuento: Number(precioDescuento),
@@ -117,8 +115,7 @@ export default function DetalleRepuesto({
   const agregarCarritos = () => {
     dispatch(
       agregarCarrito({
-        marca: marca,
-        modelo: modelo,
+        nombre: nombre,
         imagen: imagen,
         precio: Number(precio),
         id: id,
@@ -136,15 +133,14 @@ export default function DetalleRepuesto({
   };
 
   useEffect(() => {
+    document.title = nombre;
     window.scrollTo(0, 0);
-  }, []);
+  }, [nombre]);
+
 
   const handleWhatsapp = () => {
     window.open(
-      "https://wa.me/543512550311?text=Hola,%20me%20gustaria%20obtener%20mas%20informacion%20sobre%20" +
-        marca +
-        "%20" +
-        modelo
+      "https://wa.me/543512550311?text=Hola,%20me%20gustaria%20obtener%20mas%20informacion%20sobre%20" + nombre
     );
   };
 
@@ -221,7 +217,7 @@ export default function DetalleRepuesto({
                         display: { xs: "block", md: "none" },
                       }}
                     >
-                      {marca} {modelo}
+                      {nombre}
                     </Typography>
                     <Typography
                       gutterBottom
@@ -233,7 +229,7 @@ export default function DetalleRepuesto({
                         display: { xs: "none", md: "block" },
                       }}
                     >
-                      {marca} {modelo}
+                        {nombre}
                     </Typography>
                     <Typography variant="h5" sx={{ marginTop: "10%" }}>
                       {descuento > 0 ? (

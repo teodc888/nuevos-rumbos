@@ -100,8 +100,9 @@ export default function DetalleMoto({
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-
+    document.title = modelo;
+  }, [modelo]);
+  
   const handleWhatsapp = () => {
     window.open(
       "https://wa.me/543512550311?text=Hola,%20me%20gustaria%20obtener%20mas%20informacion%20sobre%20" +

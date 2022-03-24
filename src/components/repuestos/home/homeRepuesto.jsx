@@ -49,7 +49,9 @@ export default function HomeRepuestos() {
   const repuestos = useSelector((state) => state.repuestos);
   const repuestosBuscados = useSelector((state) => state.repuestosBuscados);
 
-  const repuestosDestacados = repuestosBuscados.filter((el) => el.destacado === "si");
+  const repuestosDestacados = repuestosBuscados.filter(
+    (el) => el.destacado === "si"
+  );
 
   //useState
   const [filtro, setFiltro] = useState(orden);
@@ -85,7 +87,7 @@ export default function HomeRepuestos() {
   let uniqueArrMarca = ["todos"];
   if (repuestos.length > 0) {
     const repuestoFilterMarca = repuestosBuscados.map(
-      (repuesto) => repuesto.marca
+      (repuesto) => repuesto.nombre
     );
     uniqueArrMarca = [...new Set(repuestoFilterMarca)];
   }
@@ -183,9 +185,9 @@ export default function HomeRepuestos() {
                       color="secondary"
                     >
                       <MenuItem value={"todos"}>Todos</MenuItem>
-                      {uniqueArrMarca.map((marca) => (
-                        <MenuItem value={marca} key={marca}>
-                          {marca}
+                      {uniqueArrMarca.map((nombre) => (
+                        <MenuItem value={nombre} key={nombre}>
+                          {nombre}
                         </MenuItem>
                       ))}
                     </Select>
@@ -209,8 +211,7 @@ export default function HomeRepuestos() {
                 {repuestosDestacados.map((repuestos) => (
                   <Grid item xs={4} sm={4} md={12} key={repuestos.id}>
                     <CardDestacado
-                      marca={repuestos.marca}
-                      modelo={repuestos.modelo}
+                      nombre={repuestos.nombre}
                       imagen={repuestos.imagen[0]}
                       precio={repuestos.precio}
                       tipo="repuesto"
@@ -270,8 +271,7 @@ export default function HomeRepuestos() {
                     currentRepuestos.map((repuesto) => (
                       <Grid item xs={4} sm={4} md={4} key={repuesto.id}>
                         <CardNR
-                          marca={repuesto.marca}
-                          modelo={repuesto.modelo}
+                          nombre={repuesto.nombre}
                           imagen={repuesto.imagen}
                           precio={repuesto.precio}
                           id={repuesto.id}

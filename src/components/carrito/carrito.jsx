@@ -62,11 +62,8 @@ export default function Carrito() {
         carrito.map((item) =>
           encodeURI(
             "\n" +
-              "Modelo:  " +
-              item.modelo +
-              "\n" +
-              "Marca: " +
-              item.marca +
+              "Nombre:  " +
+              item.nombre +
               "\n" +
               "Precio sin descuento c/u:  " +
               "$" +
@@ -190,8 +187,7 @@ export default function Carrito() {
                 carrito.map((producto) => (
                   <Grid item xs={4} sm={12} md={12} key={producto.id}>
                     <CardCarrito
-                      marca={producto.marca}
-                      modelo={producto.modelo}
+                      nombre={producto.nombre}
                       imagen={producto.imagen}
                       precio={Number(producto.precio)}
                       id={producto.id}

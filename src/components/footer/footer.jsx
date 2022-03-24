@@ -38,8 +38,8 @@ export default function Footer() {
                 </Link>
               </Box>
               <Box>
-                <Link href="/" color="inherit">
-                  privacidad
+                <Link href="/log-in" color="inherit">
+                  Login
                 </Link>
               </Box>
             </Grid>

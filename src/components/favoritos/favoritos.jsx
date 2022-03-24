@@ -82,6 +82,7 @@ export default function Favoritos() {
               favoritos.map((producto) => (
                 <Grid item xs={4} sm={4} md={4} key={producto.id}>
                   <CardNR
+                    nombre={producto.nombre}
                     marca={producto.marca}
                     modelo={producto.modelo}
                     imagen={producto.imagen}

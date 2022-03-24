@@ -44,10 +44,6 @@ export default function Detalle() {
     (producto) => producto.id === id
   );
 
-  useEffect(() => {
-    document.title = productoSeleccionado.modelo;
-  }, [productoSeleccionado.modelo]);
-
 
   return (
     <div>
@@ -89,14 +85,15 @@ export default function Detalle() {
       ) : productoSeleccionado.detalle === "repuesto" ? (
         <>
           <DetalleRepuesto
-            marca={productoSeleccionado.marca}
-            modelo={productoSeleccionado.modelo}
+            nombre={productoSeleccionado.nombre}
             imagen={productoSeleccionado.imagen}
             descripcion={productoSeleccionado.descripcion}
             id={productoSeleccionado.id}
             precio={Number(productoSeleccionado.precio).toLocaleString("es-AR")}
             descuento={productoSeleccionado.descuento}
-            precioDescuento={Number(productoSeleccionado.precioDescuento).toLocaleString("es-AR")}
+            precioDescuento={Number(
+              productoSeleccionado.precioDescuento
+            ).toLocaleString("es-AR")}
           />
         </>
       ) : (

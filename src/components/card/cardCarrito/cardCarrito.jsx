@@ -17,9 +17,8 @@ import { deleteCarrito, cantidadStock } from "../../../redux/actions/index";
 import { useDispatch } from "react-redux";
 
 export default function CardCarrito({
+  nombre,
   imagen,
-  marca,
-  modelo,
   precio,
   precioDescuento,
   id,
@@ -44,7 +43,6 @@ export default function CardCarrito({
     dispatch(deleteCarrito(id));
   };
 
-
   let precioo = precio * cantidad;
   let precioDescuentoo = precioDescuento * cantidad;
 
@@ -65,7 +63,7 @@ export default function CardCarrito({
           <Box sx={{ display: "flex", flexDirection: "column" }}>
             <CardContent sx={{ flex: "1 0 auto" }}>
               <Typography component="div" variant="h5">
-                {marca} {modelo}
+                {nombre}
               </Typography>
 
               <Typography variant="h5" color="text.secondary" component="div">
@@ -82,7 +80,7 @@ export default function CardCarrito({
               <ArrowRightIcon onClick={handleClickSuma} />
             </CardContent>
           </Box>
-          <CardContent sx={{ justifyContent: "space-between", ml: 13 }}>
+          <CardContent sx={{ justifyContent: "space-between", ml: 21 }}>
             <Button
               sx={{ bgcolor: "red", color: "white" }}
               color="error"
@@ -119,7 +117,7 @@ export default function CardCarrito({
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {marca} {modelo}
+              {nombre}
             </Typography>
             <Typography variant="h6" color="text.secondary" component="div">
               <del>${precioo}</del> $

@@ -109,20 +109,13 @@ export default function rootReducer(state = inicialState, action) {
       };
     case BUSCAR_PRODUCTOS_REPUESTO:
       const repuestosModelo = state.repuestosBuscados.filter((producto) => {
-        return producto.modelo
+        return producto.nombre
           .toLowerCase()
           .startsWith(action.payload.toLowerCase());
       });
-      const repuestosMarca = state.repuestosBuscados.filter((producto) => {
-        return producto.marca
-          .toLowerCase()
-          .startsWith(action.payload.toLowerCase());
-      });
-
       return {
         ...state,
-        repuestos:
-          repuestosModelo.length > 0 ? repuestosModelo : repuestosMarca,
+        repuestos:repuestosModelo
       };
     case BUSCAR_TOTAL:
       let x = state.buscadosFiltrados.flat();
@@ -258,7 +251,7 @@ export default function rootReducer(state = inicialState, action) {
         marcaR === "todos"
           ? repuestosFiltro
           : repuestosFiltro.filter((producto) => {
-              return producto.marca === marcaR;
+              return producto.nombre === marcaR;
             });
 
       repuestosFiltro =

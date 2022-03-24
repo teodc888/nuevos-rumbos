@@ -255,13 +255,25 @@ export default function NavBar({ setMode }) {
           >
             NUEVOS RUMBOS
           </Typography>
+          <Typography
+            variant="subtitle2"
+            noWrap
+            component="div"
+            sx={{
+              display: { xs: "block", sm: "none", md: "none", lg: "none" },
+              cursor: "pointer", fontSize:"12.5px",
+            }}
+            onClick={navigateToLanding}
+          >
+            NUEVOS RUMBOS
+          </Typography>
 
           {/* buscador */}
-          <Typography variant="h6" component="div" sx={{ marginLeft: "1%" }}>
+          {/* <Typography variant="h6" component="div" sx={{ marginLeft: "1%" }}>
             <Button onClick={handleBuscador} sx={{ color: "white" }}>
               <SearchIcon sx={{ mr: "10%", color: "white" }} /> Buscar
             </Button>
-          </Typography>
+          </Typography> */}
 
           {/* iconos */}
           <Box sx={{ flexGrow: 1 }} />
@@ -272,6 +284,7 @@ export default function NavBar({ setMode }) {
               icon={<Brightness4Icon sx={{ color: "white" }} />}
               checkedIcon={<Brightness4OutlinedIcon sx={{ color: "white" }} />}
               onClick={colorMode.toggleColorMode}
+            
             />
             <IconButton
               size="large"
@@ -299,7 +312,7 @@ export default function NavBar({ setMode }) {
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
-            <IconButton
+            {/* <IconButton
               size="large"
               edge="end"
               aria-label="account of current user"
@@ -308,11 +321,17 @@ export default function NavBar({ setMode }) {
               color="inherit"
             >
               <AccountCircle />
-            </IconButton>
+            </IconButton> */}
           </Box>
 
           {/* responsivo */}
           <Box sx={{ display: { xs: "block", md: "none", sm: "none" } }}>
+          <Checkbox
+              icon={<Brightness4Icon sx={{ color: "white" }} />}
+              checkedIcon={<Brightness4OutlinedIcon sx={{ color: "white" }} />}
+              onClick={colorMode.toggleColorMode}
+            
+            />
             <IconButton
               size="large"
               edge="end"
@@ -339,7 +358,7 @@ export default function NavBar({ setMode }) {
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
-            <IconButton
+            {/* <IconButton
               size="large"
               aria-label="show more"
               aria-controls={mobileMenuId}
@@ -348,7 +367,7 @@ export default function NavBar({ setMode }) {
               color="inherit"
             >
               <MoreIcon />
-            </IconButton>
+            </IconButton> */}
           </Box>
         </Toolbar>
       </AppBar>

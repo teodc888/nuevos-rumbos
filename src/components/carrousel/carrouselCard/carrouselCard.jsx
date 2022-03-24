@@ -68,8 +68,7 @@ export default function CarrouselCard({ tipo }) {
         <Carouseal  breakPoints={breakPoints}>
           {repuestosDestacados.map((repuesto) => (
             <CardCarrousel
-              marca={repuesto.marca}
-              modelo={repuesto.modelo}
+              nombre={repuesto.nombre}
               imagen={repuesto.imagen}
               precio={repuesto.precio}
               id={repuesto.id}

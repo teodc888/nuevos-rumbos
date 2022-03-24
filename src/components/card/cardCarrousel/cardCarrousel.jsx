@@ -18,6 +18,7 @@ import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 
 export default function CardCarrousel({
+  nombre,
   marca,
   modelo,
   imagen,
@@ -118,8 +119,9 @@ export default function CardCarrousel({
               textAlign="center"
               textTransform="capitalize"
               textOverflow="ellipsis"
+              sx={{textTransform: "capitalize", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis"}}
             >
-              {marca} {modelo}
+              {nombre}
             </Typography>
           ) : (
             <Typography

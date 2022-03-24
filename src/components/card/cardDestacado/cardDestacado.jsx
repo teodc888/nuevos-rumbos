@@ -17,6 +17,7 @@ export default function CardDestacado({
   id,
   precioDescuento,
   descuento,
+  nombre,
 }) {
   const navigate = useNavigate();
 
@@ -30,8 +31,11 @@ export default function CardDestacado({
         <CardActionArea onClick={handleClick}>
           <CardContent sx={{ flex: "1 0 auto" }}>
             {tipo === "repuesto" ? (
-              <Typography component="div" variant="subtitle2">
-                {modelo}
+              <Typography
+                component="div"
+                variant="subtitle2"
+              >
+                {nombre}
               </Typography>
             ) : (
               <Typography

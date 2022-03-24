@@ -37,6 +37,7 @@ import { toast } from "react-toastify";
 import Carrousel from "../../components/carrousel/carrousel";
 
 export default function CardNR({
+  nombre,
   marca,
   modelo,
   imagen,
@@ -97,6 +98,7 @@ export default function CardNR({
       if (tipo === "repuesto") {
         dispatch(
           favoritos({
+            nombre: nombre,
             marca: marca,
             modelo: modelo,
             imagen: imagen,
@@ -159,6 +161,7 @@ export default function CardNR({
     if (checked1 === false) {
       dispatch(
         agregarCarrito({
+          nombre: nombre,
           marca: marca,
           modelo: modelo,
           imagen: imagen,
@@ -222,10 +225,9 @@ export default function CardNR({
               variant="h7"
               component="div"
               textAlign="center"
-              textTransform="capitalize"
-              textOverflow="ellipsis"
+              sx={{textTransform: "capitalize", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis"}}
             >
-              {marca} {modelo}
+              {nombre}
             </Typography>
           ) : (
             <Typography

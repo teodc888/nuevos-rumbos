@@ -105,7 +105,8 @@ export default function DetalleAuto({
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    document.title = modelo;
+  }, [modelo]);
 
   const handleWhatsapp = () => {
     window.open(
