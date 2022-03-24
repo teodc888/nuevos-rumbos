@@ -51,7 +51,7 @@ const DropZone = () => {
 							minWidth: 200,
 							minHeight: 100,
 							padding: '5%',
-							border: ' 2px solid #cccccc',
+							border: ' 2px solid',
 							borderRadius: '4px',
 						}}
 					>

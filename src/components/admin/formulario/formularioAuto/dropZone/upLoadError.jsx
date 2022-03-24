@@ -29,7 +29,7 @@ import {
         <ErrorLinearProgress variant="determinate" value={100} />
         {errors.map((error) => (
           <div key={error.code}>
-            <Typography color="error">{error.message}</Typography>
+            <Typography >{error.message}</Typography>
           </div>
         ))}
       </React.Fragment>
