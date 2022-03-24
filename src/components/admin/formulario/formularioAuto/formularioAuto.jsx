@@ -20,7 +20,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../../../firebase/firebaseConfig';
 // components
 import BtnGuardar from './btnFormularioAuto';
-import DropZone from './dropZone/dropZoneAuto';
+// import DropZone from './dropZone/dropZoneAuto';
 
 export default function FormularioAuto() {
 	const navigate = useNavigate();
@@ -407,10 +407,10 @@ export default function FormularioAuto() {
 							minRows={3}
 							style={{ width: '100%', maxHeight: 150 }}
 						/>
-						{/* <InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
-						<Input type="file" name="imagen" onChange={handleFiles} required /> */}
 						<InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
-						< DropZone handleFiles={handleFiles} />
+						<Input type="file" name="imagen" onChange={handleFiles} required />
+						{/* <InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
+						< DropZone handleFiles={handleFiles} /> */}
 					</Grid>
 				</Grid>
 				<BtnGuardar />
