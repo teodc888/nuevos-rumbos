@@ -410,7 +410,7 @@ export default function FormularioAuto() {
 						{/* <InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
 						<Input type="file" name="imagen" onChange={handleFiles} required /> */}
 						<InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
-						< DropZone />
+						< DropZone handleFiles={handleFiles} />
 					</Grid>
 				</Grid>
 				<BtnGuardar />

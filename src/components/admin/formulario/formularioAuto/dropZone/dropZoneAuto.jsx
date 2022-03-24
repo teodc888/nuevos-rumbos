@@ -12,7 +12,7 @@ export interface UploadableFile {
 	url?: String;
 }
 
-const DropZone = () => {
+const DropZone = ({handleFiles}) => {
 	// states
 	const [files, setFiles] = useState([]);
 
@@ -55,13 +55,14 @@ const DropZone = () => {
 							borderRadius: '4px',
 						}}
 					>
-						<input {...getInputProps()} />
+						<input {...getInputProps()}/>
 						<p>Insertá algunas imagenes aqui, o clickeá para elegir archivos</p>
 					</Grid>
 					{files.map((fileWrapper, index) => (
-						<Grid item style={{marginTop: '2%'}}>
+						<Grid item key={index} style={{marginTop: '2%'}}>
 							{fileWrapper.errors.length ? (
 								<UploadError
+									key={index}
 									file={fileWrapper.file}
 									errors={fileWrapper.errors}
 									onDelete={onDelete}

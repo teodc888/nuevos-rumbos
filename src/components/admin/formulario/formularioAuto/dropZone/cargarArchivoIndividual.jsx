@@ -3,60 +3,60 @@ import React, { useEffect, useState } from 'react';
 import { FileHeader } from './FileHeader';
 
 export interface SingleFileUploadWithProgressProps {
-  file: File;
-  onDelete: (file: File) => void;
-  onUpload: (file: File, url: string) => void;
+	file: File;
+	onDelete: (file: File) => void;
+	onUpload: (file: File, url: string) => void;
 }
 
 export function SingleFileUploadWithProgress({
-  file,
-  onDelete,
-  onUpload,
+	key,
+	file,
+	onDelete,
+	onUpload,
 }: SingleFileUploadWithProgressProps) {
-  const [progress, setProgress] = useState(0);
+	const [progress, setProgress] = useState(0);
 
-  useEffect(() => {
-    async function upload() {
-      const url = await uploadFile(file, setProgress);
-      console.log(url);
-      onUpload(file, url);
-    }
+	useEffect(() => {
+		async function upload() {
+			const url = await uploadFile(file, setProgress);
+			onUpload(file, url);
+		}
 
-    upload();
-  }, [file]);
+		upload();
+	}, [file]);
 
-  return (
-    <Grid item>
-      <FileHeader file={file} onDelete={onDelete} />
-      <LinearProgress variant="determinate" value={progress} />
-    </Grid>
-  );
+	return (
+		<Grid item key={key}>
+			<FileHeader key={key} file={file} onDelete={onDelete} />
+			<LinearProgress variant="determinate" value={progress} />
+		</Grid>
+	);
 }
 
 function uploadFile(file: File, onProgress: (percentage: number) => void) {
-  const url = 'https://api.cloudinary.com/v1_1/djtkn6o7r/image/upload';
-  const key = 'Product_photo ';
+	const url = 'https://api.cloudinary.com/v1_1/djtkn6o7r/image/upload';
+	const key = 'Product_photo ';
 
-  return new Promise((res, rej) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', url);
+	return new Promise((res, rej) => {
+		const xhr = new XMLHttpRequest();
+		xhr.open('POST', url);
 
-    xhr.onload = () => {
-      const resp = JSON.parse(xhr.responseText);
-      res(resp.secure_url);
-    };
-    xhr.onerror = (evt) => rej(evt);
-    xhr.upload.onprogress = (event) => {
-      if (event.lengthComputable) {
-        const percentage = (event.loaded / event.total) * 100;
-        onProgress(Math.round(percentage));
-      }
-    };
+		xhr.onload = () => {
+			const resp = JSON.parse(xhr.responseText);
+			res(resp.secure_url);
+		};
+		xhr.onerror = (evt) => rej(evt);
+		xhr.upload.onprogress = (event) => {
+			if (event.lengthComputable) {
+				const percentage = (event.loaded / event.total) * 100;
+				onProgress(Math.round(percentage));
+			}
+		};
 
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', key);
+		const formData = new FormData();
+		formData.append('file', file);
+		formData.append('upload_preset', key);
 
-    xhr.send(formData);
-  });
+		xhr.send(formData);
+	});
 }
