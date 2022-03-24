@@ -20,7 +20,10 @@ const DropZone = () => {
 		const mappedAcc = accFiles.map((file) => ({ file, errors: [] }));
 		setFiles((curr) => [...curr, ...mappedAcc, ...RejFiles]);
 	}, []);
-	const { getRootProps, getInputProps } = useDropzone({ onDrop });
+	const { getRootProps, getInputProps } = useDropzone({
+		onDrop,
+		accept: 'image/*',
+	});
 
 	// funcion eliminar imagen
 	const onDelete = (file: File) => {
@@ -44,12 +47,18 @@ const DropZone = () => {
 					<input {...getInputProps()} />
 					<p>Drag 'n' drop some files here, or click to select files</p>
 					{files.map((fileWrapper, index) => (
-						<SingleFileUploadWithProgress
-							key={index}
-							onDelete={onDelete}
-							onUpload={onUpload}
-							file={fileWrapper.file}
-						/>
+						<Grid item>
+							{fileWrapper.errors.length ? (
+								<h2>Error</h2>
+							) : (
+								<SingleFileUploadWithProgress
+									key={index}
+									onDelete={onDelete}
+									onUpload={onUpload}
+									file={fileWrapper.file}
+								/>
+							)}
+						</Grid>
 					))}
 				</div>
 			</Grid>
