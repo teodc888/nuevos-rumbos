@@ -165,10 +165,11 @@ export default function FormularioRepuesto() {
 							sx={{ marginTop: '2%' }}
 						/>
 						<Grid
-							sx={{
-								border: ' 2px solid #cccccc',
+							style={{
+								border: ' 2px solid',
 								borderRadius: '4px',
-								margin: '1%',
+								marginTop: '2%',
+								width: '100%',
 							}}
 						>
 							<Button
@@ -213,7 +214,8 @@ export default function FormularioRepuesto() {
 							name="descripcion"
 							required
 							maxRows={10}
-							style={{ width: '90%', maxHeight: 150 }}
+							minRows={3}
+							style={{ width: '100%', maxHeight: 150 }}
 						/>
 						<InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
 						<Input type="file" name="imagen" onChange={handleFiles} required />

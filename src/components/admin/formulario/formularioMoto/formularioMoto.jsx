@@ -216,7 +216,8 @@ export default function FormularioMoto() {
 							name="descripcion"
 							required
 							maxRows={10}
-							style={{ width: '90%', maxHeight: 150 }}
+							minRows={3}
+							style={{ width: '100%', maxHeight: 150 }}
 						/>
 						<InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
 						<Input type="file" name="imagen" onChange={handleFiles} required />
