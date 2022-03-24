@@ -2,11 +2,9 @@ import React, { useCallback, useState } from 'react';
 import { useDropzone, FileRejection } from 'react-dropzone';
 // packages
 import { Grid } from '@mui/material';
-// import { makeStyles } from '@material-ui/styles';
 // components
 import { SingleFileUploadWithProgress } from './cargarArchivoIndividual';
 import { UploadError } from './upLoadError';
-import { width } from '@mui/system';
 
 export interface UploadableFile {
 	file: File;
@@ -14,11 +12,7 @@ export interface UploadableFile {
 	url?: String;
 }
 
-// estilos
-
 const DropZone = () => {
-	// estilos
-
 	// states
 	const [files, setFiles] = useState([]);
 
