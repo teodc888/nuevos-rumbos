@@ -4,6 +4,7 @@ import { useDropzone, FileRejection } from 'react-dropzone';
 import { Grid } from '@mui/material';
 // components
 import { SingleFileUploadWithProgress } from './cargarArchivoIndividual';
+import {UploadError} from './upLoadError';
 
 export interface UploadableFile {
 	file: File;
@@ -23,6 +24,7 @@ const DropZone = () => {
 	const { getRootProps, getInputProps } = useDropzone({
 		onDrop,
 		accept: 'image/*',
+		// maxSize: 1,
 	});
 
 	// funcion eliminar imagen
@@ -49,7 +51,7 @@ const DropZone = () => {
 					{files.map((fileWrapper, index) => (
 						<Grid item>
 							{fileWrapper.errors.length ? (
-								<h2>Error</h2>
+								<UploadError file={fileWrapper.file} errors={fileWrapper.errors} onDelete={onDelete}/>
 							) : (
 								<SingleFileUploadWithProgress
 									key={index}
