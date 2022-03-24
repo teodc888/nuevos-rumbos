@@ -2,9 +2,11 @@ import React, { useCallback, useState } from 'react';
 import { useDropzone, FileRejection } from 'react-dropzone';
 // packages
 import { Grid } from '@mui/material';
+// import { makeStyles } from '@material-ui/styles';
 // components
 import { SingleFileUploadWithProgress } from './cargarArchivoIndividual';
-import {UploadError} from './upLoadError';
+import { UploadError } from './upLoadError';
+import { width } from '@mui/system';
 
 export interface UploadableFile {
 	file: File;
@@ -12,7 +14,11 @@ export interface UploadableFile {
 	url?: String;
 }
 
+// estilos
+
 const DropZone = () => {
+	// estilos
+
 	// states
 	const [files, setFiles] = useState([]);
 
@@ -24,7 +30,6 @@ const DropZone = () => {
 	const { getRootProps, getInputProps } = useDropzone({
 		onDrop,
 		accept: 'image/*',
-		// maxSize: 1,
 	});
 
 	// funcion eliminar imagen
@@ -44,14 +49,29 @@ const DropZone = () => {
 
 	return (
 		<React.Fragment>
-			<Grid item>
+			<Grid item style={{ width: 'auto', height: 'auto'}}>
 				<div {...getRootProps()}>
-					<input {...getInputProps()} />
-					<p>Drag 'n' drop some files here, or click to select files</p>
+					<Grid
+						item
+						style={{
+							minWidth: 200,
+							minHeight: 100,
+							padding: '5%',
+							border: ' 2px solid #cccccc',
+							borderRadius: '4px',
+						}}
+					>
+						<input {...getInputProps()} />
+						<p>Insertá algunas imagenes aqui, o clickeá para elegir archivos</p>
+					</Grid>
 					{files.map((fileWrapper, index) => (
-						<Grid item>
+						<Grid item style={{marginTop: '2%'}}>
 							{fileWrapper.errors.length ? (
-								<UploadError file={fileWrapper.file} errors={fileWrapper.errors} onDelete={onDelete}/>
+								<UploadError
+									file={fileWrapper.file}
+									errors={fileWrapper.errors}
+									onDelete={onDelete}
+								/>
 							) : (
 								<SingleFileUploadWithProgress
 									key={index}
