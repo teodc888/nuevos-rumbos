@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+//configurar manjaro git
+
 // Mui
 import {
   Typography,
