@@ -157,7 +157,20 @@ export default function Carrito() {
               {carrito.length === 0 ? (
                 <>
                   <Grid item xs={12} sm={12} md={12}>
-                    <Typography variant="h4" component="div" textAlign="center">
+                    <Typography
+                      variant="h5"
+                      component="div"
+                      textAlign="center"
+                      sx={{ display: { xs: "none", md: "block" } }}
+                    >
+                      No hay ningun producto en carrito
+                    </Typography>
+                    <Typography
+                      variant="h7"
+                      component="div"
+                      textAlign="center"
+                      sx={{ display: { xs: "block", md: "none" } }}
+                    >
                       No hay ningun producto en carrito
                     </Typography>
                   </Grid>

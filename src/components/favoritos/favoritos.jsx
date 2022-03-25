@@ -14,11 +14,13 @@ import Footer from "../footer/footer";
 //toastify
 import { toast } from "react-toastify";
 
+//Router
+import { useNavigate } from "react-router";
+
 export default function Favoritos() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const favoritos = useSelector((state) => state.favoritos);
-
-  console.log(favoritos);
 
   const errorSubmit = () => {
     toast.error("Productos eliminados con éxito", {
@@ -35,6 +37,10 @@ export default function Favoritos() {
   const handleClickDelete = () => {
     dispatch(deleteFavoritos());
     errorSubmit();
+  };
+
+  const handleClickHome = () => {
+    navigate("/");
   };
 
   useEffect(() => {
@@ -73,11 +79,36 @@ export default function Favoritos() {
           >
             {/* mapeo de los productos para mostrarlos en la pantalla */}
             {favoritos.length === 0 ? (
-              <Grid item xs={12} sm={12} md={12}>
-                <Typography variant="h4" component="div" textAlign="center" sx={{mb:"40%"}}>
-                  No hay ningun producto en favoritos
-                </Typography>
-              </Grid>
+              <>
+                <Grid item xs={12} sm={12} md={12}>
+                  <Typography
+                    variant="h5"
+                    component="div"
+                    textAlign="center"
+                    sx={{display:{xs:"none",md:"block"}}}
+                  >
+                    No hay ningun producto en favoritos
+                  </Typography>
+                  <Typography
+                    variant="h7"
+                    component="div"
+                    textAlign="center"
+                    sx={{display:{xs:"block",md:"none"}}}
+                  >
+                    No hay ningun producto en favoritos
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} sx={{width:"100%", display:"flex", justifyContent:"center"}}>
+                  <Button
+                    variant="contained"
+                    color="success"
+                    onClick={handleClickHome}
+                    sx={{ mb: "40%", bgcolor:"green", color:"white" }}
+                  >
+                    Agregar productos a favoritos 
+                  </Button>
+                </Grid>
+              </>
             ) : (
               favoritos.map((producto) => (
                 <Grid item xs={4} sm={4} md={4} key={producto.id}>
