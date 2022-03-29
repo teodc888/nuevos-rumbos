@@ -23,6 +23,7 @@ export default function CardCarrito({
   precioDescuento,
   id,
   cantidad,
+  descuento,
 }) {
   const dispatch = useDispatch();
   const [contador, setContador] = useState(cantidad);
@@ -67,8 +68,14 @@ export default function CardCarrito({
               </Typography>
 
               <Typography variant="h5" color="text.secondary" component="div">
-                <del>${precioo}</del> $
-                {Number(precioDescuentoo).toLocaleString("es-AR")}
+                {descuento > 0 ? (
+                  <>
+                    <del>$ {precioo}</del> ${" "}
+                    {Number(precioDescuentoo).toLocaleString("es-AR")}
+                  </>
+                ) : (
+                  `$ ${precioo}`
+                )}
               </Typography>
             </CardContent>
             <CardContent sx={{ flex: "1 0 auto" }}>
@@ -119,9 +126,15 @@ export default function CardCarrito({
             <Typography gutterBottom variant="h5" component="div">
               {nombre}
             </Typography>
-            <Typography variant="h6" color="text.secondary" component="div">
-              <del>${precioo}</del> $
-              {Number(precioDescuentoo).toLocaleString("es-AR")}
+            <Typography variant="h5" color="text.secondary" component="div">
+              {descuento > 0 ? (
+                <>
+                  <del>$ {precioo}</del> ${" "}
+                  {Number(precioDescuentoo).toLocaleString("es-AR")}
+                </>
+              ) : (
+                `$ ${precioo}`
+              )}
             </Typography>
           </CardContent>
           <CardContent>

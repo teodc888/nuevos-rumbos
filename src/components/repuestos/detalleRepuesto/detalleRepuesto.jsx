@@ -120,6 +120,8 @@ export default function DetalleRepuesto({
         precio: Number(precio),
         id: id,
         precioDescuento: precioDescuento,
+        descuento: descuento,
+        cantidad:1
       })
     );
     setCart(true);

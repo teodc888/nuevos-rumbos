@@ -162,12 +162,11 @@ export default function CardNR({
       dispatch(
         agregarCarrito({
           nombre: nombre,
-          marca: marca,
-          modelo: modelo,
           imagen: imagen,
           precio: Number(precio),
           id: id,
           precioDescuento: precioDescuento,
+          descuento: descuento,
           cantidad:1
         })
       );

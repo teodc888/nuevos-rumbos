@@ -45,7 +45,7 @@ export default function Carrito() {
   };
 
   const total = carrito.reduce((total, item) => {
-    return total + Number(item.precioDescuento * item.cantidad);
+    return total + Number(item.descuento === "0" ? item.precio * item.cantidad :item.precioDescuento * item.cantidad);
   }, 0);
 
   const total1 = carrito.reduce((total1, item) => {
@@ -54,44 +54,79 @@ export default function Carrito() {
 
   const total2 = total1 - total;
 
+  const cantidad0 =
+    carrito.length > 0 ? carrito.filter((el) => el.descuento === "0") : null;
+  const cantidadTotal =
+    carrito.length > 0
+      ? cantidad0.length === carrito.length
+        ? true
+        : false
+      : null;
+
+  console.log(cantidadTotal);
+
   const botonWhatsapp = () => {
     window.open(
       `https://wa.me/543512550311?text=${
         encodeURIComponent("Hola! le mando mi presupuesto:") +
         "%0D%0A" +
         carrito.map((item) =>
-          encodeURI(
-            "\n" +
-              "Nombre:  " +
-              item.nombre +
-              "\n" +
-              "Precio sin descuento c/u:  " +
-              "$" +
-              item.precio +
-              "\n" +
-              "Precio Con Descuento c/u: " +
-              "$" +
-              item.precioDescuento +
-              "\n" +
-              `Precio sin descuento por ${item.cantidad}:  ` +
-              "$" +
-              item.precio * item.cantidad +
-              "\n" +
-              `Precio con descuento por ${item.cantidad}:  ` +
-              "$" +
-              item.precioDescuento * item.cantidad +
-              "\n" +
-              "Cantidad: " +
-              item.cantidad +
-              "\n"
-          )
+          item.descuento > 0
+            ? encodeURI(
+                "\n" +
+                  "Nombre:  " +
+                  item.nombre +
+                  "\n" +
+                  "Precio sin descuento c/u:  " +
+                  "$" +
+                  item.precio +
+                  "\n" +
+                  "Precio Con Descuento c/u: " +
+                  "$" +
+                  item.precioDescuento +
+                  "\n" +
+                  `Precio sin descuento por ${item.cantidad}:  ` +
+                  "$" +
+                  item.precio * item.cantidad +
+                  "\n" +
+                  `Precio con descuento por ${item.cantidad}:  ` +
+                  "$" +
+                  item.precioDescuento * item.cantidad +
+                  "\n" +
+                  "Cantidad: " +
+                  item.cantidad +
+                  "\n"
+              )
+            : encodeURI(
+                "\n" +
+                  "Nombre:  " +
+                  item.nombre +
+                  "\n" +
+                  "Precio c/u:  " +
+                  "$" +
+                  item.precio +
+                  "\n" +
+                  `Precio por ${item.cantidad}:  ` +
+                  "$" +
+                  item.precio * item.cantidad +
+                  "\n" +
+                  "Cantidad: " +
+                  item.cantidad +
+                  "\n"
+              )
         ) +
         "%0D%0A" +
-        encodeURIComponent("Total: $" + total1) +
+        encodeURIComponent(
+          cantidadTotal === true ? "Total: $" + total1 : "Total: $" + total1
+        ) +
         "%0D%0A" +
-        encodeURIComponent("Descuento: $" + total2) +
+        encodeURIComponent(
+          cantidadTotal === true ? "" : "Descuento: $" + total2
+        ) +
         "%0D%0A" +
-        encodeURIComponent("Total a pagar: $" + total) +
+        encodeURIComponent(
+          cantidadTotal === true ? "" : "Total a pagar: $" + total
+        ) +
         "%0D%0A" +
         encodeURIComponent("Gracias!")
       }`
@@ -208,6 +243,7 @@ export default function Carrito() {
                       tipo="carrito"
                       precioDescuento={producto.precioDescuento}
                       cantidad={producto.cantidad}
+                      descuento={producto.descuento}
                     />
                   </Grid>
                 ))
