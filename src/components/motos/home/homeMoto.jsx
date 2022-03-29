@@ -323,9 +323,9 @@ export default function HomeMoto() {
                           id={moto.id}
                           año={moto.año}
                           kilometros={moto.kilometros}
-                          tipo={"moto"}
                           descripcion={moto.descripcion}
                           favorito={"true"}
+                          detalle={moto.detalle}
                         />
                       </Grid>
                     ))

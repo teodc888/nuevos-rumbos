@@ -115,19 +115,25 @@ export default function rootReducer(state = inicialState, action) {
       });
       return {
         ...state,
-        repuestos:repuestosModelo
+        repuestos: repuestosModelo,
       };
     case BUSCAR_TOTAL:
       let x = state.buscadosFiltrados.flat();
       const buscadorModelo = x.filter((producto) => {
-        return producto.modelo
-          .toLowerCase()
-          .startsWith(action.payload.toLowerCase());
+        return producto.modelo !== undefined
+          ? producto.modelo
+              .toLowerCase()
+              .startsWith(action.payload.toLowerCase())
+          : producto.nombre
+              .toLowerCase()
+              .startsWith(action.payload.toLowerCase());
       });
       const buscadorMarca = x.filter((producto) => {
-        return producto.marca
-          .toLowerCase()
-          .startsWith(action.payload.toLowerCase());
+        return producto.marca !== undefined
+          ? producto.marca
+              .toLowerCase()
+              .startsWith(action.payload.toLowerCase())
+          : null;
       });
       return {
         ...state,
@@ -342,7 +348,7 @@ export default function rootReducer(state = inicialState, action) {
         carrito: [],
       };
 
-      case CANTIDAD:
+    case CANTIDAD:
       return {
         ...state,
         carrito: state.carrito.map((producto) => {

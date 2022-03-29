@@ -375,7 +375,7 @@ export default function HomeAuto() {
                           descripcion={auto.descripcion}
                           año={auto.año}
                           kilometros={auto.kilometros}
-                          tipo={"auto"}
+                          detalle={auto.detalle}
                           setOpen={"false"}
                           favorito={"true"}
                         />

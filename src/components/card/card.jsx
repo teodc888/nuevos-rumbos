@@ -46,7 +46,7 @@ export default function CardNR({
   año,
   kilometros,
   favorito,
-  tipo,
+  detalle,
   descuento,
   precioDescuento,
   addfav,
@@ -95,7 +95,7 @@ export default function CardNR({
   const handleChange = (event) => {
     setChecked(event.target.checked);
     if (checked === false) {
-      if (tipo === "repuesto") {
+      if (detalle === "repuesto") {
         dispatch(
           favoritos({
             nombre: nombre,
@@ -106,7 +106,7 @@ export default function CardNR({
             precioDescuento: Number(precioDescuento),
             descuento: Number(descuento),
             id: id,
-            tipo: tipo,
+            detalle: detalle,
           })
         );
         successSubmitFavorite();
@@ -179,7 +179,7 @@ export default function CardNR({
 
   return (
     <Card sx={{ maxWidth: 450, margin: "auto" }}>
-      {tipo === "repuesto" ? (
+      {detalle === "repuesto" ? (
         <>
           {descuento > 0 ? (
             <Box sx={{ position: "absolute" }}>
@@ -199,7 +199,7 @@ export default function CardNR({
             }}
             component="img"
             height="190"
-            image={imagen}
+            image={imagen[0]}
             alt="green iguana"
           />
           <CardMedia
@@ -209,7 +209,7 @@ export default function CardNR({
             }}
             component="img"
             height="240"
-            image={imagen}
+            image={imagen[0]}
             alt="green iguana"
           />
         </>
@@ -218,7 +218,7 @@ export default function CardNR({
       )}
       <CardActionArea onClick={handleNavigate}>
         <CardContent>
-          {tipo === "repuesto" ? (
+          {detalle === "repuesto" ? (
             <Typography
               gutterBottom
               variant="h7"
@@ -241,7 +241,7 @@ export default function CardNR({
           )}
 
           <Typography gutterBottom variant="h6" component="div">
-            {tipo === "repuesto" && descuento > 0 ? (
+            {detalle === "repuesto" && descuento > 0 ? (
               <>
                 <del>${precio}</del> $
                 {Number(precioDescuento).toLocaleString("es-AR")}
@@ -252,15 +252,15 @@ export default function CardNR({
               <> ${Number(precio).toLocaleString("es-AR")} </>
             )}
           </Typography>
-          {tipo === "auto" ? (
+          {detalle === "auto" ? (
             <Typography variant="body2" color="text.secondary">
               {año} | {Number(kilometros).toLocaleString("es-AR")} Km
             </Typography>
-          ) : tipo === "moto" ? (
+          ) : detalle === "moto" ? (
             <Typography variant="body2" color="text.secondary">
               {año} | {Number(kilometros).toLocaleString("es-AR")} Km
             </Typography>
-          ) : tipo === "repuesto" ? (
+          ) : detalle === "repuesto" ? (
             <Typography variant="body2" color="text.secondary">
               {año}
             </Typography>
@@ -268,7 +268,7 @@ export default function CardNR({
         </CardContent>
       </CardActionArea>
       <CardActions sx={{ float: "left" }}>
-        {tipo === "repuesto" && favorito === "true" ? (
+        {detalle === "repuesto" && favorito === "true" ? (
           <Checkbox
             checked={checked1}
             onChange={handleChange1}

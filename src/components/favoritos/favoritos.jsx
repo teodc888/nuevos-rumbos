@@ -121,7 +121,7 @@ export default function Favoritos() {
                     id={producto.id}
                     descripcion={producto.descripcion}
                     precioDescuento={producto.precioDescuento}
-                    tipo={producto.tipo}
+                    detalle={producto.detalle}
                     descuento={producto.descuento}
                     addfav={true}
                   />

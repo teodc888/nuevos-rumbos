@@ -26,58 +26,63 @@ export default function CarrouselCard({ tipo }) {
     (repuesto) => repuesto.destacado === "si"
   );
 
-
   return (
     <div style={{ marginTop: "3%" }}>
       {tipo === "auto" ? (
-        <Carouseal  breakPoints={breakPoints}>
+        <Carouseal breakPoints={breakPoints}>
           {autosDestacados.map((auto) => (
-            <CardCarrousel
-              marca={auto.marca}
-              modelo={auto.modelo}
-              imagen={auto.imagen}
-              precio={auto.precio}
-              id={auto.id}
-              descripcion={auto.descripcion}
-              año={auto.año}
-              kilometros={auto.kilometros}
-              tipo={"auto"}
-              setOpen={"false"}
-              favorito={"true"}
-            />
+            <div key={auto.id}>
+              <CardCarrousel
+                marca={auto.marca}
+                modelo={auto.modelo}
+                imagen={auto.imagen}
+                precio={auto.precio}
+                id={auto.id}
+                descripcion={auto.descripcion}
+                año={auto.año}
+                kilometros={auto.kilometros}
+                tipo={"auto"}
+                setOpen={"false"}
+                favorito={"true"}
+              />
+            </div>
           ))}
         </Carouseal>
       ) : tipo === "moto" ? (
         <Carouseal breakPoints={breakPoints}>
           {motosDestacados.map((moto) => (
-            <CardCarrousel
-              marca={moto.marca}
-              modelo={moto.modelo}
-              imagen={moto.imagen}
-              precio={moto.precio}
-              id={moto.id}
-              año={moto.año}
-              kilometros={moto.kilometros}
-              tipo={"moto"}
-              descripcion={moto.descripcion}
-              favorito={"true"}
-            />
+            <div key={moto.id}>
+              <CardCarrousel
+                marca={moto.marca}
+                modelo={moto.modelo}
+                imagen={moto.imagen}
+                precio={moto.precio}
+                id={moto.id}
+                año={moto.año}
+                kilometros={moto.kilometros}
+                tipo={"moto"}
+                descripcion={moto.descripcion}
+                favorito={"true"}
+              />
+            </div>
           ))}
         </Carouseal>
       ) : tipo === "repuesto" ? (
-        <Carouseal  breakPoints={breakPoints}>
+        <Carouseal breakPoints={breakPoints}>
           {repuestosDestacados.map((repuesto) => (
-            <CardCarrousel
-              nombre={repuesto.nombre}
-              imagen={repuesto.imagen}
-              precio={repuesto.precio}
-              id={repuesto.id}
-              tipo={"repuesto"}
-              descripcion={repuesto.descripcion}
-              favorito={"true"}
-              descuento={repuesto.descuento}
-              precioDescuento={repuesto.precioDescuento}
-            />
+            <div key={repuesto.id}>
+              <CardCarrousel
+                nombre={repuesto.nombre}
+                imagen={repuesto.imagen}
+                precio={repuesto.precio}
+                id={repuesto.id}
+                tipo={"repuesto"}
+                descripcion={repuesto.descripcion}
+                favorito={"true"}
+                descuento={repuesto.descuento}
+                precioDescuento={repuesto.precioDescuento}
+              />
+            </div>
           ))}
         </Carouseal>
       ) : null}

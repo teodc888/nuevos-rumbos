@@ -13,7 +13,7 @@ export default function CardDestacado({
   modelo,
   precio,
   imagen,
-  tipo,
+  detalle,
   id,
   precioDescuento,
   descuento,
@@ -30,7 +30,7 @@ export default function CardDestacado({
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <CardActionArea onClick={handleClick}>
           <CardContent sx={{ flex: "1 0 auto" }}>
-            {tipo === "repuesto" ? (
+            {detalle === "repuesto" ? (
               <Typography
                 component="div"
                 variant="subtitle2"
@@ -53,7 +53,7 @@ export default function CardDestacado({
               component="div"
               sx={{ fontSize: 13 }}
             >
-              {tipo === "repuesto" && descuento > 0 ? (
+              {detalle === "repuesto" && descuento > 0 ? (
                 <>
                   <del>${precio}</del> $
                   {Number(precioDescuento).toLocaleString("es-AR")}

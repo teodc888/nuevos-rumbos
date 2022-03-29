@@ -14,6 +14,7 @@ export default function Buscador() {
   const [resultado, setResultado] = useState("");
   const buscar = useSelector((state) => state.buscados);
 
+
   useEffect(() => {
     document.title = "Buscar";
   }, []);
@@ -69,6 +70,8 @@ export default function Buscador() {
                     id={buscar.id}
                     descripcion={buscar.descripcion}
                     favorito="true"
+                    detalle={buscar.detalle}
+                    nombre={buscar.nombre}
                   />
                 </Grid>
               ))

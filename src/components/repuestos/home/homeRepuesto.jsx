@@ -124,6 +124,7 @@ export default function HomeRepuestos() {
     setOpen(false);
   };
 
+
   return (
     <>
       <Container maxWidth="lg">
@@ -214,10 +215,11 @@ export default function HomeRepuestos() {
                       nombre={repuestos.nombre}
                       imagen={repuestos.imagen[0]}
                       precio={repuestos.precio}
-                      tipo="repuesto"
+                      detalle={repuestos.detalle}
                       id={repuestos.id}
                       precioDescuento={repuestos.precioDescuento}
                       descuento={repuestos.descuento}
+                      
                     />
                   </Grid>
                 ))}
@@ -275,7 +277,7 @@ export default function HomeRepuestos() {
                           imagen={repuesto.imagen}
                           precio={repuesto.precio}
                           id={repuesto.id}
-                          tipo={"repuesto"}
+                          detalle={repuesto.detalle}
                           descripcion={repuesto.descripcion}
                           favorito={"true"}
                           descuento={repuesto.descuento}
