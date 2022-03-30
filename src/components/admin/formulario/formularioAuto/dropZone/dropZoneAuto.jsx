@@ -6,13 +6,7 @@ import { Grid } from '@mui/material';
 import { SingleFileUploadWithProgress } from './cargarArchivoIndividual';
 import { UploadError } from './upLoadError';
 
-// export interface UploadableFile {
-// 	file: File;
-// 	errors: FileError[];
-// 	url?: String;
-// }
-
-const DropZone = ({handleFiles}) => {
+const DropZone = ({ handleFiles }) => {
 	// states
 	const [files, setFiles] = useState([]);
 
@@ -34,7 +28,7 @@ const DropZone = ({handleFiles}) => {
 	const onDelete = (file) => {
 		setFiles((curr) => curr.filter((fw) => fw.file !== file));
 	};
-	const onUpload = async(file, url) => {
+	const onUpload = async (file, url) => {
 		setFiles((curr) =>
 			curr.map((fw) => {
 				if (fw.file === file) {
@@ -43,12 +37,12 @@ const DropZone = ({handleFiles}) => {
 				return fw;
 			})
 		);
-		await setImageURL(imageURL => [...imageURL, url]);
+		await setImageURL((imageURL) => [...imageURL, url]);
 	};
 
 	return (
 		<React.Fragment>
-			<Grid item style={{ width: 'auto', height: 'auto'}}>
+			<Grid item style={{ width: 'auto', height: 'auto' }}>
 				<div {...getRootProps()}>
 					<Grid
 						item
@@ -60,11 +54,11 @@ const DropZone = ({handleFiles}) => {
 							borderRadius: '4px',
 						}}
 					>
-						<input {...getInputProps()}/>
+						<input {...getInputProps()} />
 						<p>Insertá algunas imagenes aqui, o clickeá para elegir archivos</p>
 					</Grid>
 					{files.map((fileWrapper, index) => (
-						<Grid item key={index} style={{marginTop: '2%'}}>
+						<Grid item key={index} style={{ marginTop: '2%' }}>
 							{fileWrapper.errors.length ? (
 								<UploadError
 									key={index}

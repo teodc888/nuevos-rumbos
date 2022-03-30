@@ -5,15 +5,10 @@ import {
     withStyles
   } from '@material-ui/core';
   import React from 'react';
-  import { FileError } from 'react-dropzone';
+  // import { FileError } from 'react-dropzone';
   import { FileHeader } from './FileHeader';
   
-  export interface UploadErrorProps {
-    file: File;
-    onDelete: (file: File) => void;
-    errors: FileError[];
-  }
-  
+  // estilos error
   const ErrorLinearProgress = withStyles((theme) =>
     createStyles({
       bar: {
@@ -22,7 +17,7 @@ import {
     })
   )(LinearProgress);
   
-  export function UploadError({ file, onDelete, errors }: UploadErrorProps) {
+  export function UploadError({ file, onDelete, errors }) {
     return (
       <React.Fragment>
         <FileHeader file={file} onDelete={onDelete} />
