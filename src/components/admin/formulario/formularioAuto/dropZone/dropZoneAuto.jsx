@@ -1,22 +1,26 @@
 import React, { useCallback, useState } from 'react';
-import { useDropzone, FileRejection } from 'react-dropzone';
+import { useDropzone } from 'react-dropzone';
 // packages
 import { Grid } from '@mui/material';
 // components
 import { SingleFileUploadWithProgress } from './cargarArchivoIndividual';
 import { UploadError } from './upLoadError';
 
-export interface UploadableFile {
-	file: File;
-	errors: FileError[];
-	url?: String;
-}
+// export interface UploadableFile {
+// 	file: File;
+// 	errors: FileError[];
+// 	url?: String;
+// }
 
 const DropZone = ({handleFiles}) => {
 	// states
 	const [files, setFiles] = useState([]);
 
-	const onDrop = useCallback((accFiles: File[], RejFiles: FileRejection[]) => {
+	// url imagenes arreglo
+	const [imageURL, setImageURL] = useState([]);
+	console.log(imageURL);
+
+	const onDrop = useCallback((accFiles, RejFiles) => {
 		// Do something with the files
 		const mappedAcc = accFiles.map((file) => ({ file, errors: [] }));
 		setFiles((curr) => [...curr, ...mappedAcc, ...RejFiles]);
@@ -27,10 +31,10 @@ const DropZone = ({handleFiles}) => {
 	});
 
 	// funcion eliminar imagen
-	const onDelete = (file: File) => {
+	const onDelete = (file) => {
 		setFiles((curr) => curr.filter((fw) => fw.file !== file));
 	};
-	const onUpload = (file: File, url: string) => {
+	const onUpload = async(file, url) => {
 		setFiles((curr) =>
 			curr.map((fw) => {
 				if (fw.file === file) {
@@ -39,6 +43,7 @@ const DropZone = ({handleFiles}) => {
 				return fw;
 			})
 		);
+		await setImageURL(imageURL => [...imageURL, url]);
 	};
 
 	return (
