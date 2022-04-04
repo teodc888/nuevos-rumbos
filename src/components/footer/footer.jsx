@@ -29,7 +29,7 @@ export default function Footer() {
         <Container maxWidth="lg">
           <Grid container spacing={5}>
             <Grid item xs={12} sm={4}>
-              <Box borderBottom={1}>Nosotros</Box>
+              <Box borderBottom={1} textAlign="center">Nosotros</Box>
               <Box>
                 <Link href="/nosotros" color="inherit">
                   Nosotros
@@ -47,7 +47,7 @@ export default function Footer() {
               </Box>
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Box borderBottom={1}>Desarrolladores</Box>
+              <Box borderBottom={1} textAlign="center">Desarrolladores</Box>
               <Box>
                 <Link
                   href="https://www.linkedin.com/in/santiagoclemenzi-fullstack/"
@@ -66,7 +66,7 @@ export default function Footer() {
               </Box>
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Box borderBottom={1}>Redes</Box>
+              <Box borderBottom={1} textAlign="center">Redes</Box>
               <Box>
                 <Link href="https://www.instagram.com/" color="inherit">
                   <FontAwesomeIcon icon={faInstagram} /> Instagram
@@ -95,7 +95,7 @@ export default function Footer() {
               sx={{ position: "static", mr: "1.5%" }}
               alt="Nuevos rumbos"
             />
-            <Typography variant="h6" color="textPrimary" sx={{mt:"0.5%"}}>
+            <Typography variant="h6" color="textPrimary" sx={{mt:"0.5%", color:"white"}}>
               NUEVOS RUMBOS &reg; {new Date().getFullYear()}
             </Typography>
           </Box>

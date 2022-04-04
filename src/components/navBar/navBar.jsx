@@ -28,6 +28,7 @@ import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
 import BuildIcon from "@mui/icons-material/Build";
 import HomeIcon from "@mui/icons-material/Home";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import SearchIcon from "@mui/icons-material/Search";
 
 //Router
 import { useNavigate } from "react-router";
@@ -151,6 +152,10 @@ export default function NavBar({ setMode }) {
     navigate("/carrito");
   };
 
+  const handleBuscador = () => {
+    navigate("/buscador");
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ bgcolor: colorElegido }}>
@@ -161,7 +166,6 @@ export default function NavBar({ setMode }) {
             edge="start"
             color="inherit"
             aria-label="open drawer"
-            sx={{ mr: 2 }}
             onClick={() => setOpen(true)}
           >
             <MenuIcon />
@@ -180,20 +184,56 @@ export default function NavBar({ setMode }) {
           >
             NUEVOS RUMBOS
           </Typography>
-          <Typography
-            variant="subtitle2"
-            noWrap
-            component="div"
+
+          {/* Normal */}
+          <IconButton
+            size="large"
+            edge="end"
+            aria-label="account of current user"
+            aria-haspopup="true"
+            color="inherit"
             sx={{
-              display: { xs: "block", sm: "none", md: "none", lg: "none" },
-              cursor: "pointer",
-              fontSize: "12.5px",
+              display: { xs: "none", sm: "flex", md: "flex", lg: "flex" },
+              ml: 2,
+            }}
+            onClick={handleBuscador}
+          >
+            <Typography variant="h6" sx={{ mr: "5%" }}>
+              Buscador
+            </Typography>
+            <SearchIcon />
+          </IconButton>
+
+          {/* responsivo */}
+
+          <IconButton
+            size="large"
+            edge="end"
+            aria-label="account of current user"
+            aria-haspopup="true"
+            color="inherit"
+            sx={{
+              display: { xs: "flex", sm: "none", md: "none", lg: "none" },
+              mr: "1%",
             }}
             onClick={navigateToLanding}
           >
-            NUEVOS RUMBOS
-          </Typography>
+            <HomeIcon />
+          </IconButton>
 
+          <IconButton
+            size="large"
+            edge="end"
+            aria-label="account of current user"
+            aria-haspopup="true"
+            color="inherit"
+            sx={{
+              display: { xs: "flex", sm: "none", md: "none", lg: "none" },
+            }}
+            onClick={handleBuscador}
+          >
+            <SearchIcon />
+          </IconButton>
 
           {/* iconos */}
           <Box sx={{ flexGrow: 1 }} />
@@ -238,6 +278,7 @@ export default function NavBar({ setMode }) {
               icon={<Brightness4Icon sx={{ color: "white" }} />}
               checkedIcon={<Brightness4OutlinedIcon sx={{ color: "white" }} />}
               onClick={colorMode.toggleColorMode}
+              sx={{ mr: "1px" }}
             />
             <IconButton
               size="large"
@@ -246,6 +287,7 @@ export default function NavBar({ setMode }) {
               aria-haspopup="true"
               color="inherit"
               onClick={navigateToFavoritos}
+              sx={{ mr: "1px" }}
             >
               <Badge badgeContent={fav.length} color="primary">
                 <FavoriteIcon />

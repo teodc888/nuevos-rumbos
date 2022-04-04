@@ -14,6 +14,8 @@ export default function Buscador() {
   const [resultado, setResultado] = useState("");
   const buscar = useSelector((state) => state.buscados);
 
+  console.log(buscar);
+
 
   useEffect(() => {
     document.title = "Buscar";
@@ -72,6 +74,8 @@ export default function Buscador() {
                     favorito="true"
                     detalle={buscar.detalle}
                     nombre={buscar.nombre}
+                    kilometros={buscar.kilometros}
+                    año={buscar.año}
                   />
                 </Grid>
               ))
