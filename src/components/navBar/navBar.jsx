@@ -36,6 +36,9 @@ import { Link } from "react-router-dom";
 // React Router
 import { useSelector } from "react-redux";
 
+//Imagenes
+import Portada1 from "../../images/nuevoRumbos.png";
+
 //Slider
 const useStyles = makeStyles((theme) => ({
   menuSliderContainer: {
@@ -93,13 +96,7 @@ export default function NavBar({ setMode }) {
       sx={{ background: handleDarkModeBG(), width: 312, height: "100%" }}
       component="div"
     >
-      <Avatar
-        className={classes.avatar}
-        src={
-          "https://scontent.fcor2-2.fna.fbcdn.net/v/t1.6435-9/121409666_3270786793044323_821596622646100409_n.png?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=MLqKlfTlQQcAX_l2lBA&_nc_ht=scontent.fcor2-2.fna&oh=00_AT_QoJzmkwuUnkdyfk1LuYQJyFazBiMVOJP0j3Hg9Bl2wg&oe=6247F34E"
-        }
-        alt="Mahmudul Alam"
-      />
+      <Avatar className={classes.avatar} src={Portada1} alt="Nuevo Rumbos" />
       <Divider />
       <List>
         {menuItems.map((item, i) => (
@@ -148,16 +145,11 @@ export default function NavBar({ setMode }) {
 
   const navigateToFavoritos = () => {
     navigate("/favoritos");
-
   };
 
   const handleCarrito = () => {
     navigate("/carrito");
-
   };
-
-
-
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -194,12 +186,14 @@ export default function NavBar({ setMode }) {
             component="div"
             sx={{
               display: { xs: "block", sm: "none", md: "none", lg: "none" },
-              cursor: "pointer", fontSize:"12.5px",
+              cursor: "pointer",
+              fontSize: "12.5px",
             }}
             onClick={navigateToLanding}
           >
             NUEVOS RUMBOS
           </Typography>
+
 
           {/* iconos */}
           <Box sx={{ flexGrow: 1 }} />
@@ -210,7 +204,6 @@ export default function NavBar({ setMode }) {
               icon={<Brightness4Icon sx={{ color: "white" }} />}
               checkedIcon={<Brightness4OutlinedIcon sx={{ color: "white" }} />}
               onClick={colorMode.toggleColorMode}
-            
             />
             <IconButton
               size="large"
@@ -241,11 +234,10 @@ export default function NavBar({ setMode }) {
 
           {/* responsivo */}
           <Box sx={{ display: { xs: "block", md: "none", sm: "none" } }}>
-          <Checkbox
+            <Checkbox
               icon={<Brightness4Icon sx={{ color: "white" }} />}
               checkedIcon={<Brightness4OutlinedIcon sx={{ color: "white" }} />}
               onClick={colorMode.toggleColorMode}
-            
             />
             <IconButton
               size="large"
@@ -254,7 +246,6 @@ export default function NavBar({ setMode }) {
               aria-haspopup="true"
               color="inherit"
               onClick={navigateToFavoritos}
-
             >
               <Badge badgeContent={fav.length} color="primary">
                 <FavoriteIcon />
@@ -267,7 +258,6 @@ export default function NavBar({ setMode }) {
               aria-haspopup="true"
               color="inherit"
               onClick={handleCarrito}
-
             >
               <Badge badgeContent={carrito.length} color="success">
                 <ShoppingCartIcon />

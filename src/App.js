@@ -21,15 +21,10 @@ import HomeMoto from "./components/motos/home/homeMoto";
 import HomeRepuestos from "./components/repuestos/home/homeRepuesto";
 import Detalle from "./components/detalle/detalle";
 import Favoritos from "./components/favoritos/favoritos";
-import EditarAutos from "./components/admin/editarAutos/editarAutos";
-import FormEditarAuto from "./components/admin/editarAutos/formEditarAuto";
 import Error from "./components/error/error";
 import Buscador from "./components/buscador/buscador/buscador";
-import EditarMotos from "./components/admin/editarMotos/editarMotos";
-import FormEditarMoto from "./components/admin/editarMotos/formEditarMoto";
-import EditarRepuestos from "./components/admin/editarRepuestos/editarRepuestos";
-import FormEditarRepuesto from "./components/admin/editarRepuestos/formEditarRepuesto";
 import Carrito from "./components/carrito/carrito";
+import Nosotros from "./components/nosotros/nosotros";
 
 //components Admin
 import HomeAdmin from "./components/admin/home/home";
@@ -37,6 +32,12 @@ import NavBarAdmin from "./components/admin/navBar/navBar";
 import FormularioAuto from "./components/admin/formulario/formularioAuto/formularioAuto";
 import FormularioMoto from "./components/admin/formulario/formularioMoto/formularioMoto";
 import FormularioRepuesto from "./components/admin/formulario/formularioRepuesto/formularioRepuesto";
+import EditarMotos from "./components/admin/editarMotos/editarMotos";
+import FormEditarMoto from "./components/admin/editarMotos/formEditarMoto";
+import EditarRepuestos from "./components/admin/editarRepuestos/editarRepuestos";
+import EditarAutos from "./components/admin/editarAutos/editarAutos";
+import FormEditarAuto from "./components/admin/editarAutos/formEditarAuto";
+import FormEditarRepuesto from "./components/admin/editarRepuestos/formEditarRepuesto";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -132,7 +133,6 @@ export default function App() {
 
   window.addEventListener("scroll", toggleVisible);
 
-  
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -145,13 +145,19 @@ export default function App() {
               <Route path="/" element={<HomeAdmin />} />
               <Route path="/formularioAuto" element={<FormularioAuto />} />
               <Route path="/formularioMoto" element={<FormularioMoto />} />
-              <Route path="/formularioRepuesto" element={<FormularioRepuesto />} />
+              <Route
+                path="/formularioRepuesto"
+                element={<FormularioRepuesto />}
+              />
               <Route path="/editarAutos" element={<EditarAutos />} />
               <Route path="/formEditarAuto/:id" element={<FormEditarAuto />} />
               <Route path="/editarMotos" element={<EditarMotos />} />
               <Route path="/formEditarMoto/:id" element={<FormEditarMoto />} />
               <Route path="/editarRepuestos" element={<EditarRepuestos />} />
-              <Route path="/formEditarRepuesto/:id" element={<FormEditarRepuesto />} />
+              <Route
+                path="/formEditarRepuesto/:id"
+                element={<FormEditarRepuesto />}
+              />
               {/* <Route path="*" element={<Error />} /> */}
             </Routes>
           </>
@@ -166,9 +172,10 @@ export default function App() {
               <Route path="/log-in" element={<LogIn />} />
               <Route path="/detalle/:id" element={<Detalle />} />
               <Route path="/favoritos" element={<Favoritos />} />
-              <Route path="*" element={<Error />} />
               <Route path="/buscador" element={<Buscador />} />
               <Route path="/carrito" element={<Carrito />} />
+              <Route path="/nosotros" element={<Nosotros />} />
+              <Route path="*" element={<Error />} />
             </Routes>
 
             {/* redes sociales */}
@@ -298,4 +305,3 @@ export default function App() {
     </>
   );
 }
-

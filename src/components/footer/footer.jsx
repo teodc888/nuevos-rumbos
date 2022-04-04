@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, Grid, Box, Link } from "@mui/material";
+import { Container, Grid, Box, Link, Avatar, Typography } from "@mui/material";
 
 //Redux
 import { useSelector } from "react-redux";
@@ -11,10 +11,13 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
+//Imagenes
+import NuevosRumbos from "../../images/nuevoRumbos.png";
+
 export default function Footer() {
   const colorElegido = useSelector((state) => state.color);
   return (
-    <footer >
+    <footer>
       <Box
         px={{ xs: 3, sm: 10 }}
         py={{ xs: 5, sm: 10 }}
@@ -28,8 +31,8 @@ export default function Footer() {
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Nosotros</Box>
               <Box>
-                <Link href="/" color="inherit">
-                  contactar
+                <Link href="/nosotros" color="inherit">
+                  Nosotros
                 </Link>
               </Box>
               <Box>
@@ -46,11 +49,17 @@ export default function Footer() {
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Desarrolladores</Box>
               <Box>
-                <Link href="https://www.linkedin.com/in/santiagoclemenzi-fullstack/" color="inherit">
+                <Link
+                  href="https://www.linkedin.com/in/santiagoclemenzi-fullstack/"
+                  color="inherit"
+                >
                   Santiago Clemenzi
                 </Link>
                 <Box>
-                  <Link href="https://www.linkedin.com/in/mateo-dellacqua-castro/" color="inherit">
+                  <Link
+                    href="https://www.linkedin.com/in/mateo-dellacqua-castro/"
+                    color="inherit"
+                  >
                     Mateo Dell'Acqua
                   </Link>
                 </Box>
@@ -60,23 +69,35 @@ export default function Footer() {
               <Box borderBottom={1}>Redes</Box>
               <Box>
                 <Link href="https://www.instagram.com/" color="inherit">
-                <FontAwesomeIcon icon={faInstagram} /> Instagram
+                  <FontAwesomeIcon icon={faInstagram} /> Instagram
                 </Link>
               </Box>
               <Box>
                 <Link href="/" color="inherit">
-                <FontAwesomeIcon icon={faFacebook} /> Facebook
+                  <FontAwesomeIcon icon={faFacebook} /> Facebook
                 </Link>
               </Box>
               <Box>
                 <Link href="/" color="inherit">
-                <FontAwesomeIcon icon={faWhatsapp} /> Whatsapp
+                  <FontAwesomeIcon icon={faWhatsapp} /> Whatsapp
                 </Link>
               </Box>
             </Grid>
           </Grid>
-          <Box textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
-            NUEVOS RUMBOS &reg; {new Date().getFullYear()}
+          <Box
+            textAlign="center"
+            pt={{ xs: 5, sm: 10 }}
+            pb={{ xs: 5, sm: 0 }}
+            sx={{ display: "flex", justifyContent: "center" }}
+          >
+            <Avatar
+              src={NuevosRumbos}
+              sx={{ position: "static", mr: "1.5%" }}
+              alt="Nuevos rumbos"
+            />
+            <Typography variant="h6" color="textPrimary" sx={{mt:"0.5%"}}>
+              NUEVOS RUMBOS &reg; {new Date().getFullYear()}
+            </Typography>
           </Box>
         </Container>
       </Box>
