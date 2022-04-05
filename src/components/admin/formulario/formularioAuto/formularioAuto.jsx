@@ -19,7 +19,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../../../firebase/firebaseConfig';
 // components
 import BtnGuardar from './btnFormularioAuto';
-import DropZone from './dropZone/dropZone';
+import DropZone from '../dropZone/dropZone';
 
 export default function FormularioAuto() {
 	const navigate = useNavigate();
