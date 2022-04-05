@@ -247,7 +247,7 @@ export default function CardNR({
                 {Number(precioDescuento).toLocaleString("es-AR")}
               </>
             ) : addfav === true ? (
-              <> ${precio}</>
+              <> ${Number(precio).toLocaleString("es-AR")}</>
             ) : (
               <> ${Number(precio).toLocaleString("es-AR")} </>
             )}

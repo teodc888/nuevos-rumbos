@@ -336,6 +336,8 @@ export default function HomeMoto() {
                 productoPorPagina={productoPorPagina}
                 productos={motos.length}
                 paginado={paginado}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
               />
               <Box
                 sx={{

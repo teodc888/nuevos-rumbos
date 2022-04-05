@@ -124,7 +124,6 @@ export default function HomeRepuestos() {
     setOpen(false);
   };
 
-
   return (
     <>
       <Container maxWidth="lg">
@@ -219,7 +218,6 @@ export default function HomeRepuestos() {
                       id={repuestos.id}
                       precioDescuento={repuestos.precioDescuento}
                       descuento={repuestos.descuento}
-                      
                     />
                   </Grid>
                 ))}
@@ -292,6 +290,8 @@ export default function HomeRepuestos() {
                 productoPorPagina={productoPorPagina}
                 productos={repuestos.length}
                 paginado={paginado}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
               />
               <Box
                 sx={{
