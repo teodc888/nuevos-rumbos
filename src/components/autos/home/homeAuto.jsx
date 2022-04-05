@@ -388,6 +388,8 @@ export default function HomeAuto() {
                 productoPorPagina={productoPorPagina}
                 productos={autos.length}
                 paginado={paginado}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
               />
               <Box
                 sx={{

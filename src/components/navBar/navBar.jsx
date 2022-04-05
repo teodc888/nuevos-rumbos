@@ -198,7 +198,7 @@ export default function NavBar({ setMode }) {
             }}
             onClick={handleBuscador}
           >
-            <Typography variant="h6" sx={{ mr: "5%" }}>
+            <Typography variant="h6" sx={{ mr: "5%", fontSize:"19px" }}>
               Buscador
             </Typography>
             <SearchIcon />

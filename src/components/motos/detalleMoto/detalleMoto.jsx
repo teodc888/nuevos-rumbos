@@ -284,7 +284,7 @@ export default function DetalleMoto({
           >
             <Typography
               gutterBottom
-              variant="h3"
+              variant="h4"
               component="div"
               textAlign="center"
               sx={{ marginTop: "5%" }}
@@ -312,7 +312,7 @@ export default function DetalleMoto({
           >
             <Typography
               gutterBottom
-              variant="h5"
+              variant="h6"
               component="div"
               textAlign="center"
               sx={{ marginTop: "5%" }}
@@ -334,7 +334,7 @@ export default function DetalleMoto({
           <Box sx={{ width: "100%" }}>
             <Typography
               gutterBottom
-              variant="h3"
+              variant="h4"
               component="div"
               textAlign="center"
               sx={{ mt: "2%", display: { xs: "none", md: "block" } }}
@@ -343,7 +343,7 @@ export default function DetalleMoto({
             </Typography>
             <Typography
               gutterBottom
-              variant="h5"
+              variant="h6"
               component="div"
               textAlign="center"
               sx={{ mt: "2%", display: { xs: "block", md: "none" } }}
