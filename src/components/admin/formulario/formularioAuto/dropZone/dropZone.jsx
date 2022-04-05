@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 // packages
 import { Grid } from '@mui/material';
@@ -6,13 +6,12 @@ import { Grid } from '@mui/material';
 import { SingleFileUploadWithProgress } from './cargarArchivoIndividual';
 import { UploadError } from './upLoadError';
 
-const DropZone = ({ handleFiles }) => {
+const DropZone = ({ setInput, input }) => {
 	// states
 	const [files, setFiles] = useState([]);
 
 	// url imagenes arreglo
 	const [imageURL, setImageURL] = useState([]);
-	console.log(imageURL);
 
 	const onDrop = useCallback((accFiles, RejFiles) => {
 		// Do something with the files
@@ -39,6 +38,11 @@ const DropZone = ({ handleFiles }) => {
 		);
 		await setImageURL((imageURL) => [...imageURL, url]);
 	};
+
+	// UseEffect pasar el arreglo a input
+	useEffect(() => {
+		setInput({ ...input, imagen: imageURL });
+	}, [imageURL]);
 
 	return (
 		<React.Fragment>

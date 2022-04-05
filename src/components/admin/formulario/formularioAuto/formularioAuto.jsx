@@ -6,7 +6,6 @@ import {
 	MenuItem,
 	TextareaAutosize,
 	InputLabel,
-	Input,
 	IconButton,
 	Popover,
 	Typography,
@@ -20,7 +19,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../../../firebase/firebaseConfig';
 // components
 import BtnGuardar from './btnFormularioAuto';
-import DropZone from './dropZone/dropZoneAuto';
+import DropZone from './dropZone/dropZone';
 
 export default function FormularioAuto() {
 	const navigate = useNavigate();
@@ -77,25 +76,9 @@ export default function FormularioAuto() {
 		}
 	};
 
-	const handleFiles = async (e) => {
-		const files = e.target.files;
-		const data = new FormData();
-		data.append('file', files[0]);
-		data.append('upload_preset', 'Product_photo ');
-		const res = await fetch(
-			'https://api.cloudinary.com/v1_1/djtkn6o7r/image/upload',
-			{
-				method: 'POST',
-				body: data,
-			}
-		);
-		const file = await res.json();
-		setInput({ ...input, imagen: file.secure_url  });
-	};
+	console.log(input);
+
 	const [anchorEl, setAnchorEl] = React.useState(null);
-
-
-	console.log(input)
 
 	const handlePopoverOpen = (event) => {
 		setAnchorEl(event.currentTarget);
@@ -408,9 +391,7 @@ export default function FormularioAuto() {
 							style={{ width: '100%', maxHeight: 150 }}
 						/>
 						<InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
-						<Input type="file" name="imagen" onChange={handleFiles} required />
-						<InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
-						< DropZone handleFiles={handleFiles} />
+						<DropZone setInput={setInput} input={input} />
 					</Grid>
 				</Grid>
 				<BtnGuardar />
