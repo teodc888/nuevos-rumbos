@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 
 // components
 import BtnGuardar from './btnFormularioMoto';
+import DropZone from '../dropZone/dropZone';
 
 export default function FormularioMoto() {
 	const navigate = useNavigate();
@@ -54,22 +55,6 @@ export default function FormularioMoto() {
 			});
 			console.error('Error adding document: ', error);
 		}
-	};
-
-	const handleFiles = async (e) => {
-		const files = e.target.files;
-		const data = new FormData();
-		data.append('file', files[0]);
-		data.append('upload_preset', 'Product_photo ');
-		const res = await fetch(
-			'https://api.cloudinary.com/v1_1/djtkn6o7r/image/upload',
-			{
-				method: 'POST',
-				body: data,
-			}
-		);
-		const file = await res.json();
-		setInput({ ...input, imagen: [file.secure_url] });
 	};
 
 	// estilos
@@ -220,7 +205,7 @@ export default function FormularioMoto() {
 							style={{ width: '100%', maxHeight: 150 }}
 						/>
 						<InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
-						<Input type="file" name="imagen" onChange={handleFiles} required />
+						<DropZone setInput={setInput} input={input} />
 					</Grid>
 				</Grid>
 				<BtnGuardar />
