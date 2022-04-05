@@ -47,6 +47,9 @@ export default function Favoritos() {
     document.title = "Favoritos";
   }, []);
 
+
+  console.log(favoritos);
+
   return (
     <>
       <Container maxWidth="lg">
@@ -124,6 +127,8 @@ export default function Favoritos() {
                     detalle={producto.detalle}
                     descuento={producto.descuento}
                     addfav={true}
+                    kilometros={producto.kilometros}
+                    año={producto.año}
                   />
                 </Grid>
               ))

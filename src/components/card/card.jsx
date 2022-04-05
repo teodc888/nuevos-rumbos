@@ -118,6 +118,9 @@ export default function CardNR({
             imagen: imagen,
             precio: Number(precio),
             id: id,
+            detalle: detalle,
+            kilometros: kilometros,
+            año: año,
           })
         );
         successSubmitFavorite();
@@ -167,7 +170,7 @@ export default function CardNR({
           id: id,
           precioDescuento: precioDescuento,
           descuento: descuento,
-          cantidad:1
+          cantidad: 1,
         })
       );
       successSubmitFavorite();
@@ -224,7 +227,12 @@ export default function CardNR({
               variant="h7"
               component="div"
               textAlign="center"
-              sx={{textTransform: "capitalize", overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis"}}
+              sx={{
+                textTransform: "capitalize",
+                overflow: "hidden",
+                whiteSpace: "nowrap",
+                textOverflow: "ellipsis",
+              }}
             >
               {nombre}
             </Typography>
@@ -252,11 +260,7 @@ export default function CardNR({
               <> ${Number(precio).toLocaleString("es-AR")} </>
             )}
           </Typography>
-          {detalle === "auto" ? (
-            <Typography variant="body2" color="text.secondary">
-              {año} | {Number(kilometros).toLocaleString("es-AR")} Km
-            </Typography>
-          ) : detalle === "moto" ? (
+          {detalle === "auto" || detalle === "moto" ? (
             <Typography variant="body2" color="text.secondary">
               {año} | {Number(kilometros).toLocaleString("es-AR")} Km
             </Typography>
