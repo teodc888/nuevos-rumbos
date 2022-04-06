@@ -29,7 +29,7 @@ export function getProductosAuto() {
   return async function (dispatch) {
     try {
       const res = await getDocs(collection(db, "auto"));
-
+      
       return dispatch({
         type: GET_PRODUCTOS_AUTO,
         payload: res.docs.map((doc) => {

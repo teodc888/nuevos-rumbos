@@ -5,6 +5,7 @@ import {
   TextareaAutosize,
   Button,
   InputLabel,
+  MenuItem,
 } from "@mui/material";
 import { makeStyles } from "@material-ui/styles";
 
@@ -30,6 +31,10 @@ export default function FormularioRepuesto() {
       ...input,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleSelectChangeDestacado = function (e) {
+    setInput({ ...input, destacado: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -114,12 +119,12 @@ export default function FormularioRepuesto() {
             style={{ padding: "1%" }}
           >
             <TextField
-              label="marca"
+              label="nombre"
               variant="outlined"
-              name="marca"
+              name="nombre"
               onChange={handleChange}
               type="text"
-              value={input.marca}
+              value={input.nombre}
               required
               fullWidth
               sx={{ marginTop: "2%" }}
@@ -137,6 +142,23 @@ export default function FormularioRepuesto() {
               fullWidth
               sx={{ marginTop: "2%" }}
             />
+            <TextField
+              select
+              label="destacado"
+              name="destacado"
+              value={input.destacado}
+              onChange={handleSelectChangeDestacado}
+              required
+              fullWidth
+              sx={{ marginTop: "2%" }}
+            >
+              <MenuItem name="destacado" value={"si"}>
+                Si
+              </MenuItem>
+              <MenuItem name="destacado" value={"no"}>
+                No
+              </MenuItem>
+            </TextField>
             <TextField
               label="descuento"
               variant="outlined"
@@ -183,17 +205,6 @@ export default function FormularioRepuesto() {
             // sx={12}
             style={{ padding: "1%" }}
           >
-            <TextField
-              label="modelo"
-              variant="outlined"
-              name="modelo"
-              onChange={handleChange}
-              type="text"
-              value={input.modelo}
-              required
-              fullWidth
-              sx={{ marginTop: "2%" }}
-            />
             <InputLabel sx={{ marginTop: "2%" }}>Descripcion</InputLabel>
             <TextareaAutosize
               onChange={handleChange}
@@ -207,7 +218,7 @@ export default function FormularioRepuesto() {
             <DropZone setInput={setInput} input={input} />
           </Grid>
         </Grid>
-        <BtnGuardar />
+        <BtnGuardar setInput={setInput} input={input} />
       </form>
     </>
   );

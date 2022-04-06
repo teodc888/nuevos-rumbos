@@ -13,12 +13,16 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const BtnGuardar = () => {
+const BtnGuardar = ({setInput, input}) => {
 	// funciones btn comprobar guardar
 	const [open, setOpen] = React.useState(false);
 
 	const handleClickOpen = () => {
 		setOpen(true);
+		setInput({
+			...input,
+			busqueda: input.nombre
+		  });
 	};
 
 	const handleClose = () => {

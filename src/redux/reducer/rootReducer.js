@@ -59,21 +59,18 @@ export default function rootReducer(state = inicialState, action) {
         ...state,
         autos: action.payload,
         autosBuscados: action.payload,
-        buscadosFiltrados: [...state.buscadosFiltrados, action.payload],
       };
     case GET_PRODUCTOS_MOTO:
       return {
         ...state,
         motos: action.payload,
         motosBuscados: action.payload,
-        buscadosFiltrados: [...state.buscadosFiltrados, action.payload],
       };
     case GET_PRODUCTOS_REPUESTO:
       return {
         ...state,
         repuestos: action.payload,
         repuestosBuscados: action.payload,
-        buscadosFiltrados: [...state.buscadosFiltrados, action.payload],
       };
     case BUSCAR_PRODUCTOS_AUTO:
       const autosModelo = state.autosBuscados.filter((auto) => {
@@ -118,32 +115,49 @@ export default function rootReducer(state = inicialState, action) {
         repuestos: repuestosModelo,
       };
     case BUSCAR_TOTAL:
-      let x = state.buscadosFiltrados.flat();
-      const buscadorModelo = x.filter((producto) => {
-        return producto.modelo !== undefined
-          ? producto.modelo
-              .toLowerCase()
-              .startsWith(action.payload.toLowerCase())
-          : producto.nombre
-              .toLowerCase()
-              .startsWith(action.payload.toLowerCase());
+      const autosModelo1 = state.autosBuscados.filter((auto) => {
+        return auto.modelo
+          .toLowerCase()
+          .startsWith(action.payload.toLowerCase());
       });
-      const buscadorMarca = x.filter((producto) => {
-        return producto.marca !== undefined
-          ? producto.marca
-              .toLowerCase()
-              .startsWith(action.payload.toLowerCase())
-          : null;
+      const autosMarca1 = state.autosBuscados.filter((auto) => {
+        return auto.marca
+          .toLowerCase()
+          .startsWith(action.payload.toLowerCase());
       });
+
+      const motosModelo1 = state.motosBuscados.filter((producto) => {
+        return producto.modelo
+          .toLowerCase()
+          .startsWith(action.payload.toLowerCase());
+      });
+      const motosMarca1 = state.motosBuscados.filter((producto) => {
+        return producto.marca
+          .toLowerCase()
+          .startsWith(action.payload.toLowerCase());
+      });
+
+      const repuestosModelo1 = state.repuestosBuscados.filter((producto) => {
+        return producto.nombre
+          .toLowerCase()
+          .startsWith(action.payload.toLowerCase());
+      });
+
       return {
         ...state,
         buscados:
           action.payload === ""
             ? (state.buscados = [])
-            : buscadorModelo.length > 0
-            ? (state.buscados = buscadorModelo)
-            : buscadorMarca.length > 0
-            ? (state.buscados = buscadorMarca)
+            : autosModelo1.length > 0
+            ? (state.buscados = autosModelo1)
+            : autosMarca1.length > 0
+            ? (state.buscados = autosMarca1)
+            : motosModelo1.length > 0
+            ? (state.buscados = motosModelo1)
+            : motosMarca1.length > 0
+            ? (state.buscados = motosMarca1)
+            : repuestosModelo1.length > 0
+            ? (state.buscados = repuestosModelo1)
             : (state.buscados = []),
       };
     case FILTRO_AUTO:
