@@ -218,7 +218,7 @@ export default function NavBar({ setMode }) {
       </MenuItem>
       <MenuItem>
         <Checkbox
-          icon={<Brightness4Icon sx={{ color: "white" }} />}
+          icon={<Brightness4Icon sx={{ color: "black" }} />}
           checkedIcon={<Brightness4OutlinedIcon sx={{ color: "white" }} />}
           onClick={colorMode.toggleColorMode}
         />
