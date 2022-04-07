@@ -237,10 +237,10 @@ export default function DetalleRepuesto({
                     <Typography variant="h5" sx={{ marginTop: "10%" }}>
                       {descuento > 0 ? (
                         <>
-                          <del>${precio}</del> ${precioDescuento}
+                          <del>${Number(precio).toLocaleString("es-AR")}</del> ${Number(precioDescuento).toLocaleString("es-AR")}
                         </>
                       ) : (
-                        <>${precio}</>
+                        <>${Number(precio).toLocaleString("es-AR")}</>
                       )}
                     </Typography>
                     <Typography

@@ -228,7 +228,7 @@ export default function DetalleAuto({
                       {marca} {modelo}
                     </Typography>
                     <Typography variant="h4" sx={{ marginTop: "10%" }}>
-                      ${precio}
+                      ${Number(precio).toLocaleString("es-AR")}
                     </Typography>
                     <Typography
                       variant="body2"
