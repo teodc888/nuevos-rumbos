@@ -16,6 +16,8 @@ import {
   ListItemText,
   Divider,
   Avatar,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 // import MenuIcon from "@mui/icons-material/Menu";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -28,7 +30,7 @@ import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
 import BuildIcon from "@mui/icons-material/Build";
 import HomeIcon from "@mui/icons-material/Home";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import SearchIcon from "@mui/icons-material/Search";
+import MoreIcon from "@mui/icons-material/MoreVert";
 
 //Router
 import { useNavigate } from "react-router";
@@ -39,6 +41,8 @@ import { useSelector } from "react-redux";
 
 //Imagenes
 import Portada1 from "../../images/nuevoRumbos.png";
+
+import InputBuscador from "../buscador/InputBuscador/InputBuscador";
 
 //Slider
 const useStyles = makeStyles((theme) => ({
@@ -69,6 +73,18 @@ const menuItems = [
 ];
 
 export default function NavBar({ setMode }) {
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null);
+  };
+
+  const handleMobileMenuOpen = (event) => {
+    setMobileMoreAnchorEl(event.currentTarget);
+  };
+
   const modo = useSelector((state) => state.darkMode);
 
   // funcion para slider dark mode
@@ -146,15 +162,69 @@ export default function NavBar({ setMode }) {
 
   const navigateToFavoritos = () => {
     navigate("/favoritos");
+    handleMobileMenuClose();
   };
 
   const handleCarrito = () => {
     navigate("/carrito");
+    handleMobileMenuClose();
   };
 
-  const handleBuscador = () => {
-    navigate("/buscador");
-  };
+  const mobileMenuId = "primary-search-account-menu-mobile";
+  const renderMobileMenu = (
+    <Menu
+      anchorEl={mobileMoreAnchorEl}
+      anchorOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      id={mobileMenuId}
+      keepMounted
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      open={isMobileMenuOpen}
+      onClose={handleMobileMenuClose}
+    >
+      <MenuItem>
+        <IconButton
+          size="large"
+          edge="end"
+          aria-label="account of current user"
+          aria-haspopup="true"
+          color="inherit"
+          onClick={navigateToFavoritos}
+          sx={{ mr: "0.1px" }}
+        >
+          <Badge badgeContent={fav.length} color="primary">
+            <FavoriteIcon />
+          </Badge>
+        </IconButton>
+      </MenuItem>
+      <MenuItem>
+        <IconButton
+          size="large"
+          edge="end"
+          aria-label="account of current user"
+          aria-haspopup="true"
+          color="inherit"
+          onClick={handleCarrito}
+        >
+          <Badge badgeContent={carrito.length} color="success">
+            <ShoppingCartIcon />
+          </Badge>
+        </IconButton>
+      </MenuItem>
+      <MenuItem>
+        <Checkbox
+          icon={<Brightness4Icon sx={{ color: "white" }} />}
+          checkedIcon={<Brightness4OutlinedIcon sx={{ color: "white" }} />}
+          onClick={colorMode.toggleColorMode}
+        />
+      </MenuItem>
+    </Menu>
+  );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -186,60 +256,30 @@ export default function NavBar({ setMode }) {
           </Typography>
 
           {/* Normal */}
-          <IconButton
-            size="large"
-            edge="end"
-            aria-label="account of current user"
-            aria-haspopup="true"
-            color="inherit"
+          <Box
             sx={{
               display: { xs: "none", sm: "flex", md: "flex", lg: "flex" },
               ml: 2,
             }}
-            onClick={handleBuscador}
           >
-            <Typography variant="h6" sx={{ mr: "5%", fontSize:"19px" }}>
-              Buscador
-            </Typography>
-            <SearchIcon />
-          </IconButton>
+            <InputBuscador />
+          </Box>
 
           {/* responsivo */}
 
-          <IconButton
-            size="large"
-            edge="end"
-            aria-label="account of current user"
-            aria-haspopup="true"
-            color="inherit"
+          <Box
             sx={{
-              display: { xs: "flex", sm: "none", md: "none", lg: "none" },
-              mr: "1%",
+              display: { xs: "block", sm: "none", md: "none", lg: "none" },
             }}
-            onClick={navigateToLanding}
           >
-            <HomeIcon />
-          </IconButton>
-
-          <IconButton
-            size="large"
-            edge="end"
-            aria-label="account of current user"
-            aria-haspopup="true"
-            color="inherit"
-            sx={{
-              display: { xs: "flex", sm: "none", md: "none", lg: "none" },
-            }}
-            onClick={handleBuscador}
-          >
-            <SearchIcon />
-          </IconButton>
+            <InputBuscador />
+          </Box>
 
           {/* iconos */}
           <Box sx={{ flexGrow: 1 }} />
 
           {/* normal */}
-          <Box sx={{ display: { xs: "none", md: "block", sm: "block" } }}>
+          <Box sx={{ display: { xs: "none", md: "block", sm: "none", lg:"block" } }}>
             <Checkbox
               icon={<Brightness4Icon sx={{ color: "white" }} />}
               checkedIcon={<Brightness4OutlinedIcon sx={{ color: "white" }} />}
@@ -273,41 +313,21 @@ export default function NavBar({ setMode }) {
           </Box>
 
           {/* responsivo */}
-          <Box sx={{ display: { xs: "block", md: "none", sm: "none" } }}>
-            <Checkbox
-              icon={<Brightness4Icon sx={{ color: "white" }} />}
-              checkedIcon={<Brightness4OutlinedIcon sx={{ color: "white" }} />}
-              onClick={colorMode.toggleColorMode}
-              sx={{ mr: "1px" }}
-            />
+          <Box sx={{ display: { xs: "block", md: "none", sm: "block", lg:"none" } }}>
             <IconButton
               size="large"
-              edge="end"
-              aria-label="account of current user"
+              aria-label="show more"
+              aria-controls={mobileMenuId}
               aria-haspopup="true"
+              onClick={handleMobileMenuOpen}
               color="inherit"
-              onClick={navigateToFavoritos}
-              sx={{ mr: "1px" }}
             >
-              <Badge badgeContent={fav.length} color="primary">
-                <FavoriteIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-haspopup="true"
-              color="inherit"
-              onClick={handleCarrito}
-            >
-              <Badge badgeContent={carrito.length} color="success">
-                <ShoppingCartIcon />
-              </Badge>
+              <MoreIcon />
             </IconButton>
           </Box>
         </Toolbar>
       </AppBar>
+      {renderMobileMenu}
 
       {/* Slider lateral */}
       <Drawer open={open} anchor="left" onClose={() => setOpen(false)}>
