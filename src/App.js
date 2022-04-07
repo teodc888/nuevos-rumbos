@@ -22,7 +22,6 @@ import HomeRepuestos from "./components/repuestos/home/homeRepuesto";
 import Detalle from "./components/detalle/detalle";
 import Favoritos from "./components/favoritos/favoritos";
 import Error from "./components/error/error";
-import Buscador from "./components/buscador/buscador/buscador";
 import Carrito from "./components/carrito/carrito";
 import Nosotros from "./components/nosotros/nosotros";
 
@@ -133,7 +132,6 @@ export default function App() {
 
   window.addEventListener("scroll", toggleVisible);
 
-
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -173,7 +171,6 @@ export default function App() {
               <Route path="/log-in" element={<LogIn />} />
               <Route path="/detalle/:id" element={<Detalle />} />
               <Route path="/favoritos" element={<Favoritos />} />
-              <Route path="/buscador" element={<Buscador />} />
               <Route path="/carrito" element={<Carrito />} />
               <Route path="/nosotros" element={<Nosotros />} />
               <Route path="*" element={<Error />} />
