@@ -76,12 +76,12 @@ export default function rootReducer(state = inicialState, action) {
       const autosModelo = state.autosBuscados.filter((auto) => {
         return auto.modelo
           .toLowerCase()
-          .startsWith(action.payload.toLowerCase());
+          .includes(action.payload.toLowerCase());
       });
       const autosMarca = state.autosBuscados.filter((auto) => {
         return auto.marca
           .toLowerCase()
-          .startsWith(action.payload.toLowerCase());
+          .includes(action.payload.toLowerCase());
       });
 
       return {
@@ -92,12 +92,12 @@ export default function rootReducer(state = inicialState, action) {
       const motosModelo = state.motosBuscados.filter((producto) => {
         return producto.modelo
           .toLowerCase()
-          .startsWith(action.payload.toLowerCase());
+          .includes(action.payload.toLowerCase());
       });
       const motosMarca = state.motosBuscados.filter((producto) => {
         return producto.marca
           .toLowerCase()
-          .startsWith(action.payload.toLowerCase());
+          .includes(action.payload.toLowerCase());
       });
 
       return {
@@ -108,7 +108,7 @@ export default function rootReducer(state = inicialState, action) {
       const repuestosModelo = state.repuestosBuscados.filter((producto) => {
         return producto.nombre
           .toLowerCase()
-          .startsWith(action.payload.toLowerCase());
+          .includes(action.payload.toLowerCase());
       });
       return {
         ...state,
@@ -118,29 +118,29 @@ export default function rootReducer(state = inicialState, action) {
       const autosModelo1 = state.autosBuscados.filter((auto) => {
         return auto.modelo
           .toLowerCase()
-          .startsWith(action.payload.toLowerCase());
+          .includes(action.payload.toLowerCase());
       });
       const autosMarca1 = state.autosBuscados.filter((auto) => {
         return auto.marca
           .toLowerCase()
-          .startsWith(action.payload.toLowerCase());
+          .includes(action.payload.toLowerCase());
       });
 
       const motosModelo1 = state.motosBuscados.filter((producto) => {
         return producto.modelo
           .toLowerCase()
-          .startsWith(action.payload.toLowerCase());
+          .includes(action.payload.toLowerCase());
       });
       const motosMarca1 = state.motosBuscados.filter((producto) => {
         return producto.marca
           .toLowerCase()
-          .startsWith(action.payload.toLowerCase());
+          .includes(action.payload.toLowerCase());
       });
 
       const repuestosModelo1 = state.repuestosBuscados.filter((producto) => {
         return producto.nombre
           .toLowerCase()
-          .startsWith(action.payload.toLowerCase());
+          .includes(action.payload.toLowerCase());
       });
 
       return {
