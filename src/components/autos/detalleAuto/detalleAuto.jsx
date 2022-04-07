@@ -48,6 +48,7 @@ export default function DetalleAuto({
   puertas,
   gnv,
   id,
+  detalle,
 }) {
   //color
   const colorElegido = useSelector((state) => state.color);
@@ -90,8 +91,11 @@ export default function DetalleAuto({
         marca: marca,
         modelo: modelo,
         imagen: imagen,
-        precio: precio,
+        precio: Number(precio),
         id: id,
+        detalle: detalle,
+        kilometros: kilometros,
+        año: año,
       })
     );
     setFav(true);
@@ -116,8 +120,6 @@ export default function DetalleAuto({
         modelo
     );
   };
-
-  //
 
   return (
     <>
@@ -243,7 +245,11 @@ export default function DetalleAuto({
                       color="success"
                       sx={{ bgcolor: "green", color: "white", width: "100%" }}
                     >
-                         Consultar por Whatsapp <FontAwesomeIcon icon={faWhatsapp} style={{marginLeft:"2%"}} />
+                      Consultar por Whatsapp{" "}
+                      <FontAwesomeIcon
+                        icon={faWhatsapp}
+                        style={{ marginLeft: "2%" }}
+                      />
                     </Button>
                   </CardActions>
                   <CardActions sx={{ mt: "2%" }}>
@@ -251,7 +257,11 @@ export default function DetalleAuto({
                       <Button
                         variant="contained"
                         onClick={addFavoritos}
-                        sx={{ bgcolor: "#2196f3", color: "white", width: "100%" }}
+                        sx={{
+                          bgcolor: "#2196f3",
+                          color: "white",
+                          width: "100%",
+                        }}
                       >
                         Agregar a favoritos
                         <FavoriteIcon sx={{ marginLeft: "2%" }} />

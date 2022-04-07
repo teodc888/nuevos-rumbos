@@ -43,6 +43,7 @@ export default function DetalleMoto({
   cilindrada,
   cv,
   kilometros,
+  detalle,
 }) {
   //color
   const colorElegido = useSelector((state) => state.color);
@@ -85,8 +86,11 @@ export default function DetalleMoto({
         marca: marca,
         modelo: modelo,
         imagen: imagen,
-        precio: precio,
+        precio: Number(precio),
         id: id,
+        detalle: detalle,
+        kilometros: kilometros,
+        año: año,
       })
     );
     setFav(true);
@@ -102,7 +106,7 @@ export default function DetalleMoto({
     window.scrollTo(0, 0);
     document.title = modelo;
   }, [modelo]);
-  
+
   const handleWhatsapp = () => {
     window.open(
       "https://wa.me/543512550311?text=Hola,%20me%20gustaria%20obtener%20mas%20informacion%20sobre%20" +
@@ -219,7 +223,7 @@ export default function DetalleMoto({
                       {marca} {modelo}
                     </Typography>
                     <Typography variant="h4" sx={{ marginTop: "10%" }}>
-                      ${precio}
+                      ${Number(precio).toLocaleString("es-AR")}
                     </Typography>
                     <Typography
                       variant="body2"

@@ -47,9 +47,6 @@ export default function Favoritos() {
     document.title = "Favoritos";
   }, []);
 
-
-  console.log(favoritos);
-
   return (
     <>
       <Container maxWidth="lg">
@@ -88,7 +85,7 @@ export default function Favoritos() {
                     variant="h5"
                     component="div"
                     textAlign="center"
-                    sx={{display:{xs:"none",md:"block"}}}
+                    sx={{ display: { xs: "none", md: "block" } }}
                   >
                     No hay ningun producto en favoritos
                   </Typography>
@@ -96,19 +93,29 @@ export default function Favoritos() {
                     variant="h7"
                     component="div"
                     textAlign="center"
-                    sx={{display:{xs:"block",md:"none"}}}
+                    sx={{ display: { xs: "block", md: "none" } }}
                   >
                     No hay ningun producto en favoritos
                   </Typography>
                 </Grid>
-                <Grid item xs={12} sm={12} md={12} sx={{width:"100%", display:"flex", justifyContent:"center"}}>
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  sx={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
                   <Button
                     variant="contained"
                     color="success"
                     onClick={handleClickHome}
-                    sx={{ mb: "40%", bgcolor:"green", color:"white" }}
+                    sx={{ mb: "40%", bgcolor: "green", color: "white" }}
                   >
-                    Agregar productos a favoritos 
+                    Agregar productos a favoritos
                   </Button>
                 </Grid>
               </>

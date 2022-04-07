@@ -99,8 +99,6 @@ export default function CardNR({
         dispatch(
           favoritos({
             nombre: nombre,
-            marca: marca,
-            modelo: modelo,
             imagen: imagen,
             precio: Number(precio),
             precioDescuento: Number(precioDescuento),

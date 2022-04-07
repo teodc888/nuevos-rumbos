@@ -45,6 +45,7 @@ export default function DetalleRepuesto({
   precio,
   descuento,
   precioDescuento,
+  detalle,
 }) {
   // //color
   const colorElegido = useSelector((state) => state.color);
@@ -90,7 +91,7 @@ export default function DetalleRepuesto({
         precioDescuento: Number(precioDescuento),
         descuento: Number(descuento),
         id: id,
-        tipo: "repuesto",
+        detalle: detalle,
       })
     );
     setFav(true);
@@ -121,7 +122,7 @@ export default function DetalleRepuesto({
         id: id,
         precioDescuento: precioDescuento,
         descuento: descuento,
-        cantidad:1
+        cantidad: 1,
       })
     );
     setCart(true);
@@ -139,10 +140,10 @@ export default function DetalleRepuesto({
     window.scrollTo(0, 0);
   }, [nombre]);
 
-
   const handleWhatsapp = () => {
     window.open(
-      "https://wa.me/543512550311?text=Hola,%20me%20gustaria%20obtener%20mas%20informacion%20sobre%20" + nombre
+      "https://wa.me/543512550311?text=Hola,%20me%20gustaria%20obtener%20mas%20informacion%20sobre%20" +
+        nombre
     );
   };
 
@@ -231,7 +232,7 @@ export default function DetalleRepuesto({
                         display: { xs: "none", md: "block" },
                       }}
                     >
-                        {nombre}
+                      {nombre}
                     </Typography>
                     <Typography variant="h5" sx={{ marginTop: "10%" }}>
                       {descuento > 0 ? (
@@ -311,7 +312,11 @@ export default function DetalleRepuesto({
                         variant="contained"
                         onClick={eliminarDeCarrito}
                         color="error"
-                        sx={{ bgcolor: colorElegido, color: "white", width: "100%" }}
+                        sx={{
+                          bgcolor: colorElegido,
+                          color: "white",
+                          width: "100%",
+                        }}
                       >
                         Eliminar de carrito
                         <ShoppingCartIcon sx={{ marginLeft: "2%" }} />

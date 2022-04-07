@@ -44,7 +44,6 @@ export default function Detalle() {
     (producto) => producto.id === id
   );
 
-
   return (
     <div>
       {productoSeleccionado.detalle === "auto" ? (
@@ -58,13 +57,14 @@ export default function Detalle() {
             carroceria={productoSeleccionado.carroceria}
             motor={productoSeleccionado.motor}
             transmision={productoSeleccionado.transmision}
-            precio={Number(productoSeleccionado.precio).toLocaleString("es-AR")}
+            precio={productoSeleccionado.precio}
             combustible={productoSeleccionado.combustible}
             kilometros={productoSeleccionado.kilometros}
             cv={productoSeleccionado.cv}
             puertas={productoSeleccionado.puertas}
             gnv={productoSeleccionado.gnv}
             id={productoSeleccionado.id}
+            detalle={productoSeleccionado.detalle}
           />
         </>
       ) : productoSeleccionado.detalle === "moto" ? (
@@ -76,10 +76,11 @@ export default function Detalle() {
             descripcion={productoSeleccionado.descripcion}
             id={productoSeleccionado.id}
             año={productoSeleccionado.año}
-            precio={Number(productoSeleccionado.precio).toLocaleString("es-AR")}
+            precio={productoSeleccionado.precio}
             cilindrada={productoSeleccionado.cilindrada}
             cv={productoSeleccionado.cv}
             kilometros={productoSeleccionado.kilometros}
+            detalle={productoSeleccionado.detalle}
           />
         </>
       ) : productoSeleccionado.detalle === "repuesto" ? (
@@ -89,11 +90,10 @@ export default function Detalle() {
             imagen={productoSeleccionado.imagen}
             descripcion={productoSeleccionado.descripcion}
             id={productoSeleccionado.id}
-            precio={Number(productoSeleccionado.precio).toLocaleString("es-AR")}
+            precio={productoSeleccionado.precio}
             descuento={productoSeleccionado.descuento}
-            precioDescuento={Number(
-              productoSeleccionado.precioDescuento
-            ).toLocaleString("es-AR")}
+            precioDescuento={productoSeleccionado.precioDescuento}
+            detalle={productoSeleccionado.detalle}
           />
         </>
       ) : (
