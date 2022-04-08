@@ -237,7 +237,8 @@ export default function DetalleRepuesto({
                     <Typography variant="h5" sx={{ marginTop: "10%" }}>
                       {descuento > 0 ? (
                         <>
-                          <del>${Number(precio).toLocaleString("es-AR")}</del> ${Number(precioDescuento).toLocaleString("es-AR")}
+                          <del>${Number(precio).toLocaleString("es-AR")}</del> $
+                          {Number(precioDescuento).toLocaleString("es-AR")}
                         </>
                       ) : (
                         <>${Number(precio).toLocaleString("es-AR")}</>
@@ -274,6 +275,7 @@ export default function DetalleRepuesto({
                           bgcolor: "#2196f3",
                           color: "white",
                           width: "100%",
+                          fontSize: "9px",
                         }}
                       >
                         Agregar a favoritos
@@ -288,6 +290,7 @@ export default function DetalleRepuesto({
                           bgcolor: colorElegido,
                           color: "white",
                           width: "100%",
+                          fontSize: "9px",
                         }}
                       >
                         Eliminar de favoritos
@@ -302,6 +305,7 @@ export default function DetalleRepuesto({
                           bgcolor: "#2196f3",
                           color: "white",
                           width: "100%",
+                          fontSize: "10px",
                         }}
                       >
                         Agregar al carrito
@@ -316,6 +320,7 @@ export default function DetalleRepuesto({
                           bgcolor: colorElegido,
                           color: "white",
                           width: "100%",
+                          fontSize: "10px",
                         }}
                       >
                         Eliminar de carrito
