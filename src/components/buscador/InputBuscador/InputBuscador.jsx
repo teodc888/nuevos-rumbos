@@ -180,12 +180,11 @@ export default function InputBuscador({ opciones }) {
                   <Grid item xs={16}>
                     <List
                       sx={{
-                        width: "260px",
+                        width: "265px",
                         bgcolor: "#d50000",
                         position: "relative",
                         overflow: "auto",
                         "& ul": { padding: 0 },
-                        marginLeft: "8%",
                       }}
                       subheader={<li />}
                     >
