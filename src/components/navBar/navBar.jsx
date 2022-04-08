@@ -247,7 +247,7 @@ export default function NavBar({ setMode }) {
             noWrap
             component="div"
             sx={{
-              display: { xs: "none", sm: "block", md: "block", lg: "block" },
+              display: { xs: "none", sm: "none", md: "block", lg: "block" },
               cursor: "pointer",
             }}
             onClick={navigateToLanding}

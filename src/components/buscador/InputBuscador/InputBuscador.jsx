@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from "react";
 
 //Mui
-import { CardActions, TextField, Box, Grid, IconButton } from "@mui/material";
+import {
+  CardActions,
+  TextField,
+  Box,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  ListSubheader,
+} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
 
@@ -17,9 +27,10 @@ import {
 //Redux
 import { useSelector } from "react-redux";
 
-import CardBuscador from "../cardBuscador/cardBuscador";
+import { useNavigate } from "react-router";
 
 export default function InputBuscador({ opciones }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const buscar = useSelector((state) => state.buscados);
@@ -43,9 +54,15 @@ export default function InputBuscador({ opciones }) {
     }
   }, [input, dispatch, opciones]);
 
-  const handleClick = () => {
-    dispatch(buscarTotal(input));
+  const handleNavigate = (id) => {
+    navigate(`/detalle/${id}`);
     setInput("");
+    dispatch(buscarTotal(""));
+  };
+
+  const handleClickLimpiar = () => {
+    setInput("");
+    dispatch(buscarTotal(""));
   };
 
   return (
@@ -55,21 +72,23 @@ export default function InputBuscador({ opciones }) {
           <SearchIcon />
 
           <TextField
-            type="text"
             label="Buscar..."
             name="text"
             value={input}
+            autoComplete="off"
+            type="text"
             onChange={(e) => handleInputChange(e)}
             sx={{
               width: "100%",
               color: "white",
             }}
           />
-          {opciones !== "auto" &&
-          opciones !== "moto" &&
-          opciones !== "repuesto" &&
-          buscar.length > 0 ? (
-            <IconButton onClick={() => dispatch(buscarTotal(""))}>
+          {(opciones !== "auto" &&
+            opciones !== "moto" &&
+            opciones !== "repuesto" &&
+            buscar.length > 0) ||
+          input !== "" ? (
+            <IconButton onClick={() => handleClickLimpiar()}>
               <ClearIcon sx={{ color: "white" }} />
             </IconButton>
           ) : null}
@@ -89,24 +108,117 @@ export default function InputBuscador({ opciones }) {
               }}
               textAlign="center"
             >
-              <Grid container spacing={1} columns={16}>
-                {buscar.length === 0
-                  ? null
-                  : buscar.map((buscar) => (
-                      <Grid item xs={16} key={buscar.id}>
-                        <CardBuscador
-                          nombre={
-                            buscar.modelo
-                              ? buscar.marca + " " + buscar.modelo
-                              : buscar.nombre
-                          }
-                          precio={buscar.precio}
-                          imagen={buscar.imagen[0]}
-                          id={buscar.id}
-                          onClick={() => handleClick()}
-                        />
-                      </Grid>
-                    ))}
+              <Grid
+                container
+                spacing={1}
+                columns={16}
+                sx={{
+                  display: {
+                    xs: "none",
+                    sm: "block",
+                    md: "block",
+                    lg: "block",
+                  },
+                }}
+              >
+                {buscar.length !== 0 && (
+                  <Grid item xs={16}>
+                    <List
+                      sx={{
+                        width: "300px",
+                        bgcolor: "#d50000",
+                        position: "relative",
+                        overflow: "auto",
+                        "& ul": { padding: 0 },
+                      }}
+                      subheader={<li />}
+                    >
+                      <li>
+                        <ul>
+                          <ListSubheader
+                            sx={{ bgcolor: "#b71c1c", color: "white" }}
+                          >
+                            Buscador
+                          </ListSubheader>
+                          {buscar.length === 0
+                            ? null
+                            : buscar.map((buscar) => (
+                                <ListItem
+                                  key={buscar.id}
+                                  onClick={() => handleNavigate(buscar.id)}
+                                  sx={{ cursor: "pointer" }}
+                                >
+                                  <ListItemText
+                                    sx={{ color: "white" }}
+                                    primary={
+                                      buscar.modelo
+                                        ? buscar.marca + " " + buscar.modelo
+                                        : buscar.nombre
+                                    }
+                                  />
+                                </ListItem>
+                              ))}
+                        </ul>
+                      </li>
+                    </List>
+                  </Grid>
+                )}
+              </Grid>
+              <Grid
+                container
+                spacing={1}
+                columns={16}
+                sx={{
+                  display: {
+                    xs: "block",
+                    sm: "none",
+                    md: "none",
+                    lg: "none",
+                  },
+                }}
+              >
+                {buscar.length !== 0 && (
+                  <Grid item xs={16}>
+                    <List
+                      sx={{
+                        width: "220px",
+                        bgcolor: "#d50000",
+                        position: "relative",
+                        overflow: "auto",
+                        "& ul": { padding: 0 },
+                      }}
+                      subheader={<li />}
+                    >
+                      <li>
+                        <ul>
+                          <ListSubheader
+                            sx={{ bgcolor: "#b71c1c", color: "white" }}
+                          >
+                            Buscador
+                          </ListSubheader>
+                          {buscar.length === 0
+                            ? null
+                            : buscar.map((buscar) => (
+                                <ListItem
+                                  key={buscar.id}
+                                  onClick={() => handleNavigate(buscar.id)}
+                                  sx={{ cursor: "pointer" }}
+                                >
+                                  <ListItemText
+                                    sx={{ color: "white" }}
+                                    primary={
+                                      buscar.modelo
+                                        ? buscar.marca + " " + buscar.modelo
+                                        : buscar.nombre
+                                    }
+                                  />
+                                </ListItem>
+                              ))}
+                        </ul>
+                      </li>
+                    </List>
+                  </Grid>
+                )}
               </Grid>
             </Box>
           </>
