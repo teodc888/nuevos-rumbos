@@ -161,7 +161,7 @@ export default function App() {
             </Routes>
           </>
         ) : (
-          <>
+          <div className="App">
             <NavBar setMode={setMode} />
             <Routes>
               <Route path="/" element={<Landing />} />
@@ -183,6 +183,7 @@ export default function App() {
                 position: "fixed",
                 bottom: "5%",
                 right: "5%",
+                zIndex: "3",
               }}
             >
               {open === true ? (
@@ -227,6 +228,7 @@ export default function App() {
                     position: "fixed",
                     bottom: "5%",
                     right: "92%",
+                    zIndex: "3",
                   }}
                 >
                   <Fab
@@ -248,6 +250,7 @@ export default function App() {
                     position: "fixed",
                     bottom: "5%",
                     left: "42.5%",
+                    zIndex: "3",
                   }}
                 >
                   <Fab
@@ -268,6 +271,7 @@ export default function App() {
                 position: "fixed",
                 bottom: "5%",
                 left: "5%",
+                zIndex: "3",
               }}
             >
               <Fab
@@ -296,7 +300,7 @@ export default function App() {
                 </>
               ) : null}
             </Box>
-          </>
+          </div>
         )}
         <ToastContainer />
       </ThemeProvider>

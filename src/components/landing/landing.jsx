@@ -56,7 +56,7 @@ export default function Landing() {
         spacing={2}
         width="100%"
       >
-        <Card sx={{ maxWidth: "100%", mt: "2%", }}>
+        <Card sx={{ maxWidth: "100%" }}>
           <CardMedia
             sx={{ display:{ xs:"none", md:"block"} }}
             component="img"

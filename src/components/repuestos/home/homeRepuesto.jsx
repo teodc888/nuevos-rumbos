@@ -304,6 +304,7 @@ export default function HomeRepuestos() {
                   position: "fixed",
                   bottom: "5%",
                   right: "5%",
+                  zIndex: "3",
                 }}
               >
                 <Fab

@@ -287,7 +287,7 @@ export default function HomeMoto() {
                   },
                 }}
               >
-                <Typography variant="h1" component="div" textAlign="center">
+                <Typography variant="h2" component="div" textAlign="center">
                   Motos
                 </Typography>
                 <Box sx={{ width: "100%" }}>
@@ -350,6 +350,7 @@ export default function HomeMoto() {
                   position: "fixed",
                   bottom: "5%",
                   right: "5%",
+                  zIndex: "3",
                 }}
               >
                 <Fab

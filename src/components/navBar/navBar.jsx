@@ -228,7 +228,7 @@ export default function NavBar({ setMode }) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ bgcolor: colorElegido }}>
+      <AppBar position="fixed" sx={{ bgcolor: colorElegido }}>
         <Toolbar>
           {/* Icono de Slider lateral */}
           <IconButton
