@@ -104,7 +104,6 @@ export default function InputBuscador({ opciones }) {
                 display: "flex",
                 justifyContent: "center",
                 zIndex: "3",
-                maxWidth: 280,
               }}
               textAlign="center"
             >
@@ -181,7 +180,7 @@ export default function InputBuscador({ opciones }) {
                   <Grid item xs={16}>
                     <List
                       sx={{
-                        width: "200px",
+                        width: "260px",
                         bgcolor: "#d50000",
                         position: "relative",
                         overflow: "auto",

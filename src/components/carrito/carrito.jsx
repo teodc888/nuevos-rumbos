@@ -45,7 +45,14 @@ export default function Carrito() {
   };
 
   const total = carrito.reduce((total, item) => {
-    return total + Number(item.descuento === "0" ? item.precio * item.cantidad :item.precioDescuento * item.cantidad);
+    return (
+      total +
+      Number(
+        item.descuento === "0"
+          ? item.precio * item.cantidad
+          : item.precioDescuento * item.cantidad
+      )
+    );
   }, 0);
 
   const total1 = carrito.reduce((total1, item) => {
@@ -137,6 +144,7 @@ export default function Carrito() {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     document.title = "Carrito";
   }, []);
 
