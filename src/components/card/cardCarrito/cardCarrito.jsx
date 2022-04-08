@@ -70,11 +70,11 @@ export default function CardCarrito({
               <Typography variant="h5" color="text.secondary" component="div">
                 {descuento > 0 ? (
                   <>
-                    <del>$ {precioo}</del> ${" "}
+                    <del>$ {Number(precioo).toLocaleString("es-AR")}</del> ${" "}
                     {Number(precioDescuentoo).toLocaleString("es-AR")}
                   </>
                 ) : (
-                  `$ ${precioo}`
+                  `$ ${Number(precioo).toLocaleString("es-AR")}`
                 )}
               </Typography>
             </CardContent>
