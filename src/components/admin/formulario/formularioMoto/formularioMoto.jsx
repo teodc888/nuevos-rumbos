@@ -221,7 +221,7 @@ export default function FormularioMoto() {
               style={{ width: "100%", maxHeight: 150 }}
             />
             <InputLabel sx={{ marginTop: "2%" }}>Imagen</InputLabel>
-            <DropZone setInput={setInput} input={input} />
+            <DropZone setInput={setInput} input={input} tipo={false}/>
           </Grid>
         </Grid>
         <BtnGuardar setInput={setInput} input={input} />

@@ -6,7 +6,7 @@ import { Grid } from '@mui/material';
 import { SingleFileUploadWithProgress } from './cargarArchivoIndividual';
 import { UploadError } from './upLoadError';
 
-const DropZone = ({ setInput, input }) => {
+const DropZone = ({ setInput, input, tipo }) => {
 	// states
 	const [files, setFiles] = useState([]);
 
@@ -41,7 +41,11 @@ const DropZone = ({ setInput, input }) => {
 
 	// UseEffect pasar el arreglo a input
 	useEffect(() => {
-		setInput({ ...input, imagen: imageURL });
+		if (tipo) {
+			setInput( imageURL );
+		} else if(!tipo) {
+			setInput({ ...input, imagen: imageURL });
+		}
 	}, [imageURL]);
 
 	return (

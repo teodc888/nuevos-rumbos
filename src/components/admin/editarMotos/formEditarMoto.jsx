@@ -16,6 +16,7 @@ import {
 import { makeStyles } from '@material-ui/styles';
 // components
 import BtnGuardar from './components/btn-guardar-motos';
+import DropZone from '../formulario/dropZone/dropZone';
 
 const FormEditarMoto = () => {
 	const navigate = useNavigate();
@@ -115,28 +116,13 @@ const FormEditarMoto = () => {
 				return cambiarPrecio(e.target.value.replace(/[^0-9.]/g, ''));
 			case 'descripcion':
 				return cambiarDescripcion(e.target.value);
+			case 'imagen':
+				return cambiarImagen(e.target.files);
 			default:
 				break;
 		}
 	};
-
-	// ejecutamos el cambio en el input de la imagen
-	const handleFiles = async (e) => {
-		const files = e.target.files;
-		const data = new FormData();
-		data.append('file', files[0]);
-		data.append('upload_preset', 'Product_photo ');
-		const res = await fetch(
-			'https://api.cloudinary.com/v1_1/djtkn6o7r/image/upload',
-			{
-				method: 'POST',
-				body: data,
-			}
-		);
-		const file = await res.json();
-		cambiarImagen(file.secure_url);
-	};
-
+	
 	// estilos
 	const containerStyle = {
 		padding: '5%',
@@ -273,7 +259,7 @@ const FormEditarMoto = () => {
 						style={{ width: '100%', maxHeight: 150 }}
 					/>
 					<InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
-					<Input type="file" name="imagen" onChange={handleFiles} />
+					<DropZone name="imagen" onChange={handleChange} setInput={cambiarImagen} input={imagen} tipo={true}/>
 				</Grid>
 			</Grid>
 			<BtnGuardar />
