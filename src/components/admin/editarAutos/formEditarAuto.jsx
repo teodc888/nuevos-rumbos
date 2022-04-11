@@ -59,8 +59,6 @@ const FormEditarAuto = () => {
 	const [descripcion, cambiarDescripcion] = useState('');
 	const [imagen, cambiarImagen] = useState('');
 
-	console.log(imagen);
-	// console.log(imagen);
 
 	// funciones
 	const handleSubmit = (e) => {
@@ -384,7 +382,6 @@ const FormEditarAuto = () => {
 						style={{ width: '100%', maxHeight: 150 }}
 					/>
 					<InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
-					{/* <Input type="file" name="imagen" onChange={handleFiles} /> */}
 					<DropZone name="imagen" onChange={handleChange} setInput={cambiarImagen} input={imagen} tipo={true}/>
 				</Grid>
 			</Grid>
