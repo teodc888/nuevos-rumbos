@@ -57,9 +57,10 @@ const FormEditarAuto = () => {
 	const [transmision, cambiarTransmision] = useState('');
 	const [precio, cambiarPrecio] = useState('');
 	const [descripcion, cambiarDescripcion] = useState('');
-	const [imagen, cambiarImagen] = useState(['']);
+	const [imagen, cambiarImagen] = useState([]);
 
 	console.log(imagen);
+	// console.log(imagen);
 
 	// funciones
 	const handleSubmit = (e) => {
@@ -148,7 +149,7 @@ const FormEditarAuto = () => {
 			case 'descripcion':
 				return cambiarDescripcion(e.target.value);
 			case 'imagen':
-				return cambiarImagen(e.target.value);
+				return cambiarImagen(e.target.files);
 			default:
 				break;
 		}
@@ -384,7 +385,7 @@ const FormEditarAuto = () => {
 					/>
 					<InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
 					{/* <Input type="file" name="imagen" onChange={handleFiles} /> */}
-					<DropZone name="imagen" onChange={handleChange} setInput={cambiarImagen} input={imagen} />
+					<DropZone name="imagen" onChange={handleChange} setInput={cambiarImagen} input={imagen} tipo={true}/>
 				</Grid>
 			</Grid>
 			<BtnGuardar />

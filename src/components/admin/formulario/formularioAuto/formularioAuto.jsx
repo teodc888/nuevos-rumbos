@@ -418,7 +418,7 @@ export default function FormularioAuto() {
             <DropZone setInput={setInput} input={input} />
           </Grid>
         </Grid>
-        <BtnGuardar setInput={setInput} input={input}  />
+        <BtnGuardar setInput={setInput} input={input} tipo={false} />
       </form>
     </>
   );
