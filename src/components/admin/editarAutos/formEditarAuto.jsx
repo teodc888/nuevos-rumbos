@@ -57,7 +57,7 @@ const FormEditarAuto = () => {
 	const [transmision, cambiarTransmision] = useState('');
 	const [precio, cambiarPrecio] = useState('');
 	const [descripcion, cambiarDescripcion] = useState('');
-	const [imagen, cambiarImagen] = useState([]);
+	const [imagen, cambiarImagen] = useState('');
 
 	console.log(imagen);
 	// console.log(imagen);

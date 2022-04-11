@@ -42,7 +42,7 @@ const DropZone = ({ setInput, input, tipo }) => {
 	// UseEffect pasar el arreglo a input
 	useEffect(() => {
 		if (tipo) {
-			setInput({ imagen: imageURL });
+			setInput( imageURL );
 		} else if(!tipo) {
 			setInput({ ...input, imagen: imageURL });
 		}
