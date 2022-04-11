@@ -70,8 +70,6 @@ export default function Carrito() {
         : false
       : null;
 
-  console.log(cantidadTotal);
-
   const botonWhatsapp = () => {
     window.open(
       `https://wa.me/543512550311?text=${

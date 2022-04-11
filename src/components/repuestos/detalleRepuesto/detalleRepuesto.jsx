@@ -111,7 +111,6 @@ export default function DetalleRepuesto({
 
   const [cart, setCart] = useState(aux1?.includes(id) ? true : false);
 
-  console.log(cart);
   //agregar o eliminar favoritos
   const agregarCarritos = () => {
     dispatch(

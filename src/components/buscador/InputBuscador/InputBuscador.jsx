@@ -82,6 +82,16 @@ export default function InputBuscador({ opciones }) {
               width: "100%",
               color: "white",
             }}
+            InputProps={{
+              style: {
+                color: "white",
+              },
+            }}
+            InputLabelProps={{
+              style: {
+                color: "white",
+              },
+            }}
           />
           {(opciones !== "auto" &&
             opciones !== "moto" &&
