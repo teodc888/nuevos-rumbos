@@ -104,10 +104,6 @@ export default function App() {
     }
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   const handleSubir = () => {
     window.scrollTo({
       top: 0,
@@ -205,7 +201,7 @@ export default function App() {
                   <Fab
                     aria-label="add"
                     sx={{ bgcolor: "green", mr: "6px" }}
-                    onClick={handleClose}
+                    onClick={handleWhatsapp}
                   >
                     <FontAwesomeIcon icon={faWhatsapp} />
                   </Fab>
