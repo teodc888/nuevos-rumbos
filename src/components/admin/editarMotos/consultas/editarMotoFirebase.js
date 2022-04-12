@@ -10,6 +10,7 @@ const editarMoto = async ({
 	km,
 	year,
 	precio,
+	destacado,
 	descripcion,
 	imagen
 }) => {
@@ -23,6 +24,7 @@ const editarMoto = async ({
 		kilometros: km,
 		año: year,
 		precio: precio,
+		destacado: destacado,
 		descripcion: descripcion,
 		imagen: imagen,
 	});

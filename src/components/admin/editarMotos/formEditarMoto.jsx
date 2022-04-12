@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 // consulta firebase
 import editarMoto from "./consultas/editarMotoFirebase";
 // Mui
-import { Grid, TextField, TextareaAutosize, InputLabel } from "@mui/material";
+import { Grid, TextField, TextareaAutosize, InputLabel, MenuItem } from "@mui/material";
 import { makeStyles } from "@material-ui/styles";
 // components
 import BtnGuardar from "./components/btn-guardar-motos";
@@ -29,6 +29,7 @@ const FormEditarMoto = () => {
       cambiarKm(moto.kilometros);
       cambiarYear(moto.año);
       cambiarPrecio(moto.precio);
+      cambiarDestacado(moto.destacado);
       cambiarDescripcion(moto.descripcion);
       cambiarImagen(moto.imagen);
     }
@@ -41,6 +42,7 @@ const FormEditarMoto = () => {
   const [km, cambiarKm] = useState("");
   const [year, cambiarYear] = useState("");
   const [precio, cambiarPrecio] = useState("");
+  const [destacado, cambiarDestacado] = useState("");
   const [descripcion, cambiarDescripcion] = useState("");
   const [imagen, cambiarImagen] = useState("");
 
@@ -56,6 +58,7 @@ const FormEditarMoto = () => {
       km !== "" &&
       year !== "" &&
       precio !== "" &&
+      destacado !== "" &&
       descripcion !== ""
     ) {
       editarMoto({
@@ -67,6 +70,7 @@ const FormEditarMoto = () => {
         km,
         year,
         precio,
+        destacado,
         descripcion,
         imagen,
       });
@@ -108,6 +112,8 @@ const FormEditarMoto = () => {
         return cambiarYear(e.target.value.replace(/[^0-9.]/g, ""));
       case "precio":
         return cambiarPrecio(e.target.value.replace(/[^0-9.]/g, ""));
+      case 'destacado':
+        return cambiarDestacado(e.target.value);
       case "descripcion":
         return cambiarDescripcion(e.target.value);
       case "imagen":
@@ -196,6 +202,24 @@ const FormEditarMoto = () => {
             onChange={handleChange}
             sx={{ marginTop: "2%" }}
           />
+          <TextField
+              select
+              label="destacado"
+              name="destacado"
+              value={destacado}
+              onKeyPress={preventEnter}
+              onChange={handleChange}
+              required
+              fullWidth
+              sx={{ marginTop: "2%" }}
+            >
+              <MenuItem name="destacado" value={"si"}>
+                Si
+              </MenuItem>
+              <MenuItem name="destacado" value={"no"}>
+                No
+              </MenuItem>
+            </TextField>
         </Grid>
         <Grid
           item
