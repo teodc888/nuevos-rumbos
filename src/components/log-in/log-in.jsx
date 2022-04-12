@@ -125,7 +125,7 @@ const LogIn = () => {
   const svgStyle = useStyle();
 
   return (
-    <Grid>
+    <Grid style={{marginTop: '5%'}}>
       <Paper elevation={10} style={paperStyle}>
         <Grid align="center">
           <InconLogIn className={svgStyle.root} />
