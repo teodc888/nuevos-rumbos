@@ -63,7 +63,9 @@ const EditarRepuestos = () => {
 				<TableHead>
 					<TableRow>
 						<StyledTableCell>IMAGEN</StyledTableCell>
-						<StyledTableCell align="center">NOMBRE DEL REPUESTO</StyledTableCell>
+						<StyledTableCell align="center">
+							NOMBRE DEL REPUESTO
+						</StyledTableCell>
 						<StyledTableCell align="center">EDITAR</StyledTableCell>
 						<StyledTableCell align="center">ELIMINAR</StyledTableCell>
 					</TableRow>
@@ -80,10 +82,13 @@ const EditarRepuestos = () => {
 								/>
 							</StyledTableCell>
 							<StyledTableCell align="center">
-								<h6>{repuesto.marca + ' - ' + repuesto.modelo}</h6>
+								<h6>{repuesto.nombre}</h6>
 							</StyledTableCell>
 							<StyledTableCell align="center">
-								<Button variant="outlined" onClick={()=>editarRepuesto(repuesto.id)}>
+								<Button
+									variant="outlined"
+									onClick={() => editarRepuesto(repuesto.id)}
+								>
 									EDITAR
 								</Button>
 							</StyledTableCell>
