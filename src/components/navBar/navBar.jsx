@@ -31,6 +31,10 @@ import BuildIcon from "@mui/icons-material/Build";
 import HomeIcon from "@mui/icons-material/Home";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
 //Router
 import { useNavigate } from "react-router";
@@ -70,6 +74,8 @@ const menuItems = [
   { listIcon: <DirectionsCarIcon />, listText: "Autos", listPath: "/autos" },
   { listIcon: <TwoWheelerIcon />, listText: "Motos", listPath: "/motos" },
   { listIcon: <BuildIcon />, listText: "Repuestos", listPath: "/repuestos" },
+  { listIcon: <FavoriteIcon />, listText: "Favoritos", listPath: "/favoritos" },
+  { listIcon: <ShoppingCartIcon />, listText: "Carrito", listPath: "/carrito" },
 ];
 
 export default function NavBar({ setMode }) {
@@ -106,6 +112,20 @@ export default function NavBar({ setMode }) {
   //slider
   const [open, setOpen] = useState(false);
 
+  const handleInstagram = () => {
+    window.open("https://www.instagram.com/");
+    setOpen(false);
+  };
+
+  const handleWhatsapp = () => {
+    window.open("https://wa.me/543512550311");
+    setOpen(false);
+  };
+  const handleFacebook = () => {
+    window.open("https://www.facebook.com/");
+    setOpen(false);
+  };
+
   const classes = useStyles();
 
   const sideList = () => (
@@ -116,6 +136,9 @@ export default function NavBar({ setMode }) {
       <Avatar className={classes.avatar} src={Portada1} alt="Nuevo Rumbos" />
       <Divider />
       <List>
+        <ListItem>
+          <ListItemText primary={"Nuevo Rumbos"} />
+        </ListItem>
         {menuItems.map((item, i) => (
           <ListItem
             button
@@ -125,9 +148,23 @@ export default function NavBar({ setMode }) {
             component={Link}
             to={item.listPath}
           >
-            <ListItemIcon className={classes.listItem}>
-              {item.listIcon}
-            </ListItemIcon>
+            {item.listText === "Favoritos" ? (
+              <ListItemIcon className={classes.listItem}>
+                <Badge badgeContent={fav.length} color="primary">
+                  {item.listIcon}
+                </Badge>
+              </ListItemIcon>
+            ) : item.listText === "Carrito" ? (
+              <ListItemIcon className={classes.listItem}>
+                <Badge badgeContent={carrito.length} color="success">
+                  {item.listIcon}
+                </Badge>
+              </ListItemIcon>
+            ) : (
+              <ListItemIcon className={classes.listItem}>
+                {item.listIcon}
+              </ListItemIcon>
+            )}
             <ListItemText
               primary={item.listText}
               sx={{ color: handleDarkModeLetras() }}
@@ -135,6 +172,71 @@ export default function NavBar({ setMode }) {
           </ListItem>
         ))}
       </List>
+      <Divider />
+      <List>
+        <ListItem>
+          <ListItemText primary="Redes Sociales" />
+        </ListItem>
+        <ListItem button onClick={() => handleWhatsapp()}>
+          <ListItemIcon>
+            <FontAwesomeIcon
+              icon={faWhatsapp}
+              style={{
+                color: "white",
+                fontSize: "30px",
+                width: "30px",
+                height: "30px",
+                borderRadius: "40%",
+                backgroundColor: "#25d366",
+              }}
+            />
+          </ListItemIcon>
+          <ListItemText
+            primary="Whatsapp"
+            sx={{ color: handleDarkModeLetras() }}
+          />
+        </ListItem>
+        <ListItem button onClick={() => handleInstagram()}>
+          <ListItemIcon>
+            <FontAwesomeIcon
+              icon={faInstagram}
+              style={{
+                color: "white",
+                fontSize: "30px",
+                width: "30px",
+                height: "30px",
+                borderRadius: "40%",
+                background:
+                  "linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d)",
+              }}
+            />
+          </ListItemIcon>
+          <ListItemText
+            primary="Instagram"
+            sx={{ color: handleDarkModeLetras() }}
+          />
+        </ListItem>
+        <ListItem button onClick={() => handleFacebook()}>
+          <ListItemIcon>
+            <FontAwesomeIcon
+              icon={faFacebook}
+              style={{
+                color: "white",
+                fontSize: "30px",
+                width: "30px",
+                height: "30px",
+                borderRadius: "40%",
+                background: "#3b5998",
+              }}
+            />
+          </ListItemIcon>
+          <ListItemText
+            primary="Facebook"
+            sx={{ color: handleDarkModeLetras() }}
+          />
+        </ListItem>
+      </List>
+      <Divider />
     </Box>
   );
 
@@ -279,7 +381,11 @@ export default function NavBar({ setMode }) {
           <Box sx={{ flexGrow: 1 }} />
 
           {/* normal */}
-          <Box sx={{ display: { xs: "none", md: "block", sm: "none", lg:"block" } }}>
+          <Box
+            sx={{
+              display: { xs: "none", md: "block", sm: "none", lg: "block" },
+            }}
+          >
             <Checkbox
               icon={<Brightness4Icon sx={{ color: "white" }} />}
               checkedIcon={<Brightness4OutlinedIcon sx={{ color: "white" }} />}
@@ -313,7 +419,11 @@ export default function NavBar({ setMode }) {
           </Box>
 
           {/* responsivo */}
-          <Box sx={{ display: { xs: "block", md: "none", sm: "block", lg:"none" } }}>
+          <Box
+            sx={{
+              display: { xs: "block", md: "none", sm: "block", lg: "none" },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="show more"

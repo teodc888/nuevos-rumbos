@@ -193,22 +193,39 @@ export default function App() {
                 <>
                   <Fab
                     aria-label="add"
-                    sx={{ bgcolor: "pink", mr: "6px" }}
+                    sx={{
+                      background:
+                        "linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d)",
+                      mr: "6px",
+                    }}
                     onClick={handleInstagram}
                   >
-                    <FontAwesomeIcon icon={faInstagram} />
+                    <FontAwesomeIcon
+                      icon={faInstagram}
+                      style={{ fontSize: "42px", color: "white" }}
+                    />
                   </Fab>
                   <Fab
                     aria-label="add"
-                    sx={{ bgcolor: "green", mr: "6px" }}
+                    sx={{
+                      background:
+                        "linear-gradient(45deg, #25d366, #25d366, #25d366, #25d366, #25d366, #25d366)",
+                      mr: "6px",
+                    }}
                     onClick={handleWhatsapp}
                   >
-                    <FontAwesomeIcon icon={faWhatsapp} />
+                    <FontAwesomeIcon
+                      icon={faWhatsapp}
+                      style={{ fontSize: "42px", color: "white" }}
+                    />
                   </Fab>
                 </>
               ) : null}
               <Fab
-                sx={{ bgcolor: "#2196f3" }}
+                sx={{
+                  background:
+                    "linear-gradient(45deg, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3)",
+                }}
                 aria-label="add"
                 onClick={handleClickOpen}
               >
@@ -278,7 +295,11 @@ export default function App() {
               }}
             >
               <Fab
-                sx={{ bgcolor: "#2196f3", mr: "6px" }}
+                sx={{
+                  background:
+                    "linear-gradient(45deg, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3)",
+                  mr: "6px",
+                }}
                 aria-label="add"
                 onClick={handleClickOpen}
               >
@@ -288,17 +309,31 @@ export default function App() {
                 <>
                   <Fab
                     aria-label="add"
-                    sx={{ bgcolor: "pink", mr: "6px" }}
+                    sx={{
+                      background:
+                        "linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d)",
+                      mr: "6px",
+                    }}
                     onClick={handleInstagram}
                   >
-                    <FontAwesomeIcon icon={faInstagram} />
+                    <FontAwesomeIcon
+                      icon={faInstagram}
+                      style={{ fontSize: "42px", color: "white" }}
+                    />
                   </Fab>
                   <Fab
                     aria-label="add"
-                    sx={{ bgcolor: "green", mr: "6px" }}
                     onClick={handleWhatsapp}
+                    sx={{
+                      background:
+                        "linear-gradient(45deg, #25d366, #25d366, #25d366, #25d366, #25d366, #25d366)",
+                      mr: "6px",
+                    }}
                   >
-                    <FontAwesomeIcon icon={faWhatsapp} />
+                    <FontAwesomeIcon
+                      icon={faWhatsapp}
+                      style={{ fontSize: "42px", color: "white" }}
+                    />
                   </Fab>
                 </>
               ) : null}
