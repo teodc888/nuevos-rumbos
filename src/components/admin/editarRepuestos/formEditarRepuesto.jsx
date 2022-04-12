@@ -11,6 +11,7 @@ import {
 	TextField,
 	TextareaAutosize,
 	InputLabel,
+	MenuItem,
 } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
 // components
@@ -27,17 +28,17 @@ const FormEditarRepuesto = () => {
 	// states
 	useEffect(() => {
 		if (repuesto) {
-			cambiarMarca(repuesto.marca);
-			cambiarModelo(repuesto.modelo);
+			cambiarNombre(repuesto.nombre);
 			cambiarPrecio(repuesto.precio);
+			cambiarDestacado(repuesto.destacado);
 			cambiarDescripcion(repuesto.descripcion);
 			cambiarImagen(repuesto.imagen);
 		}
 	}, [repuesto]);
 
-	const [marca, cambiarMarca] = useState('');
-	const [modelo, cambiarModelo] = useState('');
+	const [nombre, cambiarNombre] = useState('');
 	const [precio, cambiarPrecio] = useState('');
+	const [destacado, cambiarDestacado] = useState('');
 	const [descripcion, cambiarDescripcion] = useState('');
 	const [imagen, cambiarImagen] = useState('');
 
@@ -45,11 +46,10 @@ const FormEditarRepuesto = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		// comprobamos que los campos no esten vacios
-		if (marca !== '' && modelo !== '' && precio !== '' && descripcion !== '') {
+		if (nombre !== '' && precio !== '' && descripcion !== '') {
 			editarRepuesto({
 				id,
-				marca,
-				modelo,
+				nombre,
 				precio,
 				descripcion,
 				imagen,
@@ -78,12 +78,12 @@ const FormEditarRepuesto = () => {
 	// permitioms modificar el input
 	const handleChange = (e) => {
 		switch (e.target.name) {
-			case 'marca':
-				return cambiarMarca(e.target.value);
-			case 'modelo':
-				return cambiarModelo(e.target.value);
+			case 'nombre':
+				return cambiarNombre(e.target.value);
 			case 'precio':
 				return cambiarPrecio(e.target.value.replace(/[^0-9.]/g, ''));
+			case 'destacado':
+				return cambiarDestacado(e.target.value);
 			case 'descripcion':
 				return cambiarDescripcion(e.target.value);
 			case 'imagen':
@@ -92,7 +92,6 @@ const FormEditarRepuesto = () => {
 				break;
 		}
 	};
-
 
 	// estilos
 	const containerStyle = {
@@ -130,10 +129,10 @@ const FormEditarRepuesto = () => {
 					<TextField
 						variant="outlined"
 						fullWidth
-						label="Marca"
+						label="Nombre"
 						type="text"
-						value={marca}
-						name="marca"
+						value={nombre}
+						name="nombre"
 						onKeyPress={preventEnter}
 						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
@@ -161,17 +160,23 @@ const FormEditarRepuesto = () => {
 					style={{ padding: '1%' }}
 				>
 					<TextField
-						variant="outlined"
-						fullWidth
-						label="Modelo"
-						type="text"
-						value={modelo}
-						name="modelo"
-						onChange={handleChange}
+						select
+						label="Destacado"
+						name="destacado"
+						value={destacado}
 						onKeyPress={preventEnter}
+						onChange={handleChange}
+						required
+						fullWidth
 						sx={{ marginTop: '2%' }}
-					/>
-
+					>
+						<MenuItem name="destacado" value={'si'}>
+							Si
+						</MenuItem>
+						<MenuItem name="destacado" value={'no'}>
+							No
+						</MenuItem>
+					</TextField>
 					<InputLabel id="demo-simple-select-label" sx={{ marginTop: '2%' }}>
 						Descripcion
 					</InputLabel>
@@ -186,7 +191,13 @@ const FormEditarRepuesto = () => {
 						style={{ width: '100%', maxHeight: 150 }}
 					/>
 					<InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
-					<DropZone name="imagen" onChange={handleChange} setInput={cambiarImagen} input={imagen} tipo={true}/>
+					<DropZone
+						name="imagen"
+						onChange={handleChange}
+						setInput={cambiarImagen}
+						input={imagen}
+						tipo={true}
+					/>
 				</Grid>
 			</Grid>
 			<BtnGuardar />

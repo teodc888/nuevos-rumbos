@@ -86,10 +86,10 @@ const LogIn = () => {
       // creamos switch para cada tipo de error
       switch (error.code) {
         case "auth/wrong-password":
-          mensaje = "Contraseña incorrecta.";
+          mensaje = "Contraseña o correo incorrectos.";
           break;
         case "auth/user-not-found":
-          mensaje = "El correo que ingreso no esta registrado.";
+          mensaje = "Contraseña o correo incorrectos.";
           break;
         default:
           mensaje = "Hubo un error al intentar ingresar a la cuenta.";
@@ -125,7 +125,7 @@ const LogIn = () => {
   const svgStyle = useStyle();
 
   return (
-    <Grid>
+    <Grid style={{marginTop: '5%'}}>
       <Paper elevation={10} style={paperStyle}>
         <Grid align="center">
           <InconLogIn className={svgStyle.root} />
