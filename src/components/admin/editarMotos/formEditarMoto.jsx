@@ -204,7 +204,7 @@ const FormEditarMoto = () => {
           />
           <TextField
               select
-              label="destacado"
+              label="Destacado"
               name="destacado"
               value={destacado}
               onKeyPress={preventEnter}

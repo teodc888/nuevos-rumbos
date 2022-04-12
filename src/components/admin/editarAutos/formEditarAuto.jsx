@@ -38,6 +38,7 @@ const FormEditarAuto = () => {
 			cambiarCombustible(auto.combustible);
 			cambiarGnv(auto.gnv);
 			cambiarPrecio(auto.precio);
+			cambiarDestacado(auto.destacado);
 			cambiarTransmision(auto.transmision);
 			cambiarDescripcion(auto.descripcion);
 			cambiarImagen(auto.imagen);
@@ -56,9 +57,9 @@ const FormEditarAuto = () => {
 	const [gnv, cambiarGnv] = useState('');
 	const [transmision, cambiarTransmision] = useState('');
 	const [precio, cambiarPrecio] = useState('');
+	const [destacado, cambiarDestacado] = useState('');
 	const [descripcion, cambiarDescripcion] = useState('');
 	const [imagen, cambiarImagen] = useState('');
-
 
 	// funciones
 	const handleSubmit = (e) => {
@@ -77,6 +78,7 @@ const FormEditarAuto = () => {
 			gnv !== '' &&
 			transmision !== '' &&
 			precio !== '' &&
+			destacado !== '' &&
 			descripcion !== ''
 		) {
 			editarAuto({
@@ -93,6 +95,7 @@ const FormEditarAuto = () => {
 				gnv,
 				transmision,
 				precio,
+				destacado,
 				descripcion,
 				imagen,
 			});
@@ -144,6 +147,8 @@ const FormEditarAuto = () => {
 				return cambiarTransmision(e.target.value);
 			case 'precio':
 				return cambiarPrecio(e.target.value.replace(/[^0-9.]/g, ''));
+			case 'destacado':
+				return cambiarDestacado(e.target.value);
 			case 'descripcion':
 				return cambiarDescripcion(e.target.value);
 			case 'imagen':
@@ -273,6 +278,24 @@ const FormEditarAuto = () => {
 						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
+					<TextField
+						select
+						label="Destacado"
+						name="destacado"
+						value={destacado}
+						onKeyPress={preventEnter}
+						onChange={handleChange}
+						required
+						fullWidth
+						sx={{ marginTop: '2%' }}
+					>
+						<MenuItem name="destacado" value={'si'}>
+							Si
+						</MenuItem>
+						<MenuItem name="destacado" value={'no'}>
+							No
+						</MenuItem>
+					</TextField>
 				</Grid>
 				<Grid
 					item
@@ -382,7 +405,13 @@ const FormEditarAuto = () => {
 						style={{ width: '100%', maxHeight: 150 }}
 					/>
 					<InputLabel sx={{ marginTop: '2%' }}>Imagen</InputLabel>
-					<DropZone name="imagen" onChange={handleChange} setInput={cambiarImagen} input={imagen} tipo={true}/>
+					<DropZone
+						name="imagen"
+						onChange={handleChange}
+						setInput={cambiarImagen}
+						input={imagen}
+						tipo={true}
+					/>
 				</Grid>
 			</Grid>
 			<BtnGuardar />
