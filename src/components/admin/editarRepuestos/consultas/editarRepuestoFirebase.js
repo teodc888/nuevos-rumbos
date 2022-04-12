@@ -5,6 +5,7 @@ const editarRepuesto = async ({
 	id,
 	nombre,
     precio,
+	destacado,
 	descripcion,
 	imagen
 }) => {
@@ -13,6 +14,7 @@ const editarRepuesto = async ({
 	return await updateDoc(documento, {
 		nombre: nombre,
 		precio: precio,
+		destacado: destacado,
 		descripcion: descripcion,
 		imagen: imagen,
 	});

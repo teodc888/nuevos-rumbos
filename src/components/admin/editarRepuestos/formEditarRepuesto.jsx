@@ -6,7 +6,13 @@ import Swal from 'sweetalert2';
 // consulta firebase
 import editarRepuesto from './consultas/editarRepuestoFirebase';
 // Mui
-import { Grid, TextField, TextareaAutosize, InputLabel } from '@mui/material';
+import {
+	Grid,
+	TextField,
+	TextareaAutosize,
+	InputLabel,
+	MenuItem,
+} from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
 // components
 import BtnGuardar from './components/btn-guardar-repuesto';
@@ -24,6 +30,7 @@ const FormEditarRepuesto = () => {
 		if (repuesto) {
 			cambiarNombre(repuesto.nombre);
 			cambiarPrecio(repuesto.precio);
+			cambiarDestacado(repuesto.destacado);
 			cambiarDescripcion(repuesto.descripcion);
 			cambiarImagen(repuesto.imagen);
 		}
@@ -31,6 +38,7 @@ const FormEditarRepuesto = () => {
 
 	const [nombre, cambiarNombre] = useState('');
 	const [precio, cambiarPrecio] = useState('');
+	const [destacado, cambiarDestacado] = useState('');
 	const [descripcion, cambiarDescripcion] = useState('');
 	const [imagen, cambiarImagen] = useState('');
 
@@ -74,6 +82,8 @@ const FormEditarRepuesto = () => {
 				return cambiarNombre(e.target.value);
 			case 'precio':
 				return cambiarPrecio(e.target.value.replace(/[^0-9.]/g, ''));
+			case 'destacado':
+				return cambiarDestacado(e.target.value);
 			case 'descripcion':
 				return cambiarDescripcion(e.target.value);
 			case 'imagen':
@@ -149,6 +159,24 @@ const FormEditarRepuesto = () => {
 					// sx={12}
 					style={{ padding: '1%' }}
 				>
+					<TextField
+						select
+						label="Destacado"
+						name="destacado"
+						value={destacado}
+						onKeyPress={preventEnter}
+						onChange={handleChange}
+						required
+						fullWidth
+						sx={{ marginTop: '2%' }}
+					>
+						<MenuItem name="destacado" value={'si'}>
+							Si
+						</MenuItem>
+						<MenuItem name="destacado" value={'no'}>
+							No
+						</MenuItem>
+					</TextField>
 					<InputLabel id="demo-simple-select-label" sx={{ marginTop: '2%' }}>
 						Descripcion
 					</InputLabel>
