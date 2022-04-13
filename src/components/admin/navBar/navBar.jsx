@@ -173,7 +173,7 @@ export default function NavBarAdmin({ setMode }) {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={{handleNavigateHome}}>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={handleNavigateHome}>
               ADMIN
             </Typography>
             <Checkbox

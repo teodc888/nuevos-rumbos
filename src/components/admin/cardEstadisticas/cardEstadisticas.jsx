@@ -10,7 +10,7 @@ export default function CardEstadisticas({titulo, numero}) {
   return (
     <Card sx={{ maxWidth: "100%"}}>
       <CardContent>
-        <Typography gutterBottom variant="h2" component="div">
+        <Typography gutterBottom variant="h4" component="div">
           {titulo}
         </Typography>
         <Typography gutterBottom variant="h5" component="div">

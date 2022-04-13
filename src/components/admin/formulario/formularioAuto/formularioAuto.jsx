@@ -31,6 +31,7 @@ export default function FormularioAuto() {
     busqueda: "",
     marca: "",
     modelo: "",
+    destacado: "no",
   });
 
   const handleChange = (e) => {
@@ -82,8 +83,6 @@ export default function FormularioAuto() {
       console.error("Error adding document: ", error);
     }
   };
-
-  console.log(input);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 

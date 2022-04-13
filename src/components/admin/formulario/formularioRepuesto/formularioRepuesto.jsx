@@ -24,6 +24,7 @@ export default function FormularioRepuesto() {
     detalle: "repuesto",
     descuento: "0",
     precioDescuento: 0,
+    destacado: "no",
   });
 
   const handleChange = (e) => {
@@ -86,8 +87,6 @@ export default function FormularioRepuesto() {
     },
   });
   const formStyle = useStyle();
-
-  console.log(input);
 
   return (
     <>
@@ -181,7 +180,7 @@ export default function FormularioRepuesto() {
               }}
             >
               <Button
-                // color="primary"
+                color="success"
                 variant="contained"
                 sx={{
                   color: "white",
@@ -215,7 +214,7 @@ export default function FormularioRepuesto() {
               style={{ width: "100%", maxHeight: 150 }}
             />
             <InputLabel sx={{ marginTop: "2%" }}>Imagen</InputLabel>
-            <DropZone setInput={setInput} input={input} tipo={false}/>
+            <DropZone setInput={setInput} input={input} tipo={false} />
           </Grid>
         </Grid>
         <BtnGuardar setInput={setInput} input={input} />

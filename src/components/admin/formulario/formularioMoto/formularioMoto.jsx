@@ -16,6 +16,7 @@ export default function FormularioMoto() {
   const navigate = useNavigate();
   const [input, setInput] = useState({
     detalle: "moto",
+    destacado:"no",
   });
 
   const handleChange = (e) => {
