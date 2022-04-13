@@ -4,11 +4,12 @@ import { doc, updateDoc } from 'firebase/firestore';
 const editarRepuesto = async ({
 	id,
 	nombre,
-    precio,
+	precio,
 	descuento,
 	destacado,
 	descripcion,
-	imagen
+	imagen,
+	precioDescuento,
 }) => {
 	const documento = doc(db, 'repuesto', id);
 
@@ -19,6 +20,7 @@ const editarRepuesto = async ({
 		destacado: destacado,
 		descripcion: descripcion,
 		imagen: imagen,
+		precioDescuento: precioDescuento,
 	});
 };
 
