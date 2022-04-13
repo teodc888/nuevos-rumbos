@@ -30,6 +30,7 @@ const FormEditarRepuesto = () => {
 		if (repuesto) {
 			cambiarNombre(repuesto.nombre);
 			cambiarPrecio(repuesto.precio);
+			cambiarDescuento(repuesto.descuento);
 			cambiarDestacado(repuesto.destacado);
 			cambiarDescripcion(repuesto.descripcion);
 			cambiarImagen(repuesto.imagen);
@@ -38,6 +39,7 @@ const FormEditarRepuesto = () => {
 
 	const [nombre, cambiarNombre] = useState('');
 	const [precio, cambiarPrecio] = useState('');
+	const [descuento, cambiarDescuento] = useState('');
 	const [destacado, cambiarDestacado] = useState('');
 	const [descripcion, cambiarDescripcion] = useState('');
 	const [imagen, cambiarImagen] = useState('');
@@ -51,6 +53,7 @@ const FormEditarRepuesto = () => {
 				id,
 				nombre,
 				precio,
+				descuento,
 				descripcion,
 				imagen,
 			});
@@ -82,6 +85,8 @@ const FormEditarRepuesto = () => {
 				return cambiarNombre(e.target.value);
 			case 'precio':
 				return cambiarPrecio(e.target.value.replace(/[^0-9.]/g, ''));
+			case 'descuento':
+				return cambiarDescuento(e.target.value);
 			case 'destacado':
 				return cambiarDestacado(e.target.value);
 			case 'descripcion':
