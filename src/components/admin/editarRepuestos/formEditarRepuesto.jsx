@@ -91,8 +91,6 @@ const FormEditarRepuesto = () => {
 				return cambiarPrecio(e.target.value.replace(/[^0-9.]/g, ''));
 			case 'descuento':
 				return cambiarDescuento(e.target.value);
-			case 'precioDescuento':
-				return cambiarPrecioDescuento(e.target.value);
 			case 'destacado':
 				return cambiarDestacado(e.target.value);
 			case 'descripcion':
@@ -204,12 +202,7 @@ const FormEditarRepuesto = () => {
 						>
 							Calcular descuento
 						</Button>
-						{/* <p>{precioDescuento}</p> */}
-						<TextField
-							name='precioDescuento'
-							onChange={handleChange}
-							value={precioDescuento}
-						/>
+						<p>{precioDescuento}</p>
 					</Grid>
 				</Grid>
 				<Grid
