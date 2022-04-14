@@ -5,22 +5,22 @@ const editarRepuesto = async ({
 	id,
 	nombre,
     precio,
-	// descuento,
+	descuento,
 	destacado,
 	descripcion,
 	imagen,
-	// precioDescuento,
+	precioDescuento,
 }) => {
 	const documento = doc(db, 'repuesto', id);
 
 	return await updateDoc(documento, {
 		nombre: nombre,
 		precio: precio,
-		// descuento: descuento,
+		descuento: descuento,
 		destacado: destacado,
 		descripcion: descripcion,
 		imagen: imagen,
-		// precioDescuento: precioDescuento,
+		precioDescuento: precioDescuento,
 	});
 };
 

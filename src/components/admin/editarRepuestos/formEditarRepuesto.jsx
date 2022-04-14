@@ -31,8 +31,8 @@ const FormEditarRepuesto = () => {
 		if (repuesto) {
 			cambiarNombre(repuesto.nombre);
 			cambiarPrecio(repuesto.precio);
-			// cambiarDescuento(repuesto.descuento);
-			// cambiarPrecioDescuento(repuesto.precioDescuento);
+			cambiarDescuento(repuesto.descuento);
+			cambiarPrecioDescuento(repuesto.precioDescuento);
 			cambiarDestacado(repuesto.destacado);
 			cambiarDescripcion(repuesto.descripcion);
 			cambiarImagen(repuesto.imagen);
@@ -56,11 +56,11 @@ const FormEditarRepuesto = () => {
 				id,
 				nombre,
 				precio,
-				// descuento,
+				descuento,
 				destacado,
 				descripcion,
 				imagen,
-				// precioDescuento,
+				precioDescuento,
 			});
 			Swal.fire({
 				text: 'Datos actualizados',
@@ -90,8 +90,8 @@ const FormEditarRepuesto = () => {
 				return cambiarNombre(e.target.value);
 			case 'precio':
 				return cambiarPrecio(e.target.value.replace(/[^0-9.]/g, ''));
-			// case 'descuento':
-			// 	return cambiarDescuento(e.target.value);
+			case 'descuento':
+				return cambiarDescuento(e.target.value);
 			case 'destacado':
 				return cambiarDestacado(e.target.value);
 			case 'descripcion':
