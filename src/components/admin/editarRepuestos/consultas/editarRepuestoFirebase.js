@@ -4,23 +4,23 @@ import { doc, updateDoc } from 'firebase/firestore';
 const editarRepuesto = async ({
 	id,
 	nombre,
-	precio,
-	descuento,
-	destacado,
+    precio,
+	// descuento,
+	// destacado,
 	descripcion,
 	imagen,
-	precioDescuento,
+	// precioDescuento,
 }) => {
 	const documento = doc(db, 'repuesto', id);
 
 	return await updateDoc(documento, {
 		nombre: nombre,
 		precio: precio,
-		descuento: descuento,
-		destacado: destacado,
+		// descuento: descuento,
+		// destacado: destacado,
 		descripcion: descripcion,
 		imagen: imagen,
-		precioDescuento: precioDescuento,
+		// precioDescuento: precioDescuento,
 	});
 };
 
