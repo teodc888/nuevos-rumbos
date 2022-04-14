@@ -74,7 +74,7 @@ export default function FormularioRepuesto() {
 
   // estilos
   const containerStyle = {
-    padding: "5%",
+    padding: "3%",
     margin: "2.5% auto",
     borderRadius: "2px",
     width: "90%",
@@ -192,7 +192,7 @@ export default function FormularioRepuesto() {
               >
                 Calcular descuento
               </Button>
-              <p>{precioDescuento}</p>
+              <p>{input.precioDescuento}</p>
             </Grid>
           </Grid>
           <Grid
