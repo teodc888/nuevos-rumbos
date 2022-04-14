@@ -12,7 +12,7 @@ const DropZone = ({ setInput, input, tipo }) => {
 
 	// url imagenes arreglo
 	const [imageURL, setImageURL] = useState([]);
-	// console.log(imageURL);
+	console.log(imageURL);
 
 	const onDrop = useCallback((accFiles, RejFiles) => {
 		// Do something with the files
@@ -25,10 +25,11 @@ const DropZone = ({ setInput, input, tipo }) => {
 	});
 
 	// funcion eliminar imagen
-	const onDelete = (file, imageURL) => {
+	const onDelete = (file) => {
+		// eliminamos el header de la lista de carga
 		setFiles((curr) => curr.filter((fw) => fw.url !== file));
-		// console.log(curr);
-		// console.log(file);
+		// eliminamos la url
+		setImageURL((array) => array.filter((i) => i !== file));
 	};
 	const onUpload = async (file, url) => {
 		setFiles((curr) =>
