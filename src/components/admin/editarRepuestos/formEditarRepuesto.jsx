@@ -33,7 +33,7 @@ const FormEditarRepuesto = () => {
 			cambiarPrecio(repuesto.precio);
 			// cambiarDescuento(repuesto.descuento);
 			// cambiarPrecioDescuento(repuesto.precioDescuento);
-			// cambiarDestacado(repuesto.destacado);
+			cambiarDestacado(repuesto.destacado);
 			cambiarDescripcion(repuesto.descripcion);
 			cambiarImagen(repuesto.imagen);
 		}
@@ -57,6 +57,7 @@ const FormEditarRepuesto = () => {
 				nombre,
 				precio,
 				// descuento,
+				destacado,
 				descripcion,
 				imagen,
 				// precioDescuento,
