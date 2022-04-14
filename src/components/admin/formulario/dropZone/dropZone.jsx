@@ -12,7 +12,6 @@ const DropZone = ({ setInput, input, tipo }) => {
 
 	// url imagenes arreglo
 	const [imageURL, setImageURL] = useState([]);
-	console.log(imageURL);
 
 	const onDrop = useCallback((accFiles, RejFiles) => {
 		// Do something with the files
