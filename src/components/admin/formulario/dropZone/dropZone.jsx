@@ -12,6 +12,7 @@ const DropZone = ({ setInput, input, tipo }) => {
 
 	// url imagenes arreglo
 	const [imageURL, setImageURL] = useState([]);
+	// console.log(imageURL);
 
 	const onDrop = useCallback((accFiles, RejFiles) => {
 		// Do something with the files
@@ -24,8 +25,10 @@ const DropZone = ({ setInput, input, tipo }) => {
 	});
 
 	// funcion eliminar imagen
-	const onDelete = (file) => {
-		setFiles((curr) => curr.filter((fw) => fw.file !== file));
+	const onDelete = (file, imageURL) => {
+		setFiles((curr) => curr.filter((fw) => fw.url !== file));
+		// console.log(curr);
+		// console.log(file);
 	};
 	const onUpload = async (file, url) => {
 		setFiles((curr) =>
@@ -42,8 +45,8 @@ const DropZone = ({ setInput, input, tipo }) => {
 	// UseEffect pasar el arreglo a input
 	useEffect(() => {
 		if (tipo) {
-			setInput( imageURL );
-		} else if(!tipo) {
+			setInput(imageURL);
+		} else if (!tipo) {
 			setInput({ ...input, imagen: imageURL });
 		}
 	}, [imageURL]);
@@ -71,6 +74,7 @@ const DropZone = ({ setInput, input, tipo }) => {
 								<UploadError
 									key={index}
 									file={fileWrapper.file}
+									fileURL={fileWrapper.url}
 									errors={fileWrapper.errors}
 									onDelete={onDelete}
 								/>
@@ -80,6 +84,7 @@ const DropZone = ({ setInput, input, tipo }) => {
 									onDelete={onDelete}
 									onUpload={onUpload}
 									file={fileWrapper.file}
+									fileURL={fileWrapper.url}
 								/>
 							)}
 						</Grid>
