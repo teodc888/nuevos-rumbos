@@ -12,6 +12,7 @@ import {
 	TextareaAutosize,
 	InputLabel,
 	MenuItem,
+	Button,
 } from '@mui/material';
 import { makeStyles } from '@material-ui/styles';
 // components
@@ -30,6 +31,8 @@ const FormEditarRepuesto = () => {
 		if (repuesto) {
 			cambiarNombre(repuesto.nombre);
 			cambiarPrecio(repuesto.precio);
+			cambiarDescuento(repuesto.descuento);
+			cambiarPrecioDescuento(repuesto.precioDescuento);
 			cambiarDestacado(repuesto.destacado);
 			cambiarDescripcion(repuesto.descripcion);
 			cambiarImagen(repuesto.imagen);
@@ -38,10 +41,12 @@ const FormEditarRepuesto = () => {
 
 	const [nombre, cambiarNombre] = useState('');
 	const [precio, cambiarPrecio] = useState('');
+	const [descuento, cambiarDescuento] = useState('');
+	const [precioDescuento, cambiarPrecioDescuento] = useState('');
 	const [destacado, cambiarDestacado] = useState('');
 	const [descripcion, cambiarDescripcion] = useState('');
 	const [imagen, cambiarImagen] = useState('');
-
+	// console.log(descuento);
 	// funciones
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -51,8 +56,11 @@ const FormEditarRepuesto = () => {
 				id,
 				nombre,
 				precio,
+				descuento,
+				destacado,
 				descripcion,
 				imagen,
+				precioDescuento,
 			});
 			Swal.fire({
 				text: 'Datos actualizados',
@@ -82,6 +90,8 @@ const FormEditarRepuesto = () => {
 				return cambiarNombre(e.target.value);
 			case 'precio':
 				return cambiarPrecio(e.target.value.replace(/[^0-9.]/g, ''));
+			case 'descuento':
+				return cambiarDescuento(e.target.value);
 			case 'destacado':
 				return cambiarDestacado(e.target.value);
 			case 'descripcion':
@@ -92,6 +102,16 @@ const FormEditarRepuesto = () => {
 				break;
 		}
 	};
+
+	// funcion calcular descuento
+	const handleClickCalcularPrecio = async (e) => {
+		if (descuento > 0) {
+		  const precioPorcentaje = (Number(precio) * Number(descuento)) / 100;
+		  const precioFinal = Number(precio) - precioPorcentaje;
+		  cambiarPrecioDescuento( precioFinal );
+		}
+	  };
+	
 
 	// estilos
 	const containerStyle = {
@@ -149,6 +169,42 @@ const FormEditarRepuesto = () => {
 						onChange={handleChange}
 						sx={{ marginTop: '2%' }}
 					/>
+					<TextField
+						label="descuento"
+						variant="outlined"
+						name="descuento"
+						onKeyPress={preventEnter}
+						onChange={handleChange}
+						type="number"
+						inputProps={{ min: 0 }}
+						min={0}
+						value={descuento}
+						fullWidth
+						sx={{ marginTop: '2%' }}
+					/>
+					<Grid
+						style={{
+							border: ' 2px solid',
+							borderRadius: '4px',
+							marginTop: '2%',
+							width: '100%',
+						}}
+					>
+						<Button
+							color="success"
+							variant="contained"
+							sx={{
+								color: 'white',
+								marginBottom: '1%',
+								marginTop: '1%',
+								width: '60%',
+							}}
+							onClick={handleClickCalcularPrecio}
+						>
+							Calcular descuento
+						</Button>
+						<p>{precioDescuento}</p>
+					</Grid>
 				</Grid>
 				<Grid
 					item

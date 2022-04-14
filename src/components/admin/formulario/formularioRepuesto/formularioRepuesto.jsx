@@ -192,7 +192,7 @@ export default function FormularioRepuesto() {
               >
                 Calcular descuento
               </Button>
-              <p>{input.precioDescuento}</p>
+              <p>{precioDescuento}</p>
             </Grid>
           </Grid>
           <Grid
