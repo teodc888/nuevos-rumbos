@@ -5,6 +5,7 @@ import { FileHeader } from './FileHeader';
 export function SingleFileUploadWithProgress({
 	key,
 	file,
+	fileURL,
 	onDelete,
 	onUpload,
 }) {
@@ -21,7 +22,7 @@ export function SingleFileUploadWithProgress({
 
 	return (
 		<Grid item key={key}>
-			<FileHeader key={key} file={file} onDelete={onDelete} />
+			<FileHeader key={key} fileURL={fileURL} file={file} onDelete={onDelete} />
 			<LinearProgress variant="determinate" value={progress} />
 		</Grid>
 	);

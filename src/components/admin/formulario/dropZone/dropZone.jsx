@@ -25,7 +25,10 @@ const DropZone = ({ setInput, input, tipo }) => {
 
 	// funcion eliminar imagen
 	const onDelete = (file) => {
-		setFiles((curr) => curr.filter((fw) => fw.file !== file));
+		// eliminamos el header de la lista de carga
+		setFiles((curr) => curr.filter((fw) => fw.url !== file));
+		// eliminamos la url
+		setImageURL((array) => array.filter((i) => i !== file));
 	};
 	const onUpload = async (file, url) => {
 		setFiles((curr) =>
@@ -42,8 +45,8 @@ const DropZone = ({ setInput, input, tipo }) => {
 	// UseEffect pasar el arreglo a input
 	useEffect(() => {
 		if (tipo) {
-			setInput( imageURL );
-		} else if(!tipo) {
+			setInput(imageURL);
+		} else if (!tipo) {
 			setInput({ ...input, imagen: imageURL });
 		}
 	}, [imageURL]);
@@ -71,6 +74,7 @@ const DropZone = ({ setInput, input, tipo }) => {
 								<UploadError
 									key={index}
 									file={fileWrapper.file}
+									fileURL={fileWrapper.url}
 									errors={fileWrapper.errors}
 									onDelete={onDelete}
 								/>
@@ -80,6 +84,7 @@ const DropZone = ({ setInput, input, tipo }) => {
 									onDelete={onDelete}
 									onUpload={onUpload}
 									file={fileWrapper.file}
+									fileURL={fileWrapper.url}
 								/>
 							)}
 						</Grid>
