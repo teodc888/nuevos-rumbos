@@ -153,6 +153,7 @@ export default function App() {
     if (hoy === 18 || hoy === 28) {
       dispatch(repeticiones(1));
       persistor.purge();
+      console.log("actualizado")
     } else if (hoy === 15 || hoy === 29) {
       dispatch(repeticiones(0));
     }
