@@ -72,7 +72,7 @@ export default function Carrito() {
 
   const botonWhatsapp = () => {
     window.open(
-      `https://wa.me/5459177631332?text=${
+      `https://wa.me/59177631332?text=${
         encodeURIComponent("Hola! le mando mi presupuesto:") +
         "%0D%0A" +
         carrito.map((item) =>
