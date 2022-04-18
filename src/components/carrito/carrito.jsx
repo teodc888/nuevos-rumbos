@@ -72,7 +72,7 @@ export default function Carrito() {
 
   const botonWhatsapp = () => {
     window.open(
-      `https://wa.me/543512550311?text=${
+      `https://wa.me/5459177631332?text=${
         encodeURIComponent("Hola! le mando mi presupuesto:") +
         "%0D%0A" +
         carrito.map((item) =>
@@ -158,6 +158,14 @@ export default function Carrito() {
           <Typography variant="h3" component="div" textAlign="center">
             Carrito
           </Typography>
+          <Typography variant="h5" component="div" textAlign="center">
+            {carrito.length > 0
+              ? cantidadTotal === true
+                ? "Total: $ " + total1
+                : "Total: $ " + total
+              : null}
+          </Typography>
+
           {carrito.length > 0 ? (
             <>
               <Button

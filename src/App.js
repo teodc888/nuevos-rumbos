@@ -118,7 +118,7 @@ export default function App() {
   };
 
   const handleWhatsapp = () => {
-    window.open("https://wa.me/543512550311");
+    window.open("https://wa.me/5459177631332");
     setOpen(false);
   };
 

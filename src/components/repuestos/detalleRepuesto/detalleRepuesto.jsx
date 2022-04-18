@@ -141,7 +141,7 @@ export default function DetalleRepuesto({
 
   const handleWhatsapp = () => {
     window.open(
-      "https://wa.me/543512550311?text=Hola,%20me%20gustaria%20obtener%20mas%20informacion%20sobre%20" +
+      "https://wa.me/5459177631332?text=Hola,%20me%20gustaria%20obtener%20mas%20informacion%20sobre%20" +
         nombre
     );
   };
