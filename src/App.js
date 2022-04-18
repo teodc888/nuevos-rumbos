@@ -149,6 +149,8 @@ export default function App() {
 
   const hoy = fecha.getDate();
 
+  console.log(hoy);
+
   if (repeticion === 0) {
     if (hoy === 18 || hoy === 28) {
       dispatch(repeticiones(1));
