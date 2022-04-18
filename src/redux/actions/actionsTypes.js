@@ -19,3 +19,4 @@ export const CARRITO = "CARRITO";
 export const DELETE_CARRITO = "DELETE_CARRITO";
 export const BORRAR_CARRITO_TOTAL = "BORRAR_CARRITO_TOTAL";
 export const CANTIDAD = "CANTIDAD";
+export const REPETICIONES = "REPETICIONES";

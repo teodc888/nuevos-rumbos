@@ -20,6 +20,7 @@ import {
   DELETE_CARRITO,
   BORRAR_CARRITO_TOTAL,
   CANTIDAD,
+  REPETICIONES
 } from "../actions/actionsTypes";
 
 const inicialState = {
@@ -50,6 +51,7 @@ const inicialState = {
   color: "#d50000",
   darkMode: "light",
   carrito: [],
+  repeticion: 0,
 };
 
 export default function rootReducer(state = inicialState, action) {
@@ -374,6 +376,11 @@ export default function rootReducer(state = inicialState, action) {
           }
           return producto;
         }),
+      };
+    case REPETICIONES:
+      return {
+        ...state,
+        repeticion: action.payload,
       };
     default:
       return state;

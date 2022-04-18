@@ -45,6 +45,7 @@ import {
   getProductosMoto,
   getProductosRepuesto,
   darkModee,
+  repeticiones,
 } from "./redux/actions/index";
 
 //MUi modo dark
@@ -60,6 +61,9 @@ import ShareIcon from "@mui/icons-material/Share";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 import { useState } from "react";
+
+//persistor
+import Store from "./redux/store/index";
 
 export default function App() {
   const login = useSelector((state) => state.login);
@@ -134,6 +138,25 @@ export default function App() {
   };
 
   window.addEventListener("scroll", toggleVisible);
+
+  //Restart app
+
+  const repeticion = useSelector((state) => state.repeticion);
+
+  const { persistor } = Store;
+
+  const fecha = new Date();
+
+  const hoy = fecha.getDate();
+
+  if (repeticion === 0) {
+    if (hoy === 18 || hoy === 28) {
+      dispatch(repeticiones(1));
+      persistor.purge();
+    } else if (hoy === 15 || hoy === 19) {
+      dispatch(repeticiones(0));
+    }
+  }
 
   return (
     <>

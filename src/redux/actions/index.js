@@ -20,7 +20,8 @@ import {
   CARRITO,
   DELETE_CARRITO,
   BORRAR_CARRITO_TOTAL,
-  CANTIDAD
+  CANTIDAD,
+  REPETICIONES
 } from "./actionsTypes";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebaseConfig";
@@ -197,3 +198,10 @@ export const cantidadStock = (id, cantidad) => {
     payload: { id, cantidad },
   };
 }
+
+export const repeticiones = (payload) => {
+  return {
+    type: REPETICIONES,
+    payload,
+  };
+};
