@@ -157,8 +157,8 @@ export default function HomeMoto() {
             <Box sx={{ width: "100%", marginTop: "10%" }}>
               <Grid container spacing={{ md: 6 }} columns={{ md: 12 }}>
                 <Grid item xs={4} sm={4} md={12}>
-                  <FormControl fullWidth color="secondary">
-                    <InputLabel id="demo-simple-select-label" color="secondary">
+                  <FormControl fullWidth >
+                    <InputLabel id="demo-simple-select-label" >
                       MARCA
                     </InputLabel>
                     <Select
@@ -168,7 +168,7 @@ export default function HomeMoto() {
                       label="MARCA"
                       value={filtro.marcaM}
                       onChange={handleChange}
-                      color="secondary"
+                      
                     >
                       <MenuItem value={"todos"}>Todos</MenuItem>
                       {uniqueArrMarca.map((marca) => (
@@ -180,8 +180,8 @@ export default function HomeMoto() {
                   </FormControl>
                 </Grid>
                 <Grid item xs={4} sm={4} md={12}>
-                  <FormControl fullWidth color="secondary">
-                    <InputLabel id="demo-simple-select-label" color="secondary">
+                  <FormControl fullWidth >
+                    <InputLabel id="demo-simple-select-label" >
                       CILINDRADA
                     </InputLabel>
                     <Select
@@ -191,7 +191,7 @@ export default function HomeMoto() {
                       label="CILINDRADA"
                       value={filtro.cilindrada}
                       onChange={handleChange}
-                      color="secondary"
+                      
                     >
                       <MenuItem value={"todos"}>Todos</MenuItem>
                       {uniqueArrCilindrada.map((cilindrada) => (
@@ -203,8 +203,8 @@ export default function HomeMoto() {
                   </FormControl>
                 </Grid>
                 <Grid item xs={4} sm={4} md={12}>
-                  <FormControl fullWidth color="secondary">
-                    <InputLabel id="demo-simple-select-label" color="secondary">
+                  <FormControl fullWidth >
+                    <InputLabel id="demo-simple-select-label" >
                       KILOMETROS
                     </InputLabel>
                     <Select
@@ -214,7 +214,7 @@ export default function HomeMoto() {
                       label="KILOMETROS"
                       value={filtro.kilometrosM}
                       onChange={handleChange}
-                      color="secondary"
+                      
                     >
                       <MenuItem value={"todos"}>Todos</MenuItem>
                       <MenuItem value={"mayor"}>Mayor</MenuItem>
@@ -223,8 +223,8 @@ export default function HomeMoto() {
                   </FormControl>
                 </Grid>
                 <Grid item xs={4} sm={4} md={12}>
-                  <FormControl fullWidth color="secondary">
-                    <InputLabel id="demo-simple-select-label" color="secondary">
+                  <FormControl fullWidth >
+                    <InputLabel id="demo-simple-select-label" >
                       PRECIO
                     </InputLabel>
                     <Select
@@ -234,7 +234,7 @@ export default function HomeMoto() {
                       label="PRECIO"
                       value={filtro.precioM}
                       onChange={handleChange}
-                      color="secondary"
+                      
                     >
                       <MenuItem value={"todos"}>Todos</MenuItem>
                       <MenuItem value={"mayor"}>Mayor</MenuItem>
@@ -382,10 +382,10 @@ export default function HomeMoto() {
                         columns={{ xs: 4, sm: 8, md: 12 }}
                       >
                         <Grid item xs={4} sm={4} md={3}>
-                          <FormControl fullWidth color="secondary">
+                          <FormControl fullWidth >
                             <InputLabel
                               id="demo-simple-select-label"
-                              color="secondary"
+                              
                             >
                               MARCA
                             </InputLabel>
@@ -396,7 +396,7 @@ export default function HomeMoto() {
                               label="MARCA"
                               value={filtro.marcaM}
                               onChange={handleChange}
-                              color="secondary"
+                              
                             >
                               <MenuItem value={"todos"}>Todos</MenuItem>
                               {uniqueArrMarca.map((marca) => (
@@ -408,10 +408,10 @@ export default function HomeMoto() {
                           </FormControl>
                         </Grid>
                         <Grid item xs={4} sm={4} md={3}>
-                          <FormControl fullWidth color="secondary">
+                          <FormControl fullWidth >
                             <InputLabel
                               id="demo-simple-select-label"
-                              color="secondary"
+                              
                             >
                               CILINDRADA
                             </InputLabel>
@@ -422,7 +422,7 @@ export default function HomeMoto() {
                               label="CILINDRADA"
                               value={filtro.cilindrada}
                               onChange={handleChange}
-                              color="secondary"
+                              
                             >
                               <MenuItem value={"todos"}>Todos</MenuItem>
                               {uniqueArrCilindrada.map((cilindrada) => (
@@ -434,10 +434,10 @@ export default function HomeMoto() {
                           </FormControl>
                         </Grid>
                         <Grid item xs={4} sm={4} md={3}>
-                          <FormControl fullWidth color="secondary">
+                          <FormControl fullWidth >
                             <InputLabel
                               id="demo-simple-select-label"
-                              color="secondary"
+                              
                             >
                               KILOMETROS
                             </InputLabel>
@@ -448,7 +448,7 @@ export default function HomeMoto() {
                               label="KILOMETROS"
                               value={filtro.kilometrosM}
                               onChange={handleChange}
-                              color="secondary"
+                              
                             >
                               <MenuItem value={"todos"}>Todos</MenuItem>
                               <MenuItem value={"mayor"}>Mayor</MenuItem>
@@ -457,10 +457,10 @@ export default function HomeMoto() {
                           </FormControl>
                         </Grid>
                         <Grid item xs={4} sm={4} md={3}>
-                          <FormControl fullWidth color="secondary">
+                          <FormControl fullWidth >
                             <InputLabel
                               id="demo-simple-select-label"
-                              color="secondary"
+                              
                             >
                               PRECIO
                             </InputLabel>
@@ -471,7 +471,7 @@ export default function HomeMoto() {
                               label="PRECIO"
                               value={filtro.precioM}
                               onChange={handleChange}
-                              color="secondary"
+                              
                             >
                               <MenuItem value={"todos"}>Todos</MenuItem>
                               <MenuItem value={"mayor"}>Mayor</MenuItem>

@@ -146,8 +146,8 @@ export default function HomeRepuestos() {
             <Box sx={{ width: "100%", marginTop: "10%" }}>
               <Grid container spacing={{ md: 6 }} columns={{ md: 12 }}>
                 <Grid item xs={6} sm={8} md={12}>
-                  <FormControl fullWidth color="secondary">
-                    <InputLabel id="demo-simple-select-label" color="secondary">
+                  <FormControl fullWidth >
+                    <InputLabel id="demo-simple-select-label" >
                       PRECIO
                     </InputLabel>
                     <Select
@@ -157,7 +157,7 @@ export default function HomeRepuestos() {
                       label="PRECIO"
                       value={filtro.precioR}
                       onChange={handleChange}
-                      color="secondary"
+                      
                     >
                       <MenuItem value={"todos"}>Todos</MenuItem>
                       <MenuItem value={"mayor"}>Mayor</MenuItem>
@@ -166,8 +166,8 @@ export default function HomeRepuestos() {
                   </FormControl>
                 </Grid>
                 <Grid item xs={6} sm={8} md={12}>
-                  <FormControl fullWidth color="secondary">
-                    <InputLabel id="demo-simple-select-label" color="secondary">
+                  <FormControl fullWidth >
+                    <InputLabel id="demo-simple-select-label" >
                       DESCUENTO
                     </InputLabel>
                     <Select
@@ -177,7 +177,7 @@ export default function HomeRepuestos() {
                       label="DESCUENTO"
                       value={filtro.descuento}
                       onChange={handleChange}
-                      color="secondary"
+                      
                     >
                       <MenuItem value={"todos"}>Todos</MenuItem>
                       <MenuItem value={"descuento"}>
@@ -187,8 +187,8 @@ export default function HomeRepuestos() {
                   </FormControl>
                 </Grid>
                 <Grid item xs={6} sm={8} md={12}>
-                  <FormControl fullWidth color="secondary">
-                    <InputLabel id="demo-simple-select-label" color="secondary">
+                  <FormControl fullWidth >
+                    <InputLabel id="demo-simple-select-label" >
                       ORDENAR DESCUENTO
                     </InputLabel>
                     <Select
@@ -198,7 +198,7 @@ export default function HomeRepuestos() {
                       label="ORDENAR DESCUENTO"
                       value={filtro.descuentoMax}
                       onChange={handleChange}
-                      color="secondary"
+                      
                     >
                       <MenuItem value={"todos"}>Todos</MenuItem>
                       <MenuItem value={"menor"}>Menor Descuento</MenuItem>
@@ -368,10 +368,10 @@ export default function HomeRepuestos() {
                         columns={{ xs: 4, sm: 8, md: 12 }}
                       >
                         <Grid item xs={6} sm={8} md={12}>
-                          <FormControl fullWidth color="secondary">
+                          <FormControl fullWidth >
                             <InputLabel
                               id="demo-simple-select-label"
-                              color="secondary"
+                              
                             >
                               PRECIO
                             </InputLabel>
@@ -382,7 +382,7 @@ export default function HomeRepuestos() {
                               label="PRECIO"
                               value={filtro.precioR}
                               onChange={handleChange}
-                              color="secondary"
+                             
                             >
                               <MenuItem value={"todos"}>Todos</MenuItem>
                               <MenuItem value={"mayor"}>Mayor</MenuItem>
@@ -391,10 +391,10 @@ export default function HomeRepuestos() {
                           </FormControl>
                         </Grid>
                         <Grid item xs={6} sm={8} md={12}>
-                          <FormControl fullWidth color="secondary">
+                          <FormControl fullWidth >
                             <InputLabel
                               id="demo-simple-select-label"
-                              color="secondary"
+                             
                             >
                               DESCUENTO
                             </InputLabel>
@@ -405,7 +405,7 @@ export default function HomeRepuestos() {
                               label="DESCUENTO"
                               value={filtro.descuento}
                               onChange={handleChange}
-                              color="secondary"
+                              
                             >
                               <MenuItem value={"todos"}>Todos</MenuItem>
                               <MenuItem value={"descuento"}>
@@ -415,10 +415,10 @@ export default function HomeRepuestos() {
                           </FormControl>
                         </Grid>
                         <Grid item xs={6} sm={8} md={12}>
-                          <FormControl fullWidth color="secondary">
+                          <FormControl fullWidth >
                             <InputLabel
                               id="demo-simple-select-label"
-                              color="secondary"
+                              
                             >
                               ORDENAR DESCUENTO
                             </InputLabel>
@@ -429,7 +429,7 @@ export default function HomeRepuestos() {
                               label="ORDENAR DESCUENTO"
                               value={filtro.descuentoMax}
                               onChange={handleChange}
-                              color="secondary"
+                              
                             >
                               <MenuItem value={"todos"}>Todos</MenuItem>
                               <MenuItem value={"menor"}>
