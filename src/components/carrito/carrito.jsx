@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 
 //Mui
 import { Stack, Typography, Grid, Box, Button, Container } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 //Componentes
 import Footer from "../footer/footer";
@@ -143,8 +146,8 @@ export default function Carrito() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Carrito";
-  }, []);
+    document.title = `(${carrito.length}) Carrito`;
+  }, [carrito.length]);
 
   return (
     <>
@@ -155,17 +158,9 @@ export default function Carrito() {
           justifyContent="center"
           spacing={2}
         >
-          <Typography variant="h3" component="div" textAlign="center">
-            Carrito
+          <Typography variant="h4" component="div" textAlign="center">
+            <ShoppingCartIcon /> CARRITO
           </Typography>
-          <Typography variant="h5" component="div" textAlign="center">
-            {carrito.length > 0
-              ? cantidadTotal === true
-                ? "Total: $ " + total1
-                : "Total: $ " + total
-              : null}
-          </Typography>
-
           {carrito.length > 0 ? (
             <>
               <Button
@@ -179,7 +174,7 @@ export default function Carrito() {
                 }}
                 onClick={handleClickBorrar}
               >
-                Eliminar todo
+                <RemoveShoppingCartIcon sx={{mr:"10px"}} /> Eliminar todo
               </Button>
               <Button
                 color="error"
@@ -192,10 +187,18 @@ export default function Carrito() {
                 }}
                 onClick={handleClickBorrar}
               >
-                Eliminar todo
+                <RemoveShoppingCartIcon  sx={{mr:"10px"}}/> Eliminar todo
               </Button>
             </>
           ) : null}
+          <Typography variant="h5" component="div" textAlign="center">
+            {carrito.length > 0
+              ? cantidadTotal === true
+                ? "Total: $ " + total1
+                : "Total: $ " + total
+              : null}
+          </Typography>
+
           <Box sx={{ width: "100%", marginTop: "3%" }}>
             <Grid
               container
@@ -241,7 +244,7 @@ export default function Carrito() {
                       variant="contained"
                       sx={{ bgcolor: "green", color: "white" }}
                     >
-                      Agregar Productos
+                     <AddShoppingCartIcon sx={{mr:"10px"}} /> Agregar Productos
                     </Button>
                   </Grid>
                 </>

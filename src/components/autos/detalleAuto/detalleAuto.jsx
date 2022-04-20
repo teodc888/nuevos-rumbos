@@ -12,6 +12,8 @@ import {
   Button,
   Container,
 } from "@mui/material";
+import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
+import FeaturedPlayListIcon from "@mui/icons-material/FeaturedPlayList";
 
 //Componentes
 import CardDetalle from "../../detalle/cardDetalle/cardDetalle";
@@ -298,7 +300,7 @@ export default function DetalleAuto({
               textAlign="center"
               sx={{ marginTop: "5%" }}
             >
-              Características principales
+              Características principales <FeaturedPlayListIcon />
             </Typography>
             <CardDetalle
               tipo="auto"
@@ -329,7 +331,7 @@ export default function DetalleAuto({
               textAlign="center"
               sx={{ marginTop: "5%" }}
             >
-              Características principales
+              Características principales <FeaturedPlayListIcon />
             </Typography>
             <CardDetalle
               tipo="auto"
@@ -349,12 +351,12 @@ export default function DetalleAuto({
           <Box sx={{ width: "100%" }}>
             <Typography
               gutterBottom
-              variant="h4"
+              variant="h5"
               component="div"
               textAlign="center"
               sx={{ mt: "2%", display: { xs: "none", md: "block" } }}
             >
-              Autos Destacados
+              Autos Destacados <BookmarkAddedIcon />
             </Typography>
             <Typography
               gutterBottom
@@ -363,7 +365,7 @@ export default function DetalleAuto({
               textAlign="center"
               sx={{ mt: "2%", display: { xs: "block", md: "none" } }}
             >
-              Autos Destacados
+              Autos Destacados <BookmarkAddedIcon />
             </Typography>
             <CarrouselCard tipo="auto" />
           </Box>

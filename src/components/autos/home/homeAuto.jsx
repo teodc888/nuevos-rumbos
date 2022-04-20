@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-
 // Mui
 import {
   Typography,
@@ -21,6 +20,8 @@ import {
   Container,
 } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 
 //Components
 import CardNR from "../../card/card";
@@ -140,8 +141,8 @@ export default function HomeAuto() {
               justifyContent="center"
               spacing={2}
             >
-              <Typography variant="h3" component="div">
-                Autos
+              <Typography variant="h4" component="div">
+                <DirectionsCarIcon sx={{ fontSize: "100%", mb: "3%" }} /> AUTOS
               </Typography>
               <Box sx={{ width: "100%" }}>
                 <InputBuscador opciones="auto" />
@@ -302,11 +303,11 @@ export default function HomeAuto() {
                 </Grid>
                 <Grid item xs={4} sm={4} md={12}>
                   <Typography variant="h5" gutterBottom textAlign="center">
-                    Destacados
+                   <BookmarkAddedIcon/> Destacados
                   </Typography>
                 </Grid>
                 {autosDestacados.map((auto) => (
-                  <Grid item xs={4} sm={4} md={12} key={auto.id} >
+                  <Grid item xs={4} sm={4} md={12} key={auto.id}>
                     <CardDestacado
                       marca={auto.marca}
                       modelo={auto.modelo}
@@ -337,8 +338,9 @@ export default function HomeAuto() {
                   },
                 }}
               >
-                <Typography variant="h2" component="div" textAlign="center">
-                  Autos
+                <Typography variant="h3" component="div" textAlign="center">
+                  <DirectionsCarIcon sx={{ fontSize: "100%", mb: "3%" }} />{" "}
+                  AUTOS
                 </Typography>
                 <Box sx={{ width: "100%" }}>
                   <InputBuscador opciones="auto" />
@@ -408,7 +410,11 @@ export default function HomeAuto() {
                 <Fab
                   aria-label="edit"
                   onClick={handleClickOpen}
-                  sx={{ bgcolor: "green" }}
+                  sx={{
+                    background:
+                      "linear-gradient(45deg, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3)",
+                    color: "white",
+                  }}
                 >
                   <FilterListIcon />
                 </Fab>

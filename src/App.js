@@ -55,7 +55,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 //Mui fab
 import { Box, Fab } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import ShareIcon from "@mui/icons-material/Share";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
@@ -116,8 +116,8 @@ export default function App() {
     setOpen(false);
   };
 
-  const handleInstagram = () => {
-    window.open("https://www.instagram.com/");
+  const handleFacebook = () => {
+    window.open("https://www.facebook.com/");
     setOpen(false);
   };
 
@@ -149,13 +149,11 @@ export default function App() {
 
   const hoy = fecha.getDate();
 
-  console.log(hoy);
-
   if (repeticion === 0) {
     if (hoy === 18 || hoy === 28) {
       dispatch(repeticiones(1));
       persistor.purge();
-      console.log("actualizado")
+      console.log("actualizado");
     } else if (hoy === 15 || hoy === 29) {
       dispatch(repeticiones(0));
     }
@@ -221,13 +219,13 @@ export default function App() {
                     aria-label="add"
                     sx={{
                       background:
-                        "linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d)",
+                        "linear-gradient(45deg, #3b5998, #3b5998, #3b5998, #3b5998, #3b5998, #3b5998)",
                       mr: "6px",
                     }}
-                    onClick={handleInstagram}
+                    onClick={handleFacebook}
                   >
                     <FontAwesomeIcon
-                      icon={faInstagram}
+                      icon={faFacebook}
                       style={{ fontSize: "42px", color: "white" }}
                     />
                   </Fab>
@@ -251,6 +249,7 @@ export default function App() {
                 sx={{
                   background:
                     "linear-gradient(45deg, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3)",
+                  color: "white",
                 }}
                 aria-label="add"
                 onClick={handleClickOpen}
@@ -279,7 +278,11 @@ export default function App() {
                 >
                   <Fab
                     aria-label="add"
-                    sx={{ bgcolor: "#2196f3" }}
+                    sx={{
+                      background:
+                        "linear-gradient(45deg, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3)",
+                      color: "white",
+                    }}
                     onClick={handleSubir}
                   >
                     <ArrowUpwardIcon />
@@ -301,7 +304,11 @@ export default function App() {
                 >
                   <Fab
                     aria-label="add"
-                    sx={{ bgcolor: "red" }}
+                    sx={{
+                      background:
+                        "linear-gradient(45deg, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3)",
+                      color: "white",
+                    }}
                     onClick={handleSubir}
                   >
                     <ArrowUpwardIcon />
@@ -325,6 +332,7 @@ export default function App() {
                   background:
                     "linear-gradient(45deg, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3)",
                   mr: "6px",
+                  color: "white",
                 }}
                 aria-label="add"
                 onClick={handleClickOpen}
@@ -337,13 +345,13 @@ export default function App() {
                     aria-label="add"
                     sx={{
                       background:
-                        "linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d)",
+                        "linear-gradient(45deg, #3b5998, #3b5998, #3b5998, #3b5998, #3b5998, #3b5998)",
                       mr: "6px",
                     }}
-                    onClick={handleInstagram}
+                    onClick={handleFacebook}
                   >
                     <FontAwesomeIcon
-                      icon={faInstagram}
+                      icon={faFacebook}
                       style={{ fontSize: "42px", color: "white" }}
                     />
                   </Fab>

@@ -46,6 +46,8 @@ const inicialState = {
     cilindrada: "todos",
     precioR: "todos",
     marcaR: "todos",
+    descuento: "todos",
+    descuentoMax: "todos",
   },
   login: "",
   color: "#d50000",
@@ -266,15 +268,8 @@ export default function rootReducer(state = inicialState, action) {
       };
 
     case FILTRO_REPUESTO:
-      const { marcaR, precioR } = action.payload;
+      const { precioR, descuento, descuentoMax } = action.payload;
       let repuestosFiltro = [...state.repuestosBuscados];
-
-      repuestosFiltro =
-        marcaR === "todos"
-          ? repuestosFiltro
-          : repuestosFiltro.filter((producto) => {
-              return producto.nombre === marcaR;
-            });
 
       repuestosFiltro =
         precioR === "todos"
@@ -286,6 +281,26 @@ export default function rootReducer(state = inicialState, action) {
           : repuestosFiltro.sort(function (a, b) {
               return b.precio - a.precio;
             });
+
+      repuestosFiltro =
+      descuentoMax === "todos"
+          ? repuestosFiltro
+          : descuentoMax === "menor"
+          ? repuestosFiltro.sort(function (a, b) {
+              return a.descuento - b.descuento;
+            })
+          : repuestosFiltro.sort(function (a, b) {
+              return b.descuento - a.descuento;
+            });
+
+      repuestosFiltro =
+      descuento === "todos"
+          ? repuestosFiltro
+          : repuestosFiltro.filter((producto) => {
+              return producto.descuento > 0;
+            });
+
+
       return {
         ...state,
         repuestos: repuestosFiltro,

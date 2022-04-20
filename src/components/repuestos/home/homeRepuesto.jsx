@@ -18,8 +18,12 @@ import {
   DialogTitle,
   Slide,
   Container,
+  Card,
+  CardMedia,
 } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
+import BuildIcon from "@mui/icons-material/Build";
+import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
 
 //Components
 import CardNR from "../../card/card";
@@ -83,15 +87,6 @@ export default function HomeRepuestos() {
     setFiltro({ ...filtro, [e.target.name]: e.target.value });
   }
 
-  //funcion para que muestre las marcas sin repetirlas
-  let uniqueArrMarca = ["todos"];
-  if (repuestos.length > 0) {
-    const repuestoFilterMarca = repuestosBuscados.map(
-      (repuesto) => repuesto.nombre
-    );
-    uniqueArrMarca = [...new Set(repuestoFilterMarca)];
-  }
-
   //popUp
   const [open, setOpen] = React.useState(false);
 
@@ -141,8 +136,8 @@ export default function HomeRepuestos() {
               justifyContent="center"
               spacing={2}
             >
-              <Typography variant="h3" component="div" textAlign="center">
-                Repuestos
+              <Typography variant="h5" component="div" textAlign="center">
+                <BuildIcon /> REPUESTOS
               </Typography>
               <Box sx={{ width: "100%" }}>
                 <InputBuscador opciones="repuesto" />
@@ -173,23 +168,41 @@ export default function HomeRepuestos() {
                 <Grid item xs={6} sm={8} md={12}>
                   <FormControl fullWidth color="secondary">
                     <InputLabel id="demo-simple-select-label" color="secondary">
-                      MARCA
+                      DESCUENTO
                     </InputLabel>
                     <Select
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
-                      name="marcaR"
-                      label="MARCA"
-                      value={filtro.marcaR}
+                      name="descuento"
+                      label="DESCUENTO"
+                      value={filtro.descuento}
                       onChange={handleChange}
                       color="secondary"
                     >
                       <MenuItem value={"todos"}>Todos</MenuItem>
-                      {uniqueArrMarca.map((nombre) => (
-                        <MenuItem value={nombre} key={nombre}>
-                          {nombre}
-                        </MenuItem>
-                      ))}
+                      <MenuItem value={"descuento"}>
+                        Productos Con Descuento
+                      </MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={6} sm={8} md={12}>
+                  <FormControl fullWidth color="secondary">
+                    <InputLabel id="demo-simple-select-label" color="secondary">
+                      ORDENAR DESCUENTO
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      name="descuentoMax"
+                      label="ORDENAR DESCUENTO"
+                      value={filtro.descuentoMax}
+                      onChange={handleChange}
+                      color="secondary"
+                    >
+                      <MenuItem value={"todos"}>Todos</MenuItem>
+                      <MenuItem value={"menor"}>Menor Descuento</MenuItem>
+                      <MenuItem value={"mayor"}>Mayor Descuento</MenuItem>
                     </Select>
                   </FormControl>
                 </Grid>
@@ -205,7 +218,7 @@ export default function HomeRepuestos() {
                 </Grid>
                 <Grid item xs={4} sm={4} md={12}>
                   <Typography variant="h5" gutterBottom textAlign="center">
-                    Destacados
+                    <BookmarkAddedIcon /> Destacados
                   </Typography>
                 </Grid>
                 {repuestosDestacados.map((repuestos) => (
@@ -242,8 +255,13 @@ export default function HomeRepuestos() {
                   },
                 }}
               >
-                <Typography variant="h2" component="div" textAlign="center">
-                  Repuestos
+                <Typography
+                  variant="h4"
+                  component="div"
+                  textAlign="center"
+                  sx={{ mb: "5%" }}
+                >
+                  <BuildIcon sx={{ fontSize: "100%" }} /> RESPUESTOS
                 </Typography>
                 <Box sx={{ width: "100%" }}>
                   <InputBuscador opciones="repuesto" />
@@ -257,15 +275,31 @@ export default function HomeRepuestos() {
                 >
                   {/* //mapeo de los repuestos para mostrarlos en la pantalla */}
                   {currentRepuestos.length === 0 ? (
-                    <Grid item xs={12} sm={12} md={12}>
+                    <Grid
+                      item
+                      xs={12}
+                      sm={12}
+                      md={12}
+                      sx={{ marginBottom: "22%" }}
+                    >
                       <Typography
-                        variant="h2"
+                        variant="h4"
                         component="div"
                         textAlign="center"
-                        sx={{ marginBottom: "22%" }}
+                        sx={{ mb: "5%" }}
                       >
                         No hay Repuestos
                       </Typography>
+                      <Card>
+                        <CardMedia
+                          component="img"
+                          alt="Not found"
+                          height="250"
+                          image={
+                            "https://media3.giphy.com/media/4tGZEhjzAv0plAOr91/giphy.gif?cid=ecf05e47qdpdmtqbkx8jalzoqzf5s7fj2pinavodvy6r1n5y&rid=giphy.gif&ct=ts"
+                          }
+                        />
+                      </Card>
                     </Grid>
                   ) : (
                     currentRepuestos.map((repuesto) => (
@@ -310,7 +344,11 @@ export default function HomeRepuestos() {
                 <Fab
                   aria-label="edit"
                   onClick={handleClickOpen}
-                  sx={{ bgcolor: "green" }}
+                  sx={{
+                    background:
+                      "linear-gradient(45deg, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3)",
+                    color: "white",
+                  }}
                 >
                   <FilterListIcon />
                 </Fab>
@@ -329,7 +367,7 @@ export default function HomeRepuestos() {
                         spacing={{ xs: 4, md: 3 }}
                         columns={{ xs: 4, sm: 8, md: 12 }}
                       >
-                        <Grid item xs={6} sm={8} md={6}>
+                        <Grid item xs={6} sm={8} md={12}>
                           <FormControl fullWidth color="secondary">
                             <InputLabel
                               id="demo-simple-select-label"
@@ -352,29 +390,54 @@ export default function HomeRepuestos() {
                             </Select>
                           </FormControl>
                         </Grid>
-                        <Grid item xs={6} sm={8} md={6}>
+                        <Grid item xs={6} sm={8} md={12}>
                           <FormControl fullWidth color="secondary">
                             <InputLabel
                               id="demo-simple-select-label"
                               color="secondary"
                             >
-                              MARCA
+                              DESCUENTO
                             </InputLabel>
                             <Select
                               labelId="demo-simple-select-label"
                               id="demo-simple-select"
-                              name="marcaR"
-                              label="MARCA"
-                              value={filtro.marcaR}
+                              name="descuento"
+                              label="DESCUENTO"
+                              value={filtro.descuento}
                               onChange={handleChange}
                               color="secondary"
                             >
                               <MenuItem value={"todos"}>Todos</MenuItem>
-                              {uniqueArrMarca.map((marca) => (
-                                <MenuItem value={marca} key={marca}>
-                                  {marca}
-                                </MenuItem>
-                              ))}
+                              <MenuItem value={"descuento"}>
+                                Productos Con Descuento
+                              </MenuItem>
+                            </Select>
+                          </FormControl>
+                        </Grid>
+                        <Grid item xs={6} sm={8} md={12}>
+                          <FormControl fullWidth color="secondary">
+                            <InputLabel
+                              id="demo-simple-select-label"
+                              color="secondary"
+                            >
+                              ORDENAR DESCUENTO
+                            </InputLabel>
+                            <Select
+                              labelId="demo-simple-select-label"
+                              id="demo-simple-select"
+                              name="descuentoMax"
+                              label="ORDENAR DESCUENTO"
+                              value={filtro.descuentoMax}
+                              onChange={handleChange}
+                              color="secondary"
+                            >
+                              <MenuItem value={"todos"}>Todos</MenuItem>
+                              <MenuItem value={"menor"}>
+                                Menor Descuento
+                              </MenuItem>
+                              <MenuItem value={"mayor"}>
+                                Mayor Descuento
+                              </MenuItem>
                             </Select>
                           </FormControl>
                         </Grid>

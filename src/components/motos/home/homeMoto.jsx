@@ -20,6 +20,8 @@ import {
   Container,
 } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
+import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
+import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 
 //Components
 import CardNR from "../../card/card";
@@ -145,8 +147,8 @@ export default function HomeMoto() {
               justifyContent="center"
               spacing={2}
             >
-              <Typography variant="h2" component="div" textAlign="center">
-                Motos
+              <Typography variant="h4" component="div" textAlign="center">
+                <TwoWheelerIcon sx={{ fontSize: "100%" }} /> MOTOS
               </Typography>
               <Box sx={{ width: "100%" }}>
                 <InputBuscador opciones="moto" />
@@ -252,7 +254,7 @@ export default function HomeMoto() {
                 </Grid>
                 <Grid item xs={4} sm={4} md={12}>
                   <Typography variant="h5" gutterBottom textAlign="center">
-                    Destacados
+                   <BookmarkAddedIcon/> Destacados
                   </Typography>
                 </Grid>
                 {motosDestacadas.map((moto) => (
@@ -287,8 +289,8 @@ export default function HomeMoto() {
                   },
                 }}
               >
-                <Typography variant="h2" component="div" textAlign="center">
-                  Motos
+                <Typography variant="h3" component="div" textAlign="center">
+                  <TwoWheelerIcon sx={{ fontSize: "100%" }} /> MOTOS
                 </Typography>
                 <Box sx={{ width: "100%" }}>
                   <InputBuscador opciones="moto" />
@@ -356,7 +358,11 @@ export default function HomeMoto() {
                 <Fab
                   aria-label="edit"
                   onClick={handleClickOpen}
-                  sx={{ bgcolor: "green" }}
+                  sx={{
+                    background:
+                      "linear-gradient(45deg, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3)",
+                    color: "white",
+                  }}
                 >
                   <FilterListIcon />
                 </Fab>

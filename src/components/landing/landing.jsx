@@ -14,6 +14,7 @@ import {
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
 import BuildIcon from "@mui/icons-material/Build";
+import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 
 //imagen
 import Portada from "../../images/portada.png";
@@ -133,15 +134,15 @@ export default function Landing() {
           </Box>
           <Box sx={{ width: "100%" }}>
             <Typography variant="h5" component="div" sx={{ mt: "4%" }}>
-              Autos destacados
+              Autos destacados <BookmarkAddedIcon  />
             </Typography>
             <CarrouselCad tipo="auto" />
             <Typography variant="h5" component="div" sx={{ mt: "4%" }}>
-              Motos destacados
+              Motos destacados <BookmarkAddedIcon  />
             </Typography>
             <CarrouselCad tipo="moto" />
             <Typography variant="h5" component="div" sx={{ mt: "4%" }}>
-              Repuestos destacados
+              Repuestos destacados <BookmarkAddedIcon  />
             </Typography>
             <CarrouselCad tipo="repuesto" />
           </Box>

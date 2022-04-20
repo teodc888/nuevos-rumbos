@@ -80,17 +80,6 @@ export default function InputBuscador({ opciones }) {
             onChange={(e) => handleInputChange(e)}
             sx={{
               width: "100%",
-              color: "white",
-            }}
-            InputProps={{
-              style: {
-                color: "white",
-              },
-            }}
-            InputLabelProps={{
-              style: {
-                color: "white",
-              },
             }}
           />
           {(opciones !== "auto" &&

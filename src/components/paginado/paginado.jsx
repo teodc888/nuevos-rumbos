@@ -72,11 +72,11 @@ export default function Paginado({
 
   return (
     <div style={{ display: "flex" }}>
-      <IconButton onClick={previousPage} sx={{ mb: "5%", color: "#b71c1c" }}>
+      <IconButton onClick={previousPage} sx={{ mb: "5%", color: "#4caf50" }}>
         <ArrowBackIosNewIcon />
       </IconButton>
       <Pagination size="lg">{pageNumber}</Pagination>
-      <IconButton onClick={nextPage} sx={{ mb: "5%", color: "#b71c1c" }}>
+      <IconButton onClick={nextPage} sx={{ mb: "5%", color: "#4caf50" }}>
         <ArrowForwardIosIcon />
       </IconButton>
     </div>

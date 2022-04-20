@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
 
 //Components
 import Footer from "../../footer/footer";
@@ -334,12 +335,12 @@ export default function DetalleRepuesto({
           <Box sx={{ width: "100%" }}>
             <Typography
               gutterBottom
-              variant="h4"
+              variant="h5"
               component="div"
               textAlign="center"
               sx={{ mt: "2%", display: { xs: "none", md: "block" } }}
             >
-              Repuestos Destacados
+              Repuestos Destacados <BookmarkAddedIcon />
             </Typography>
             <Typography
               gutterBottom
@@ -348,7 +349,7 @@ export default function DetalleRepuesto({
               textAlign="center"
               sx={{ mt: "2%", display: { xs: "block", md: "none" } }}
             >
-              Repuestos Destacados
+              Repuestos Destacados <BookmarkAddedIcon />
             </Typography>
             <CarrouselCard tipo="repuesto" />
           </Box>

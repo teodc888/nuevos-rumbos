@@ -54,16 +54,16 @@ export default function CardCarrito({
           display: { xs: "none", sm: "none", md: "block", lg: "block" },
         }}
       >
-        <Card sx={{ display: "flex", maxWidth: 850, margin: "auto" }}>
+        <Card sx={{ display: "flex", maxWidth: 800, margin: "auto" }}>
           <CardMedia
             component="img"
-            sx={{ width: 200, objectFit: "contain", float: "left" }}
+            sx={{ width: 250, objectFit: "contain", float: "left" }}
             image={imagen[0]}
             alt="Live from space album cover"
           />
           <Box sx={{ display: "flex", flexDirection: "column" }}>
             <CardContent sx={{ flex: "1 0 auto" }}>
-              <Typography component="div" variant="h5">
+              <Typography component="div" variant="h6">
                 {nombre}
               </Typography>
 
@@ -87,16 +87,18 @@ export default function CardCarrito({
               <ArrowRightIcon onClick={handleClickSuma} />
             </CardContent>
           </Box>
-          <CardContent sx={{ justifyContent: "space-between", ml: 21 }}>
-            <Button
-              sx={{ bgcolor: "red", color: "white" }}
-              color="error"
-              variant="contained"
-              onClick={eliminar}
-            >
-              Borrar
-            </Button>
-          </CardContent>
+          <Box sx={{ml:20}}>
+            <CardContent >
+              <Button
+                sx={{ bgcolor: "red", color: "white" }}
+                color="error"
+                variant="contained"
+                onClick={eliminar}
+              >
+                Borrar
+              </Button>
+            </CardContent>
+          </Box>
         </Card>
       </Box>
       <Box
@@ -104,7 +106,7 @@ export default function CardCarrito({
           display: { xs: "block", sm: "block", md: "none", lg: "none" },
         }}
       >
-        <Card sx={{ maxWidth: 450, margin: "auto" }}>
+        <Card sx={{ maxWidth: 400, margin: "auto" }}>
           <CardContent sx={{ position: "absolute" }}>
             <Button
               sx={{ bgcolor: "red", color: "white" }}
@@ -117,16 +119,16 @@ export default function CardCarrito({
           </CardContent>
           <CardMedia
             component="img"
-            height="240"
+            height="200"
             sx={{ objectFit: "contain" }}
             image={imagen[0]}
             alt="green iguana"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h6" component="div">
               {nombre}
             </Typography>
-            <Typography variant="h5" color="text.secondary" component="div">
+            <Typography variant="h6" color="text.secondary" component="div">
               {descuento > 0 ? (
                 <>
                   <del>$ {precioo}</del> ${" "}
@@ -138,7 +140,7 @@ export default function CardCarrito({
             </Typography>
           </CardContent>
           <CardContent>
-            <Typography variant="h5" color="text.secondary" component="div">
+            <Typography variant="h6" color="text.secondary" component="div">
               Cantidad
             </Typography>
             <ArrowLeftIcon onClick={handleClickResta} />

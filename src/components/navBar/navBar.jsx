@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(13),
   },
   listItem: {
-    color: "red",
+    color: "#4caf50",
   },
   listText: {
     color: "white",
@@ -137,7 +137,7 @@ export default function NavBar({ setMode }) {
       <Divider />
       <List>
         <ListItem>
-          <ListItemText primary={"Nuevo Rumbos"} />
+          <ListItemText primary={"NUEVOS RUMBOS"} />
         </ListItem>
         {menuItems.map((item, i) => (
           <ListItem
@@ -156,7 +156,7 @@ export default function NavBar({ setMode }) {
               </ListItemIcon>
             ) : item.listText === "Carrito" ? (
               <ListItemIcon className={classes.listItem}>
-                <Badge badgeContent={carrito.length} color="success">
+                <Badge badgeContent={carrito.length} color="error">
                   {item.listIcon}
                 </Badge>
               </ListItemIcon>
@@ -175,7 +175,7 @@ export default function NavBar({ setMode }) {
       <Divider />
       <List>
         <ListItem>
-          <ListItemText primary="Redes Sociales" />
+          <ListItemText primary="REDES SOCIALES" />
         </ListItem>
         <ListItem button onClick={() => handleWhatsapp()}>
           <ListItemIcon>

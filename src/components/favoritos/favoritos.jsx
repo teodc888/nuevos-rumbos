@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 
 //Mui
 import { Stack, Typography, Grid, Box, Button, Container } from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 //Redux
 import { deleteFavoritos } from "../../redux/actions/index";
@@ -45,8 +46,8 @@ export default function Favoritos() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Favoritos";
-  }, []);
+    document.title = `(${favoritos.length}) Favoritos`;
+  }, [favoritos.length]);
 
   return (
     <>
@@ -57,8 +58,8 @@ export default function Favoritos() {
           justifyContent="center"
           spacing={2}
         >
-          <Typography variant="h3" component="div" textAlign="center">
-            Favoritos
+          <Typography variant="h4" component="div" textAlign="center">
+            <FavoriteIcon sx={{ fontSize: "100%" }} /> FAVORITOS
           </Typography>
           {favoritos.length !== 0 && (
             <Button

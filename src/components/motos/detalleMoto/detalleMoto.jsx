@@ -12,6 +12,8 @@ import {
   Button,
   Container,
 } from "@mui/material";
+import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
+import FeaturedPlayListIcon from "@mui/icons-material/FeaturedPlayList";
 
 //Componentes
 import CardDetalle from "../../detalle/cardDetalle/cardDetalle";
@@ -293,7 +295,7 @@ export default function DetalleMoto({
               textAlign="center"
               sx={{ marginTop: "5%" }}
             >
-              Características principales
+              Características principales <FeaturedPlayListIcon />
             </Typography>
             <Box>
               <CardDetalle
@@ -321,7 +323,7 @@ export default function DetalleMoto({
               textAlign="center"
               sx={{ marginTop: "5%" }}
             >
-              Características principales
+              Características principales <FeaturedPlayListIcon />
             </Typography>
             <Box>
               <CardDetalle
@@ -343,7 +345,7 @@ export default function DetalleMoto({
               textAlign="center"
               sx={{ mt: "2%", display: { xs: "none", md: "block" } }}
             >
-              Motos Destacadas
+              Motos Destacadas <BookmarkAddedIcon />
             </Typography>
             <Typography
               gutterBottom
@@ -352,7 +354,7 @@ export default function DetalleMoto({
               textAlign="center"
               sx={{ mt: "2%", display: { xs: "block", md: "none" } }}
             >
-              Motos Destacadas
+              Motos Destacadas <BookmarkAddedIcon />
             </Typography>
             <CarrouselCard tipo="moto" />
           </Box>
