@@ -303,7 +303,7 @@ export default function HomeMoto() {
                   {currentMotos.length === 0 ? (
                     <Grid item xs={12} sm={12} md={12}>
                       <Typography
-                        variant="h2"
+                        variant="h4"
                         component="div"
                         textAlign="center"
                         sx={{ marginBottom: "5%" }}
