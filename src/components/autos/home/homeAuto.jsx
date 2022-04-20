@@ -18,6 +18,8 @@ import {
   DialogTitle,
   Slide,
   Container,
+  Card,
+  CardMedia,
 } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
@@ -352,6 +354,7 @@ export default function HomeAuto() {
                   container
                   spacing={{ xs: 4, md: 3 }}
                   columns={{ xs: 4, sm: 8, md: 12, lg: 12 }}
+                  sx={{ marginBottom: "22%" }}
                 >
                   {/* mapeo de los autos para mostrarlos en la pantalla */}
                   {currentAutos.length === 0 ? (
@@ -360,10 +363,20 @@ export default function HomeAuto() {
                         variant="h2"
                         component="div"
                         textAlign="center"
-                        sx={{ marginBottom: "22%" }}
+                        sx={{ marginBottom: "5%" }}
                       >
                         No hay Autos
                       </Typography>
+                      <Card>
+                        <CardMedia
+                          component="img"
+                          alt="Not found"
+                          height="250"
+                          image={
+                            "https://media3.giphy.com/media/4tGZEhjzAv0plAOr91/giphy.gif?cid=ecf05e47qdpdmtqbkx8jalzoqzf5s7fj2pinavodvy6r1n5y&rid=giphy.gif&ct=ts"
+                          }
+                        />
+                      </Card>
                     </Grid>
                   ) : (
                     currentAutos.map((auto) => (
