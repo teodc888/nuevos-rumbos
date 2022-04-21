@@ -18,8 +18,6 @@ import {
   DialogTitle,
   Slide,
   Container,
-  Card,
-  CardMedia,
 } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
@@ -308,18 +306,8 @@ export default function HomeMoto() {
                         textAlign="center"
                         sx={{ marginBottom: "5%" }}
                       >
-                        No hay Motos
+                        Al parecer, no hay coincidencias para tu búsqueda
                       </Typography>
-                      <Card>
-                        <CardMedia
-                          component="img"
-                          alt="Not found"
-                          height="250"
-                          image={
-                            "https://media3.giphy.com/media/4tGZEhjzAv0plAOr91/giphy.gif?cid=ecf05e47qdpdmtqbkx8jalzoqzf5s7fj2pinavodvy6r1n5y&rid=giphy.gif&ct=ts"
-                          }
-                        />
-                      </Card>
                     </Grid>
                   ) : (
                     currentMotos.map((moto) => (

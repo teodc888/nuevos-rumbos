@@ -18,12 +18,10 @@ import {
   DialogTitle,
   Slide,
   Container,
-  Card,
-  CardMedia,
 } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
+import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
 
 //Components
 import CardNR from "../../card/card";
@@ -305,7 +303,7 @@ export default function HomeAuto() {
                 </Grid>
                 <Grid item xs={4} sm={4} md={12}>
                   <Typography variant="h5" gutterBottom textAlign="center">
-                   <BookmarkAddedIcon/> Destacados
+                    <BookmarkAddedIcon /> Destacados
                   </Typography>
                 </Grid>
                 {autosDestacados.map((auto) => (
@@ -365,18 +363,8 @@ export default function HomeAuto() {
                         textAlign="center"
                         sx={{ marginBottom: "5%" }}
                       >
-                        No hay Autos
+                        Al parecer, no hay coincidencias para tu búsqueda
                       </Typography>
-                      <Card>
-                        <CardMedia
-                          component="img"
-                          alt="Not found"
-                          height="250"
-                          image={
-                            "https://media3.giphy.com/media/4tGZEhjzAv0plAOr91/giphy.gif?cid=ecf05e47qdpdmtqbkx8jalzoqzf5s7fj2pinavodvy6r1n5y&rid=giphy.gif&ct=ts"
-                          }
-                        />
-                      </Card>
                     </Grid>
                   ) : (
                     currentAutos.map((auto) => (

@@ -18,8 +18,6 @@ import {
   DialogTitle,
   Slide,
   Container,
-  Card,
-  CardMedia,
 } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import BuildIcon from "@mui/icons-material/Build";
@@ -146,8 +144,8 @@ export default function HomeRepuestos() {
             <Box sx={{ width: "100%", marginTop: "10%" }}>
               <Grid container spacing={{ md: 6 }} columns={{ md: 12 }}>
                 <Grid item xs={6} sm={8} md={12}>
-                  <FormControl fullWidth >
-                    <InputLabel id="demo-simple-select-label" >
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">
                       PRECIO
                     </InputLabel>
                     <Select
@@ -157,7 +155,6 @@ export default function HomeRepuestos() {
                       label="PRECIO"
                       value={filtro.precioR}
                       onChange={handleChange}
-                      
                     >
                       <MenuItem value={"todos"}>Todos</MenuItem>
                       <MenuItem value={"mayor"}>Mayor</MenuItem>
@@ -166,8 +163,8 @@ export default function HomeRepuestos() {
                   </FormControl>
                 </Grid>
                 <Grid item xs={6} sm={8} md={12}>
-                  <FormControl fullWidth >
-                    <InputLabel id="demo-simple-select-label" >
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">
                       DESCUENTO
                     </InputLabel>
                     <Select
@@ -177,7 +174,6 @@ export default function HomeRepuestos() {
                       label="DESCUENTO"
                       value={filtro.descuento}
                       onChange={handleChange}
-                      
                     >
                       <MenuItem value={"todos"}>Todos</MenuItem>
                       <MenuItem value={"descuento"}>
@@ -187,8 +183,8 @@ export default function HomeRepuestos() {
                   </FormControl>
                 </Grid>
                 <Grid item xs={6} sm={8} md={12}>
-                  <FormControl fullWidth >
-                    <InputLabel id="demo-simple-select-label" >
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">
                       ORDENAR DESCUENTO
                     </InputLabel>
                     <Select
@@ -198,7 +194,6 @@ export default function HomeRepuestos() {
                       label="ORDENAR DESCUENTO"
                       value={filtro.descuentoMax}
                       onChange={handleChange}
-                      
                     >
                       <MenuItem value={"todos"}>Todos</MenuItem>
                       <MenuItem value={"menor"}>Menor Descuento</MenuItem>
@@ -288,18 +283,8 @@ export default function HomeRepuestos() {
                         textAlign="center"
                         sx={{ mb: "5%" }}
                       >
-                        No hay Repuestos
+                        Al parecer, no hay coincidencias para tu búsqueda
                       </Typography>
-                      <Card>
-                        <CardMedia
-                          component="img"
-                          alt="Not found"
-                          height="250"
-                          image={
-                            "https://media3.giphy.com/media/4tGZEhjzAv0plAOr91/giphy.gif?cid=ecf05e47qdpdmtqbkx8jalzoqzf5s7fj2pinavodvy6r1n5y&rid=giphy.gif&ct=ts"
-                          }
-                        />
-                      </Card>
                     </Grid>
                   ) : (
                     currentRepuestos.map((repuesto) => (
@@ -368,11 +353,8 @@ export default function HomeRepuestos() {
                         columns={{ xs: 4, sm: 8, md: 12 }}
                       >
                         <Grid item xs={6} sm={8} md={12}>
-                          <FormControl fullWidth >
-                            <InputLabel
-                              id="demo-simple-select-label"
-                              
-                            >
+                          <FormControl fullWidth>
+                            <InputLabel id="demo-simple-select-label">
                               PRECIO
                             </InputLabel>
                             <Select
@@ -382,7 +364,6 @@ export default function HomeRepuestos() {
                               label="PRECIO"
                               value={filtro.precioR}
                               onChange={handleChange}
-                             
                             >
                               <MenuItem value={"todos"}>Todos</MenuItem>
                               <MenuItem value={"mayor"}>Mayor</MenuItem>
@@ -391,11 +372,8 @@ export default function HomeRepuestos() {
                           </FormControl>
                         </Grid>
                         <Grid item xs={6} sm={8} md={12}>
-                          <FormControl fullWidth >
-                            <InputLabel
-                              id="demo-simple-select-label"
-                             
-                            >
+                          <FormControl fullWidth>
+                            <InputLabel id="demo-simple-select-label">
                               DESCUENTO
                             </InputLabel>
                             <Select
@@ -405,7 +383,6 @@ export default function HomeRepuestos() {
                               label="DESCUENTO"
                               value={filtro.descuento}
                               onChange={handleChange}
-                              
                             >
                               <MenuItem value={"todos"}>Todos</MenuItem>
                               <MenuItem value={"descuento"}>
@@ -415,11 +392,8 @@ export default function HomeRepuestos() {
                           </FormControl>
                         </Grid>
                         <Grid item xs={6} sm={8} md={12}>
-                          <FormControl fullWidth >
-                            <InputLabel
-                              id="demo-simple-select-label"
-                              
-                            >
+                          <FormControl fullWidth>
+                            <InputLabel id="demo-simple-select-label">
                               ORDENAR DESCUENTO
                             </InputLabel>
                             <Select
@@ -429,7 +403,6 @@ export default function HomeRepuestos() {
                               label="ORDENAR DESCUENTO"
                               value={filtro.descuentoMax}
                               onChange={handleChange}
-                              
                             >
                               <MenuItem value={"todos"}>Todos</MenuItem>
                               <MenuItem value={"menor"}>
