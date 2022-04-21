@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { Stack, Typography, Grid, Box, Button, Container } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 //Componentes
 import Footer from "../footer/footer";
@@ -19,6 +19,10 @@ import { useNavigate } from "react-router";
 
 //toastify
 import { toast } from "react-toastify";
+
+//iconos
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 export default function Carrito() {
   const dispatch = useDispatch();
@@ -174,7 +178,7 @@ export default function Carrito() {
                 }}
                 onClick={handleClickBorrar}
               >
-                <RemoveShoppingCartIcon sx={{mr:"10px"}} /> Eliminar todo
+                <RemoveShoppingCartIcon sx={{ mr: "10px" }} /> Eliminar todo
               </Button>
               <Button
                 color="error"
@@ -187,7 +191,7 @@ export default function Carrito() {
                 }}
                 onClick={handleClickBorrar}
               >
-                <RemoveShoppingCartIcon  sx={{mr:"10px"}}/> Eliminar todo
+                <RemoveShoppingCartIcon sx={{ mr: "10px" }} /> Eliminar todo
               </Button>
             </>
           ) : null}
@@ -244,7 +248,8 @@ export default function Carrito() {
                       variant="contained"
                       sx={{ bgcolor: "green", color: "white" }}
                     >
-                     <AddShoppingCartIcon sx={{mr:"10px"}} /> Agregar Productos
+                      <AddShoppingCartIcon sx={{ mr: "10px" }} /> Agregar
+                      Productos
                     </Button>
                   </Grid>
                 </>
@@ -285,7 +290,11 @@ export default function Carrito() {
                       }}
                       onClick={botonWhatsapp}
                     >
-                      Solicitar presupuesto a Whatsapp
+                      Solicitar presupuesto a Whatsapp{" "}
+                      <FontAwesomeIcon
+                        icon={faWhatsapp}
+                        style={{ marginLeft: "2%" }}
+                      />
                     </Button>
                     <Button
                       variant="contained"
@@ -298,7 +307,11 @@ export default function Carrito() {
                       }}
                       onClick={botonWhatsapp}
                     >
-                      Solicitar presupuesto a Whatsapp
+                      Solicitar presupuesto a Whatsapp{" "}
+                      <FontAwesomeIcon
+                        icon={faWhatsapp}
+                        style={{ marginLeft: "2%" }}
+                      />
                     </Button>
                   </>
                 ) : null}
