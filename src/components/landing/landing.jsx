@@ -29,6 +29,8 @@ import { useNavigate } from "react-router";
 import CarrouselCad from "../carrousel/carrouselCard/carrouselCard";
 import Footer from "../footer/footer";
 
+import { gsap } from "gsap";
+
 export default function Landing() {
   const navigate = useNavigate();
 
@@ -44,13 +46,69 @@ export default function Landing() {
     navigate("/repuestos");
   };
 
+  //efectos
+  const timeline = gsap.timeline();
+
   useEffect(() => {
-    document.title = "Nuevos Rumbos";
+    document.title = "Importadora";
     window.scrollTo(0, 0);
+
+    const autos = document.querySelector(".autos");
+    const motos = document.querySelector(".motos");
+    const repuestos = document.querySelector(".repuestos");
+    const portada = document.querySelector(".portada");
+    const botonAuto = document.querySelector(".botonAuto");
+    const botonMoto = document.querySelector(".botonMoto");
+    const botonRepuesto = document.querySelector(".botonRepuesto");
+
+    timeline
+      .from(portada, {
+        duration: 0.5,
+        opacity: 0,
+        x: 50,
+        
+      })
+      .from(botonAuto, {
+        duration: 0.5,
+        opacity: 0,
+        x: -50,
+        
+      })
+      .from(botonMoto, {
+        duration: 0.5,
+        opacity: 0,
+        y: 50,
+        
+      })
+      .from(botonRepuesto, {
+        duration: 0.5,
+        opacity: 0,
+        x: 50,
+        
+      })
+
+      .from(autos, {
+        duration: 1,
+        opacity: 0,
+        y: -100,
+        
+      })
+      .from(motos, {
+        duration: 1,
+        opacity: 0,
+        y: -100,
+        
+      })
+      .from(repuestos, {
+        duration: 1,
+        opacity: 0,
+        y: -100,
+        
+      });
   }, []);
 
   return (
-    <>
+    <div className="landing">
       <Stack
         direction="column"
         alignItems="center"
@@ -58,7 +116,7 @@ export default function Landing() {
         spacing={2}
         width="100%"
       >
-        <Card sx={{ maxWidth: "100%" }}>
+        <Card sx={{ maxWidth: "100%" }} className="portada">
           <CardMedia
             sx={{ display: { xs: "none", md: "block" } }}
             component="img"
@@ -81,7 +139,7 @@ export default function Landing() {
               spacing={{ xs: 2, md: 2, sm: 2 }}
               columns={{ xs: 4, sm: 8, md: 16 }}
             >
-              <Grid item xs={4} sm={8} md={5.33}>
+              <Grid item xs={4} sm={8} md={5.33} className="botonAuto">
                 <Button
                   variant="contained"
                   color="error"
@@ -98,9 +156,10 @@ export default function Landing() {
                   <Typography variant="h5">Autos</Typography>
                 </Button>
               </Grid>
-              <Grid item xs={4} sm={8} md={5.33}>
+              <Grid item xs={4} sm={8} md={5.33} className="botonMoto">
                 <Button
                   variant="contained"
+                  color="error"
                   sx={{
                     width: "100%",
                     height: "60px",
@@ -114,10 +173,10 @@ export default function Landing() {
                   <Typography variant="h5">Motos</Typography>
                 </Button>
               </Grid>
-              <Grid item xs={4} sm={8} md={5.33}>
+              <Grid item xs={4} sm={8} md={5.33} className="botonRepuesto">
                 <Button
                   variant="contained"
-                  color="success"
+                  color="error"
                   sx={{
                     width: "100%",
                     height: "60px",
@@ -134,22 +193,28 @@ export default function Landing() {
             </Grid>
           </Box>
           <Box sx={{ width: "100%" }}>
-            <Typography variant="h5" component="div" sx={{ mt: "4%" }}>
-              Autos destacados <BookmarkAddedIcon />
-            </Typography>
-            <CarrouselCad tipo="auto" />
-            <Typography variant="h5" component="div" sx={{ mt: "4%" }}>
-              Motos destacados <BookmarkAddedIcon />
-            </Typography>
-            <CarrouselCad tipo="moto" />
-            <Typography variant="h5" component="div" sx={{ mt: "4%" }}>
-              Repuestos destacados <BookmarkAddedIcon />
-            </Typography>
-            <CarrouselCad tipo="repuesto" />
+            <Box className="autos">
+              <Typography variant="h5" component="div" sx={{ mt: "4%" }}>
+                Autos destacados <BookmarkAddedIcon />
+              </Typography>
+              <CarrouselCad tipo="auto" />
+            </Box>
+            <Box className="motos">
+              <Typography variant="h5" component="div" sx={{ mt: "4%" }}>
+                Motos destacados <BookmarkAddedIcon />
+              </Typography>
+              <CarrouselCad tipo="moto" />
+            </Box>
+            <Box className="repuestos">
+              <Typography variant="h5" component="div" sx={{ mt: "4%" }}>
+                Repuestos destacados <BookmarkAddedIcon />
+              </Typography>
+              <CarrouselCad tipo="repuesto" />
+            </Box>
           </Box>
         </Container>
       </Stack>
       <Footer />
-    </>
+    </div>
   );
 }

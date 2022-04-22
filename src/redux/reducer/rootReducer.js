@@ -50,8 +50,8 @@ const inicialState = {
     descuentoMax: "todos",
   },
   login: "",
-  color: "#d50000",
-  darkMode: "light",
+  color: "#263238",
+  darkMode: "dark",
   carrito: [],
   repeticion: 0,
 };

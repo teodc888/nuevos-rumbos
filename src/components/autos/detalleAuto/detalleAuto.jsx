@@ -34,6 +34,9 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 //toastify
 import { toast } from "react-toastify";
 
+//animaciones
+import { gsap } from "gsap";
+
 export default function DetalleAuto({
   marca,
   modelo,
@@ -109,14 +112,41 @@ export default function DetalleAuto({
     errorSubmit();
   };
 
+  //efectos
+  const timeline = gsap.timeline();
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = modelo;
+
+    const imagen = document.querySelector(".imagen");
+    const det = document.querySelector(".detalles");
+    const caracteristicas = document.querySelector(".caracteristicas");
+    const destacado = document.querySelector(".destacado");
+
+    gsap.from(imagen,{opacity : 0, x:-300, duration : 1})
+    gsap.from(det,{opacity : 0, x:300, duration : 1})
+
+
+    timeline
+    .from(caracteristicas, {
+      duration: 1,
+      opacity: 0,
+      x: 300,
+    })
+    .from(destacado, {
+      duration: 1,
+      opacity: 0,
+      y: 300,
+    });
+
+
+
   }, [modelo]);
 
   const handleWhatsapp = () => {
     window.open(
-      "https://wa.me/59177631332?text=Hola,%20me%20gustaria%20obtener%20mas%20informacion%20sobre%20" +
+      "https://wa.me/3512550311?text=Hola,%20me%20gustaria%20obtener%20mas%20informacion%20sobre%20" +
         marca +
         "%20" +
         modelo
@@ -138,7 +168,7 @@ export default function DetalleAuto({
               spacing={{ xs: 4, md: 3 }}
               columns={{ xs: 4, sm: 8, md: 12 }}
             >
-              <Grid item xs={4} sm={8} md={8}>
+              <Grid item xs={4} sm={8} md={8} className="imagen">
                 <Box sx={{ width: "100%" }}>
                   <Card
                     sx={{
@@ -214,7 +244,7 @@ export default function DetalleAuto({
                   </Card>
                 </Box>
               </Grid>
-              <Grid item xs={4} sm={8} md={4}>
+              <Grid item xs={4} sm={8} md={4} className="detalles">
                 <Card sx={{ maxWidth: 445, margin: "auto" }}>
                   <CardContent>
                     <Typography variant="body1" color="text.secondary">
@@ -292,6 +322,7 @@ export default function DetalleAuto({
             textAlign="center"
             sx={{ display: { xs: "none", md: "block" } }}
             width="65%"
+            className="caracteristicas"
           >
             <Typography
               gutterBottom
@@ -323,6 +354,7 @@ export default function DetalleAuto({
               display: { xs: "block", md: "none", sm: "block" },
               width: "100%",
             }}
+            className="caracteristicas"
           >
             <Typography
               gutterBottom
@@ -348,7 +380,7 @@ export default function DetalleAuto({
               año={año}
             />
           </Box>
-          <Box sx={{ width: "100%" }}>
+          <Box sx={{ width: "100%" }} className="destacado">
             <Typography
               gutterBottom
               variant="h5"

@@ -55,7 +55,6 @@ export default function CardNR({
   const dispatch = useDispatch();
 
   //color
-  const colorElegido = useSelector((state) => state.color);
   const darkMode = useSelector((state) => state.darkMode);
 
   //Favoritos
@@ -285,13 +284,13 @@ export default function CardNR({
             <Checkbox
               checked={checked}
               onChange={handleChange}
-              icon={<FavoriteBorder sx={{ color: colorElegido }} />}
-              checkedIcon={<Favorite sx={{ color: colorElegido }} />}
+              icon={<FavoriteBorder sx={{ color: "#bf360c" }} />}
+              checkedIcon={<Favorite sx={{ color: "#bf360c" }} />}
             />
           </>
         ) : (
           <IconButton onClick={deleteFavorito}>
-            <DeleteIcon sx={{ color: colorElegido }} />
+            <DeleteIcon sx={{ color: "#bf360c" }} />
           </IconButton>
         )}
       </CardActions>

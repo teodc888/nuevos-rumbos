@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(13),
   },
   listItem: {
-    color: "#4caf50",
+    color: "#bf360c",
   },
   listText: {
     color: "white",
@@ -118,7 +118,7 @@ export default function NavBar({ setMode }) {
   };
 
   const handleWhatsapp = () => {
-    window.open("https://wa.me/59177631332");
+    window.open("https://wa.me/3512550311");
     setOpen(false);
   };
   const handleFacebook = () => {
@@ -299,7 +299,7 @@ export default function NavBar({ setMode }) {
           onClick={navigateToFavoritos}
           sx={{ mr: "0.1px" }}
         >
-          <Badge badgeContent={fav.length} color="primary">
+          <Badge badgeContent={fav.length} color="error">
             <FavoriteIcon />
           </Badge>
         </IconButton>
@@ -313,7 +313,7 @@ export default function NavBar({ setMode }) {
           color="inherit"
           onClick={handleCarrito}
         >
-          <Badge badgeContent={carrito.length} color="success">
+          <Badge badgeContent={carrito.length} color="error">
             <ShoppingCartIcon />
           </Badge>
         </IconButton>
@@ -354,7 +354,7 @@ export default function NavBar({ setMode }) {
             }}
             onClick={navigateToLanding}
           >
-            NUEVOS RUMBOS
+            IMPORTADORA
           </Typography>
 
           {/* Normal */}
@@ -362,6 +362,7 @@ export default function NavBar({ setMode }) {
             sx={{
               display: { xs: "none", sm: "flex", md: "flex", lg: "flex" },
               ml: 2,
+              
             }}
           >
             <InputBuscador />
@@ -400,7 +401,7 @@ export default function NavBar({ setMode }) {
               onClick={navigateToFavoritos}
               sx={{ mr: "0.1px" }}
             >
-              <Badge badgeContent={fav.length} color="primary">
+              <Badge badgeContent={fav.length} color="error">
                 <FavoriteIcon />
               </Badge>
             </IconButton>
@@ -412,7 +413,7 @@ export default function NavBar({ setMode }) {
               color="inherit"
               onClick={handleCarrito}
             >
-              <Badge badgeContent={carrito.length} color="success">
+              <Badge badgeContent={carrito.length} color="error">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>

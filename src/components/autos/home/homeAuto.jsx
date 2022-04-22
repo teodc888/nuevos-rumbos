@@ -37,6 +37,9 @@ import Footer from "../../footer/footer";
 //toastify
 import { toast } from "react-toastify";
 
+//animaciones
+import { gsap } from "gsap";
+
 //Pop Up
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -57,13 +60,6 @@ export default function HomeAuto() {
 
   //useState
   const [filtro, setFiltro] = useState(orden);
-
-  // UseEffect
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    document.title = "Autos";
-    dispatch(filtroAuto(filtro));
-  }, [dispatch, filtro]);
 
   //Paginado
   const [currentPage, setCurrentPage] = useState(1);
@@ -124,16 +120,30 @@ export default function HomeAuto() {
     setOpen(false);
   };
 
+  // UseEffect
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "Autos";
+    dispatch(filtroAuto(filtro));
+
+    const izquierda = document.querySelector(".izquierda");
+    const derecha = document.querySelector(".derecha");
+
+    gsap.from(izquierda, { opacity: 0, x: -300, duration: 1 });
+    gsap.from(derecha, { opacity: 0, x: 300, duration: 1 });
+  }, [dispatch, filtro]);
+
   return (
     <>
       <Container maxWidth="lg">
-        <Grid container spacing={10} columns={16}>
+        <Grid container spacing={5} columns={16}>
           <Grid
             item
-            xs={4}
+            xs={5}
             sx={{
               display: { xs: "none", md: "none", sm: "none", lg: "block" },
             }}
+            className="izquierda"
           >
             <Stack
               direction="column"
@@ -294,8 +304,9 @@ export default function HomeAuto() {
                 <Grid item xs={4} sm={4} md={12}>
                   <Button
                     fullWidth
-                    sx={{ bgcolor: "green", color: "white" }}
+                    sx={{ color: "white", bgcolor: "#bf360c" }}
                     variant="contained"
+                    color="error"
                     onClick={resetFiltros}
                   >
                     Borrar filtros
@@ -321,7 +332,7 @@ export default function HomeAuto() {
             </Box>
           </Grid>
 
-          <Grid item xs={16} md={16} sm={16} lg={12}>
+          <Grid item xs={16} md={16} sm={16} lg={11} className="derecha">
             <Stack
               direction="column"
               alignItems="center"
@@ -413,7 +424,7 @@ export default function HomeAuto() {
                   onClick={handleClickOpen}
                   sx={{
                     background:
-                      "linear-gradient(45deg, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3)",
+                      "linear-gradient(45deg, #bf360c, #bf360c, #bf360c, #bf360c, #bf360c, #bf360c)",
                     color: "white",
                   }}
                 >

@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 //Mui
 import {
   CardActions,
-  TextField,
   Box,
   Grid,
   IconButton,
@@ -11,9 +10,11 @@ import {
   ListItem,
   ListItemText,
   ListSubheader,
+  Paper,
+  InputBase,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
+import SearchIcon from '@mui/icons-material/Search';
 
 //Redux
 import { useDispatch } from "react-redux";
@@ -34,6 +35,7 @@ export default function InputBuscador({ opciones }) {
   const dispatch = useDispatch();
 
   const buscar = useSelector((state) => state.buscados);
+  const colorElegido = useSelector((state) => state.color);
 
   const [input, setInput] = useState("");
 
@@ -69,28 +71,48 @@ export default function InputBuscador({ opciones }) {
     <>
       <Box sx={{ margin: "auto" }}>
         <CardActions sx={{ margin: "auto" }}>
-          <SearchIcon />
-
-          <TextField
-            label="Buscar..."
-            name="text"
-            value={input}
-            autoComplete="off"
-            type="text"
-            onChange={(e) => handleInputChange(e)}
+          <Paper
+            component="form"
             sx={{
+              p: "2px 4px",
+              display: "flex",
+              alignItems: "center",
               width: "100%",
             }}
-          />
-          {(opciones !== "auto" &&
-            opciones !== "moto" &&
-            opciones !== "repuesto" &&
-            buscar.length > 0) ||
-          input !== "" ? (
-            <IconButton onClick={() => handleClickLimpiar()}>
-              <ClearIcon sx={{ color: "white" }} />
+          >
+            <IconButton sx={{ p: "10px" }} aria-label="menu">
+              <SearchIcon />
             </IconButton>
-          ) : null}
+            <InputBase
+              sx={{ ml: 1, flex: 1 }}
+              placeholder="Buscar..."
+              inputProps={{ "aria-label": "Buscar..." }}
+              name="text"
+              value={input}
+              autoComplete="off"
+              type="text"
+              onChange={(e) => handleInputChange(e)}
+            />
+            {(opciones !== "auto" &&
+              opciones !== "moto" &&
+              opciones !== "repuesto" &&
+              buscar.length > 0) ||
+            input !== "" ? (
+              <IconButton
+                onClick={() => handleClickLimpiar()}
+                sx={{
+                  color: "black",
+                  backgroundColor: "white",
+                  border: "1px solid black",
+                  borderRadius: "50%",
+                  padding: "0.1rem",
+                  margin: "0 0.1rem",
+                }}
+              >
+                <ClearIcon />
+              </IconButton>
+            ) : null}
+          </Paper>
         </CardActions>
 
         {opciones !== "auto" &&
@@ -123,8 +145,8 @@ export default function InputBuscador({ opciones }) {
                   <Grid item xs={16}>
                     <List
                       sx={{
-                        width: "300px",
-                        bgcolor: "#d50000",
+                        width: "315px",
+                        bgcolor: colorElegido,
                         position: "relative",
                         overflow: "auto",
                         "& ul": { padding: 0 },
@@ -134,7 +156,7 @@ export default function InputBuscador({ opciones }) {
                       <li>
                         <ul>
                           <ListSubheader
-                            sx={{ bgcolor: "#b71c1c", color: "white" }}
+                            sx={{ bgcolor: colorElegido, color: "white" }}
                           >
                             Buscador
                           </ListSubheader>
@@ -180,7 +202,7 @@ export default function InputBuscador({ opciones }) {
                     <List
                       sx={{
                         width: "265px",
-                        bgcolor: "#d50000",
+                        bgcolor: colorElegido,
                         position: "relative",
                         overflow: "auto",
                         "& ul": { padding: 0 },
@@ -190,7 +212,7 @@ export default function InputBuscador({ opciones }) {
                       <li>
                         <ul>
                           <ListSubheader
-                            sx={{ bgcolor: "#b71c1c", color: "white" }}
+                            sx={{ bgcolor: colorElegido, color: "white" }}
                           >
                             Buscador
                           </ListSubheader>

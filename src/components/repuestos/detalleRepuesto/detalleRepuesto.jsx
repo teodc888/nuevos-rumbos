@@ -38,6 +38,10 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 //toastify
 import { toast } from "react-toastify";
 
+
+//animaciones
+import { gsap } from "gsap";
+
 export default function DetalleRepuesto({
   nombre,
   imagen,
@@ -138,11 +142,20 @@ export default function DetalleRepuesto({
   useEffect(() => {
     document.title = nombre;
     window.scrollTo(0, 0);
+
+    const imagen = document.querySelector(".imagen");
+    const det = document.querySelector(".detalles");
+    const destacado = document.querySelector(".destacado");
+
+
+    gsap.from(imagen, { opacity: 0, x: -300, duration: 1 });
+    gsap.from(det, { opacity: 0, x: 300, duration: 1 });
+    gsap.from(destacado, { opacity: 0, y: 300, duration: 1 });
   }, [nombre]);
 
   const handleWhatsapp = () => {
     window.open(
-      "https://wa.me/59177631332?text=Hola,%20me%20gustaria%20obtener%20mas%20informacion%20sobre%20" +
+      "https://wa.me/3512550311?text=Hola,%20me%20gustaria%20obtener%20mas%20informacion%20sobre%20" +
         nombre
     );
   };
@@ -172,7 +185,7 @@ export default function DetalleRepuesto({
               spacing={{ xs: 4, md: 3 }}
               columns={{ xs: 4, sm: 8, md: 12 }}
             >
-              <Grid item xs={4} sm={8} md={8}>
+              <Grid item xs={4} sm={8} md={8} className="imagen">
                 {descuento > 0 ? (
                   <Box sx={{ position: "absolute" }}>
                     <Alert
@@ -207,7 +220,7 @@ export default function DetalleRepuesto({
                   />
                 </Card>
               </Grid>
-              <Grid item xs={4} sm={8} md={4}>
+              <Grid item xs={4} sm={8} md={4} className="detalles"> 
                 <Card sx={{ maxWidth: 445, margin: "auto" }}>
                   <CardContent>
                     <Typography
@@ -332,7 +345,7 @@ export default function DetalleRepuesto({
               </Grid>
             </Grid>
           </Box>
-          <Box sx={{ width: "100%" }}>
+          <Box sx={{ width: "100%" }} className="destacado">
             <Typography
               gutterBottom
               variant="h5"

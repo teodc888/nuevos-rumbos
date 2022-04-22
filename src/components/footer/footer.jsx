@@ -156,7 +156,7 @@ export default function Footer() {
               color="textPrimary"
               sx={{ mt: "0.5%", color: "white" }}
             >
-              NUEVOS RUMBOS &reg; {new Date().getFullYear()}
+             IMPORTADORA &reg; {new Date().getFullYear()}
             </Typography>
           </Box>
         </Container>

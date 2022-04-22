@@ -1,5 +1,4 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -27,70 +26,37 @@ export default function CardDestacado({
 
   return (
     <>
-      {detalle === "repuesto" ? (
-        <Card sx={{ maxWidth: 200, margin: "auto" }}>
-          <CardActionArea onClick={handleClick}>
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              height="120"
-              image={imagen}
-              sx={{ objectFit: "contain" }}
-            />
-            <CardContent>
-              <Typography
-                gutterBottom
-                variant="h7"
-                component="div"
-                sx={{ fontSize: "13px" }}
-              >
-                {nombre}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {detalle === "repuesto" && descuento > 0 ? (
-                  <>
-                    <del>${precio}</del> $
-                    {Number(precioDescuento).toLocaleString("es-AR")}
-                  </>
-                ) : (
-                  <>$ {Number(precio).toLocaleString("es-AR")}</>
-                )}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      ) : (
-        <Card sx={{ display: "flex", maxWidth: "100%", margin: "auto" }}>
-          <Box sx={{ display: "flex", flexDirection: "column" }}>
-            <CardActionArea onClick={handleClick}>
-              <CardContent sx={{ flex: "1 0 auto" }}>
-                <Typography
-                  component="div"
-                  variant="subtitle2"
-                  sx={{ fontSize: 14 }}
-                >
-                  {marca} {modelo}
-                </Typography>
-
-                <Typography
-                  variant="subtitle2"
-                  color="text.secondary"
-                  component="div"
-                  sx={{ fontSize: 13 }}
-                >
-                  $ {Number(precio).toLocaleString("es-AR")}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Box>
+      <Card sx={{ maxWidth: 200, margin: "auto" }}>
+        <CardActionArea onClick={handleClick}>
           <CardMedia
             component="img"
-            sx={{ width: 100, objectFit: "contain", ml: 2 }}
+            alt="green iguana"
+            height="120"
             image={imagen}
-            alt="Live from space album cover"
+            sx={{ objectFit: "contain" }}
           />
-        </Card>
-      )}
+          <CardContent>
+            <Typography
+              gutterBottom
+              variant="h7"
+              component="div"
+              sx={{ fontSize: "13px" }}
+            >
+              {nombre} {marca} {modelo}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {detalle === "repuesto" && descuento > 0 ? (
+                <>
+                  <del>${precio}</del> $
+                  {Number(precioDescuento).toLocaleString("es-AR")}
+                </>
+              ) : (
+                <>$ {Number(precio).toLocaleString("es-AR")}</>
+              )}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
     </>
   );
 }

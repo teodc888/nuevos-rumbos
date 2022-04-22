@@ -20,6 +20,9 @@ import { useNavigate } from "react-router";
 //toastify
 import { toast } from "react-toastify";
 
+//animaciones
+import { gsap } from "gsap";
+
 //iconos
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
@@ -79,7 +82,7 @@ export default function Carrito() {
 
   const botonWhatsapp = () => {
     window.open(
-      `https://wa.me/59177631332?text=${
+      `https://wa.me/3512550311?text=${
         encodeURIComponent("Hola! le mando mi presupuesto:") +
         "%0D%0A" +
         carrito.map((item) =>
@@ -151,11 +154,15 @@ export default function Carrito() {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = `(${carrito.length}) Carrito`;
+
+    const carr = document.querySelector(".carr")
+    
+    gsap.from(carr,{opacity : 0, y:-50, duration : 1})
   }, [carrito.length]);
 
   return (
     <>
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" className="carr">
         <Stack
           direction="column"
           alignItems="center"

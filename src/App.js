@@ -122,7 +122,7 @@ export default function App() {
   };
 
   const handleWhatsapp = () => {
-    window.open("https://wa.me/59177631332");
+    window.open("https://wa.me/3512550311");
     setOpen(false);
   };
 
@@ -248,7 +248,7 @@ export default function App() {
               <Fab
                 sx={{
                   background:
-                    "linear-gradient(45deg, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3)",
+                    "linear-gradient(45deg, #bf360c, #bf360c, #bf360c, #bf360c, #bf360c, #bf360c)",
                   color: "white",
                 }}
                 aria-label="add"
@@ -280,7 +280,7 @@ export default function App() {
                     aria-label="add"
                     sx={{
                       background:
-                        "linear-gradient(45deg, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3)",
+                        "linear-gradient(45deg, #bf360c, #bf360c, #bf360c, #bf360c, #bf360c, #bf360c)",
                       color: "white",
                     }}
                     onClick={handleSubir}
@@ -306,7 +306,7 @@ export default function App() {
                     aria-label="add"
                     sx={{
                       background:
-                        "linear-gradient(45deg, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3)",
+                        "linear-gradient(45deg, #bf360c, #bf360c, #bf360c, #bf360c, #bf360c, #bf360c)",
                       color: "white",
                     }}
                     onClick={handleSubir}
@@ -330,7 +330,7 @@ export default function App() {
               <Fab
                 sx={{
                   background:
-                    "linear-gradient(45deg, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3, #2196f3)",
+                    "linear-gradient(45deg, #bf360c, #bf360c, #bf360c, #bf360c, #bf360c, #bf360c)",
                   mr: "6px",
                   color: "white",
                 }}
