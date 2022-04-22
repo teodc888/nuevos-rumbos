@@ -277,68 +277,70 @@ export default function HomeMoto() {
             </Box>
           </Grid>
 
-          <Grid item xs={16} md={16} sm={16} lg={11} className="derecha">
+          <Grid item xs={16} md={16} sm={16} lg={11}>
             <Stack
               direction="column"
               alignItems="center"
               justifyContent="center"
               spacing={2}
             >
-              <Box
-                sx={{
-                  display: {
-                    xs: "block",
-                    md: "block",
-                    sm: "block",
-                    lg: "none",
-                  },
-                }}
-              >
-                <Typography variant="h3" component="div" textAlign="center">
-                  <TwoWheelerIcon sx={{ fontSize: "100%" }} /> MOTOS
-                </Typography>
-                <Box sx={{ width: "100%" }}>
-                  <InputBuscador opciones="moto" />
-                </Box>
-              </Box>
-              <Box sx={{ width: "100%", marginTop: "3%" }}>
-                <Grid
-                  container
-                  spacing={{ xs: 4, md: 3 }}
-                  columns={{ xs: 4, sm: 8, md: 12 }}
-                  sx={{ marginBottom: "22%" }}
+              <Box className="derecha">
+                <Box
+                  sx={{
+                    display: {
+                      xs: "block",
+                      md: "block",
+                      sm: "block",
+                      lg: "none",
+                    },
+                  }}
                 >
-                  {/* //mapeo de las motos para mostrarlos en la pantalla */}
-                  {currentMotos.length === 0 ? (
-                    <Grid item xs={12} sm={12} md={12}>
-                      <Typography
-                        variant="h4"
-                        component="div"
-                        textAlign="center"
-                        sx={{ marginBottom: "5%" }}
-                      >
-                        Al parecer, no hay coincidencias para tu búsqueda
-                      </Typography>
-                    </Grid>
-                  ) : (
-                    currentMotos.map((moto) => (
-                      <Grid item xs={4} sm={4} md={4} key={moto.id}>
-                        <CardNR
-                          marca={moto.marca}
-                          modelo={moto.modelo}
-                          imagen={moto.imagen}
-                          precio={moto.precio}
-                          id={moto.id}
-                          año={moto.año}
-                          kilometros={moto.kilometros}
-                          descripcion={moto.descripcion}
-                          favorito={"true"}
-                          detalle={moto.detalle}
-                        />
+                  <Typography variant="h3" component="div" textAlign="center">
+                    <TwoWheelerIcon sx={{ fontSize: "100%" }} /> MOTOS
+                  </Typography>
+                  <Box sx={{ width: "100%" }}>
+                    <InputBuscador opciones="moto" />
+                  </Box>
+                </Box>
+                <Box sx={{ width: "100%", marginTop: "3%" }}>
+                  <Grid
+                    container
+                    spacing={{ xs: 4, md: 3 }}
+                    columns={{ xs: 4, sm: 8, md: 12 }}
+                    sx={{ marginBottom: "22%" }}
+                  >
+                    {/* //mapeo de las motos para mostrarlos en la pantalla */}
+                    {currentMotos.length === 0 ? (
+                      <Grid item xs={12} sm={12} md={12}>
+                        <Typography
+                          variant="h4"
+                          component="div"
+                          textAlign="center"
+                          sx={{ marginBottom: "5%" }}
+                        >
+                          Al parecer, no hay coincidencias para tu búsqueda
+                        </Typography>
                       </Grid>
-                    ))
-                  )}
-                </Grid>
+                    ) : (
+                      currentMotos.map((moto) => (
+                        <Grid item xs={4} sm={4} md={4} key={moto.id}>
+                          <CardNR
+                            marca={moto.marca}
+                            modelo={moto.modelo}
+                            imagen={moto.imagen}
+                            precio={moto.precio}
+                            id={moto.id}
+                            año={moto.año}
+                            kilometros={moto.kilometros}
+                            descripcion={moto.descripcion}
+                            favorito={"true"}
+                            detalle={moto.detalle}
+                          />
+                        </Grid>
+                      ))
+                    )}
+                  </Grid>
+                </Box>
               </Box>
               <Paginado
                 productoPorPagina={productoPorPagina}

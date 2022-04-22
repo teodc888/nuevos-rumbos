@@ -244,77 +244,79 @@ export default function HomeRepuestos() {
             </Box>
           </Grid>
 
-          <Grid item xs={16} md={16} sm={16} lg={11} className="derecha">
+          <Grid item xs={16} md={16} sm={16} lg={11}>
             <Stack
               direction="column"
               alignItems="center"
               justifyContent="center"
               spacing={2}
             >
-              <Box
-                sx={{
-                  display: {
-                    xs: "block",
-                    md: "block",
-                    sm: "block",
-                    lg: "none",
-                  },
-                }}
-              >
-                <Typography
-                  variant="h4"
-                  component="div"
-                  textAlign="center"
-                  sx={{ mb: "5%" }}
+              <Box className="derecha">
+                <Box
+                  sx={{
+                    display: {
+                      xs: "block",
+                      md: "block",
+                      sm: "block",
+                      lg: "none",
+                    },
+                  }}
                 >
-                  <BuildIcon sx={{ fontSize: "100%" }} /> RESPUESTOS
-                </Typography>
-                <Box sx={{ width: "100%" }}>
-                  <InputBuscador opciones="repuesto" />
+                  <Typography
+                    variant="h4"
+                    component="div"
+                    textAlign="center"
+                    sx={{ mb: "5%" }}
+                  >
+                    <BuildIcon sx={{ fontSize: "100%" }} /> RESPUESTOS
+                  </Typography>
+                  <Box sx={{ width: "100%" }}>
+                    <InputBuscador opciones="repuesto" />
+                  </Box>
                 </Box>
-              </Box>
-              <Box sx={{ width: "100%", marginTop: "3%" }}>
-                <Grid
-                  container
-                  spacing={{ xs: 4, md: 3 }}
-                  columns={{ xs: 4, sm: 8, md: 12 }}
-                >
-                  {/* //mapeo de los repuestos para mostrarlos en la pantalla */}
-                  {currentRepuestos.length === 0 ? (
-                    <Grid
-                      item
-                      xs={12}
-                      sm={12}
-                      md={12}
-                      sx={{ marginBottom: "22%" }}
-                    >
-                      <Typography
-                        variant="h4"
-                        component="div"
-                        textAlign="center"
-                        sx={{ mb: "5%" }}
+                <Box sx={{ width: "100%", marginTop: "3%" }}>
+                  <Grid
+                    container
+                    spacing={{ xs: 4, md: 3 }}
+                    columns={{ xs: 4, sm: 8, md: 12 }}
+                  >
+                    {/* //mapeo de los repuestos para mostrarlos en la pantalla */}
+                    {currentRepuestos.length === 0 ? (
+                      <Grid
+                        item
+                        xs={12}
+                        sm={12}
+                        md={12}
+                        sx={{ marginBottom: "22%" }}
                       >
-                        Al parecer, no hay coincidencias para tu búsqueda
-                      </Typography>
-                    </Grid>
-                  ) : (
-                    currentRepuestos.map((repuesto) => (
-                      <Grid item xs={4} sm={4} md={4} key={repuesto.id}>
-                        <CardNR
-                          nombre={repuesto.nombre}
-                          imagen={repuesto.imagen}
-                          precio={repuesto.precio}
-                          id={repuesto.id}
-                          detalle={repuesto.detalle}
-                          descripcion={repuesto.descripcion}
-                          favorito={"true"}
-                          descuento={repuesto.descuento}
-                          precioDescuento={repuesto.precioDescuento}
-                        />
+                        <Typography
+                          variant="h4"
+                          component="div"
+                          textAlign="center"
+                          sx={{ mb: "5%" }}
+                        >
+                          Al parecer, no hay coincidencias para tu búsqueda
+                        </Typography>
                       </Grid>
-                    ))
-                  )}
-                </Grid>
+                    ) : (
+                      currentRepuestos.map((repuesto) => (
+                        <Grid item xs={4} sm={4} md={4} key={repuesto.id}>
+                          <CardNR
+                            nombre={repuesto.nombre}
+                            imagen={repuesto.imagen}
+                            precio={repuesto.precio}
+                            id={repuesto.id}
+                            detalle={repuesto.detalle}
+                            descripcion={repuesto.descripcion}
+                            favorito={"true"}
+                            descuento={repuesto.descuento}
+                            precioDescuento={repuesto.precioDescuento}
+                          />
+                        </Grid>
+                      ))
+                    )}
+                  </Grid>
+                </Box>
               </Box>
               <Paginado
                 productoPorPagina={productoPorPagina}

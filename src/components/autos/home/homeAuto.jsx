@@ -332,71 +332,73 @@ export default function HomeAuto() {
             </Box>
           </Grid>
 
-          <Grid item xs={16} md={16} sm={16} lg={11} className="derecha">
+          <Grid item xs={16} md={16} sm={16} lg={11}>
             <Stack
               direction="column"
               alignItems="center"
               justifyContent="center"
               spacing={2}
             >
-              <Box
-                sx={{
-                  display: {
-                    xs: "block",
-                    md: "block",
-                    sm: "block",
-                    lg: "none",
-                  },
-                }}
-              >
-                <Typography variant="h3" component="div" textAlign="center">
-                  <DirectionsCarIcon sx={{ fontSize: "100%", mb: "3%" }} />{" "}
-                  AUTOS
-                </Typography>
-                <Box sx={{ width: "100%" }}>
-                  <InputBuscador opciones="auto" />
-                </Box>
-              </Box>
-
-              <Box sx={{ width: "100%", marginTop: "3%" }}>
-                <Grid
-                  container
-                  spacing={{ xs: 4, md: 3 }}
-                  columns={{ xs: 4, sm: 8, md: 12, lg: 12 }}
-                  sx={{ marginBottom: "22%" }}
+              <Box className="derecha">
+                <Box
+                  sx={{
+                    display: {
+                      xs: "block",
+                      md: "block",
+                      sm: "block",
+                      lg: "none",
+                    },
+                  }}
                 >
-                  {/* mapeo de los autos para mostrarlos en la pantalla */}
-                  {currentAutos.length === 0 ? (
-                    <Grid item xs={12} sm={12} md={12}>
-                      <Typography
-                        variant="h4"
-                        component="div"
-                        textAlign="center"
-                        sx={{ marginBottom: "5%" }}
-                      >
-                        Al parecer, no hay coincidencias para tu búsqueda
-                      </Typography>
-                    </Grid>
-                  ) : (
-                    currentAutos.map((auto) => (
-                      <Grid item xs={4} sm={4} md={4} lg={4} key={auto.id}>
-                        <CardNR
-                          marca={auto.marca}
-                          modelo={auto.modelo}
-                          imagen={auto.imagen}
-                          precio={auto.precio}
-                          id={auto.id}
-                          descripcion={auto.descripcion}
-                          año={auto.año}
-                          kilometros={auto.kilometros}
-                          detalle={auto.detalle}
-                          setOpen={"false"}
-                          favorito={"true"}
-                        />
+                  <Typography variant="h3" component="div" textAlign="center">
+                    <DirectionsCarIcon sx={{ fontSize: "100%", mb: "3%" }} />{" "}
+                    AUTOS
+                  </Typography>
+                  <Box sx={{ width: "100%" }}>
+                    <InputBuscador opciones="auto" />
+                  </Box>
+                </Box>
+
+                <Box sx={{ width: "100%", marginTop: "3%" }}>
+                  <Grid
+                    container
+                    spacing={{ xs: 4, md: 3 }}
+                    columns={{ xs: 4, sm: 8, md: 12, lg: 12 }}
+                    sx={{ marginBottom: "22%" }}
+                  >
+                    {/* mapeo de los autos para mostrarlos en la pantalla */}
+                    {currentAutos.length === 0 ? (
+                      <Grid item xs={12} sm={12} md={12}>
+                        <Typography
+                          variant="h4"
+                          component="div"
+                          textAlign="center"
+                          sx={{ marginBottom: "5%" }}
+                        >
+                          Al parecer, no hay coincidencias para tu búsqueda
+                        </Typography>
                       </Grid>
-                    ))
-                  )}
-                </Grid>
+                    ) : (
+                      currentAutos.map((auto) => (
+                        <Grid item xs={4} sm={4} md={4} lg={4} key={auto.id}>
+                          <CardNR
+                            marca={auto.marca}
+                            modelo={auto.modelo}
+                            imagen={auto.imagen}
+                            precio={auto.precio}
+                            id={auto.id}
+                            descripcion={auto.descripcion}
+                            año={auto.año}
+                            kilometros={auto.kilometros}
+                            detalle={auto.detalle}
+                            setOpen={"false"}
+                            favorito={"true"}
+                          />
+                        </Grid>
+                      ))
+                    )}
+                  </Grid>
+                </Box>
               </Box>
               <Paginado
                 productoPorPagina={productoPorPagina}
@@ -405,6 +407,7 @@ export default function HomeAuto() {
                 setCurrentPage={setCurrentPage}
                 currentPage={currentPage}
               />
+
               <Box
                 sx={{
                   display: {
