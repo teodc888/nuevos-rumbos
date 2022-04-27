@@ -107,13 +107,15 @@ export default function DetalleMoto({
     errorSubmit();
   };
 
-  //efectos
-  const timeline = gsap.timeline();
-
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = modelo;
+  }, [modelo]);
 
+  //efectos
+  const timeline = gsap.timeline();
+  
+  useEffect(() => {
     const imagen = document.querySelector(".imagen");
     const det = document.querySelector(".detalles");
     const caracteristicas = document.querySelector(".caracteristicas");
@@ -133,7 +135,7 @@ export default function DetalleMoto({
         opacity: 0,
         y: 300,
       });
-  }, [modelo]);
+  }, []);
 
   const handleWhatsapp = () => {
     window.open(

@@ -46,13 +46,15 @@ export default function Landing() {
     navigate("/repuestos");
   };
 
+  useEffect(() => {
+    document.title = "Importadora";
+    window.scrollTo(0, 0);
+  }, []);
+
   //efectos
   const timeline = gsap.timeline();
 
   useEffect(() => {
-    document.title = "Importadora";
-    window.scrollTo(0, 0);
-
     const autos = document.querySelector(".autos");
     const motos = document.querySelector(".motos");
     const repuestos = document.querySelector(".repuestos");
@@ -66,44 +68,37 @@ export default function Landing() {
         duration: 0.5,
         opacity: 0,
         x: 50,
-        
       })
       .from(botonAuto, {
         duration: 0.5,
         opacity: 0,
         x: -50,
-        
       })
       .from(botonMoto, {
         duration: 0.5,
         opacity: 0,
         y: 50,
-        
       })
       .from(botonRepuesto, {
         duration: 0.5,
         opacity: 0,
         x: 50,
-        
       })
 
       .from(autos, {
         duration: 1,
         opacity: 0,
         y: -100,
-        
       })
       .from(motos, {
         duration: 1,
         opacity: 0,
         y: -100,
-        
       })
       .from(repuestos, {
         duration: 1,
         opacity: 0,
         y: -100,
-        
       });
   }, []);
 

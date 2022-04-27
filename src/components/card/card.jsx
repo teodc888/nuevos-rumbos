@@ -194,7 +194,7 @@ export default function CardNR({
           ) : null}
           <CardMedia
             sx={{
-              display: { xs: "none", md: "flex" },
+              display: { xs: "none", md: "block" },
               objectFit: "contain",
             }}
             component="img"
@@ -204,7 +204,7 @@ export default function CardNR({
           />
           <CardMedia
             sx={{
-              display: { xs: "flex", md: "none" },
+              display: { xs: "block", md: "none" },
               objectFit: "contain",
             }}
             component="img"

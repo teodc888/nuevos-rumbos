@@ -15,7 +15,6 @@ import Footer from "../footer/footer";
 //toastify
 import { toast } from "react-toastify";
 
-
 //animaciones
 import { gsap } from "gsap";
 
@@ -51,11 +50,13 @@ export default function Favoritos() {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = `(${favoritos.length}) Favoritos`;
-
-    const favorito = document.querySelector(".favorito")
-    
-    gsap.from(favorito,{opacity : 0, y:-50, duration : 1})
   }, [favoritos.length]);
+
+  useEffect(() => {
+    const favorito = document.querySelector(".favorito");
+
+    gsap.from(favorito, { opacity: 0, y: -50, duration: 1 });
+  }, []);
 
   return (
     <>

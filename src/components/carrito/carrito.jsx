@@ -154,11 +154,13 @@ export default function Carrito() {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = `(${carrito.length}) Carrito`;
-
-    const carr = document.querySelector(".carr")
-    
-    gsap.from(carr,{opacity : 0, y:-50, duration : 1})
   }, [carrito.length]);
+
+  useEffect(() => {
+    const carr = document.querySelector(".carr");
+
+    gsap.from(carr, { opacity: 0, y: -50, duration: 1 });
+  }, []);
 
   return (
     <>

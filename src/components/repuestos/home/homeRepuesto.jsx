@@ -118,13 +118,15 @@ export default function HomeRepuestos() {
     document.title = "Repuestos";
     dispatch(filtroRepuesto(filtro));
     window.scrollTo(0, 0);
+  }, [dispatch, filtro]);
 
+  useEffect(() => {
     const izquierda = document.querySelector(".izquierda");
     const derecha = document.querySelector(".derecha");
 
     gsap.from(izquierda, { opacity: 0, x: -300, duration: 1 });
     gsap.from(derecha, { opacity: 0, x: 300, duration: 1 });
-  }, [dispatch, filtro]);
+  }, []);
 
   return (
     <>
@@ -250,81 +252,8 @@ export default function HomeRepuestos() {
               alignItems="center"
               justifyContent="center"
               spacing={2}
+              className="derecha"
             >
-              <Box className="derecha">
-                <Box
-                  sx={{
-                    display: {
-                      xs: "block",
-                      md: "block",
-                      sm: "block",
-                      lg: "none",
-                    },
-                  }}
-                >
-                  <Typography
-                    variant="h4"
-                    component="div"
-                    textAlign="center"
-                    sx={{ mb: "5%" }}
-                  >
-                    <BuildIcon sx={{ fontSize: "100%" }} /> RESPUESTOS
-                  </Typography>
-                  <Box sx={{ width: "100%" }}>
-                    <InputBuscador opciones="repuesto" />
-                  </Box>
-                </Box>
-                <Box sx={{ width: "100%", marginTop: "3%" }}>
-                  <Grid
-                    container
-                    spacing={{ xs: 4, md: 3 }}
-                    columns={{ xs: 4, sm: 8, md: 12 }}
-                  >
-                    {/* //mapeo de los repuestos para mostrarlos en la pantalla */}
-                    {currentRepuestos.length === 0 ? (
-                      <Grid
-                        item
-                        xs={12}
-                        sm={12}
-                        md={12}
-                        sx={{ marginBottom: "22%" }}
-                      >
-                        <Typography
-                          variant="h4"
-                          component="div"
-                          textAlign="center"
-                          sx={{ mb: "5%" }}
-                        >
-                          Al parecer, no hay coincidencias para tu búsqueda
-                        </Typography>
-                      </Grid>
-                    ) : (
-                      currentRepuestos.map((repuesto) => (
-                        <Grid item xs={4} sm={4} md={4} key={repuesto.id}>
-                          <CardNR
-                            nombre={repuesto.nombre}
-                            imagen={repuesto.imagen}
-                            precio={repuesto.precio}
-                            id={repuesto.id}
-                            detalle={repuesto.detalle}
-                            descripcion={repuesto.descripcion}
-                            favorito={"true"}
-                            descuento={repuesto.descuento}
-                            precioDescuento={repuesto.precioDescuento}
-                          />
-                        </Grid>
-                      ))
-                    )}
-                  </Grid>
-                </Box>
-              </Box>
-              <Paginado
-                productoPorPagina={productoPorPagina}
-                productos={repuestos.length}
-                paginado={paginado}
-                setCurrentPage={setCurrentPage}
-                currentPage={currentPage}
-              />
               <Box
                 sx={{
                   display: {
@@ -333,110 +262,178 @@ export default function HomeRepuestos() {
                     sm: "block",
                     lg: "none",
                   },
-                  position: "fixed",
-                  bottom: "5%",
-                  right: "5%",
-                  zIndex: "3",
                 }}
               >
-                <Fab
-                  aria-label="edit"
-                  onClick={handleClickOpen}
-                  sx={{
-                    background:
-                      "linear-gradient(45deg, #bf360c, #bf360c, #bf360c, #bf360c, #bf360c, #bf360c)",
-                    color: "white",
-                  }}
+                <Typography
+                  variant="h4"
+                  component="div"
+                  textAlign="center"
+                  sx={{ mb: "5%" }}
                 >
-                  <FilterListIcon />
-                </Fab>
-                <Dialog
-                  open={open}
-                  TransitionComponent={Transition}
-                  keepMounted
-                  onClose={handleClose}
-                  aria-describedby="alert-dialog-slide-description"
-                >
-                  <DialogTitle>{"FILTROS"}</DialogTitle>
-                  <DialogContent>
-                    <Box sx={{ width: "100%", marginTop: "10%" }}>
-                      <Grid
-                        container
-                        spacing={{ xs: 4, md: 3 }}
-                        columns={{ xs: 4, sm: 8, md: 12 }}
-                      >
-                        <Grid item xs={6} sm={8} md={12}>
-                          <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">
-                              PRECIO
-                            </InputLabel>
-                            <Select
-                              labelId="demo-simple-select-label"
-                              id="demo-simple-select"
-                              name="precioR"
-                              label="PRECIO"
-                              value={filtro.precioR}
-                              onChange={handleChange}
-                            >
-                              <MenuItem value={"todos"}>Todos</MenuItem>
-                              <MenuItem value={"mayor"}>Mayor</MenuItem>
-                              <MenuItem value={"menor"}>Menor</MenuItem>
-                            </Select>
-                          </FormControl>
-                        </Grid>
-                        <Grid item xs={6} sm={8} md={12}>
-                          <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">
-                              DESCUENTO
-                            </InputLabel>
-                            <Select
-                              labelId="demo-simple-select-label"
-                              id="demo-simple-select"
-                              name="descuento"
-                              label="DESCUENTO"
-                              value={filtro.descuento}
-                              onChange={handleChange}
-                            >
-                              <MenuItem value={"todos"}>Todos</MenuItem>
-                              <MenuItem value={"descuento"}>
-                                Productos Con Descuento
-                              </MenuItem>
-                            </Select>
-                          </FormControl>
-                        </Grid>
-                        <Grid item xs={6} sm={8} md={12}>
-                          <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">
-                              ORDENAR DESCUENTO
-                            </InputLabel>
-                            <Select
-                              labelId="demo-simple-select-label"
-                              id="demo-simple-select"
-                              name="descuentoMax"
-                              label="ORDENAR DESCUENTO"
-                              value={filtro.descuentoMax}
-                              onChange={handleChange}
-                            >
-                              <MenuItem value={"todos"}>Todos</MenuItem>
-                              <MenuItem value={"menor"}>
-                                Menor Descuento
-                              </MenuItem>
-                              <MenuItem value={"mayor"}>
-                                Mayor Descuento
-                              </MenuItem>
-                            </Select>
-                          </FormControl>
-                        </Grid>
-                      </Grid>
-                    </Box>
-                  </DialogContent>
-                  <DialogActions>
-                    <Button onClick={resetFiltros}>Borrar Filtros</Button>
-                    <Button onClick={handleClose}>Listo</Button>
-                  </DialogActions>
-                </Dialog>
+                  <BuildIcon sx={{ fontSize: "100%" }} /> RESPUESTOS
+                </Typography>
+                <Box sx={{ width: "100%" }}>
+                  <InputBuscador opciones="repuesto" />
+                </Box>
               </Box>
+              <Box sx={{ width: "100%", marginTop: "3%" }}>
+                <Grid
+                  container
+                  spacing={{ xs: 4, md: 3 }}
+                  columns={{ xs: 4, sm: 8, md: 12 }}
+                >
+                  {/* //mapeo de los repuestos para mostrarlos en la pantalla */}
+                  {currentRepuestos.length === 0 ? (
+                    <Grid
+                      item
+                      xs={12}
+                      sm={12}
+                      md={12}
+                      sx={{ marginBottom: "22%" }}
+                    >
+                      <Typography
+                        variant="h4"
+                        component="div"
+                        textAlign="center"
+                        sx={{ mb: "5%" }}
+                      >
+                        Al parecer, no hay coincidencias para tu búsqueda
+                      </Typography>
+                    </Grid>
+                  ) : (
+                    currentRepuestos.map((repuesto) => (
+                      <Grid item xs={4} sm={4} md={4} key={repuesto.id}>
+                        <CardNR
+                          nombre={repuesto.nombre}
+                          imagen={repuesto.imagen}
+                          precio={repuesto.precio}
+                          id={repuesto.id}
+                          detalle={repuesto.detalle}
+                          descripcion={repuesto.descripcion}
+                          favorito={"true"}
+                          descuento={repuesto.descuento}
+                          precioDescuento={repuesto.precioDescuento}
+                        />
+                      </Grid>
+                    ))
+                  )}
+                </Grid>
+              </Box>
+              <Paginado
+                productoPorPagina={productoPorPagina}
+                productos={repuestos.length}
+                paginado={paginado}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+              />
             </Stack>
+            <Box
+              sx={{
+                display: {
+                  xs: "block",
+                  md: "block",
+                  sm: "block",
+                  lg: "none",
+                },
+                position: "fixed",
+                bottom: "5%",
+                right: "5%",
+                zIndex: "3",
+              }}
+            >
+              <Fab
+                aria-label="edit"
+                onClick={handleClickOpen}
+                sx={{
+                  background:
+                    "linear-gradient(45deg, #bf360c, #bf360c, #bf360c, #bf360c, #bf360c, #bf360c)",
+                  color: "white",
+                }}
+              >
+                <FilterListIcon />
+              </Fab>
+              <Dialog
+                open={open}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={handleClose}
+                aria-describedby="alert-dialog-slide-description"
+              >
+                <DialogTitle>{"FILTROS"}</DialogTitle>
+                <DialogContent>
+                  <Box sx={{ width: "100%", marginTop: "10%" }}>
+                    <Grid
+                      container
+                      spacing={{ xs: 4, md: 3 }}
+                      columns={{ xs: 4, sm: 8, md: 12 }}
+                    >
+                      <Grid item xs={6} sm={8} md={12}>
+                        <FormControl fullWidth>
+                          <InputLabel id="demo-simple-select-label">
+                            PRECIO
+                          </InputLabel>
+                          <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            name="precioR"
+                            label="PRECIO"
+                            value={filtro.precioR}
+                            onChange={handleChange}
+                          >
+                            <MenuItem value={"todos"}>Todos</MenuItem>
+                            <MenuItem value={"mayor"}>Mayor</MenuItem>
+                            <MenuItem value={"menor"}>Menor</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                      <Grid item xs={6} sm={8} md={12}>
+                        <FormControl fullWidth>
+                          <InputLabel id="demo-simple-select-label">
+                            DESCUENTO
+                          </InputLabel>
+                          <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            name="descuento"
+                            label="DESCUENTO"
+                            value={filtro.descuento}
+                            onChange={handleChange}
+                          >
+                            <MenuItem value={"todos"}>Todos</MenuItem>
+                            <MenuItem value={"descuento"}>
+                              Productos Con Descuento
+                            </MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                      <Grid item xs={6} sm={8} md={12}>
+                        <FormControl fullWidth>
+                          <InputLabel id="demo-simple-select-label">
+                            ORDENAR DESCUENTO
+                          </InputLabel>
+                          <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            name="descuentoMax"
+                            label="ORDENAR DESCUENTO"
+                            value={filtro.descuentoMax}
+                            onChange={handleChange}
+                          >
+                            <MenuItem value={"todos"}>Todos</MenuItem>
+                            <MenuItem value={"menor"}>Menor Descuento</MenuItem>
+                            <MenuItem value={"mayor"}>Mayor Descuento</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={resetFiltros}>Borrar Filtros</Button>
+                  <Button onClick={handleClose}>Listo</Button>
+                </DialogActions>
+              </Dialog>
+            </Box>
           </Grid>
         </Grid>
       </Container>

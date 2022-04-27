@@ -38,7 +38,6 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 //toastify
 import { toast } from "react-toastify";
 
-
 //animaciones
 import { gsap } from "gsap";
 
@@ -142,16 +141,17 @@ export default function DetalleRepuesto({
   useEffect(() => {
     document.title = nombre;
     window.scrollTo(0, 0);
+  }, [nombre]);
 
+  useEffect(() => {
     const imagen = document.querySelector(".imagen");
     const det = document.querySelector(".detalles");
     const destacado = document.querySelector(".destacado");
 
-
     gsap.from(imagen, { opacity: 0, x: -300, duration: 1 });
     gsap.from(det, { opacity: 0, x: 300, duration: 1 });
     gsap.from(destacado, { opacity: 0, y: 300, duration: 1 });
-  }, [nombre]);
+  }, []);
 
   const handleWhatsapp = () => {
     window.open(
@@ -220,7 +220,7 @@ export default function DetalleRepuesto({
                   />
                 </Card>
               </Grid>
-              <Grid item xs={4} sm={8} md={4} className="detalles"> 
+              <Grid item xs={4} sm={8} md={4} className="detalles">
                 <Card sx={{ maxWidth: 445, margin: "auto" }}>
                   <CardContent>
                     <Typography

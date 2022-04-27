@@ -112,37 +112,34 @@ export default function DetalleAuto({
     errorSubmit();
   };
 
-  //efectos
-  const timeline = gsap.timeline();
-
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = modelo;
+  }, [modelo]);
 
+  //efectos
+  const timeline = gsap.timeline();
+  useEffect(() => {
     const imagen = document.querySelector(".imagen");
     const det = document.querySelector(".detalles");
     const caracteristicas = document.querySelector(".caracteristicas");
     const destacado = document.querySelector(".destacado");
 
-    gsap.from(imagen,{opacity : 0, x:-300, duration : 1})
-    gsap.from(det,{opacity : 0, x:300, duration : 1})
-
+    gsap.from(imagen, { opacity: 0, x: -300, duration: 1 });
+    gsap.from(det, { opacity: 0, x: 300, duration: 1 });
 
     timeline
-    .from(caracteristicas, {
-      duration: 1,
-      opacity: 0,
-      x: 300,
-    })
-    .from(destacado, {
-      duration: 1,
-      opacity: 0,
-      y: 300,
-    });
-
-
-
-  }, [modelo]);
+      .from(caracteristicas, {
+        duration: 1,
+        opacity: 0,
+        x: 300,
+      })
+      .from(destacado, {
+        duration: 1,
+        opacity: 0,
+        y: 300,
+      });
+  }, []);
 
   const handleWhatsapp = () => {
     window.open(
