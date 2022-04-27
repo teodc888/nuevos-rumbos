@@ -16,6 +16,10 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { deleteCarrito, cantidadStock } from "../../../redux/actions/index";
 import { useDispatch } from "react-redux";
 
+//toastify
+import { toast } from "react-toastify";
+
+
 export default function CardCarrito({
   nombre,
   imagen,
@@ -42,6 +46,15 @@ export default function CardCarrito({
 
   const eliminar = () => {
     dispatch(deleteCarrito(id));
+    toast.error("Productos eliminados con éxito", {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   let precioo = precio * cantidad;
@@ -53,42 +66,11 @@ export default function CardCarrito({
         sx={{
           display: { xs: "none", sm: "none", md: "block", lg: "block" },
         }}
+        display="flex"
       >
-        <Card sx={{ display: "flex", maxWidth: 800, margin: "auto" }}>
-          <CardMedia
-            component="img"
-            sx={{ width: 250, objectFit: "contain", float: "left" }}
-            image={imagen[0]}
-            alt="Live from space album cover"
-          />
-          <Box sx={{ display: "flex", flexDirection: "column" }}>
-            <CardContent sx={{ flex: "1 0 auto" }}>
-              <Typography component="div" variant="h6">
-                {nombre}
-              </Typography>
-
-              <Typography variant="h5" color="text.secondary" component="div">
-                {descuento > 0 ? (
-                  <>
-                    <del>$ {Number(precioo).toLocaleString("es-AR")}</del> ${" "}
-                    {Number(precioDescuentoo).toLocaleString("es-AR")}
-                  </>
-                ) : (
-                  `$ ${Number(precioo).toLocaleString("es-AR")}`
-                )}
-              </Typography>
-            </CardContent>
-            <CardContent sx={{ flex: "1 0 auto" }}>
-              <Typography variant="h5" color="text.secondary" component="div">
-                Cantidad
-              </Typography>
-              <ArrowLeftIcon onClick={handleClickResta} />
-              {contador}
-              <ArrowRightIcon onClick={handleClickSuma} />
-            </CardContent>
-          </Box>
-          <Box sx={{ml:20}}>
-            <CardContent >
+        <Card>
+          <Box sx={{ float: "right" }}>
+            <CardContent>
               <Button
                 sx={{ bgcolor: "red", color: "white" }}
                 color="error"
@@ -99,6 +81,45 @@ export default function CardCarrito({
               </Button>
             </CardContent>
           </Box>
+          <Card sx={{ display: "flex", maxWidth: 800, margin: "auto" }}>
+            <CardMedia
+              component="img"
+              sx={{
+                width: 200,
+                height: 200,
+                objectFit: "contain",
+                float: "left",
+              }}
+              image={imagen[0]}
+              alt="Live from space album cover"
+            />
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <CardContent sx={{ flex: "1 0 auto" }}>
+                <Typography component="div" variant="h6">
+                  {nombre}
+                </Typography>
+
+                <Typography variant="h5" color="text.secondary" component="div">
+                  {descuento > 0 ? (
+                    <>
+                      <del>$ {Number(precioo).toLocaleString("es-AR")}</del> ${" "}
+                      {Number(precioDescuentoo).toLocaleString("es-AR")}
+                    </>
+                  ) : (
+                    `$ ${Number(precioo).toLocaleString("es-AR")}`
+                  )}
+                </Typography>
+              </CardContent>
+              <CardContent sx={{ flex: "1 0 auto" }}>
+                <Typography variant="h5" color="text.secondary" component="div">
+                  Cantidad
+                </Typography>
+                <ArrowLeftIcon onClick={handleClickResta} />
+                {contador}
+                <ArrowRightIcon onClick={handleClickSuma} />
+              </CardContent>
+            </Box>
+          </Card>
         </Card>
       </Box>
       <Box

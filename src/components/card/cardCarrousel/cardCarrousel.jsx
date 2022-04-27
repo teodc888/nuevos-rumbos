@@ -68,28 +68,16 @@ export default function CardCarrousel({
           </Box>
         ) : null}
 
-        {tipo === "carrito" ? (
-          <CardMedia
-            sx={{
-              objectFit: "contain",
-            }}
-            component="img"
-            height="200"
-            image={imagen}
-            alt="green iguana"
-          />
-        ) : (
-          <CardMedia
-            sx={{
-              display: { xs: "none", md: "block" },
-              objectFit: "contain",
-            }}
-            component="img"
-            height="200"
-            image={imagen[0]}
-            alt="green iguana"
-          />
-        )}
+        <CardMedia
+          sx={{
+            display: { xs: "none", md: "block" },
+            objectFit: "contain",
+          }}
+          component="img"
+          height="200"
+          image={imagen[0]}
+          alt="green iguana"
+        />
 
         <CardActionArea onClick={handleNavigate}>
           <CardContent>
