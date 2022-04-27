@@ -362,7 +362,6 @@ export default function NavBar({ setMode }) {
             sx={{
               display: { xs: "none", sm: "flex", md: "flex", lg: "flex" },
               ml: 2,
-              
             }}
           >
             <InputBuscador />
