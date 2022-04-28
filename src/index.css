@@ -5,7 +5,25 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: #263238;
+  filter: transparent;
+  /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #607d8b;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
 }
 
 code {

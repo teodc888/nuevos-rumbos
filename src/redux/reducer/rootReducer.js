@@ -353,6 +353,8 @@ export default function rootReducer(state = inicialState, action) {
           cilindrada: "todos",
           precioR: "todos",
           marcaR: "todos",
+          descuentoMax: "todos",
+          descuento: "todos",
         },
       };
     case DELETE_FAVORITOS:

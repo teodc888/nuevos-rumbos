@@ -21,7 +21,6 @@ import {
 } from "@mui/material";
 // import MenuIcon from "@mui/icons-material/Menu";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness4OutlinedIcon from "@mui/icons-material/Brightness4Outlined";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -320,8 +319,8 @@ export default function NavBar({ setMode }) {
       </MenuItem>
       <MenuItem>
         <Checkbox
-          icon={<Brightness4Icon sx={{ color: "black" }} />}
-          checkedIcon={<Brightness4OutlinedIcon sx={{ color: "white" }} />}
+          icon={<Brightness4OutlinedIcon sx={{color:"white"}} />}
+          checkedIcon={<Brightness4OutlinedIcon sx={{color:"black"}}  />}
           onClick={colorMode.toggleColorMode}
         />
       </MenuItem>
@@ -387,7 +386,7 @@ export default function NavBar({ setMode }) {
             }}
           >
             <Checkbox
-              icon={<Brightness4Icon sx={{ color: "white" }} />}
+              icon={<Brightness4OutlinedIcon sx={{ color: "white" }} />}
               checkedIcon={<Brightness4OutlinedIcon sx={{ color: "white" }} />}
               onClick={colorMode.toggleColorMode}
             />

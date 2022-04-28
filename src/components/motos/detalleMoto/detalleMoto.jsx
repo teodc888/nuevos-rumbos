@@ -50,9 +50,6 @@ export default function DetalleMoto({
   kilometros,
   detalle,
 }) {
-  //color
-  const colorElegido = useSelector((state) => state.color);
-
   const favorite = useSelector((state) => state.favoritos);
   let aux = [];
   if (favorite.length > 0) {
@@ -114,7 +111,7 @@ export default function DetalleMoto({
 
   //efectos
   const timeline = gsap.timeline();
-  
+
   useEffect(() => {
     const imagen = document.querySelector(".imagen");
     const det = document.querySelector(".detalles");
@@ -297,7 +294,7 @@ export default function DetalleMoto({
                         color="error"
                         onClick={deleteFavoritos}
                         sx={{
-                          bgcolor: colorElegido,
+                          bgcolor: "red",
                           color: "white",
                           width: "100%",
                         }}

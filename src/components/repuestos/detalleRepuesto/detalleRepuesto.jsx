@@ -51,8 +51,6 @@ export default function DetalleRepuesto({
   precioDescuento,
   detalle,
 }) {
-  // //color
-  const colorElegido = useSelector((state) => state.color);
 
   const favorite = useSelector((state) => state.favoritos);
   let aux = [];
@@ -300,7 +298,7 @@ export default function DetalleRepuesto({
                         color="error"
                         onClick={deleteFavoritos}
                         sx={{
-                          bgcolor: colorElegido,
+                          bgcolor: "red",
                           color: "white",
                           width: "100%",
                           fontSize: "9px",
@@ -330,7 +328,7 @@ export default function DetalleRepuesto({
                         onClick={eliminarDeCarrito}
                         color="error"
                         sx={{
-                          bgcolor: colorElegido,
+                          bgcolor: "red",
                           color: "white",
                           width: "100%",
                           fontSize: "10px",

@@ -35,6 +35,7 @@ export default function CardCarrousel({
   const darkMode = useSelector((state) => state.darkMode);
 
   const handleNavigate = () => {
+    // window.location.href = `/detalle/${id}`;
     navigate(`/detalle/${id}`);
     window.scrollTo(0, 0);
   };

@@ -55,8 +55,6 @@ export default function DetalleAuto({
   id,
   detalle,
 }) {
-  //color
-  const colorElegido = useSelector((state) => state.color);
 
   const favorite = useSelector((state) => state.favoritos);
   let aux = [];
@@ -301,7 +299,7 @@ export default function DetalleAuto({
                         color="error"
                         onClick={deleteFavoritos}
                         sx={{
-                          bgcolor: colorElegido,
+                          bgcolor: "red",
                           color: "white",
                           width: "100%",
                         }}
