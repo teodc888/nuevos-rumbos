@@ -136,7 +136,7 @@ export default function NavBar({ setMode }) {
       <Divider />
       <List>
         <ListItem>
-          <ListItemText primary={"NUEVOS RUMBOS"} />
+          <ListItemText primary={"IMPORTADORA"} />
         </ListItem>
         {menuItems.map((item, i) => (
           <ListItem

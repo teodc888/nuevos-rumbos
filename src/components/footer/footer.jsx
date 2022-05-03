@@ -46,7 +46,7 @@ export default function Footer() {
           <Grid container spacing={5}>
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1} textAlign="center">
-                <ApartmentIcon sx={{color:"#4fc3f7"}} /> Nuevos Rumbos
+                <ApartmentIcon sx={{color:"#4fc3f7"}} /> Importadora
               </Box>
               <Box>
                 <Link href="/nosotros" color="inherit">
@@ -149,7 +149,7 @@ export default function Footer() {
             <Avatar
               src={NuevosRumbos}
               sx={{ position: "static", mr: "1.5%" }}
-              alt="Nuevos rumbos"
+              alt="Importadora"
             />
             <Typography
               variant="h6"
